@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Providers } from "../provider/jotai-providers";
+import { QueryClientProviders } from "../provider/query-providers";
+import { ToastContainer } from "react-toastify";
+import { CacheProviders } from "../provider/cache-providers";
+import { Suspense } from "react";
+// import PageLoader from "./page-loader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,12 +28,23 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
-    <html lang="en">
+    <html lang="en" data-toolpad-color-scheme="light">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <CacheProviders>
+          <Suspense fallback = {<div>Loading...</div>}>
+          <QueryClientProviders>
+            <Providers>
+              {/* <PageLoader/> */}
+              {children}
+              <ToastContainer />
+            </Providers>
+          </QueryClientProviders>
+          </Suspense>
+        </CacheProviders>
       </body>
     </html>
   );

@@ -1,0 +1,255 @@
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import MenuIcon from "@mui/icons-material/Menu";
+import SearchIcon from "@mui/icons-material/Search";
+import {
+  Avatar,
+  Button,
+  IconButton,
+  InputAdornment,
+  Menu,
+  MenuItem,
+  TextField,
+  Tooltip,
+  Typography,
+} from "@mui/material";
+import Link from "next/link";
+import { useAtom } from "jotai";
+import { userToken } from "@/store/user";
+import { sidebarAtom } from "@/store";
+import { useFetchUserApiBySession } from "@/api-hooks/user";
+import Image from "next/image";
+import { HEADINGMENU, IHeadingMenu } from "@/constants/common/header";
+
+export default function Header() {
+  const [token] = useAtom(userToken);
+  const [dashboardOpen, setDashboardOpen] = useAtom(sidebarAtom);
+  const [searchValue, setSearchValue] = React.useState("");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+  };
+  console.log("🚀 ~ Header ~ searchValue:", searchValue);
+
+  const { data: user } = useFetchUserApiBySession(token);
+
+  const settings = HEADINGMENU;
+
+  // const [anchorEl1, setAnchorEl1] = React.useState<null | HTMLElement>(null);
+  const [anchorEl2, setAnchorEl2] = React.useState<null | HTMLElement>(null);
+
+  // const open1 = Boolean(anchorEl1);
+  const open2 = Boolean(anchorEl2);
+
+  // Open menu 1
+  // const handleClickMenu1 = (event: React.MouseEvent<HTMLElement>) => {
+  //   setAnchorEl1(event.currentTarget);
+  // };
+
+  // Open menu 2
+  const handleClickMenu2 = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl2(event.currentTarget);
+  };
+
+  // Đóng menu
+  const handleClose = () => {
+    // setAnchorEl1(null);
+    setAnchorEl2(null);
+  };
+  return (
+    <div className="container">
+      <Box
+        sx={{
+          width: "100%",
+          height: 64,
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+          backgroundColor: "white",
+        }}
+      >
+        <Box sx={{ display: "flex", flexDirection: "row" }}>
+          {/* Menu Button */}
+          <Toolbar sx={{ padding: "0px !important" }}>
+            <Tooltip title={dashboardOpen ? "Close menu" : "Open menu"}>
+              <Button
+                onClick={() => {
+                  setDashboardOpen(!dashboardOpen);
+                }}
+              >
+                <MenuIcon sx={{ color: "black" }} />
+              </Button>
+            </Tooltip>
+          </Toolbar>
+
+          {/* Search area */}
+          <Toolbar sx={{ padding: "0px !important" }}>
+            <TextField
+              placeholder="Search "
+              variant="outlined"
+              size="small"
+              onChange={handleChange}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon color="disabled" />
+                  </InputAdornment>
+                ),
+                sx: {
+                  borderRadius: "50px",
+                  backgroundColor: "white",
+                },
+              }}
+            />
+          </Toolbar>
+        </Box>
+
+        {/* Sign in button */}
+        {!token && (
+          <Box sx={{ display: "flex", alignItems: "center" }}>
+            <Button component={Link} href="/login">
+              Sign In
+            </Button>
+          </Box>
+        )}
+        <div className="flex gap-7">
+          {/* Language */}
+          {/* <Box
+            sx={{
+              flexGrow: 0,
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <Tooltip title="Open Language Settings">
+              <IconButton
+                onClick={handleClickMenu1}
+                sx={{ p: 0, gap: "15px" }}
+              >
+                <Avatar alt="Remy Sharp" src={user?.avatar} />
+                <Box sx={{ marginRight: "5px" }}>
+                  <Typography sx={{ color: "gray", fontWeight: "600" }}>
+                    {user?.role}
+                  </Typography>
+                </Box>
+                <Image alt="" src="/More.svg" width={25} height={25}></Image>
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: "45px", borderRadius: "14px", overflow: "hidden" }}
+              id="menu-appbar"
+              anchorEl={anchorEl1}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={open1}
+              onClose={handleClose}
+            >
+              <p>Select Language</p>
+              <Divider></Divider>
+              {settings.map((setting: IHeadingMenu, index: number) => (
+                <MenuItem
+                  key={`setting-${index}`}
+                  onClick={handleClose}
+                >
+                  <Link
+                    href="#"
+                    className="flex flex-row gap-3 py-auto h-full items-center"
+                  >
+                    <div className="w-4 h-4">
+                      <Image
+                        alt=""
+                        src={setting.img}
+                        width={16}
+                        height={16}
+                      ></Image>
+                    </div>
+                    <Typography sx={{ textAlign: "center" }}>
+                      {setting.text}
+                    </Typography>
+                  </Link>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box> */}
+
+          {/* Setting button */}
+          {user && (
+            <Box
+              sx={{
+                flexGrow: 0,
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <Tooltip title="Open settings">
+                <IconButton
+                  onClick={handleClickMenu2}
+                  sx={{ p: 0, gap: "15px" }}
+                >
+                  <Avatar alt="Remy Sharp" src={user?.avatar} />
+                  <Box sx={{ marginRight: "10px" }}>
+                    <Typography sx={{ color: "black", fontWeight: "600" }}>
+                      {user?.name}
+                    </Typography>
+                    <Typography sx={{ color: "gray", fontWeight: "500" }}>
+                      {user?.role}
+                    </Typography>
+                  </Box>
+                  <Image alt="" src="/More.svg" width={25} height={25}></Image>
+                </IconButton>
+              </Tooltip>
+              <Menu
+                sx={{ mt: "45px", borderRadius: "14px", overflow: "hidden" }}
+                id="menu-appbar"
+                anchorEl={anchorEl2}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={open2}
+                onClose={handleClose}
+              >
+                {settings.map((setting: IHeadingMenu, index: number) => (
+                  <MenuItem
+                    key={`setting-${index}`}
+                    onClick={handleClickMenu2}
+                  >
+                    <Link
+                      href="#"
+                      className="flex flex-row gap-3 py-auto h-full items-center"
+                    >
+                      <div className="w-4 h-4">
+                        <Image
+                          alt=""
+                          src={setting.img}
+                          width={16}
+                          height={16}
+                        ></Image>
+                      </div>
+                      <Typography sx={{ textAlign: "center" }}>
+                        {setting.text}
+                      </Typography>
+                    </Link>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
+          )}
+        </div>
+      </Box>
+    </div>
+  );
+}
