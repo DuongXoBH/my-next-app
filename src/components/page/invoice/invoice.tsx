@@ -117,13 +117,13 @@ export default function InvoiceComponent() {
         </p>
       </div>
       <div className="w-[95%] h-14 flex flex-row justify-end items-center gap-4 mt-[60px]">
-        <Tooltip title="Printf">
-          <button className="w-[54px] h-[54px] rounded-xl bg-[#D5D5D5] flex justify-center items-center">
+        <Tooltip title="Print">
+          <button className="w-[54px] h-[54px] rounded-xl bg-[#D5D5D5] flex justify-center items-center hover:bg-[#797474]">
             <Image alt="" src="/shape.png" width={18} height={16}></Image>
           </button>
         </Tooltip>
-        <Tooltip title="Printf">
-          <button className="w-[174px] h-[54px] rounded-xl bg-[#4880FF] flex flex-row items-center justify-end gap-10 pr-2">
+        <Tooltip title="Send">
+          <button className="w-[174px] h-[54px] rounded-xl bg-[#4880FF] flex flex-row items-center justify-end gap-10 pr-2 text-white font-medium">
             Send
             <Image alt="" src="/send-button.png" width={46} height={38}></Image>
           </button>

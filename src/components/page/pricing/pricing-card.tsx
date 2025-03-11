@@ -9,9 +9,9 @@ export default function PricingCard(props: { arr: IPricingList }) {
     }
   return (
     <div className="w-[30%] min-h-[780px] bg-pricing bg-center bg-no-repeat bg-cover flex flex-col justify-between items-center pt-10 pb-[55px] rounded-[30px]">
-      <p className="text-2xl ">{props.arr.title}</p>
+      <p className="text-2xl font-bold">{props.arr.title}</p>
       <p className="text-lg ">Montly Charge</p>
-      <p className="text-[36px] text-[#4581FF] font-bold ">
+      <p className="text-[36px] text-[#4581FF] font-extrabold ">
         $ {props.arr.price}
       </p>
       {/* line */}

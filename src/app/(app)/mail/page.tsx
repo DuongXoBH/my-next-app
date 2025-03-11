@@ -17,6 +17,7 @@ export default function MailPage() {
         sx={{
           mb: 1,
           fontSize: 32,
+          mt:"16px",
           lineHeight: "43.5px",
           textAlign: "start",
           fontWeight: 600,

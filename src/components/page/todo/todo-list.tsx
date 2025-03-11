@@ -49,23 +49,16 @@ export default function TodoList() {
             className={`w-full h-24 rounded-[12px] border-[0.6px] border-gray-200 p-8 flex flex-row justify-between items-center ${selectedList.includes(event.id) ? "bg-blue-500 text-white" : "bg-[white]"}`}
           >
             <div className="flex gap-6 items-center">
-              {/* <label className="w-8 h-8 inline-flex items-center justify-center ">
+              <label className="w-8 h-8 inline-flex items-center justify-center">
                 <input
                   type="checkbox"
-                  className="w-[30px] h-[30px] appearance-none rounded-[8px] border border-gray-500 cursor-pointer checked:bg-blue-500 checked:border-white"
+                  className="peer w-[30px] h-[30px] appearance-none rounded-[8px] border border-gray-500 cursor-pointer checked:bg-blue-500 checked:border-white"
                   defaultChecked={event.checked}
                   onChange={(e) => handleSelectedChange(event.id, e)}
                 />
-              </label> */}
-              <label className="relative inline-block w-12 h-6">
-                <input
-                  type="checkbox"
-                  className="sr-only peer"
-                  defaultChecked={event.checked}
-                  onChange={(e) => handleSelectedChange(event.id, e)}
-                />
-                <div className="w-full h-full bg-gray-200 rounded-full peer-checked:bg-gray-600 transition duration-300"></div>
-                <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition duration-300 peer-checked:translate-x-6"></div>
+                <span className="absolute w-4 h-4 flex items-center">
+                  <Image alt="" src="/check.png" width={14} height={10}></Image>
+                </span>
               </label>
 
               <p className="ml-6 text-base font-semibold flex items-center">

@@ -2,7 +2,7 @@ import { Button, Typography } from "@mui/material";
 
 export default function ContactHeader(){
     return (
-            <div className="flex justify-between items-center mb-10">
+            <div className="flex justify-between items-center mt-4 mb-10">
               <Typography
                 sx={{
                   mb: 1,

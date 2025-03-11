@@ -5,26 +5,42 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import listPlugin from "@fullcalendar/list";
-import interactionPlugin, { EventResizeDoneArg } from "@fullcalendar/interaction";
+import interactionPlugin, {
+  EventResizeDoneArg,
+} from "@fullcalendar/interaction";
 import {
   DateSelectArg,
   EventClickArg,
   EventDropArg,
 } from "@fullcalendar/core";
-import { Box, Button, Dialog, DialogTitle, TextField } from "@mui/material";
+import {
+  Box,
+  Button,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { useAtom } from "jotai";
 import { eventAtom } from "@/store/event";
+import Image from "next/image";
 
-export default function MyCalendar(){
+export default function MyCalendar() {
   const [events, setEvents] = useAtom(eventAtom);
 
   const [openAddModal, setOpenAddModal] = useState(false);
+  const [openHoverModal, setOpenHoverModal] = useState(false);
+
   const [selectedDate, setSelectedDate] = useState<{
     start: string;
     end: string;
   } | null>(null);
   const [newNote, setNewNote] = useState("");
-  console.log("🚀 ~ MyCalendar ~ newNote:", newNote)
+  const [hoveredEvent, setHoveredEvent] = useState<EventClickArg | null>(
+    null
+  );
+  console.log("🚀 ~ MyCalendar ~ newNote:", newNote);
 
   const handleSelect = (info: DateSelectArg) => {
     setSelectedDate({ start: info.startStr, end: info.endStr });
@@ -46,14 +62,6 @@ export default function MyCalendar(){
 
       setOpenAddModal(false);
       setNewNote("");
-    }
-  };
-
-  const handleEventClick = (info: EventClickArg) => {
-    if (confirm(`Bạn có muốn xóa sự kiện "${info.event.title}" không?`)) {
-      setEvents((prevEvents) =>
-        prevEvents.filter((event) => event.id !== info.event.id)
-      );
     }
   };
 
@@ -83,7 +91,13 @@ export default function MyCalendar(){
           : event
       )
     );
-  }
+  };
+
+  const handleMouseEnter = (info: EventClickArg) => {
+    setOpenHoverModal(true);
+    setHoveredEvent(info);
+  };
+
   return (
     <div className="p-4 bg-white shadow rounded-lg overflow-auto">
       <FullCalendar
@@ -98,7 +112,11 @@ export default function MyCalendar(){
         selectable={true}
         select={handleSelect}
         events={events}
-        eventClick={handleEventClick}
+        eventClassNames={
+          "w-full h-9 text-center flex justify-center items-center"
+        }
+        eventClick={handleMouseEnter}
+        eventBackgroundColor="#516FE9"
         eventDrop={handleEventDrop}
         eventResize={handleEventResize}
       />
@@ -117,7 +135,76 @@ export default function MyCalendar(){
           </Button>
         </Box>
       </Dialog>
+
+      {/* Hover Event Dialog */}
+      <Dialog
+        sx={{ width: "100%" }}
+        open={openHoverModal}
+        onClose={() => setOpenHoverModal(false)}
+      >
+        <Box
+          sx={{
+            minWidth: "290px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "space-around",
+            padding: "18px",
+          }}
+        >
+          <Image alt="" src="/event-image.png" width={241} height={155}></Image>
+          <DialogContent sx={{ width: "100%" }}>
+            {hoveredEvent && (
+              <div className="w-full mt-7">
+                <Typography variant="h6">{hoveredEvent.event.title}</Typography>
+                <Typography
+                  sx={{
+                    fontSize: "14px",
+                    fontWeight: "500",
+                    mt: "16px",
+                    color: "#919191",
+                  }}
+                >
+                  Start: {hoveredEvent.event.startStr?.toLocaleString()}
+                </Typography>
+                <Typography
+                  sx={{
+                    fontSize: "14px",
+                    fontWeight: "600",
+                    mt: "16px",
+                    color: "#919191",
+                  }}
+                >
+                  End: {hoveredEvent.event.endStr || "Không xác định"}
+                </Typography>
+                <div className="w-full flex justify-between">
+                  <button
+                    className="w-[45%] rounded-[8px] h-10 flex justify-center items-center bg-[#5186FF] mt-6   text-white"
+                    onClick={() => {
+                      setEvents((prevEvents) =>
+                        prevEvents.filter(
+                          (event) => event.id !== hoveredEvent.event.id
+                        )
+                      );
+                      setOpenHoverModal(false);
+                    }}
+                  >
+                    Delete
+                  </button>
+                  <button
+                    className="w-[45%] rounded-[8px] h-10 flex justify-center items-center bg-[#5186FF] mt-6   text-white"
+                    onClick={() => {
+                      setOpenHoverModal(false);
+                    }}
+                  >
+                    Confirm
+                  </button>
+                </div>
+              </div>
+            )}
+          </DialogContent>
+        </Box>
+      </Dialog>
     </div>
   );
-};
-
+}

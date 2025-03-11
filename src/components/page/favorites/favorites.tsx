@@ -17,7 +17,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import CardLoading from "@/components/common/loading";
+import CardLoading from "@/components/common/card-loading";
 import { CSSProperties } from "react";
 
 interface IProduct {
@@ -57,7 +57,7 @@ export default function FavoritesList() {
         display: "flex",
         flexWrap: "wrap",
         justifyContent: "start",
-        gap: "8%",
+        gap: "2%",
       }}
     >
       {Favorites?.map((element: IProduct, index: number) => {
@@ -65,7 +65,7 @@ export default function FavoritesList() {
           <Card
             key={`favorites-${index}`}
             sx={{
-              width: "28%",
+              width: "32%",
               display: "flex",
               flexDirection: "column",
               backgroundColor: "white",
@@ -106,7 +106,7 @@ export default function FavoritesList() {
                         component="img"
                         image={image}
                         alt={element.title}
-                        sx={{ width: "100%", height: "100%" }}
+                        sx={{ width: "100%", height: "100%",maxHeight:"320px" }}
                       />
                     </SwiperSlide>
                   );
@@ -119,6 +119,7 @@ export default function FavoritesList() {
                 display: "flex",
                 justifyContent: "space-between",
                 height: "100%",
+                minHeight:"180px"
               }}
             >
               <CardContent
@@ -127,7 +128,6 @@ export default function FavoritesList() {
                   flexDirection: "column",
                   justifyContent: "space-between",
                   paddingX: 4,
-                  paddingY: 5,
                   maxWidth: "80%",
                 }}
               >

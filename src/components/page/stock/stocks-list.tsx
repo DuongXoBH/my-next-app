@@ -4,7 +4,9 @@ import { useFetchProductsApi } from "@/api-hooks/product";
 import { Button, CardMedia, Paper, Tooltip } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
+// import DeleteIcon from "@mui/icons-material/Delete";
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import ListLoading from "@/components/common/list-loading";
 
 const columns: GridColDef[] = [
   {
@@ -58,7 +60,7 @@ const columns: GridColDef[] = [
   {
     field: "piece",
     headerName: "Piece",
-    flex: 0.1,
+    flex: 0.07,
     renderHeader: () => <p className="font-semibold">Piece</p>,
     renderCell: () => <p>{Math.floor(Math.random() * 200 + 1)}</p>,
   },
@@ -71,7 +73,7 @@ const columns: GridColDef[] = [
   {
     field: "action",
     headerName: "Action",
-    flex: 0.1,
+    flex: 0.13,
     renderHeader: () => (
       <p className="font-semibold w-[160px] text-center">Action</p>
     ),
@@ -79,12 +81,12 @@ const columns: GridColDef[] = [
       <div className="h-full w-[100px] flex">
         <Tooltip title="edit">
           <Button>
-            <EditIcon sx={{ color: "gray" }} />
+            <EditIcon sx={{ color: "gray",width:"48px",height:"32px" }} />
           </Button>
         </Tooltip>
         <Tooltip title="delete">
           <Button>
-            <DeleteIcon sx={{ color: "gray" }} />
+            <DeleteOutlineIcon sx={{ color: "red",width:"48px",height:"32px" }} />
           </Button>
         </Tooltip>
       </div>
@@ -95,7 +97,7 @@ const columns: GridColDef[] = [
 export default function StocksList() {
   const { data: products, isLoading } = useFetchProductsApi();
   if (isLoading) {
-    return <h1>Loading...</h1>;
+    return <ListLoading/>;
   }
   return (
     <Paper sx={{ width: "100%", overflow: "hidden", borderRadius: "20px" }}>

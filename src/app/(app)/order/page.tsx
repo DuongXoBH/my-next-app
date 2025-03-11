@@ -8,6 +8,7 @@ export default function Order() {
       <Typography
         sx={{
           mb: 1,
+          mt:"16px",
           fontSize: 32,
           lineHeight: "43.5px",
           textAlign: "start",

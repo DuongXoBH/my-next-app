@@ -24,7 +24,7 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import CardLoading from "@/components/common/loading";
+import CardLoading from "@/components/common/card-loading";
 import { CSSProperties } from "react";
 
 export default function ProductList() {
@@ -66,9 +66,6 @@ export default function ProductList() {
     <Box
       sx={{
         width: "100%",
-        maxWidth: "2000px",
-        minHeight: "500px",
-        maxHeight: "600px",
         marginTop: 2,
         borderRadius: 2,
         backgroundColor: "#F5F6FA",
@@ -81,10 +78,11 @@ export default function ProductList() {
       <Box
         sx={{
           width: "100%",
+          maxHeight: "500px",
           display: "flex",
           flexWrap: "wrap",
           justifyContent: "start",
-          gap: "8%",
+          gap: "2%",
         }}
       >
         {newProducts?.map(
@@ -103,7 +101,8 @@ export default function ProductList() {
               <Card
                 key={`product-${offset}-${index}`}
                 sx={{
-                  width: "28%",
+                  width: "32%",
+                  maxHeight: "500px",
                   display: "flex",
                   flexDirection: "column",
                   backgroundColor: "white",
@@ -152,8 +151,7 @@ export default function ProductList() {
                             sx={{
                               width: "100%",
                               height: "100%",
-                              // minHeight: "480px",
-                              maxHeight: "500px",
+                              maxHeight: "320px",
                             }}
                             onLoad={() => setIsLoaded(true)}
                           />
@@ -168,6 +166,7 @@ export default function ProductList() {
                     display: "flex",
                     justifyContent: "space-between",
                     height: "100%",
+                    minHeight:"180px",
                   }}
                 >
                   <CardContent
@@ -176,7 +175,6 @@ export default function ProductList() {
                       flexDirection: "column",
                       justifyContent: "space-between",
                       paddingX: 4,
-                      paddingY: 5,
                       maxWidth: "80%",
                     }}
                   >

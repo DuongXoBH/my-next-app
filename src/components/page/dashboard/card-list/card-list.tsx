@@ -86,6 +86,26 @@ export default function DashboardCardList() {
             option={customersOption}
             style={{ height: "165px", width: "165px" }}
           />
+          <div className="w-full flex flex-row justify-around">
+            <div className="flex flex-col items-center">
+              <p className="max-w-24 max-h-9 text-[28px] font-bold">
+                34,249
+              </p>
+              <div className="flex flex-row items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-[#4880FF]"></div>
+                <p className="text-base font-semibold">New Customers</p>
+              </div>
+            </div>
+            <div className="flex flex-col items-center">
+              <p className="max-w-24 max-h-9 text-[28px] font-bold">
+                1420
+              </p>
+              <div className="flex flex-row items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-[#C0D2F0]"></div>
+                <p className="text-base font-semibold">Repeated</p>
+              </div>
+            </div>
+          </div>
         </div>
       </DashboardCard>
 

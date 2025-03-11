@@ -1,21 +1,30 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+// import { Geist, Geist_Mono } from "next/font/google";
+import {  Nunito_Sans } from "next/font/google";
 import "./globals.css";
 import { Providers } from "../provider/jotai-providers";
 import { QueryClientProviders } from "../provider/query-providers";
 import { ToastContainer } from "react-toastify";
 import { CacheProviders } from "../provider/cache-providers";
 import { Suspense } from "react";
+import ThemeProviders from "@/provider/theme-provider";
 // import PageLoader from "./page-loader";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
+
+const nunitoSans = Nunito_Sans({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+  variable: "--font-nunito-sans",
 });
 
 export const metadata: Metadata = {
@@ -28,21 +37,18 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
     <html lang="en" data-toolpad-color-scheme="light">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${nunitoSans.variable} antialiased`}>
         <CacheProviders>
-          <Suspense fallback = {<div>Loading...</div>}>
-          <QueryClientProviders>
-            <Providers>
-              {/* <PageLoader/> */}
-              {children}
-              <ToastContainer />
-            </Providers>
-          </QueryClientProviders>
+          <Suspense fallback={<div>Loading...</div>}>
+            <QueryClientProviders>
+              <Providers>
+                {/* <PageLoader/> */}
+                <ThemeProviders>{children}</ThemeProviders>
+                <ToastContainer />
+              </Providers>
+            </QueryClientProviders>
           </Suspense>
         </CacheProviders>
       </body>

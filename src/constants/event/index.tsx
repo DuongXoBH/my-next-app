@@ -7,7 +7,7 @@ export interface IEventItem {
   }
 
 export const CALENDAREVENT = [
-  { id: "1", title: "Old Event", member: "20", start: "2025-03-10", end: "2025-03-12" },
+  { id: "1", title: "New Year Vacation", member: "20", start: "2025-03-10", end: "2025-03-12" },
   { id: "2", title: "Team Meeting", member: "5", start: "2025-03-15", end: "2025-03-15" },
   { id: "3", title: "Best Friend's Birthday", member: "10", start: "2025-03-20", end: "2025-03-20" },
   { id: "4", title: "Technology Conference", member: "50", start: "2025-04-05", end: "2025-04-06" },

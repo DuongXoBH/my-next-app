@@ -40,8 +40,8 @@ export const DASHBOARD = [
     icon: ChecklistIcon,
   },
   {
-    text: "Product Stocks",
-    href: "/stocks",
+    text: "Product Stock",
+    href: "/stock",
     icon: Inventory2Icon,
   },
 ];

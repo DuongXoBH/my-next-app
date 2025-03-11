@@ -24,6 +24,9 @@ export default {
           "1600px": "1600px"
         }
       },
+      fontFamily: {
+        sans: ["var(--font-nunito-sans)"], // Đặt làm font mặc định
+      },
       
     },
   },

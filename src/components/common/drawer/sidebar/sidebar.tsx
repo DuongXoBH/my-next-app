@@ -10,7 +10,6 @@ import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import { DASHBOARD, PAGE_DASHBOARD } from "@/constants/dashboard";
 import SettingsIcon from "@mui/icons-material/Settings";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
@@ -40,8 +39,11 @@ export default function Sidebar() {
       }}
       variant="permanent"
     >
-      <Toolbar sx={{ pl: 2, py: 1 }}>
-        <Link href="/" className="w-full h-full flex justify-center items-center">
+      <Toolbar sx={{ pl: 2, py: 1, height: "58px" }}>
+        <Link
+          href="/"
+          className="w-full h-full flex justify-center items-center"
+        >
           {open && (
             <Image
               src="/Logo.svg"
@@ -63,6 +65,7 @@ export default function Sidebar() {
               backgroundColor:
                 pathName === element.href ? "rgba(72, 128, 255, 1)" : "inherit",
               overflow: "hidden",
+              height: "50px",
             }}
             disablePadding
           >
@@ -74,11 +77,14 @@ export default function Sidebar() {
                   >
                     {React.createElement(element.icon, {
                       sx: {
-                        color: pathName === element.href.trim() ? "white" : "black",
+                        color:
+                          pathName === element.href.trim() ? "white" : "black",
                       },
                     })}
                   </ListItemIcon>
-                  {open && <ListItemText primary={element.text} />}
+                  {open && 
+                  <Typography sx={{ fontWeight: "600", fontSize: "14px" }}>{element.text}</Typography>
+                  }
                 </ListItemButton>
               </Link>
             </Tooltip>
@@ -87,7 +93,7 @@ export default function Sidebar() {
       </List>
       <Divider />
       <List>
-        <ListItem>
+        <ListItem sx={{ height:"34px", display:"flex", alignItems:"center" }}>
           {open && (
             <Typography
               sx={{ fontWeight: "600", fontSize: "0.75rem", color: "gray" }}
@@ -104,6 +110,7 @@ export default function Sidebar() {
               backgroundColor:
                 pathName === element.href ? "rgba(72, 128, 255, 1)" : "inherit",
               overflow: "hidden",
+              height:"50px",
             }}
             disablePadding
           >
@@ -119,7 +126,7 @@ export default function Sidebar() {
                       },
                     })}
                   </ListItemIcon>
-                  {open && <ListItemText primary={element.text} />}
+                  {open && <Typography sx={{ fontWeight: "600", fontSize: "14px" }}>{element.text}</Typography>}
                 </ListItemButton>
               </Link>
             </Tooltip>
@@ -128,17 +135,17 @@ export default function Sidebar() {
       </List>
       <Divider />
       <List>
-        <ListItem disablePadding>
+        <ListItem disablePadding sx={{ height:"50px" }}>
           <Tooltip title={open ? "" : "Settings"}>
             <ListItemButton>
               <ListItemIcon sx={{ display: "flex", justifyContent: "center" }}>
                 <SettingsIcon sx={{ color: "black" }} />
               </ListItemIcon>
-              {open && <ListItemText primary="Settings" />}
+              {open && <Typography sx={{ fontWeight: "600", fontSize: "14px" }}>Settings</Typography>}
             </ListItemButton>
           </Tooltip>
         </ListItem>
-        <ListItem disablePadding>
+        <ListItem disablePadding sx={{ height:"50px" }}>
           <Tooltip title={open ? "" : "Logout"}>
             <ListItemButton
               onClick={() => {
@@ -148,7 +155,7 @@ export default function Sidebar() {
               <ListItemIcon sx={{ display: "flex", justifyContent: "center" }}>
                 <PowerSettingsNewIcon sx={{ color: "black" }} />
               </ListItemIcon>
-              {open && <ListItemText primary="Logout" />}
+              {open && <Typography sx={{ fontWeight: "600", fontSize: "14px" }}>Logout</Typography>}
             </ListItemButton>
           </Tooltip>
         </ListItem>

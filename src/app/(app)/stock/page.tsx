@@ -1,7 +1,7 @@
 "use client";
 
-import StocksList from "@/components/page/stocks/stocks-list";
-import StocksHeader from "@/components/page/stocks/stocks-header";
+import StocksList from "@/components/page/stock/stocks-list";
+import StocksHeader from "@/components/page/stock/stocks-header";
 
 export default function ProductStocks() {
   return (

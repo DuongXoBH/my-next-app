@@ -1,7 +1,7 @@
 "use client";
 
 import { useFetchUserApi } from "@/api-hooks/user";
-import CardLoading from "@/components/common/loading";
+import CardLoading from "@/components/common/card-loading";
 import { CardMedia } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
@@ -15,7 +15,7 @@ export default function ContactList() {
   }
   return (
     <div className="w-full flex flex-col items-center">
-      <div className="w-full flex flex-wrap gap-[5%]">
+      <div className="w-full flex flex-wrap gap-[3.5%]">
         {users?.slice(0, visibleCount).map(
           (
             user: {
@@ -30,16 +30,16 @@ export default function ContactList() {
             return (
               <div
                 key={`user-${index}`}
-                className="w-[30%] h-[450px] rounded-[16px] border-[2px] border-gray-300 mb-[30px] overflow-hidden"
+                className="w-[31%]  max-h-[415px] rounded-[16px] border-[2px] border-gray-300 mb-[30px] overflow-hidden"
               >
-                <div className="w-full max-h-[300px] overflow-hidden">
+                <div className="w-full max-h-[276px] bg-gray-200 overflow-hidden">
                   <CardMedia
                     component="img"
                     image={user.avatar}
                     alt={user.name}
                     sx={{
                       maxWidth: "100%",
-                      maxHeight: "100%",
+                      maxHeight: "276px",
                       objectFit:"contain",
                     }}
                   />

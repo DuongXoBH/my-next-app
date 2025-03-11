@@ -12,7 +12,7 @@ import {
   ListItem,
   ListItemButton,
   ListItemIcon,
-  ListItemText,
+  // ListItemText,
   Toolbar,
   Typography,
 } from "@mui/material";
@@ -57,7 +57,8 @@ export default function EmailSidebar({
             sx={{
               width: "238px",
               height: "43px",
-              backgroundColor: "rgba(72, 128, 255, 1)",
+              mt: "24px",
+              bgcolor: "rgba(72, 128, 255, 1)",
               color: "white",
               borderRadius: "8px",
               textTransform: "none",
@@ -98,15 +99,18 @@ export default function EmailSidebar({
                       },
                     })}
                   </ListItemIcon>
-                  <ListItemText
-                    primary={element.text}
+                  <Typography
                     sx={{
+                      fontWeight: "600",
+                      fontSize: "14px",
                       color:
                         `${hash}` === element.href.trim()
                           ? "rgba(72, 128, 255, 1)"
                           : "black",
                     }}
-                  />
+                  >
+                    {element.text}
+                  </Typography>
                 </ListItemButton>
               </Button>
             </ListItem>
@@ -131,12 +135,20 @@ export default function EmailSidebar({
               }}
               disablePadding
             >
-              <Button className="w-full h-12 flex flex-row justify-start px-7" href="#">
+              <Button
+                className="w-full h-12 flex flex-row justify-start px-7"
+                href="#"
+              >
                 <div
                   className="w-6 h-6 rounded-md border-2 transition-all"
-                  style={{ backgroundColor: "white", borderColor: element.attr }}
+                  style={{
+                    backgroundColor: "white",
+                    borderColor: element.attr,
+                  }}
                 ></div>
-                <p className="normal-case text-black ml-8 text-base">{element.name }</p>
+                <p className="normal-case text-black ml-8 text-sm">
+                  {element.name}
+                </p>
               </Button>
             </ListItem>
           ))}

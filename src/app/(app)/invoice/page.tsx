@@ -8,6 +8,7 @@ export default function Invoice() {
     <div className="w-full pb-2">
       <Typography
         sx={{
+          mt: "16px",
           mb: "18px",
           fontSize: 32,
           lineHeight: "43.5px",

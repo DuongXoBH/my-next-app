@@ -62,7 +62,7 @@ export default function Header() {
       <Box
         sx={{
           width: "100%",
-          height: 64,
+          height: 70,
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
@@ -77,6 +77,7 @@ export default function Header() {
                 onClick={() => {
                   setDashboardOpen(!dashboardOpen);
                 }}
+                sx={{ paddingLeft: "0px" }}
               >
                 <MenuIcon sx={{ color: "black" }} />
               </Button>
@@ -97,6 +98,9 @@ export default function Header() {
                   </InputAdornment>
                 ),
                 sx: {
+                  fontSize: "14px",
+                  width:"35%",
+                  minWidth:"388px",
                   borderRadius: "50px",
                   backgroundColor: "white",
                 },
@@ -223,12 +227,9 @@ export default function Header() {
                 onClose={handleClose}
               >
                 {settings.map((setting: IHeadingMenu, index: number) => (
-                  <MenuItem
-                    key={`setting-${index}`}
-                    onClick={handleClickMenu2}
-                  >
+                  <MenuItem key={`setting-${index}`} onClick={handleClickMenu2}>
                     <Link
-                      href="#"
+                      href={setting.href}
                       className="flex flex-row gap-3 py-auto h-full items-center"
                     >
                       <div className="w-4 h-4">

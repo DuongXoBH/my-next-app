@@ -12,6 +12,7 @@ export default function Dashboard() {
     <div className="w-full pb-2 relative">
       <Typography
         sx={{
+          mt: "16px",
           mb: "18px",
           fontSize: 32,
           lineHeight: "43.5px",

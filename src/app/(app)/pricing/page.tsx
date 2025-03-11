@@ -7,6 +7,7 @@ export default function Pricing() {
       <Typography
         sx={{
           mb: "30px",
+          mt:"16px",
           fontSize: 32,
           lineHeight: "43.5px",
           textAlign: "start",

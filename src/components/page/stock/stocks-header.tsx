@@ -12,7 +12,7 @@ export default function StocksHeader() {
     };
     console.log("🚀 ~ ProductStocks ~ searchValue:", searchValue);
   return (
-    <div className="flex justify-between items-center mb-10">
+    <div className="flex justify-between items-center mt-4 mb-10">
       <Typography
         sx={{
           mb: 1,

@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import SalesChart from "../sales-detail/sales-chart";
+// import SalesChart from "../sales-detail/sales-chart";
 
 export default function DealsDetail() {
   return (
@@ -15,7 +15,9 @@ export default function DealsDetail() {
       >
         Deals Details
       </Typography>
-      <SalesChart />
+      <div className="flex justify-center items-center h-full">
+          <span className="text-gray-400">No data available</span>
+        </div>
     </div>
   );
 }

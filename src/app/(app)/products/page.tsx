@@ -6,7 +6,7 @@ export default function Product() {
   return (
     <div className="w-full pb-2 min-h-[1140px]">
       <Typography
-          sx={{ mb: 1, fontSize: 32, lineHeight: "43.5px", textAlign: "start", fontWeight: 600 }}
+          sx={{ mb: 1,mt: "16px", fontSize: 32, lineHeight: "43.5px", textAlign: "start", fontWeight: 600 }}
         >
           Products
         </Typography>
