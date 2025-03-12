@@ -1,4 +1,4 @@
-import FilterGroup from "@/components/page/order/filter-group";
+import FilterGroup from "@/components/page/order/filter-bar/filter-group";
 import OrderList from "@/components/page/order/order-list/order-list";
 import { Typography } from "@mui/material";
 

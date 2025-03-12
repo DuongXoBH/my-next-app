@@ -36,11 +36,11 @@ export default function MyCalendar() {
     start: string;
     end: string;
   } | null>(null);
-  const [newNote, setNewNote] = useState("");
+  const [newTitle, setNewTitle] = useState("");
   const [hoveredEvent, setHoveredEvent] = useState<EventClickArg | null>(
     null
   );
-  console.log("🚀 ~ MyCalendar ~ newNote:", newNote);
+  console.log("🚀 ~ MyCalendar ~ newTitle:", newTitle);
 
   const handleSelect = (info: DateSelectArg) => {
     setSelectedDate({ start: info.startStr, end: info.endStr });
@@ -48,12 +48,12 @@ export default function MyCalendar() {
   };
 
   const addEvent = () => {
-    if (newNote && selectedDate) {
+    if (newTitle && selectedDate) {
       setEvents((prevEvents) => [
         ...prevEvents,
         {
           id: Date.now().toString(),
-          title: newNote,
+          title: newTitle,
           member: Math.floor(Math.random() * 100).toString(),
           start: selectedDate.start,
           end: selectedDate.end,
@@ -61,7 +61,7 @@ export default function MyCalendar() {
       ]);
 
       setOpenAddModal(false);
-      setNewNote("");
+      setNewTitle("");
     }
   };
 
@@ -127,8 +127,8 @@ export default function MyCalendar() {
         <Box sx={{ p: 2 }}>
           <TextField
             fullWidth
-            value={newNote}
-            onChange={(e) => setNewNote(e.target.value)}
+            value={newTitle}
+            onChange={(e) => setNewTitle(e.target.value)}
           />
           <Button variant="contained" sx={{ mt: 2 }} onClick={addEvent}>
             Add event

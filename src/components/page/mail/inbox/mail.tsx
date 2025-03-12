@@ -5,12 +5,16 @@ import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import Paper from "@mui/material/Paper";
 import { Box, Typography } from "@mui/material";
 import { Label } from "./mail-label";
-import { INBOXLIST } from "@/constants/mail";
+import { IMail, INBOXLIST } from "@/constants/mail";
 
 export default function InboxList(props: { title: string }) {
-  const favoriteList = INBOXLIST.filter((element) => {
+  const favorites = INBOXLIST.filter((element: IMail) => {
     return element.starred;
   });
+  const favoriteList = favorites.map((element: IMail) => {
+    return { ...element, group: { label: "", title: element.group.title } };
+  });
+  console.log("🚀 ~ favoriteList ~ favoriteList:", favoriteList);
 
   const handleStarChange = (
     id: number,
@@ -80,37 +84,27 @@ export default function InboxList(props: { title: string }) {
       },
     },
     {
-      field: "label",
-      headerName: "",
-      flex: 0.1,
-      renderHeader: () => <p className="font-semibold w-full">LABEL</p>,
-      renderCell: (params) => {
-        return (
-          <div className="flex items-center h-full">
-            <Label title={params.value} />
-          </div>
-        );
-      },
-    },
-    {
-      field: "title",
+      field: "group",
       headerName: "",
       type: "string",
-      flex: 0.45,
+      flex: 0.55,
       renderHeader: () => <p className="font-semibold w-full">TITLE</p>,
       renderCell: (params) => {
         return (
-          <Typography
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              height: "100%",
-              fontWeight: "400",
-              fontSize: "14px",
-            }}
-          >
-            {params.value}
-          </Typography>
+          <div className="flex items-center h-full w-full gap-5">
+            {params.value.label && <Label title={params.value.label} />}
+            <Typography
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                height: "100%",
+                fontWeight: "400",
+                fontSize: "14px",
+              }}
+            >
+              {params.value.title}
+            </Typography>
+          </div>
         );
       },
     },
@@ -126,22 +120,25 @@ export default function InboxList(props: { title: string }) {
   const paginationModel = { page: 0, pageSize: 12 };
 
   // data = call API(title)
-  const rows = props.title === "starred" ? favoriteList : INBOXLIST;
+  const data = props.title === "starred" ? favoriteList : INBOXLIST;
 
   const [selectedRows, setSelectedRows] = React.useState<number[]>([]);
   // Filter selected data
-  const selectedData = rows.filter((row) => selectedRows.includes(row.id));
+  const selectedData = data.filter((row: IMail) =>
+    selectedRows.includes(row.id)
+  );
   console.log("🚀 ~ InboxList ~ selectedData:", selectedData);
   return (
     <Box>
       <Typography>{props.title}</Typography>
-      <Paper sx={{ width: "100%" }}>
+      <Paper sx={{ width: "100%", height: "735px" }}>
         <DataGrid
-          rows={rows}
+          rows={data}
           columns={columns}
           initialState={{ pagination: { paginationModel } }}
           pageSizeOptions={[12, 20]}
           checkboxSelection
+          //add selected id to selected array
           onRowSelectionModelChange={(ids) => {
             setSelectedRows(ids as number[]);
           }}
@@ -149,7 +146,7 @@ export default function InboxList(props: { title: string }) {
           disableRowSelectionOnClick
           sx={{
             border: 0,
-            // "& .MuiDataGrid-columnHeaders": { display: "none" },
+            "& .MuiDataGrid-columnHeaders": { display: "none" },
             "& .MuiDataGrid-cell:focus": {
               outline: "none",
             },
