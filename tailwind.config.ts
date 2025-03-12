@@ -16,6 +16,7 @@ export default {
       backgroundImage:{
         "pricing": "url('/pricing/background.png')",
         "banner-layer": "url('/layer.png')",
+        "member-card": "url('/member-card.png')",
       },
       container: {
         center: true,

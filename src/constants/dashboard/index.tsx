@@ -74,7 +74,7 @@ export const PAGE_DASHBOARD = [
   },
   {
     text: "UI Elements",
-    href: "/ui",
+    href: "/ui-elements",
     icon: BarChartIcon,
   },
   {
@@ -126,7 +126,7 @@ export const DASHBOARDMODAL = [
     value: "2040",
     img: "/dashboard/pending.svg",
     compare:"1.8% Up from yesterday",
-    upStatus: false,
+    upStatus: true,
 
 },
 ];

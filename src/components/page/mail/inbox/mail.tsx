@@ -12,7 +12,7 @@ export default function InboxList(props: { title: string }) {
     return element.starred;
   });
   const favoriteList = favorites.map((element: IMail) => {
-    return { ...element, group: { label: "", title: element.group.title } };
+    return { ...element, group: { label: "", title: element.group.title } };  
   });
   console.log("🚀 ~ favoriteList ~ favoriteList:", favoriteList);
 

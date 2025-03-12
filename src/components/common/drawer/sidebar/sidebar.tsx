@@ -39,10 +39,10 @@ export default function Sidebar() {
       }}
       variant="permanent"
     >
-      <Toolbar sx={{ pl: 2, py: 1, height: "58px" }}>
+      <Toolbar sx={{ pl: 2, py: 1, height: "74px" }}>
         <Link
           href="/"
-          className="w-full h-full flex justify-center items-center"
+          className="w-full h-full flex justify-center items-center pl-5"
         >
           {open && (
             <Image
@@ -56,7 +56,9 @@ export default function Sidebar() {
         </Link>
       </Toolbar>
       {/* <Divider /> */}
-      <List>
+      <List
+        sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+      >
         {DASHBOARD.map((element, index) => (
           <ListItem
             key={`dashboard-1-${index}`}
@@ -66,12 +68,20 @@ export default function Sidebar() {
                 pathName === element.href ? "rgba(72, 128, 255, 1)" : "inherit",
               overflow: "hidden",
               height: "50px",
+              width: open ? "180px" : "88px",
+              borderRadius: open ? "8px" : "0",
             }}
             disablePadding
           >
             <Tooltip title={open ? "" : `${element.text}`}>
               <Link className="w-[240px]" href={element.href}>
-                <ListItemButton sx={{ overflow: "hidden" }}>
+                <ListItemButton
+                  sx={{
+                    overflow: "hidden",
+                    padding: open ? "0" : "0 16px",
+                    height: "50px",
+                  }}
+                >
                   <ListItemIcon
                     sx={{ display: "flex", justifyContent: "center" }}
                   >
@@ -79,12 +89,15 @@ export default function Sidebar() {
                       sx: {
                         color:
                           pathName === element.href.trim() ? "white" : "black",
+                        width: "24px",
                       },
                     })}
                   </ListItemIcon>
-                  {open && 
-                  <Typography sx={{ fontWeight: "600", fontSize: "14px" }}>{element.text}</Typography>
-                  }
+                  {open && (
+                    <Typography sx={{ fontWeight: "600", fontSize: "14px" }}>
+                      {element.text}
+                    </Typography>
+                  )}
                 </ListItemButton>
               </Link>
             </Tooltip>
@@ -92,11 +105,18 @@ export default function Sidebar() {
         ))}
       </List>
       <Divider />
-      <List>
-        <ListItem sx={{ height:"34px", display:"flex", alignItems:"center" }}>
+      <List
+        sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+      >
+        <ListItem>
           {open && (
             <Typography
-              sx={{ fontWeight: "600", fontSize: "0.75rem", color: "gray" }}
+              sx={{
+                fontWeight: "600",
+                fontSize: "0.75rem",
+                color: "gray",
+                paddingLeft: "16px",
+              }}
             >
               PAGES
             </Typography>
@@ -110,23 +130,37 @@ export default function Sidebar() {
               backgroundColor:
                 pathName === element.href ? "rgba(72, 128, 255, 1)" : "inherit",
               overflow: "hidden",
-              height:"50px",
+              height: "50px",
+              width: open ? "180px" : "88px",
+              borderRadius: open ? "8px" : "0",
             }}
             disablePadding
           >
             <Tooltip title={open ? "" : `${element.text}`}>
               <Link className="w-[240px]" href={element.href}>
-                <ListItemButton>
+                <ListItemButton
+                  sx={{
+                    overflow: "hidden",
+                    padding: open ? "0" : "0 16px",
+                    height: "50px",
+                  }}
+                >
                   <ListItemIcon
                     sx={{ display: "flex", justifyContent: "center" }}
                   >
                     {React.createElement(element.icon, {
                       sx: {
-                        color: pathName === element.href ? "white" : "black",
+                        color:
+                          pathName === element.href.trim() ? "white" : "black",
+                        width: "24px",
                       },
                     })}
                   </ListItemIcon>
-                  {open && <Typography sx={{ fontWeight: "600", fontSize: "14px" }}>{element.text}</Typography>}
+                  {open && (
+                    <Typography sx={{ fontWeight: "600", fontSize: "14px" }}>
+                      {element.text}
+                    </Typography>
+                  )}
                 </ListItemButton>
               </Link>
             </Tooltip>
@@ -134,20 +168,43 @@ export default function Sidebar() {
         ))}
       </List>
       <Divider />
-      <List>
-        <ListItem disablePadding sx={{ height:"50px" }}>
+      <List
+        sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+      >
+        <ListItem
+          disablePadding
+          sx={{ height: "50px", width: open ? "180px" : "88px" }}
+        >
           <Tooltip title={open ? "" : "Settings"}>
-            <ListItemButton>
+            <ListItemButton
+              sx={{
+                overflow: "hidden",
+                padding: open ? "0" : "0 16px",
+                height: "50px",
+              }}
+            >
               <ListItemIcon sx={{ display: "flex", justifyContent: "center" }}>
                 <SettingsIcon sx={{ color: "black" }} />
               </ListItemIcon>
-              {open && <Typography sx={{ fontWeight: "600", fontSize: "14px" }}>Settings</Typography>}
+              {open && (
+                <Typography sx={{ fontWeight: "600", fontSize: "14px" }}>
+                  Settings
+                </Typography>
+              )}
             </ListItemButton>
           </Tooltip>
         </ListItem>
-        <ListItem disablePadding sx={{ height:"50px" }}>
+        <ListItem
+          disablePadding
+          sx={{ height: "50px", width: open ? "180px" : "88px" }}
+        >
           <Tooltip title={open ? "" : "Logout"}>
             <ListItemButton
+              sx={{
+                overflow: "hidden",
+                padding: open ? "0" : "0 16px",
+                height: "50px",
+              }}
               onClick={() => {
                 setUser("");
               }}
@@ -155,7 +212,11 @@ export default function Sidebar() {
               <ListItemIcon sx={{ display: "flex", justifyContent: "center" }}>
                 <PowerSettingsNewIcon sx={{ color: "black" }} />
               </ListItemIcon>
-              {open && <Typography sx={{ fontWeight: "600", fontSize: "14px" }}>Logout</Typography>}
+              {open && (
+                <Typography sx={{ fontWeight: "600", fontSize: "14px" }}>
+                  Logout
+                </Typography>
+              )}
             </ListItemButton>
           </Tooltip>
         </ListItem>

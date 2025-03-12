@@ -2,6 +2,7 @@
 
 import { IEventItem } from "@/constants/event";
 import { eventAtom } from "@/store/event";
+import { Divider } from "@mui/material";
 import { useAtom } from "jotai";
 import { useState } from "react";
 
@@ -27,7 +28,7 @@ export default function LeftSide() {
                 className="w-full flex flex-col pl-[10%] min-h-40 justify-around "
               >
                 {/* line */}
-                <div className="border-t border-[#9b9eaa] w-[70%] border-[2px]"></div>{" "}
+                <Divider/>
                 <p className="w-full text-sm font-semibold">{element.title}</p>
                 <p className="w-full text-xs text-[#5e5959]">
                   Member: {element.member}
@@ -43,12 +44,12 @@ export default function LeftSide() {
           })}
       </div>
       {visibleCount < events.length && (
-        <div className="w-full flex flex-col gap-4 justify-center">
+        <div className="w-full flex flex-col gap-4 justify-center items-center">
           {/* line */}
-          <div className="border-t border-[#9b9eaa] w-[70%] border-[2px] ml-[10%]"></div>{" "}
+          <Divider/>
           <button
             onClick={() => setVisibleCount((prev) => prev + 4)}
-            className="mt-4 px-4 py-2 bg-gray-200 font-semibold rounded-lg hover:bg-gray-200"
+            className="mt-4 px-4 py-2 w-32 bg-gray-200 font-semibold rounded-lg hover:bg-gray-400"
           >
             See More
           </button>

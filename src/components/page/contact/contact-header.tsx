@@ -9,7 +9,7 @@ export default function ContactHeader(){
                   fontSize: 32,
                   lineHeight: "43.5px",
                   textAlign: "start",
-                  fontWeight: 600,
+                  fontWeight: 700,
                 }}
               >
                 Contact

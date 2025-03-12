@@ -1,19 +1,20 @@
 import { Button, Typography } from "@mui/material";
+import React from "react";
 
-export default function TodoHeader() {
+const TeamHeader: React.FC = () => {
   return (
-    <div className="flex justify-between items-center mb-10">
+    <div className="flex flex-row justify-between items-center w-full">
       <Typography
         sx={{
           mb: 1,
-          mt: "16px",
           fontSize: 32,
+          mt: "16px",
           lineHeight: "43.5px",
           textAlign: "start",
           fontWeight: 700,
         }}
       >
-        To-Do List
+        Team
       </Typography>
       <Button
         sx={{
@@ -28,8 +29,10 @@ export default function TodoHeader() {
         }}
         href="#"
       >
-        Add New Task
-      </Button>
+        Add New Member
+      </Button>{" "}
     </div>
   );
-}
+};
+
+export default TeamHeader;

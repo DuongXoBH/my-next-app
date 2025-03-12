@@ -1,7 +1,8 @@
 "use client";
 
+import { ORDERLIST } from "@/constants/order";
 import { useOutsideClick } from "@/hooks/use-outside-click";
-import { typesSelectedAtom } from "@/store/order-filter";
+import {  orderListAtom, typesSelectedAtom } from "@/store/order-filter";
 import { Divider } from "@mui/material";
 import { useAtom } from "jotai";
 import Image from "next/image";
@@ -16,9 +17,13 @@ const orderTypes = [
     "Electronics",
     "Mobile & Phone",
     "Accessories",
+    "Book",
+    "Medicine",
   ];
 
 export default function TypesFilter() {
+
+  const [data,setData] = useAtom(orderListAtom);
   const [isTypesOpen, setIsTypesOpen] = useState(false);
   const [selectedTypes, setSelectedTypes] = useAtom(typesSelectedAtom);
   const handleTypeSelect = (type: string) => {
@@ -26,11 +31,24 @@ export default function TypesFilter() {
       prev.includes(type) ? prev.filter((t) => t !== type) : [...prev, type]
     );
   };
+  
   const handleClickOutSideTypes = useCallback(() => {
     if (isTypesOpen) {
       setIsTypesOpen(false);
     }
   }, [isTypesOpen]);
+
+  const filterByType = () => {
+    setIsTypesOpen(false);
+    const selectedTypesData = data.filter((order) =>
+      selectedTypes.includes(order.type)
+    );
+    if(selectedTypesData.length > 0){ 
+      setData(selectedTypesData);
+      return;
+    }
+    setData(ORDERLIST);
+  } 
   const typesRef = useOutsideClick(handleClickOutSideTypes);
   return (
     <div
@@ -70,7 +88,9 @@ export default function TypesFilter() {
 
         <div className="w-full flex justify-center mt-8">
           <button
-            onClick={() => setIsTypesOpen(false)}
+            onClick={() =>{filterByType();
+
+                        }}
             className="w-[25%] bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600"
           >
             Apply Now

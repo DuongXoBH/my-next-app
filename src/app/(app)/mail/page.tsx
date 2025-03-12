@@ -20,7 +20,7 @@ export default function MailPage() {
           mt:"16px",
           lineHeight: "43.5px",
           textAlign: "start",
-          fontWeight: 600,
+          fontWeight: 700,
         }}
       >
         Inbox

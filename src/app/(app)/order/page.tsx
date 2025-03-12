@@ -12,7 +12,7 @@ export default function Order() {
           fontSize: 32,
           lineHeight: "43.5px",
           textAlign: "start",
-          fontWeight: 600,
+          fontWeight: 700,
         }}
       >
         Order Lists

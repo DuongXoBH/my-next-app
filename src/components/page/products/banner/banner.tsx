@@ -11,13 +11,13 @@ export default function CustomComponent() {
   const swiperRef = useRef<SwiperType | null>(null);
 
   return (
-    <div className="container mt-[44px] px-5 flex justify-center items-center relative bg-banner-layer rounded-2xl">
+    <div className="container mt-5 max-h-[350px] px-5 flex justify-center items-center relative bg-banner-layer rounded-2xl">
       {/* Custom Previous Button */}
       <button
         onClick={() => swiperRef.current?.slidePrev()}
         className="custom-prev h-full py-auto"
       >
-        <Image src="/prev-1.svg" alt="" width={100} height={100}></Image>
+        <Image src="/prev-1.svg" alt="" width={50} height={50}></Image>
       </button>
 
       {/* Slices */}
@@ -30,7 +30,7 @@ export default function CustomComponent() {
           nextEl: ".custom-next",
           prevEl: ".custom-prev",
         }}
-        // style={{ width: "100%", maxWidth: "1200px" }}
+        className="w-full max-h-[350px] overflow-hidden"  
       >
         <SwiperSlide>
           <Box
@@ -38,12 +38,12 @@ export default function CustomComponent() {
               width: "100%",
               display: "flex",
               flexDirection: "column",
-              minHeight: "350px",
+              height: "100%",
               justifyContent: "space-between",
               alignItems: "flex-start",
               color: "white",
-              px: "130px",
-              py: "50px",
+              px: "60px",
+              pt: "50px",
             }}
           >
             <Typography variant="body1" sx={{ lineHeight: "1.75rem" }}>
@@ -53,10 +53,12 @@ export default function CustomComponent() {
             <Typography
               variant="h4"
               sx={{
-                fontWeight: "bold",
-                lineHeight: "3rem",
-                maxWidth: "413px",
+                fontWeight: "900",
+                fontSize: "37px",
+                lineHeight: "48px",
+                maxWidth: "420px",
                 width: "100%",
+                mt: "8px",
               }}
             >
               Enjoy free home delivery in this summer
@@ -65,9 +67,12 @@ export default function CustomComponent() {
             <Typography
               variant="body1"
               sx={{
-                lineHeight: "1.75rem",
+                lineHeight: "30px",
+                fontSize: "16px",
+                fontWeight: "600",
                 maxWidth: "420px",
                 width: "100%",
+                mt: "8px",
               }}
             >
               Designer Dresses - Pick from trendy Designer Dress.
@@ -77,11 +82,13 @@ export default function CustomComponent() {
               sx={{
                 width: "10rem",
                 height: "2.75rem",
+                mt: "38px",
                 backgroundColor: "orange",
                 borderRadius: "11px",
                 "&:hover": {
                   backgroundColor: "darkorange",
                 },
+                textTransform: "capitalize",
               }}
             >
               Get started
@@ -95,11 +102,11 @@ export default function CustomComponent() {
               width: "100%",
               display: "flex",
               flexDirection: "column",
-              minHeight: "350px",
+              height: "350px",
               justifyContent: "space-between",
               alignItems: "flex-start",
               color: "white",
-              px: "130px",
+              px: "60px",
               py: "50px",
             }}
           >
@@ -151,7 +158,7 @@ export default function CustomComponent() {
         onClick={() => swiperRef.current?.slideNext()}
         className="custom-next h-full py-auto"
       >
-        <Image src="/next-1.svg" alt="" width={100} height={100}></Image>
+        <Image src="/next-1.svg" alt="" width={50} height={50}></Image>
       </button>
     </div>
   );

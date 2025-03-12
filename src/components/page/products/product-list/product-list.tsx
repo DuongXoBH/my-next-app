@@ -66,7 +66,7 @@ export default function ProductList() {
     <Box
       sx={{
         width: "100%",
-        marginTop: 2,
+        marginTop: "24px",
         borderRadius: 2,
         backgroundColor: "#F5F6FA",
         display: "flex",

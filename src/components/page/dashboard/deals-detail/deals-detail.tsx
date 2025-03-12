@@ -7,10 +7,10 @@ export default function DealsDetail() {
       <Typography
         sx={{
           mb: 1,
-          fontSize: 32,
+          fontSize: 24,
           lineHeight: "43.5px",
           textAlign: "start",
-          fontWeight: 500,
+          fontWeight: 700,
         }}
       >
         Deals Details

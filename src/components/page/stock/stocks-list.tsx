@@ -1,12 +1,11 @@
 "use client";
 
 import { useFetchProductsApi } from "@/api-hooks/product";
-import { Button, CardMedia, Paper, Tooltip } from "@mui/material";
+import { CardMedia, Paper, Tooltip } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import EditIcon from "@mui/icons-material/Edit";
 // import DeleteIcon from "@mui/icons-material/Delete";
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import ListLoading from "@/components/common/list-loading";
+import Image from "next/image";
 
 const columns: GridColDef[] = [
   {
@@ -78,17 +77,29 @@ const columns: GridColDef[] = [
       <p className="font-semibold w-[160px] text-center">Action</p>
     ),
     renderCell: () => (
-      <div className="h-full w-[100px] flex">
+      <div className="w-full h-full flex justify-center items-center">
+        <div className="h-[32px] w-[96px] flex justify-between rounded-lg border-[#D5D5D5] border-[1px] bg-[#F5F6FA]">
         <Tooltip title="edit">
-          <Button>
-            <EditIcon sx={{ color: "gray",width:"48px",height:"32px" }} />
-          </Button>
+          <button className="w-[48px] h-[32px] flex items-center justify-center border-r-[#D5D5D5] border-r-[1px]"> 
+            <Image
+              alt=""
+              src="/stock/pencil-write.png"
+              width={16}
+              height={16}
+            ></Image>
+          </button >
         </Tooltip>
         <Tooltip title="delete">
-          <Button>
-            <DeleteOutlineIcon sx={{ color: "red",width:"48px",height:"32px" }} />
-          </Button>
+          <button className="w-[48px] h-[32px] flex items-center justify-center"> 
+            <Image
+              alt=""
+              src="/stock/bin.png"
+              width={16}
+              height={16}
+            ></Image>
+          </button >
         </Tooltip>
+      </div>
       </div>
     ),
   },
@@ -97,7 +108,7 @@ const columns: GridColDef[] = [
 export default function StocksList() {
   const { data: products, isLoading } = useFetchProductsApi();
   if (isLoading) {
-    return <ListLoading/>;
+    return <ListLoading />;
   }
   return (
     <Paper sx={{ width: "100%", overflow: "hidden", borderRadius: "20px" }}>

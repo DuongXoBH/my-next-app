@@ -3,7 +3,8 @@
 import { Paper } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { Status } from "./status";
-import { ORDERLIST } from "@/constants/order";
+import { useAtom } from "jotai";
+import { orderListAtom } from "@/store/order-filter";
 
 const columns: GridColDef[] = [
   {
@@ -54,9 +55,8 @@ const columns: GridColDef[] = [
   },
 ];
 
-const data = ORDERLIST;
-
 export default function OrderList() {
+  const [data, ] = useAtom(orderListAtom);
   return (
     <Paper sx={{ width: "100%", overflow: "hidden", borderRadius: "20px" }}>
       <DataGrid
@@ -65,6 +65,8 @@ export default function OrderList() {
         initialState={{ pagination: { paginationModel: { pageSize: 10 } } }}
         pageSizeOptions={[10, 20]}
         disableRowSelectionOnClick
+        disableColumnSorting
+        disableColumnFilter
         sx={{
           border: 0,
           "& .MuiDataGrid-cell": {
