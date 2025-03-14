@@ -58,7 +58,7 @@ export default function FilterGroup() {
       <div className="relative flex justify-center items-center">
         <button
           onClick={() => {
-            setOrderSearch({ date: null, type: [], status: [] }); 
+            setOrderSearch({ date: [], type: [], status: [] }); 
             setData(ORDERLIST);
           }}
           className="flex flex-row justify-between px-6 items-center gap-6 rounded-lg text-red-700 font-bold"

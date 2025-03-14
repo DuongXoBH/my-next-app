@@ -82,10 +82,14 @@ export default function EmailSidebar({
               key={`mail-1-${index}`}
               sx={{
                 overflow: "hidden",
+                ":active": { backgroundColor: "inherit" },
               }}
               disablePadding
             >
-              <Button className="w-[286px] bg-inherit " href={element.href} >
+              <Button
+                className="w-[286px] bg-inherit active:bg-none"
+                href={element.href}
+              >
                 <ListItemButton
                   sx={{
                     overflow: "hidden",
@@ -162,6 +166,7 @@ export default function EmailSidebar({
         </List>
         {/* <Divider /> */}
       </Drawer>
+      {/* Mail Main */}
       <Box
         sx={{
           width: "100%",

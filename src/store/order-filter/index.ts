@@ -1,5 +1,4 @@
 import { ORDERLIST } from "@/constants/order";
-import { Dayjs } from "dayjs";
 import { atom } from "jotai";
 
 export interface IOrder {
@@ -11,13 +10,13 @@ export interface IOrder {
   address: string;
 }
 export interface IOrderSearch{
-  date: Dayjs[] | null;
+  date: string[] ;
   type: string[];
   status: string[];
 }
 
 export const searchAtom = atom<IOrderSearch>({
-  date: null,
+  date: [],
   type: [],
   status: [],
 });

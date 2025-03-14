@@ -44,6 +44,10 @@ export default function TypesFilter() {
       dataVal=  dataVal.filter((order: IOrder) =>
         orderSearch.status.includes(order.status))
     }
+    if (orderSearch.date && orderSearch.date.length > 0) {
+      dataVal = dataVal.filter((order: IOrder) =>
+        orderSearch.date?.includes(order.date))
+    }
     setData(dataVal);
   } 
   const handleClickOutSideTypes = useCallback(() => {
