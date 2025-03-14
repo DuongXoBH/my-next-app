@@ -1,7 +1,8 @@
 "use client"
 
+// import { ORDERLIST } from "@/constants/order";
 import { useOutsideClick } from "@/hooks/use-outside-click";
-import {  dateSelectedAtom } from "@/store/order-filter";
+import {  orderListAtom, searchAtom } from "@/store/order-filter";
 import { Divider } from "@mui/material";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
@@ -9,14 +10,34 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { Dayjs } from "dayjs";
 import { useAtom } from "jotai";
 import Image from "next/image";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export default function DateFilter() {
+  const [data,] = useAtom(orderListAtom);
+  console.log("🚀 ~ DateFilter ~ data:", data)
   const [isDateOpen, setIsDateOpen] = useState(false);
-  const [selectedDate, setSelectedDate] = useAtom(dateSelectedAtom);
+   const [orderSearch, setOrderSearch] = useAtom(searchAtom);
+  const [selectedDate, setSelectedDate] = useState<Dayjs | null>(orderSearch.date ? orderSearch.date[0] : null);
   const handleDateChange = (newValue: Dayjs | null) => {
     setSelectedDate(newValue);
   };
+  useEffect(() =>{
+    setOrderSearch((prev) => ({ ...prev, date: selectedDate ? [selectedDate] : null }));
+  },[selectedDate, setOrderSearch])
+  //  const handleFilter = () => {
+  //     setIsDateOpen(false);
+  
+  //     let dataVal= ORDERLIST
+  //     if(orderSearch.type.length > 0){ 
+  //       dataVal=  dataVal.filter((order: IOrder) =>
+  //         orderSearch.type.includes(order.type))
+  //     }
+  //     if(orderSearch.status.length > 0){ 
+  //       dataVal=  dataVal.filter((order: IOrder) =>
+  //         orderSearch.status.includes(order.type))
+  //     }
+  //     setData(dataVal);
+  //   } 
   const handleClickOutSideDate = useCallback(() => {
     if (isDateOpen) {
       setIsDateOpen(false);

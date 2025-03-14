@@ -7,16 +7,12 @@ import DateFilter from "./date-filter";
 import TypesFilter from "./types-filter";
 import StatusFilter from "./status-filter";
 import { useAtom } from "jotai";
-import { dateSelectedAtom, statusSelectedAtom, typesSelectedAtom } from "@/store/order-filter";
+import { orderListAtom, searchAtom } from "@/store/order-filter";
+import { ORDERLIST } from "@/constants/order";
 
 export default function FilterGroup() {
-  const [selectedDate, setSelectedDate] = useAtom(dateSelectedAtom);
-  console.log("🚀 ~ FilterGroup ~ selectedDate:", selectedDate)
-  const [selectedTypes, setSelectedTypes] = useAtom(typesSelectedAtom);
-  console.log("🚀 ~ FilterGroup ~ selectedTypes:", selectedTypes)
-  const [selectedStatus, setSelectedStatus] = useAtom(statusSelectedAtom);
-  console.log("🚀 ~ FilterGroup ~ selectedStatus:", selectedStatus)
-
+  const [,setOrderSearch ] = useAtom(searchAtom);
+  const [, setData] = useAtom(orderListAtom);
   return (
     <Box
       sx={{
@@ -62,9 +58,8 @@ export default function FilterGroup() {
       <div className="relative flex justify-center items-center">
         <button
           onClick={() => {
-            setSelectedDate(null);
-            setSelectedStatus([]);
-            setSelectedTypes([]);
+            setOrderSearch({ date: null, type: [], status: [] }); 
+            setData(ORDERLIST);
           }}
           className="flex flex-row justify-between px-6 items-center gap-6 rounded-lg text-red-700 font-bold"
         >

@@ -85,9 +85,16 @@ export default function EmailSidebar({
               }}
               disablePadding
             >
-              <Button className="w-[286px] " href={element.href}>
+              <Button className="w-[286px] bg-inherit " href={element.href} >
                 <ListItemButton
-                  sx={{ overflow: "hidden", textTransform: "none" }}
+                  sx={{
+                    overflow: "hidden",
+                    textTransform: "none",
+                    backgroundColor:
+                      `${hash}` === element.href.trim()
+                        ? "rgba(72, 128, 255, 0.1)"
+                        : "inherit",
+                  }}
                 >
                   <ListItemIcon>
                     {React.createElement(element.icon, {

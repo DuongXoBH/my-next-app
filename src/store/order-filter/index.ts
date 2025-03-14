@@ -10,8 +10,15 @@ export interface IOrder {
   date: string;
   address: string;
 }
+export interface IOrderSearch{
+  date: Dayjs[] | null;
+  type: string[];
+  status: string[];
+}
 
-export const dateSelectedAtom = atom<Dayjs | null>(null);
-export const typesSelectedAtom = atom<string[]>([]);
-export const statusSelectedAtom = atom<string[]>([]);
+export const searchAtom = atom<IOrderSearch>({
+  date: null,
+  type: [],
+  status: [],
+});
 export const orderListAtom = atom<IOrder[]>(ORDERLIST);

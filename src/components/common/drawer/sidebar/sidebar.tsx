@@ -14,16 +14,15 @@ import { DASHBOARD, PAGE_DASHBOARD } from "@/constants/dashboard";
 import SettingsIcon from "@mui/icons-material/Settings";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import { useAtom } from "jotai";
-import { usePathname } from "next/navigation";
 import { userToken } from "@/store/user";
 import { sidebarAtom } from "@/store";
 import Link from "next/link";
 import { Tooltip } from "@mui/material";
+import ListNode from "./list";
 
 export default function Sidebar() {
   const [, setUser] = useAtom(userToken);
   const [open] = useAtom(sidebarAtom);
-  const pathName = usePathname();
 
   return (
     <Drawer
@@ -56,130 +55,52 @@ export default function Sidebar() {
         </Link>
       </Toolbar>
       {/* <Divider /> */}
-      <List
-        sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
-      >
-        {DASHBOARD.map((element, index) => (
-          <ListItem
-            key={`dashboard-1-${index}`}
-            sx={{
-              color: pathName === element.href ? "white" : "black",
-              backgroundColor:
-                pathName === element.href ? "rgba(72, 128, 255, 1)" : "inherit",
-              overflow: "hidden",
-              height: "50px",
-              width: open ? "180px" : "88px",
-              borderRadius: open ? "8px" : "0",
-            }}
-            disablePadding
-          >
-            <Tooltip title={open ? "" : `${element.text}`}>
-              <Link className="w-[240px]" href={element.href}>
-                <ListItemButton
-                  sx={{
-                    overflow: "hidden",
-                    padding: open ? "0" : "0 16px",
-                    height: "50px",
-                  }}
-                >
-                  <ListItemIcon
-                    sx={{ display: "flex", justifyContent: "center" }}
-                  >
-                    {React.createElement(element.icon, {
-                      sx: {
-                        color:
-                          pathName === element.href.trim() ? "white" : "black",
-                        width: "24px",
-                      },
-                    })}
-                  </ListItemIcon>
-                  {open && (
-                    <Typography sx={{ fontWeight: "600", fontSize: "14px" }}>
-                      {element.text}
-                    </Typography>
-                  )}
-                </ListItemButton>
-              </Link>
-            </Tooltip>
-          </ListItem>
-        ))}
-      </List>
+
+      <ListNode list={DASHBOARD} />
       <Divider />
-      <List
-        sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
-      >
-        <ListItem>
-          {open && (
-            <Typography
-              sx={{
-                fontWeight: "600",
-                fontSize: "0.75rem",
-                color: "gray",
-                paddingLeft: "16px",
-              }}
-            >
-              PAGES
-            </Typography>
-          )}
-        </ListItem>
-        {PAGE_DASHBOARD.map((element, index) => (
-          <ListItem
-            key={`dashboard-1-${index}`}
-            sx={{
-              color: pathName === element.href ? "white" : "black",
-              backgroundColor:
-                pathName === element.href ? "rgba(72, 128, 255, 1)" : "inherit",
-              overflow: "hidden",
-              height: "50px",
-              width: open ? "180px" : "88px",
-              borderRadius: open ? "8px" : "0",
-            }}
-            disablePadding
-          >
-            <Tooltip title={open ? "" : `${element.text}`}>
-              <Link className="w-[240px]" href={element.href}>
-                <ListItemButton
-                  sx={{
-                    overflow: "hidden",
-                    padding: open ? "0" : "0 16px",
-                    height: "50px",
-                  }}
-                >
-                  <ListItemIcon
-                    sx={{ display: "flex", justifyContent: "center" }}
-                  >
-                    {React.createElement(element.icon, {
-                      sx: {
-                        color:
-                          pathName === element.href.trim() ? "white" : "black",
-                        width: "24px",
-                      },
-                    })}
-                  </ListItemIcon>
-                  {open && (
-                    <Typography sx={{ fontWeight: "600", fontSize: "14px" }}>
-                      {element.text}
-                    </Typography>
-                  )}
-                </ListItemButton>
-              </Link>
-            </Tooltip>
-          </ListItem>
-        ))}
-      </List>
+
+      {open && (
+        <Typography
+          sx={{
+            fontWeight: "600",
+            fontSize: "0.75rem",
+            color: "gray",
+            paddingLeft: "16px",
+            mt: "16px",
+          }}
+        >
+          PAGES
+        </Typography>
+      )}
+
+      <ListNode list={PAGE_DASHBOARD} />
       <Divider />
+
       <List
         sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
       >
+        {/* Settings Items */}
         <ListItem
           disablePadding
-          sx={{ height: "50px", width: open ? "180px" : "88px" }}
+          sx={{
+            height: "50px",
+            width: open ? "240px" : "88px",
+            ":hover": {
+              width: open ? "238px" : "88px",
+              borderRadius: "8px",
+              backgroundColor: "rgba(72, 128, 255, 1)",
+              color: "white",
+              "& .MuiSvgIcon-root": {
+                color: "white",
+              },
+            },
+          }}
         >
           <Tooltip title={open ? "" : "Settings"}>
             <ListItemButton
               sx={{
                 overflow: "hidden",
-                padding: open ? "0" : "0 16px",
+                padding: open ? "30px" : "0 16px",
                 height: "50px",
               }}
             >
@@ -194,15 +115,29 @@ export default function Sidebar() {
             </ListItemButton>
           </Tooltip>
         </ListItem>
+
+        {/* Logout Items */}
         <ListItem
           disablePadding
-          sx={{ height: "50px", width: open ? "180px" : "88px" }}
+          sx={{
+            height: "50px",
+            width: open ? "240px" : "88px",
+            ":hover": {
+              width: open ? "238px" : "88px",
+              borderRadius: "8px",
+              backgroundColor: "rgba(72, 128, 255, 1)",
+              color: "white",
+              "& .MuiSvgIcon-root": {
+                color: "white",
+              },
+            },
+          }}
         >
           <Tooltip title={open ? "" : "Logout"}>
             <ListItemButton
               sx={{
                 overflow: "hidden",
-                padding: open ? "0" : "0 16px",
+                padding: open ? "30px" : "0 16px",
                 height: "50px",
               }}
               onClick={() => {
@@ -221,6 +156,8 @@ export default function Sidebar() {
           </Tooltip>
         </ListItem>
       </List>
+      <Divider />
+
     </Drawer>
   );
 }

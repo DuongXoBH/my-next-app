@@ -6,13 +6,14 @@ import Paper from "@mui/material/Paper";
 import { Box, Typography } from "@mui/material";
 import { Label } from "./mail-label";
 import { IMail, INBOXLIST } from "@/constants/mail";
+import { CustomTableFooter } from "@/components/common/table/table-footer";
 
 export default function InboxList(props: { title: string }) {
   const favorites = INBOXLIST.filter((element: IMail) => {
     return element.starred;
   });
   const favoriteList = favorites.map((element: IMail) => {
-    return { ...element, group: { label: "", title: element.group.title } };  
+    return { ...element, group: { label: "", title: element.group.title } };
   });
   console.log("🚀 ~ favoriteList ~ favoriteList:", favoriteList);
 
@@ -131,7 +132,7 @@ export default function InboxList(props: { title: string }) {
   return (
     <Box>
       <Typography>{props.title}</Typography>
-      <Paper sx={{ width: "100%", height: "735px" }}>
+      <Paper sx={{ width: "100%", height: "750px" }}>
         <DataGrid
           rows={data}
           columns={columns}
@@ -144,9 +145,16 @@ export default function InboxList(props: { title: string }) {
           }}
           disableColumnSorting
           disableRowSelectionOnClick
+          slots={{ footer: CustomTableFooter }}
           sx={{
             border: 0,
             "& .MuiDataGrid-columnHeaders": { display: "none" },
+            "& .MuiTablePagination-selectLabel ": {
+              display: "none",
+            },
+            "& .MuiDataGrid-cell": {
+              outline: "none",
+            },
             "& .MuiDataGrid-cell:focus": {
               outline: "none",
             },

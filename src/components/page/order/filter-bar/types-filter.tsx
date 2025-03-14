@@ -2,7 +2,7 @@
 
 import { ORDERLIST } from "@/constants/order";
 import { useOutsideClick } from "@/hooks/use-outside-click";
-import {  orderListAtom, typesSelectedAtom } from "@/store/order-filter";
+import {  IOrder, orderListAtom, searchAtom, } from "@/store/order-filter";
 import { Divider } from "@mui/material";
 import { useAtom } from "jotai";
 import Image from "next/image";
@@ -23,32 +23,34 @@ const orderTypes = [
 
 export default function TypesFilter() {
 
-  const [data,setData] = useAtom(orderListAtom);
+  const [,setData] = useAtom(orderListAtom);
   const [isTypesOpen, setIsTypesOpen] = useState(false);
-  const [selectedTypes, setSelectedTypes] = useAtom(typesSelectedAtom);
+  const [orderSearch, setOrderSearch] = useAtom(searchAtom);
+
+  //event handler for selecting type
   const handleTypeSelect = (type: string) => {
-    setSelectedTypes((prev) =>
-      prev.includes(type) ? prev.filter((t) => t !== type) : [...prev, type]
-    );
+    setOrderSearch((prev)=> prev.type.includes(type) ? {...prev,type: prev.type.filter((i)=> i!== type)} : {...prev, type: [...prev.type, type]});
   };
-  
+  //event handler for filtering
+  const handleFilter = () => {
+    setIsTypesOpen(false);
+    
+    let dataVal= ORDERLIST;
+    if(orderSearch.type.length > 0){ 
+      dataVal=  dataVal.filter((order: IOrder) =>
+        orderSearch.type.includes(order.type))
+    }
+    if(orderSearch.status.length > 0){ 
+      dataVal=  dataVal.filter((order: IOrder) =>
+        orderSearch.status.includes(order.status))
+    }
+    setData(dataVal);
+  } 
   const handleClickOutSideTypes = useCallback(() => {
     if (isTypesOpen) {
       setIsTypesOpen(false);
     }
   }, [isTypesOpen]);
-
-  const filterByType = () => {
-    setIsTypesOpen(false);
-    const selectedTypesData = data.filter((order) =>
-      selectedTypes.includes(order.type)
-    );
-    if(selectedTypesData.length > 0){ 
-      setData(selectedTypesData);
-      return;
-    }
-    setData(ORDERLIST);
-  } 
   const typesRef = useOutsideClick(handleClickOutSideTypes);
   return (
     <div
@@ -72,7 +74,7 @@ export default function TypesFilter() {
               key={type}
               onClick={() => handleTypeSelect(type)}
               className={`border rounded-[17px] px-3 py-2 text-sm font-medium ${
-                selectedTypes.includes(type)
+                orderSearch.type.includes(type)
                   ? "bg-blue-500 text-white"
                   : "bg-white text-gray-800"
               }`}
@@ -88,9 +90,7 @@ export default function TypesFilter() {
 
         <div className="w-full flex justify-center mt-8">
           <button
-            onClick={() =>{filterByType();
-
-                        }}
+            onClick={() =>{handleFilter()}}
             className="w-[25%] bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600"
           >
             Apply Now
