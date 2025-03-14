@@ -4,6 +4,7 @@ import {
   ListItem,
   ListItemButton,
   ListItemIcon,
+  SvgIconProps,
   Tooltip,
   Typography,
 } from "@mui/material";
@@ -17,7 +18,7 @@ export default function ListNode({
 }: {
   list: {
     text: string;
-    icon: any;
+    icon: React.FC<SvgIconProps>;
     href: string;
   }[];
 }) {
