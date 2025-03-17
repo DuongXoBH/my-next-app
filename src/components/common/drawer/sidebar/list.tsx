@@ -32,9 +32,9 @@ export default function ListNode({
           <ListItem
             key={`dashboard-1-${index}`}
             sx={{
-              color: pathName === element.href ? "white" : "black",
+              color: pathName.includes(element.href) ? "white" : "black",
               backgroundColor:
-                pathName === element.href ? "rgba(72, 128, 255, 1)" : "inherit",
+                pathName.includes(element.href) ? "rgba(72, 128, 255, 1)" : "inherit",
               overflow: "hidden",
               height: "50px",
               width: open ? "240px" : "88px",
@@ -68,7 +68,7 @@ export default function ListNode({
                     {React.createElement(element.icon, {
                       sx: {
                         color:
-                          pathName === element.href.trim() ? "white" : "black",
+                          pathName.includes(element.href.trim()) ? "white" : "black",
                         width: "24px",
                       },
                     })}

@@ -52,9 +52,10 @@ export default function Dashboard({ children }: { children: React.ReactNode }) {
       <Sidebar />
 
       {/* Main Content */}
-      <Box sx={{ flexGrow: 1, display: "flex", flexDirection: "column" }}>
+      <Box sx={{ flexGrow: 1, display: "flex", flexDirection: "column"}}>
         {/* Header */}
         <Header />
+
         {/* Main */}
         <div className="bg-[#F5F6FA] w-full">
           <div className="container">
