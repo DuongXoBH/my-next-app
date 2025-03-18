@@ -4,6 +4,7 @@ import { IEventItem } from "@/constants/event";
 import { eventAtom } from "@/store/event";
 import { Divider } from "@mui/material";
 import { useAtom } from "jotai";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function LeftSide() {
@@ -12,10 +13,10 @@ export default function LeftSide() {
   const [visibleCount, setVisibleCount] = useState<number>(4);
   return (
     <div className="w-full flex flex-col items-center py-6 gap-4 ">
-      <button className="w-[80%] rounded-[8px] h-10 flex justify-center items-center bg-[#5186FF] text-white">
+      <Link href="calender/add-event" className="w-[80%] rounded-[8px] h-10 flex justify-center items-center bg-[#5186FF] text-white">
         Add New Event
-      </button>
-      <p className="w-full pl-[10%] text-lg font-semibold leading-[24px]">
+      </Link>
+      <p className="w-full mt-4 pl-[10%] text-lg font-semibold leading-[24px]">
         You are going to
       </p>
       <div className="w-full flex flex-col gap-4">

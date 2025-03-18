@@ -1,4 +1,5 @@
-import { Button, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
+import Link from "next/link";
 import React from "react";
 
 const TeamHeader: React.FC = () => {
@@ -16,21 +17,11 @@ const TeamHeader: React.FC = () => {
       >
         Team
       </Typography>
-      <Button
-        sx={{
-          width: "147px",
-          height: "48px",
-          backgroundColor: "#4880FF",
-          color: "white",
-          borderRadius: "6px",
-          fontSize: "14px",
-          padding: "auto",
-          textTransform: "none",
-        }}
-        href="#"
+      <Link className="w-[147px] h-12 bg-[#4880FF] text-white rounded-md text-sm flex items-center justify-center transform-none"
+        href="/team/create-member"
       >
         Add New Member
-      </Button>{" "}
+      </Link>{" "}
     </div>
   );
 };

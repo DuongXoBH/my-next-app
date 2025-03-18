@@ -1,9 +1,7 @@
-"use client";
-
-import CreateContactForm from "@/components/page/contact/create-contact";
+import CreateEvent from "@/components/page/calender/create-event";
 import { Typography } from "@mui/material";
 
-export default function CreateContact() {
+export default function AddEvent() {
   return (
     <div className="w-full pb-2 flex flex-col gap-6">
       <Typography
@@ -16,9 +14,9 @@ export default function CreateContact() {
           fontWeight: 700,
         }}
       >
-        Add New Contact
+        Add New Event
       </Typography>
-      <CreateContactForm />
+      <CreateEvent />
     </div>
   );
 }

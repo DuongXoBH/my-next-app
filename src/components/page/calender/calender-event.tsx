@@ -8,11 +8,7 @@ import listPlugin from "@fullcalendar/list";
 import interactionPlugin, {
   EventResizeDoneArg,
 } from "@fullcalendar/interaction";
-import {
-  DateSelectArg,
-  EventClickArg,
-  EventDropArg,
-} from "@fullcalendar/core";
+import { DateSelectArg, EventClickArg, EventDropArg } from "@fullcalendar/core";
 import {
   Box,
   Button,
@@ -36,11 +32,11 @@ export default function MyCalendar() {
     start: string;
     end: string;
   } | null>(null);
-  const [newTitle, setNewTitle] = useState("");
-  const [hoveredEvent, setHoveredEvent] = useState<EventClickArg | null>(
-    null
-  );
-  console.log("🚀 ~ MyCalendar ~ newTitle:", newTitle);
+  const [newNote, setNewNote] = useState<{ title: string; member: string }>({
+    title: "",
+    member: "",
+  });
+  const [hoveredEvent, setHoveredEvent] = useState<EventClickArg | null>(null);
 
   const handleSelect = (info: DateSelectArg) => {
     setSelectedDate({ start: info.startStr, end: info.endStr });
@@ -48,20 +44,20 @@ export default function MyCalendar() {
   };
 
   const addEvent = () => {
-    if (newTitle && selectedDate) {
+    if (newNote && selectedDate) {
       setEvents((prevEvents) => [
         ...prevEvents,
         {
           id: Date.now().toString(),
-          title: newTitle,
-          member: Math.floor(Math.random() * 100).toString(),
+          title: newNote.title,
+          member: newNote.member,
           start: selectedDate.start,
           end: selectedDate.end,
         },
       ]);
 
       setOpenAddModal(false);
-      setNewTitle("");
+      setNewNote({ title: "", member: "" });
     }
   };
 
@@ -127,8 +123,16 @@ export default function MyCalendar() {
         <Box sx={{ p: 2 }}>
           <TextField
             fullWidth
-            value={newTitle}
-            onChange={(e) => setNewTitle(e.target.value)}
+            placeholder="Title"
+            value={newNote.title}
+            onChange={(e) => setNewNote({ ...newNote, title: e.target.value })}
+          />
+          <TextField
+            sx={{ marginTop: "20px" }}
+            fullWidth
+            placeholder="Member"
+            value={newNote.member}
+            onChange={(e) => setNewNote({ ...newNote, member: e.target.value })}
           />
           <Button variant="contained" sx={{ mt: 2 }} onClick={addEvent}>
             Add event

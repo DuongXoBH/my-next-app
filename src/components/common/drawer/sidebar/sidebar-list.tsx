@@ -37,10 +37,10 @@ export default function ListNode({
                 pathName.includes(element.href) ? "rgba(72, 128, 255, 1)" : "inherit",
               overflow: "hidden",
               height: "50px",
-              width: open ? "240px" : "88px",
+              width: open ? "236px" : "88px",
               borderRadius: open ? "8px" : "0",
               ":hover": {
-                width: open ? "240px" : "88px",
+                width: open ? "236px" : "88px",
                 backgroundColor: "rgba(72, 128, 255, 1)",
                 color: "white",
                 "& .MuiListItemButton-root": {
@@ -54,12 +54,13 @@ export default function ListNode({
             disablePadding
           >
             <Tooltip title={open ? "" : `${element.text}`}>
-              <Link className="w-[240px]" href={element.href}>
+              <Link className="w-[236px]" href={element.href}>
                 <ListItemButton
                   sx={{
                     overflow: "hidden",
                     padding: open ? "30px" : "0 16px",
                     height: "50px",
+                    width: open ? "230px" : "88px",
                   }}
                 >
                   <ListItemIcon

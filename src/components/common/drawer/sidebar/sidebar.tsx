@@ -18,7 +18,7 @@ import { userToken } from "@/store/user";
 import { sidebarAtom } from "@/store";
 import Link from "next/link";
 import { Tooltip } from "@mui/material";
-import ListNode from "./list";
+import ListNode from "./sidebar-list";
 
 export default function Sidebar() {
   const [, setUser] = useAtom(userToken);
@@ -54,7 +54,6 @@ export default function Sidebar() {
           )}
         </Link>
       </Toolbar>
-      {/* <Divider /> */}
 
       <ListNode list={DASHBOARD} />
       <Divider />

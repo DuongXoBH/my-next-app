@@ -24,6 +24,6 @@ export const HEADINGMENU = [
     {
         img:"/image-4.png",
         text:"Log out",
-        href:"#",
+        href:"/logout",
     },
 ]

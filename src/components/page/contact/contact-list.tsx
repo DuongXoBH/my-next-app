@@ -17,7 +17,6 @@ export default function ContactList() {
       setContactList(users);
     }
   }, [users, setContactList]);
-  console.log("🚀 ~ ContactList ~ contactList:", contactList);
   const [visibleCount, setVisibleCount] = useState<number>(6);
   if (isLoading) {
     return <CardLoading />;

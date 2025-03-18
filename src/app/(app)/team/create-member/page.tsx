@@ -1,6 +1,6 @@
 "use client";
 
-import CreateContactForm from "@/components/page/contact/create-contact";
+import CreateMemberForm from "@/components/page/team/create-member";
 import { Typography } from "@mui/material";
 
 export default function CreateContact() {
@@ -16,9 +16,9 @@ export default function CreateContact() {
           fontWeight: 700,
         }}
       >
-        Add New Contact
+        Add New Member
       </Typography>
-      <CreateContactForm />
+      <CreateMemberForm/>
     </div>
   );
 }
