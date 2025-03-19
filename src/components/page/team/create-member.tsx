@@ -5,6 +5,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { CardMedia } from "@mui/material";
 import { createNewMemberSchema } from "@/hook-form-schema/team";
+import { CldUploadWidget } from "next-cloudinary";
 
 export interface ICreatememberForm {
   image: FileList;
@@ -43,43 +44,52 @@ export default function CreateMemberForm() {
             {...register("image")}
             className="hidden"
             id="file-upload"
-            onChange={(e) => {
-              if (e.target.files && e.target.files[0]) {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                  setImageUrl(e.target?.result as string);
-                };
-                reader.readAsDataURL(e.target.files[0]);
-              }
-            }}
           />
-          <label
-            htmlFor="file-upload"
-            className="cursor-pointer flex flex-col items-center mb-4"
-          >
-            {imageUrl ? (
-              <CardMedia
-                component={"img"}
-                src={imageUrl}
-                sx={{
-                  width: "80px",
-                  height: "80px",
-                  borderRadius: "100%",
-                  mx: "auto ",
-                }}
-              />
-            ) : (
-              <div className="w-20 h-20 rounded-full bg-gray-200 flex items-center justify-center">
-                📷
-              </div>
-            )}
-            <p className="text-[#4379EE] text-sm font-semibold tracking-[0.54px] mt-4">
-              {imageUrl ? "Edit Photo" : "Upload Photo"}
-            </p>
+          <label htmlFor="file-upload">
+            <CldUploadWidget
+              uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}
+              onSuccess={(result) => {
+                if (result.event === "success") {
+                  setImageUrl(
+                    (result.info as { secure_url: string }).secure_url
+                  );
+                }
+              }}
+            >
+              {({ open }) => (
+                <button
+                  type="button"
+                  onClick={() => open()}
+                  className="flex flex-col items-center"
+                >
+                  {imageUrl ? (
+                    <CardMedia
+                      component={"img"}
+                      src={imageUrl}
+                      sx={{
+                        width: "80px",
+                        height: "80px",
+                        borderRadius: "100%",
+                        mx: "auto ",
+                      }}
+                    />
+                  ) : (
+                    <div className="w-20 h-20 rounded-full bg-gray-200 flex items-center justify-center">
+                      📷
+                    </div>
+                  )}
+
+                  <p className="text-[#4379EE] text-sm font-semibold tracking-[0.54px] mt-4">
+                    {imageUrl ? "Edit Photo" : "Upload Photo"}
+                  </p>
+                </button>
+              )}
+            </CldUploadWidget>
+
+            {errors.image && (
+              <p className="text-red-500">{errors.image.message}</p>
+            )} 
           </label>
-          {errors.image && (
-            <p className="text-red-500">{errors.image.message}</p>
-          )}
         </div>
         <div className="w-full min-h-[106px] grid grid-cols-2 gap-[60px]">
           <div className="w-[360px] h-full flex flex-col justify-between items-start">

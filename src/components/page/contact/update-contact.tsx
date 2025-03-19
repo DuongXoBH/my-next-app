@@ -1,42 +1,41 @@
 "use client";
 
+import { useFetchUserApiById } from "@/api-hooks/user";
 import { CreateContactForm } from "@/components/page/contact/create-contact";
 import { createNewContactSchema } from "@/hook-form-schema/contact";
-import { contactListAtom } from "@/store/contact";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { CardMedia } from "@mui/material";
-import { useAtom } from "jotai";
+import { CldUploadWidget } from "next-cloudinary";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
 const schema = createNewContactSchema;
 
-export default function UpdateContactComponent({userId}:{userId:string}) {
+export default function UpdateContactComponent({ userId }: { userId: string }) {
   const id = userId;
   const [isSummiting, setIsSubmitting] = useState(false);
-  const [users] = useAtom(contactListAtom);
   const [imageUrl, setImageUrl] = useState<string>("");
-  const user = users.filter((user) => {
-    return user.id == id;
-  });
-  useEffect(() => {
-    setImageUrl(user[0]?.avatar);
-  }, [user]);
+  const { data: user } = useFetchUserApiById(id);
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<CreateContactForm>({
     resolver: yupResolver(schema),
     defaultValues: {
-      firstName: user[0]?.name,
-      email: user[0]?.email,
-      birth: user[0]?.birth,
-      gender: user[0]?.gender,
-      phone: user[0]?.phone,
+      birth: "25/01/2000",
+      gender: "Male",
+      phone: "0358993337",
     },
   });
+  useEffect(() => {
+    setImageUrl(user?.avatar);
+    reset({ firstName: user?.name, email: user?.email });
+  }, [user, reset]);
+
   const onSubmit: SubmitHandler<CreateContactForm> = (data) => {
     if (isSummiting) return null;
     setIsSubmitting(true);
@@ -57,43 +56,52 @@ export default function UpdateContactComponent({userId}:{userId:string}) {
             {...register("image")}
             className="hidden"
             id="file-upload"
-            onChange={(e) => {
-              if (e.target.files && e.target.files[0]) {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                  setImageUrl(e.target?.result as string);
-                };
-                reader.readAsDataURL(e.target.files[0]);
-              }
-            }}
           />
-          <label
-            htmlFor="file-upload"
-            className="cursor-pointer w-20 h-20 mb-4"
-          >
-            {imageUrl ? (
-              <CardMedia
-                component={"img"}
-                src={imageUrl}
-                sx={{
-                  width: "80px",
-                  height: "80px",
-                  borderRadius: "100%",
-                  mx: "auto ",
-                }}
-              />
-            ) : (
-              <div className="w-20 h-20 rounded-full bg-gray-200 flex items-center justify-center">
-                📷
-              </div>
+          <label htmlFor="file-upload">
+            <CldUploadWidget
+              uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}
+              onSuccess={(result) => {
+                if (result.event === "success") {
+                  setImageUrl(
+                    (result.info as { secure_url: string }).secure_url
+                  );
+                }
+              }}
+            >
+              {({ open }) => (
+                <button
+                  type="button"
+                  onClick={() => open()}
+                  className="flex flex-col items-center"
+                >
+                  {imageUrl ? (
+                    <CardMedia
+                      component={"img"}
+                      src={imageUrl}
+                      sx={{
+                        width: "80px",
+                        height: "80px",
+                        borderRadius: "100%",
+                        mx: "auto ",
+                      }}
+                    />
+                  ) : (
+                    <div className="w-20 h-20 rounded-full bg-gray-200 flex items-center justify-center">
+                      📷
+                    </div>
+                  )}
+
+                  <p className="text-[#4379EE] text-sm font-semibold tracking-[0.54px] mt-4">
+                    {imageUrl ? "Edit Photo" : "Upload Photo"}
+                  </p>
+                </button>
+              )}
+            </CldUploadWidget>
+
+            {errors.image && (
+              <p className="text-red-500">{errors.image.message}</p>
             )}
           </label>
-          {errors.image && (
-            <p className="text-red-500">{errors.image.message}</p>
-          )}
-          <p className="text-[#4379EE] text-sm font-semibold tracking-[0.54px]">
-            {imageUrl ? "Edit Photo" : "Upload Photo"}
-          </p>
         </div>
         <div className="w-full min-h-[106px] grid grid-cols-2 gap-[60px]">
           <div className="w-[360px] h-full flex flex-col justify-between items-start">

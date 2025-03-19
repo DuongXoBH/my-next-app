@@ -121,16 +121,21 @@ export default function MyCalendar() {
       <Dialog open={openAddModal} onClose={() => setOpenAddModal(false)}>
         <DialogTitle>ADD NEW EVENT</DialogTitle>
         <Box sx={{ p: 2 }}>
+          <label htmlFor="event-title">Title</label>
           <TextField
+            id="event-title"
             fullWidth
-            placeholder="Title"
+            placeholder="Title of the event"
             value={newNote.title}
             onChange={(e) => setNewNote({ ...newNote, title: e.target.value })}
           />
+          <label htmlFor="event-member">Number of members</label>
+
           <TextField
+            id="event-member"
             sx={{ marginTop: "20px" }}
             fullWidth
-            placeholder="Member"
+            placeholder="Number of members who will participate in the event"
             value={newNote.member}
             onChange={(e) => setNewNote({ ...newNote, member: e.target.value })}
           />

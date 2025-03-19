@@ -2,21 +2,13 @@
 
 import { useFetchUserApi } from "@/api-hooks/user";
 import CardLoading from "@/components/common/card-loading";
-import { contactListAtom, IContact } from "@/store/contact";
 import { CardMedia } from "@mui/material";
-import { useAtom } from "jotai";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function ContactList() {
   const { data: users, isLoading } = useFetchUserApi();
-  const [contactList, setContactList] = useAtom<IContact[]>(contactListAtom);
-  useEffect(() => {
-    if (users) {
-      setContactList(users);
-    }
-  }, [users, setContactList]);
   const [visibleCount, setVisibleCount] = useState<number>(6);
   if (isLoading) {
     return <CardLoading />;
@@ -24,9 +16,14 @@ export default function ContactList() {
   return (
     <div className="w-full flex flex-col items-center">
       <div className="w-full flex flex-wrap gap-[3.5%]">
-        {contactList
+        {users
           ?.slice(0, visibleCount)
-          .map((user: IContact, index: number) => {
+          .map((user:{avatar:string;
+            name:string;
+            id:number;
+            email: string;
+            role: string;
+          }, index: number) => {
             return (
               <Link
                 key={`user-${index}`}
@@ -64,7 +61,7 @@ export default function ContactList() {
             );
           })}
       </div>
-      {visibleCount < contactList?.length && (
+      {visibleCount < users?.length && (
         <button
           className="w-[100px] h-[50px] border-[1px] border-gray-300 rounded-[8px] hover:bg-gray-300"
           onClick={() => setVisibleCount((count) => count + 3)}

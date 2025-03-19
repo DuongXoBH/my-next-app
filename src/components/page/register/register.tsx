@@ -20,6 +20,7 @@ import {
   InputAdornment,
   IconButton,
 } from "@mui/material";
+import { useRouter } from "next/navigation";
 
 const schema = registerSchema;
 
@@ -27,6 +28,7 @@ export interface RegisterForm {
   email: string;
   password: string;
   name: string;
+  avatar?: string;
 }
 
 export default function Register() {
@@ -35,6 +37,7 @@ export default function Register() {
   const [checked, setChecked] = useState(false);
   const registerMutation = useFetchRegister();
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1000);
@@ -59,8 +62,7 @@ export default function Register() {
       {
         onSuccess(data) {
           console.log(data);
-          // Bạn có thể điều hướng sau khi đăng nhập thành công
-          // router.push('/dashboard');
+          router.push('/login');
         },
       }
     );

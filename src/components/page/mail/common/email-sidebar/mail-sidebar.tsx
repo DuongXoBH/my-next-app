@@ -26,7 +26,6 @@ export default function EmailSidebar({
 }) {
   const hash = useHash();
   const [labels] = useAtom(labelColor);
-  console.log("🚀 ~ labels:", labels);
   return (
     <Box sx={{ display: "flex", flexDirection: "row" }}>
       <Drawer

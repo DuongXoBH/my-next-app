@@ -3,12 +3,11 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { createNewContactSchema } from "@/hook-form-schema/contact";
 import { useState } from "react";
-import { useAtom } from "jotai";
-import { contactListAtom } from "@/store/contact";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { CardMedia } from "@mui/material";
 import { CldUploadWidget } from "next-cloudinary";
+import { useFetchRegister } from "@/api-hooks/user";
 
 export interface CreateContactForm {
   image: FileList;
@@ -22,32 +21,32 @@ export interface CreateContactForm {
 const schema = createNewContactSchema;
 export default function CreateContactForm() {
   const [imageUrl, setImageUrl] = useState<string>("");
-  const [contactList, setContactList] = useAtom(contactListAtom);
-  const route = useRouter();
-  console.log("🚀 ~ CreateContactForm ~ contactList:", contactList);
+  const router = useRouter();
+  const registerMutation = useFetchRegister();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<CreateContactForm>({ resolver: yupResolver(schema) });
 
-  const onSubmit: SubmitHandler<CreateContactForm> = (data) => {
-    // const uploadData = { ...data, image: imageUrl };
-    setContactList([
-      ...contactList,
+  const onSubmit: SubmitHandler<CreateContactForm> = async (data) => {
+    const uploadData = {
+      name: `${data.firstName} ${data.lastName}`,
+      email: data.email,
+      avatar: imageUrl,
+      password: "password",
+    };
+    await registerMutation.mutate(
+      { data: uploadData },
       {
-        id: Math.ceil(Math.random() * 2000).toString(),
-        avatar: imageUrl,
-        email: data.email,
-        name: `${data.firstName} ${data.lastName}`,
-        birth: data.birth,
-        gender: data.gender,
-        phone: data.phone,
-        role: "Admin",
-      },
-    ]);
-    route.push("/contact");
-    toast.success("Add new contact");
+        onSuccess(data) {
+          console.log(data);
+          router.push("/contact");
+        },
+      }
+    );
+    console.log("🚀 ~ CreateContactForm ~ uploadData:", uploadData);
+    toast.success("Success");
   };
 
   return (
@@ -106,7 +105,7 @@ export default function CreateContactForm() {
 
             {errors.image && (
               <p className="text-red-500">{errors.image.message}</p>
-            )} 
+            )}
           </label>
         </div>
         <div className="w-full min-h-[106px] grid grid-cols-2 gap-[60px]">

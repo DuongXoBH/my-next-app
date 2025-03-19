@@ -61,7 +61,7 @@ export function useFetchUserApiBySession(token: string) {
 }
 
 export function useFetchUserApiById(id: string) {
-  const { data } = useQuery({
+  return useQuery({
     queryKey: ["user", id],
     queryFn: async () => {
       const response = await fetch(`${apiUrl}/users/${id}`);
@@ -69,7 +69,6 @@ export function useFetchUserApiById(id: string) {
       return result;
     },
   });
-  return { data };
 }
 
 async function fetchRegister(data: RegisterForm) {
@@ -77,7 +76,7 @@ async function fetchRegister(data: RegisterForm) {
     name: data.name,
     email: data.email,
     password: data.password,
-    avatar: "",
+    avatar: data.avatar ? data.avatar :"https://picsum.photos/800",
   };
   const response = await fetch(`${apiUrl}/users`, {
     method: "POST",
@@ -87,7 +86,6 @@ async function fetchRegister(data: RegisterForm) {
     body: JSON.stringify(registerData),
     
   });
-  console.log(registerData)
   const result = await response.json();
   if (!response.ok) {
     throw new Error(result);
@@ -100,7 +98,6 @@ export function useFetchRegister() {
   const mutation = useMutation({
     mutationFn: ({ data }: { data: RegisterForm }) => fetchRegister(data),
     onSuccess() {
-      toast.success("Success");
       queryClient.invalidateQueries({ queryKey: ["users"] });
     },
     onError() {
