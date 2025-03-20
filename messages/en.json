@@ -51,7 +51,8 @@
     "draft": "Draft",
     "spam": "Spam",
     "important": "Important",
-    "bin": "Bin"
+    "bin": "Bin",
+    "reset": "Reset"
   },
   "Order Lists": {
     "title": "Order Lists",

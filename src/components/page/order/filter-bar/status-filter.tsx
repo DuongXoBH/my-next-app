@@ -57,7 +57,7 @@ export default function StatusFilter() {
     >
       <button
         onClick={() => setIsStatusOpen(!isStatusOpen)}
-        className="flex flex-row justify-between px-6 items-center gap-6 rounded-lg text-black font-bold"
+        className="flex flex-row justify-between px-6 items-center gap-6 rounded-lg text-black font-bold capitalize"
       >
         {t("status")}
         <Image alt="" src="/path.png" width={12} height={8}></Image>

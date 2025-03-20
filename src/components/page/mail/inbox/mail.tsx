@@ -7,15 +7,13 @@ import { Box, Typography } from "@mui/material";
 import { Label } from "./mail-label";
 import { IMail, INBOXLIST } from "@/constants/mail";
 import { CustomTableFooter } from "@/components/common/table/table-footer";
+import { useAtom } from "jotai";
+import { labelAtom } from "@/store/mail";
 
 export default function InboxList(props: { title: string }) {
-  const favorites = INBOXLIST.filter((element: IMail) => {
-    return element.starred;
-  });
-  const favoriteList = favorites.map((element: IMail) => {
-    return { ...element, group: { label: "", title: element.group.title } };
-  });
-  console.log("🚀 ~ favoriteList ~ favoriteList:", favoriteList);
+  const [label,] = useAtom(labelAtom);
+  console.log("🚀 ~ InboxList ~ label:", label)
+  const [row,setRow] = React.useState<IMail[]>([]);
 
   const handleStarChange = (
     id: number,
@@ -121,11 +119,15 @@ export default function InboxList(props: { title: string }) {
   const paginationModel = { page: 0, pageSize: 12 };
 
   // data = call API(title)
-  const data = props.title === "starred" ? favoriteList : INBOXLIST;
+  
+  React.useEffect(()=>{
+    const newData = label ? INBOXLIST.filter((e : IMail)=>{return e.group.label === label}) : INBOXLIST;
+    setRow(newData);
+  },[label,setRow])
 
   const [selectedRows, setSelectedRows] = React.useState<number[]>([]);
   // Filter selected data
-  const selectedData = data.filter((row: IMail) =>
+  const selectedData = row?.filter((row: IMail) =>
     selectedRows.includes(row.id)
   );
   console.log("🚀 ~ InboxList ~ selectedData:", selectedData);
@@ -134,7 +136,7 @@ export default function InboxList(props: { title: string }) {
       <Typography>{props.title}</Typography>
       <Paper sx={{ width: "100%", height: "750px" }}>
         <DataGrid
-          rows={data}
+          rows={row}
           columns={columns}
           initialState={{ pagination: { paginationModel } }}
           pageSizeOptions={[12, 20]}

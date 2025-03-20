@@ -51,7 +51,8 @@
     "draft": "Thư nháp",
     "spam": "Quảng cáo",
     "important": "Quan trọng",
-    "bin": "Thư rác"
+    "bin": "Thư rác",
+    "reset": "Làm mới"
   },
   "Order Lists": {
     "title": "Đơn Hàng",
@@ -83,11 +84,11 @@
     "setup": "Thiết lập miễn phí",
     "brandwidth": "Giới hạn băng thông 10 GB",
     "user": "Kết nối 20 người dùng",
-    "analytics": "Báo cáo phân tích",
+    "analytics": "Phân tích báo cáo",
     "access": "Truy cập API công khai",
     "intregation": "Tích hợp Plugin",
-    "content": "Quản lý nội dung tùy chỉnh",
-    "note": "Bắt đầu dùng thử miễn phí 30 ngày"
+    "content": "Tùy chỉnh quản lý nội dung",
+    "note": "Bắt đầu dùng thử  30 ngày miễn phí"
   },
   "Calender": {
     "title": "Lịch"

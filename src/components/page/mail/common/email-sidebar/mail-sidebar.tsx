@@ -2,7 +2,7 @@
 
 import { EMAILPAGES } from "@/constants/mail";
 import useHash from "@/hooks/use-hash";
-import { labelColor } from "@/store/mail";
+import { labelAtom, labelColor } from "@/store/mail";
 import {
   Box,
   Button,
@@ -17,6 +17,7 @@ import {
 } from "@mui/material";
 import { useAtom } from "jotai";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import React from "react";
 
 export default function EmailSidebar({
@@ -24,8 +25,9 @@ export default function EmailSidebar({
 }: {
   children: React.ReactNode;
 }) {
+  const [, setLabel] = useAtom(labelAtom);
   const hash = useHash();
-  const t = useTranslations('Inbox');
+  const t = useTranslations("Inbox");
   const [labels] = useAtom(labelColor);
   return (
     <Box sx={{ display: "flex", flexDirection: "row" }}>
@@ -148,7 +150,9 @@ export default function EmailSidebar({
             >
               <Button
                 className="w-full h-12 flex flex-row justify-start px-7"
-                href="#"
+                onClick={() => {
+                  setLabel(element.name);
+                }}
               >
                 <div
                   className="w-6 h-6 rounded-md border-2 transition-all"
@@ -163,6 +167,29 @@ export default function EmailSidebar({
               </Button>
             </ListItem>
           ))}
+          <ListItem
+            sx={{
+              overflow: "hidden",
+            }}
+            disablePadding
+          >
+            <Button
+              className="w-full h-12 flex flex-row justify-start px-7"
+              onClick={() => {
+                setLabel(null);
+              }}
+            >
+              <Image
+                alt=""
+                src="/ic-replay-24px.png"
+                width={24}
+                height={24}
+              ></Image>
+              <p className="normal-case text-black ml-8 text-sm">
+                {t("reset")}
+              </p>
+            </Button>
+          </ListItem>
         </List>
         {/* <Divider /> */}
       </Drawer>

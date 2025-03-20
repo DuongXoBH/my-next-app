@@ -10,3 +10,4 @@ const colors : ILabelColor[] = [
   { name: "Friends", attr: "#d456fd" },
 ];
 export const labelColor = atom<ILabelColor[] | null>(colors);
+export const labelAtom = atom<string | null>(null)
