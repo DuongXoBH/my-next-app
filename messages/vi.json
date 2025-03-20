@@ -1,0 +1,128 @@
+{
+  "Login": {
+    "title": "Đăng nhập vào tài khoản",
+    "descreption": "Hãy nhập mail và mật khẩu của bạn để tiếp tục",
+    "email-address": "Email:",
+    "password": "Mật khẩu:",
+    "forget-password": "Quên mật khẩu?",
+    "remember-password": "Nhớ mật khẩu",
+    "button": "Đăng nhập",
+    "note": "Không có tài khoản?",
+    "redirect": "Tạo tài khoản"
+  },
+  "Register": {
+    "title": "Tạo tài khoản",
+    "descreption": "Tạo tài khoản để tiếp tục",
+    "email-address": "Email:",
+    "password": "Mật khẩu:",
+    "user-name": "Tên người dùng",
+    "forget-password": "Quên mật khẩu?",
+    "check-box": "Tôi đồng ý với mọi điều khoản",
+    "button": "Đăng ký",
+    "note": "Đã có tài khoản?",
+    "redirect": "Đăng nhập"
+  },
+  "Dashboard": {
+    "title": "Bảng Tin",
+    "sales-detail": "Chi tiết bán hàng",
+    "deals-detail": "Chi tiết sản phẩm",
+    "revenua": "Doanh số",
+    "customers": "Khách hàng",
+    "featured": "Sản phẩm nổi bật",
+    "sales-analytics": "Biểu đồ bán hàng",
+    "user": "Tổng số khách hàng",
+    "order": "Tổng số đơn hàng",
+    "sales": "Tổng doanh số",
+    "pending": "Số lượng đang chờ"
+  },
+  "Products": {
+    "title": "Sản Phẩm"
+  },
+  "Favorites": {
+    "title": "Yêu Thích",
+    "see-more": "Xem thêm"
+  },
+  "Inbox": {
+    "title": "Hòm Thư",
+    "my-email": "My Email",
+    "inbox": "Hòm thư đến",
+    "starred": "Có gắn dấu sao",
+    "sent": "Đã gửi",
+    "draft": "Thư nháp",
+    "spam": "Quảng cáo",
+    "important": "Quan trọng",
+    "bin": "Thư rác"
+  },
+  "Order Lists": {
+    "title": "Đơn Hàng",
+    "filter": "Lọc",
+    "name": "Tên",
+    "address": "Địa chỉ",
+    "date": "Ngày",
+    "type": "Kiểu",
+    "status": "Trạng thái",
+    "reset": "Làm Mới"
+  },
+  "Product Stock": {
+    "title": "Kho Hàng",
+    "search": "Tìm kiếm theo tên sản phẩm",
+    "image": "Hình ảnh",
+    "name": "Tên sản phẩm",
+    "category": "Thể loại",
+    "price": "Giá thành",
+    "piece": "Số lượng",
+    "color": "Màu sắc khả dụng",
+    "action": "Thao tác"
+  },
+  "Pricing": {
+    "title": "Thanh Toán",
+    "basic": "Cơ bản",
+    "standard": "Tiêu chuẩn",
+    "premium": "Cao cấp",
+    "price": "Phí hàng tháng",
+    "setup": "Thiết lập miễn phí",
+    "brandwidth": "Giới hạn băng thông 10 GB",
+    "user": "Kết nối 20 người dùng",
+    "analytics": "Báo cáo phân tích",
+    "access": "Truy cập API công khai",
+    "intregation": "Tích hợp Plugin",
+    "content": "Quản lý nội dung tùy chỉnh",
+    "note": "Bắt đầu dùng thử miễn phí 30 ngày"
+  },
+  "Calender": {
+    "title": "Lịch"
+  },
+  "To-do": {
+    "title": "Kế hoạch",
+    "button": "Tạo kế hoạch mới"
+  },
+  "Contact": {
+    "title": "Liên Hệ",
+    "button": "Tạo liên hệ mới"
+  },
+  "AddNewContact": {
+    "title": "Tạo Liên Hệ Mới"
+  },
+  "Invoice": {
+    "title": "Hóa đơn",
+    "from": "Hóa đơn từ",
+    "to": "Hóa đơn đến",
+    "date": "Ngày lập hóa đơn",
+    "due": "Hạn thanh toán",
+    "send": "gửi",
+    "total": "tổng"
+  },
+  "UI Elements": {
+    "title": "Biểu Đồ"
+  },
+  "Team": {
+    "title": "Nhóm"
+  },
+  "Table": {
+    "title": "Bảng Biểu"
+  },
+  "Global": {
+    "settings": "Cài đặt",
+    "logout": "Đăng xuất"
+  }
+}

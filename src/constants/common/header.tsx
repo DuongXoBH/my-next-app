@@ -27,3 +27,17 @@ export const HEADINGMENU = [
         href:"/logout",
     },
 ]
+
+export const LOCALE = [
+    {
+        img:"/locale-1.png",
+        text:"English",
+        href:"en"
+    },
+    {
+        img:"/locale-3.jpg",
+        text:"Việt Nam",
+        href:"vi"
+    },
+
+]

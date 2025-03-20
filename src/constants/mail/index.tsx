@@ -8,37 +8,37 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
 export const EMAILPAGES = [
   {
-    text: "Inbox",
+    text: "inbox",
     href: "#inbox",
     icon: MailIcon,
   },
   {
-    text: "Starred",
+    text: "starred",
     href: "#starred",
     icon: StarIcon,
   },
   {
-    text: "Sent",
+    text: "sent",
     href: "#sent",
     icon: SendIcon,
   },
   {
-    text: "Draft",
+    text: "draft",
     href: "#draft",
     icon: ModeIcon,
   },
   {
-    text: "Spam",
+    text: "spam",
     href: "#spam",
     icon: WarningAmberIcon,
   },
   {
-    text: "Important",
+    text: "important",
     href: "#important",
     icon: TryIcon,
   },
   {
-    text: "Bin",
+    text: "bin",
     href: "#bin",
     icon: DeleteForeverIcon,
   },

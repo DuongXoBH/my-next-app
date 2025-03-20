@@ -1,20 +1,12 @@
-import { Button, Typography } from "@mui/material";
+import PageHeader from "@/components/common/page-header";
+import { Button } from "@mui/material";
+import { useTranslations } from "next-intl";
 
 export default function TodoHeader() {
+  const t = useTranslations("To-do")
   return (
     <div className="flex justify-between items-center mb-10">
-      <Typography
-        sx={{
-          mb: 1,
-          mt: "16px",
-          fontSize: 32,
-          lineHeight: "43.5px",
-          textAlign: "start",
-          fontWeight: 700,
-        }}
-      >
-        To-Do List
-      </Typography>
+      <PageHeader page="To-do"/>
       <Button
         sx={{
           width: "147px",
@@ -28,7 +20,7 @@ export default function TodoHeader() {
         }}
         href="#"
       >
-        Add New Task
+        {t("button")}
       </Button>
     </div>
   );

@@ -1,7 +1,9 @@
 import { Typography } from "@mui/material";
 import RevenueChart from "./revenue-chart";
+import { useTranslations } from "next-intl";
 
 export default function Revenue(){
+  const t = useTranslations("Dashboard");
     return (
         <div className="w-full bg-white p-8 mt-8">
         <Typography
@@ -13,7 +15,7 @@ export default function Revenue(){
             fontWeight: 700,
           }}
         >
-          Revenue
+          {t("revenua")}
         </Typography>
         <RevenueChart />
       </div>

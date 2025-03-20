@@ -58,7 +58,7 @@ export const PAGE_DASHBOARD = [
     icon: CalendarMonthIcon,
   },
   {
-    text: "To-Do",
+    text: "To-do",
     href: "/todo",
     icon: BookIcon,
   },
@@ -99,14 +99,14 @@ export interface IDashboardModal {
 
 export const DASHBOARDMODAL = [
   {
-    title: "Total User",
+    title: "user",
     value: "40,689",
     img: "/dashboard/Icon.svg",
     compare: "8.5% Up from yesterday",
     upStatus: true,
   },
   {
-    title:"Total Order",
+    title:"order",
     value: "10293",
     img: "/dashboard/order.svg",
     compare:"1.3% Up from past week",
@@ -114,7 +114,7 @@ export const DASHBOARDMODAL = [
 
 },
 {
-    title:"Total Sales",
+    title:"sales",
     value: "$89,000",
     img: "/dashboard/sales.svg",
     compare:"4.3% Down from yesterday",
@@ -122,7 +122,7 @@ export const DASHBOARDMODAL = [
 
 },
 {
-    title:"Total Pending",
+    title:"pending",
     value: "2040",
     img: "/dashboard/pending.svg",
     compare:"1.8% Up from yesterday",

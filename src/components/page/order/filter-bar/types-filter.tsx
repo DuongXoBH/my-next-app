@@ -5,6 +5,7 @@ import { useOutsideClick } from "@/hooks/use-outside-click";
 import {  IOrder, orderListAtom, searchAtom, } from "@/store/order-filter";
 import { Divider } from "@mui/material";
 import { useAtom } from "jotai";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useCallback, useState } from "react";
 
@@ -26,7 +27,7 @@ export default function TypesFilter() {
   const [,setData] = useAtom(orderListAtom);
   const [isTypesOpen, setIsTypesOpen] = useState(false);
   const [orderSearch, setOrderSearch] = useAtom(searchAtom);
-
+  const t = useTranslations("Order Lists");
   //event handler for selecting type
   const handleTypeSelect = (type: string) => {
     setOrderSearch((prev)=> prev.type.includes(type) ? {...prev,type: prev.type.filter((i)=> i!== type)} : {...prev, type: [...prev.type, type]});
@@ -56,6 +57,7 @@ export default function TypesFilter() {
     }
   }, [isTypesOpen]);
   const typesRef = useOutsideClick(handleClickOutSideTypes);
+  
   return (
     <div
     ref={typesRef}
@@ -65,7 +67,7 @@ export default function TypesFilter() {
       onClick={() => setIsTypesOpen(!isTypesOpen)}
       className="flex flex-row justify-between px-6 items-center gap-6 rounded-lg text-black font-bold"
     >
-      Order Type
+      {t("type")}
       <Image alt="" src="/path.png" width={12} height={8}></Image>
     </button>
 

@@ -10,6 +10,7 @@ import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { Dayjs } from "dayjs";
 import { useAtom } from "jotai";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useCallback, useState } from "react";
 
@@ -18,6 +19,8 @@ export default function DateFilter() {
   const [isDateOpen, setIsDateOpen] = useState(false);
   const [orderSearch, setOrderSearch] = useAtom(searchAtom);
   const [selectedDate, setSelectedDate] = useState<string>("");
+  const t = useTranslations("Order Lists");
+
   const handleDateChange = (newDate: Dayjs) => {
     const newDateStr = newDate.format("DD MMM YYYY");
     setSelectedDate(newDateStr);
@@ -27,8 +30,6 @@ export default function DateFilter() {
         : { ...prev, date: [...prev.date, newDateStr] }
     );
   };
-  console.log(orderSearch.date);
-
   const handleFilter = () => {
     setIsDateOpen(false);
 
@@ -52,13 +53,13 @@ export default function DateFilter() {
   };
 
   // click outside hooks
-
   const handleClickOutSideDate = useCallback(() => {
     if (isDateOpen) {
       setIsDateOpen(false);
     }
   }, [isDateOpen]);
   const dateRef = useOutsideClick(handleClickOutSideDate);
+  
   return (
     <div
       ref={dateRef}
@@ -66,9 +67,9 @@ export default function DateFilter() {
     >
       <button
         onClick={() => setIsDateOpen(!isDateOpen)}
-        className="flex flex-row justify-between px-6 items-center gap-6 rounded-lg text-black font-bold"
+        className="flex flex-row justify-between px-6 items-center gap-6 rounded-lg text-black font-bold capitalize"
       >
-        {selectedDate ? selectedDate : "Date"}
+        {selectedDate ? selectedDate : t("date")}
         <Image alt="" src="/path.png" width={12} height={8}></Image>
       </button>
 

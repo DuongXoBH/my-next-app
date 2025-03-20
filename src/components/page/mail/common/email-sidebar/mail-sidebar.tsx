@@ -12,11 +12,11 @@ import {
   ListItem,
   ListItemButton,
   ListItemIcon,
-  // ListItemText,
   Toolbar,
   Typography,
 } from "@mui/material";
 import { useAtom } from "jotai";
+import { useTranslations } from "next-intl";
 import React from "react";
 
 export default function EmailSidebar({
@@ -25,6 +25,7 @@ export default function EmailSidebar({
   children: React.ReactNode;
 }) {
   const hash = useHash();
+  const t = useTranslations('Inbox');
   const [labels] = useAtom(labelColor);
   return (
     <Box sx={{ display: "flex", flexDirection: "row" }}>
@@ -73,7 +74,7 @@ export default function EmailSidebar({
             <Typography
               sx={{ fontWeight: "600", fontSize: "1rem", color: "black" }}
             >
-              My Email
+              {t("my-email")}
             </Typography>
           </ListItem>
           {EMAILPAGES.map((element, index) => (
@@ -119,7 +120,7 @@ export default function EmailSidebar({
                           : "black",
                     }}
                   >
-                    {element.text}
+                    {t(element.text)}
                   </Typography>
                 </ListItemButton>
               </Button>

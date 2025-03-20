@@ -1,7 +1,9 @@
 import { Typography } from "@mui/material";
 import StocksList from "../../stock/stocks-list";
+import { useTranslations } from "next-intl";
 
 export default function DealsDetail() {
+  const t = useTranslations("Dashboard");
   return (
     <div id="#deal-detail" className="w-full bg-white p-8 mt-8">
       <Typography
@@ -13,7 +15,7 @@ export default function DealsDetail() {
           fontWeight: 700,
         }}
       >
-        Deals Details
+        {t("deals-detail")}
       </Typography>
       <div className="flex justify-center items-center h-full">
           <StocksList size={5}/>

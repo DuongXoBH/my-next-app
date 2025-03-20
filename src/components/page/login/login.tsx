@@ -24,6 +24,7 @@ import {
   IconButton,
 } from "@mui/material";
 import { toast } from "react-toastify";
+import { useTranslations } from "next-intl";
 
 const schema = loginSchema;
 
@@ -33,6 +34,7 @@ export interface LoginForm {
 }
 
 export default function Login() {
+  const t = useTranslations("Login");
   const [loading, setLoading] = useState(true);
   const [token, setToken] = useAtom(userToken);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -103,8 +105,13 @@ export default function Login() {
     >
       <Card
         sx={{
+          display:"flex",
+          flexDirection:"column",
+          justifyContent:"center",
+          alignItems:"center",
           p: 4,
-          maxWidth: 400,
+          maxWidth: 600,
+          height:680,
           width: "100%",
           boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
           borderRadius: 2,
@@ -115,20 +122,20 @@ export default function Login() {
           component="h1"
           sx={{ mb: 1, textAlign: "center", fontWeight: 500 }}
         >
-          Login to Account
+          {t("title")}
         </Typography>
         <Typography
           variant="body1"
-          sx={{ mb: 3, textAlign: "center", color: "text.secondary" }}
+          sx={{width:"413px", mb: 3, textAlign: "center", color: "text.secondary" }}
         >
-          Please enter your email and password to continue
+          {t("descreption")}
         </Typography>
 
         {/* Form */}
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Box sx={{ mb: 3 }}>
-            <Typography variant="body2" sx={{ mb: 1, fontWeight: 600}}>
-              Email address:
+        <form onSubmit={handleSubmit(onSubmit)} className="w-full">
+          <Box sx={{ mb: 3,width:"100%" }}>
+            <Typography variant="body2" sx={{ mb: 1, fontWeight: 600,width:"100%" }}>
+              {t("email-address")}
             </Typography>
             <TextField
               fullWidth
@@ -139,7 +146,7 @@ export default function Login() {
               error={!!errors.email}
               helperText={errors.email?.message}
               sx={{
-                color:"rgba(166, 166, 166, 1)",
+                color: "rgba(166, 166, 166, 1)",
                 "& .MuiOutlinedInput-root": {
                   bgcolor: "#f8f9fa",
                 },
@@ -156,17 +163,20 @@ export default function Login() {
                 mb: 1,
               }}
             >
-              <Typography variant="body2" sx={{ fontWeight: 600 }}>Password</Typography>
+              <Typography variant="body2" sx={{ fontWeight: 600 }}>
+                {t("password")}
+              </Typography>
               <Link
                 href="#"
                 underline="hover"
                 sx={{ color: "primary.main", fontSize: "0.875rem" }}
               >
-                Forget Password?
+                {t("forget-password")}
               </Link>
             </Box>
             <TextField
               fullWidth
+              placeholder="123456"
               size="small"
               type={showPassword ? "text" : "password"}
               InputProps={{
@@ -196,7 +206,7 @@ export default function Login() {
 
           <FormControlLabel
             control={<Checkbox size="small" />}
-            label="Remember Password"
+            label={t("remember-password")}
             sx={{ mb: 3 }}
           />
 
@@ -213,19 +223,19 @@ export default function Login() {
               },
             }}
           >
-            Sign In
+            {t("button")}
           </Button>
 
           <Box sx={{ textAlign: "center" }}>
             <Typography variant="body2" component="span">
-              Don&apos;t have an account?{" "}
+              {t("note")}
             </Typography>
             <Link
               href="/register"
               underline="hover"
               sx={{ color: "primary.main", fontSize: "0.875rem" }}
             >
-              Create Account
+              {t("redirect")}
             </Link>
           </Box>
         </form>

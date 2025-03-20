@@ -9,8 +9,10 @@ import StatusFilter from "./status-filter";
 import { useAtom } from "jotai";
 import { orderListAtom, searchAtom } from "@/store/order-filter";
 import { ORDERLIST } from "@/constants/order";
+import { useTranslations } from "next-intl";
 
 export default function FilterGroup() {
+  const t = useTranslations("Order Lists");
   const [,setOrderSearch ] = useAtom(searchAtom);
   const [, setData] = useAtom(orderListAtom);
   return (
@@ -46,8 +48,7 @@ export default function FilterGroup() {
           <Typography
             sx={{ color: "black", marginLeft: "10px", fontWeight: "600" }}
           >
-            {" "}
-            Filter By
+            {t("filter")}
           </Typography>
         </Box>
       </Tooltip>
@@ -69,7 +70,7 @@ export default function FilterGroup() {
             width={18}
             height={18}
           ></Image>
-          Reset Filter
+          {t("reset")}
         </button>
       </div>
     </Box>

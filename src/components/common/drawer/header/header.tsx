@@ -21,6 +21,7 @@ import { sidebarAtom } from "@/store";
 import { useFetchUserApiBySession } from "@/api-hooks/user";
 import Image from "next/image";
 import { HEADINGMENU, IHeadingMenu } from "@/constants/common/header";
+import LanguageSwitcher from "./locale-button";
 
 export default function Header() {
   const [token] = useAtom(userToken);
@@ -36,16 +37,10 @@ export default function Header() {
 
   const settings = HEADINGMENU;
 
-  // const [anchorEl1, setAnchorEl1] = React.useState<null | HTMLElement>(null);
   const [anchorEl2, setAnchorEl2] = React.useState<null | HTMLElement>(null);
 
-  // const open1 = Boolean(anchorEl1);
   const open2 = Boolean(anchorEl2);
 
-  // Open menu 1
-  // const handleClickMenu1 = (event: React.MouseEvent<HTMLElement>) => {
-  //   setAnchorEl1(event.currentTarget);
-  // };
 
   // Open menu 2
   const handleClickMenu2 = (event: React.MouseEvent<HTMLElement>) => {
@@ -54,7 +49,6 @@ export default function Header() {
 
   // Đóng menu
   const handleClose = () => {
-    // setAnchorEl1(null);
     setAnchorEl2(null);
   };
   return (
@@ -119,70 +113,7 @@ export default function Header() {
         )}
         <div className="flex gap-7">
           {/* Language */}
-          {/* <Box
-            sx={{
-              flexGrow: 0,
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <Tooltip title="Open Language Settings">
-              <IconButton
-                onClick={handleClickMenu1}
-                sx={{ p: 0, gap: "15px" }}
-              >
-                <Avatar alt="Remy Sharp" src={user?.avatar} />
-                <Box sx={{ marginRight: "5px" }}>
-                  <Typography sx={{ color: "gray", fontWeight: "600" }}>
-                    {user?.role}
-                  </Typography>
-                </Box>
-                <Image alt="" src="/More.svg" width={25} height={25}></Image>
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px", borderRadius: "14px", overflow: "hidden" }}
-              id="menu-appbar"
-              anchorEl={anchorEl1}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={open1}
-              onClose={handleClose}
-            >
-              <p>Select Language</p>
-              <Divider></Divider>
-              {settings.map((setting: IHeadingMenu, index: number) => (
-                <MenuItem
-                  key={`setting-${index}`}
-                  onClick={handleClose}
-                >
-                  <Link
-                    href="#"
-                    className="flex flex-row gap-3 py-auto h-full items-center"
-                  >
-                    <div className="w-4 h-4">
-                      <Image
-                        alt=""
-                        src={setting.img}
-                        width={16}
-                        height={16}
-                      ></Image>
-                    </div>
-                    <Typography sx={{ textAlign: "center" }}>
-                      {setting.text}
-                    </Typography>
-                  </Link>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box> */}
+          <LanguageSwitcher/>
 
           {/* Setting button */}
           {user && (
@@ -196,7 +127,7 @@ export default function Header() {
               <Tooltip title="Open settings">
                 <IconButton
                   onClick={handleClickMenu2}
-                  sx={{ p: 0, gap: "15px" }}
+                  sx={{ p: 0, gap: "5px" }}
                 >
                   <Avatar alt="Remy Sharp" src={user?.avatar} />
                   <Box sx={{ marginRight: "10px" }}>

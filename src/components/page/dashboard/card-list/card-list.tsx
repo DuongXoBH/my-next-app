@@ -80,7 +80,7 @@ export default function DashboardCardList() {
 
   return (
     <div className="w-full flex flex-row justify-between mt-20 overflow-hidden">
-      <DashboardCard title="Customers">
+      <DashboardCard title="customers">
         <div className="mt-12 flex flex-col items-center">
           <ReactECharts
             option={customersOption}
@@ -109,13 +109,13 @@ export default function DashboardCardList() {
         </div>
       </DashboardCard>
 
-      <DashboardCard title="Featured Product">
+      <DashboardCard title="featured">
         <div className="flex justify-center items-center h-full">
           <span className="text-gray-400">No data available</span>
         </div>
       </DashboardCard>
 
-      <DashboardCard title="Sales Analytics">
+      <DashboardCard title="sales-analytics">
         <ReactECharts
           option={salesOption}
           style={{ width: "100%", height: "350px" }}

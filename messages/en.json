@@ -1,0 +1,128 @@
+{
+  "Login": {
+    "title": "Login to Account",
+    "descreption": "Please enter your email and password to continue",
+    "email-address": "Email address:",
+    "password": "Password:",
+    "forget-password": "Forget Password?",
+    "remember-password": "Remember Password",
+    "button": "Sign In",
+    "note": "Don’t have an account?",
+    "redirect": "Create Account"
+  },
+  "Register": {
+    "title": "Create an Account",
+    "descreption": "Create a account to continue",
+    "email-address": "Email address:",
+    "password": "Password:",
+    "user-name": "Username",
+    "forget-password": "Forget Password?",
+    "check-box": "I accept terms and conditions",
+    "button": "Sign Up",
+    "note": "Already have an account?",
+    "redirect": "Login"
+  },
+  "Dashboard": {
+    "title": "Dashboard",
+    "sales-detail": "Sales Details",
+    "deals-detail": "Deals Details",
+    "revenua": "Revenua",
+    "customers": "Customers",
+    "featured": "Featured Products",
+    "sales-analytics": "Sales Analytics",
+    "user": "Total User",
+    "order": "Total Order",
+    "sales": "Total Sales",
+    "pending": "Total Pending"
+  },
+  "Products": {
+    "title": "Products"
+  },
+  "Favorites": {
+    "title": "Favorites",
+    "see-more": "See More"
+  },
+  "Inbox": {
+    "title": "Inbox",
+    "my-email": "My Email",
+    "inbox": "Inbox",
+    "starred": "Starred",
+    "sent": "Sent",
+    "draft": "Draft",
+    "spam": "Spam",
+    "important": "Important",
+    "bin": "Bin"
+  },
+  "Order Lists": {
+    "title": "Order Lists",
+    "filter": "Filter By",
+    "name": "name",
+    "address": "address",
+    "date": "date",
+    "type": "type",
+    "status": "status",
+    "reset": "Reset Filter"
+  },
+  "Product Stock": {
+    "title": "Product Stock",
+    "search": "Search product name",
+    "image": "Image",
+    "name": "Product Name",
+    "category": "Category",
+    "price": "Price",
+    "piece": "Piece",
+    "color": "Available Color",
+    "action": "Action"
+  },
+  "Pricing": {
+    "title": "Pricing",
+    "basic": "basic",
+    "standard": "standard",
+    "premium": "premium",
+    "price": "montly charge",
+    "setup": "free setup",
+    "brandwidth": "Bandwidth Limit 10 GB",
+    "user": "20 User Connection",
+    "analytics": "Analytics Report",
+    "access": "Public API Access",
+    "intregation": "Plugins Intregation",
+    "content": "Custom Content Management",
+    "note": "Start Your 30 Day Free Trial"
+  },
+  "Calender": {
+    "title": "Calender"
+  },
+  "To-do": {
+    "title": "To-do",
+    "button": "Add New Task"
+  },
+  "Contact": {
+    "title": "Contact",
+    "button": "Add New Contact"
+  },
+  "AddNewContact": {
+    "title": "Add New Contact"
+  },
+  "Invoice": {
+    "title": "Invoice",
+    "from": "invoice from",
+    "to": "invoice to",
+    "date": "invoice date",
+    "due": "due date",
+    "send": "send",
+    "total": "total"
+  },
+  "UI Elements": {
+    "title": "UI Elements"
+  },
+  "Team": {
+    "title": "Team"
+  },
+  "Table": {
+    "title": "Table"
+  },
+  "Global": {
+    "settings": "Settings",
+    "logout": "Logout"
+  }
+}

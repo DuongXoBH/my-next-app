@@ -21,6 +21,7 @@ import {
   IconButton,
 } from "@mui/material";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 const schema = registerSchema;
 
@@ -32,6 +33,7 @@ export interface RegisterForm {
 }
 
 export default function Register() {
+  const t = useTranslations("Register");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [checked, setChecked] = useState(false);
@@ -44,9 +46,9 @@ export default function Register() {
     return () => clearTimeout(timer);
   }, []);
 
-  const handleClickShowPassword = ()=>{
+  const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
-  }
+  };
 
   const {
     register,
@@ -62,7 +64,7 @@ export default function Register() {
       {
         onSuccess(data) {
           console.log(data);
-          router.push('/login');
+          router.push("/login");
         },
       }
     );
@@ -110,20 +112,20 @@ export default function Register() {
           component="h1"
           sx={{ mb: 1, textAlign: "center", fontWeight: 500 }}
         >
-          Create an Account
+          {t("title")}
         </Typography>
         <Typography
           variant="body1"
           sx={{ mb: 3, textAlign: "center", color: "text.secondary" }}
         >
-          Create a account to continue
+          {t("descreption")}
         </Typography>
 
         {/* Form */}
         <form onSubmit={handleSubmit(onSubmit)}>
           <Box sx={{ mb: 3 }}>
             <Typography variant="body2" sx={{ mb: 1, fontWeight: 600 }}>
-              Email address:
+              {t("email-address")}
             </Typography>
             <TextField
               fullWidth
@@ -143,13 +145,13 @@ export default function Register() {
 
           <Box sx={{ mb: 3 }}>
             <Typography variant="body2" sx={{ mb: 1, fontWeight: 600 }}>
-              User name:
+              {t("user-name")}
             </Typography>
             <TextField
               fullWidth
               size="small"
               type="text"
-              placeholder="User name"
+              placeholder="Kevin Klein"
               {...register("name")}
               error={!!errors.email}
               helperText={errors.email?.message}
@@ -171,13 +173,14 @@ export default function Register() {
               }}
             >
               <Typography variant="body2" sx={{ fontWeight: 600 }}>
-                Password
+                {t("password")}
               </Typography>
             </Box>
             <TextField
               fullWidth
               size="small"
-              type= {showPassword ? "text" : "password"}
+              type={showPassword ? "text" : "password"}
+              placeholder="123456"
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
@@ -211,7 +214,7 @@ export default function Register() {
                 size="small"
               />
             }
-            label="I accept terms and conditions"
+            label={t("check-box")}
             sx={{ mb: 3 }}
           />
 
@@ -229,19 +232,19 @@ export default function Register() {
               },
             }}
           >
-            Sign Up
+            {t("button")}
           </Button>
 
           <Box sx={{ textAlign: "center" }}>
             <Typography variant="body2" component="span">
-              Already have an account?
+              {t("note")}
             </Typography>
             <Link
               href="/login"
               underline="hover"
               sx={{ color: "primary.main", fontSize: "0.875rem", ml: 1 }}
             >
-              Login
+              {t("redirect")}
             </Link>
           </Box>
         </form>

@@ -19,6 +19,7 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import CardLoading from "@/components/common/card-loading";
 import { CSSProperties, useState } from "react";
+import { useTranslations } from "next-intl";
 
 interface IProduct {
   id: number;
@@ -29,8 +30,9 @@ interface IProduct {
   favorites: boolean;
 }
 export default function FavoritesList() {
+  const t = useTranslations("Favorites");
   const { data: products, isLoading } = useFetchProductsApi();
-  const [count, setCount] = useState(3);
+  const [count, setCount] = useState(6);
   const newProducts = products?.map(
     (product: {
       id: number;
@@ -203,7 +205,7 @@ export default function FavoritesList() {
           className="w-[25%] h-[50px] border-[1px] border-gray-300 rounded-[8px] hover:bg-gray-300"
           onClick={() => setCount((count) => count + 3)}
         >
-          See More
+          {t("see-more")}
         </button>
       )}
     </div>

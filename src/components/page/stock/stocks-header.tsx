@@ -1,31 +1,24 @@
 "use client";
 
-import { InputAdornment, TextField, Typography } from "@mui/material";
+import { InputAdornment, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { ChangeEvent, useState } from "react";
+import PageHeader from "@/components/common/page-header";
+import { useTranslations } from "next-intl";
 
 
 export default function StocksHeader() {
     const [searchValue, setSearchValue] = useState("");
+    const t = useTranslations("Product Stock"); 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
       setSearchValue(e.target.value);
     };
     console.log("🚀 ~ ProductStocks ~ searchValue:", searchValue);
   return (
     <div className="flex justify-between items-center mt-4 mb-10">
-      <Typography
-        sx={{
-          mb: 1,
-          fontSize: 32,
-          lineHeight: "43.5px",
-          textAlign: "start",
-          fontWeight: 700,
-        }}
-      >
-        Product Stocks
-      </Typography>
+      <PageHeader page="Product Stock"/>
       <TextField
-        placeholder="Search product name"
+        placeholder={t("search")}
         variant="outlined"
         size="small"
         onChange={handleChange}
@@ -36,6 +29,7 @@ export default function StocksHeader() {
             </InputAdornment>
           ),
           sx: {
+            width: "300px",
             borderRadius: "50px",
             backgroundColor: "white",
             "& .MuiOutlinedInput-notchedOutline": {

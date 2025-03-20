@@ -19,8 +19,10 @@ import { sidebarAtom } from "@/store";
 import Link from "next/link";
 import { Tooltip } from "@mui/material";
 import ListNode from "./sidebar-list";
+import { useTranslations } from "next-intl";
 
 export default function Sidebar() {
+  const t = useTranslations("Global");
   const [, setUser] = useAtom(userToken);
   const [open] = useAtom(sidebarAtom);
 
@@ -108,7 +110,7 @@ export default function Sidebar() {
               </ListItemIcon>
               {open && (
                 <Typography sx={{ fontWeight: "600", fontSize: "14px" }}>
-                  Settings
+                  {t("settings")}
                 </Typography>
               )}
             </ListItemButton>
@@ -148,7 +150,7 @@ export default function Sidebar() {
               </ListItemIcon>
               {open && (
                 <Typography sx={{ fontWeight: "600", fontSize: "14px" }}>
-                  Logout
+                  {t("logout")}
                 </Typography>
               )}
             </ListItemButton>

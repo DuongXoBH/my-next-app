@@ -1,13 +1,15 @@
 import { IDashboardModal } from "@/constants/dashboard";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 export default function DashboardModal(props: { modal: IDashboardModal }) {
+  const t = useTranslations("Dashboard");
   return (
     <button className="w-[23%] min-h-[162px] p-4 flex flex-col justify-between rounded-2xl bg-white">
       <div className="w-full flex flex-row justify-between">
         <div className="flex flex-col gap-4">
           <p className="text-gray-700 text-base leading-[21.82px]">
-            {props.modal.title}
+            {t(props.modal.title)}
           </p>
           <p className="font-bold text-3xl leading-[38.19px]">
             {props.modal.value}

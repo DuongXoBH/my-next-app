@@ -7,101 +7,103 @@ import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import ListLoading from "@/components/common/list-loading";
 import Image from "next/image";
 import { CustomTableFooter } from "@/components/common/table/table-footer";
+import { useTranslations } from "next-intl";
 
-const columns: GridColDef[] = [
-  {
-    field: "id",
-    headerName: "ID",
-    flex: 0.05,
-    renderHeader: () => <p className="font-bold">ID</p>,
-  },
-  {
-    field: "images",
-    headerName: "Image",
-    flex: 0.1,
-    renderCell: (params) => (
-      <div className="flex h-full items-center justify-start">
-        <CardMedia
-          component="img"
-          image={params.value[0]}
-          sx={{ width: "60px", height: "60px", borderRadius: "8px" }}
-        />
-      </div>
-    ),
-    renderHeader: () => <p className="font-bold">Image</p>,
-  },
-  {
-    field: "title",
-    headerName: "Product Name",
-    flex: 0.2,
-    renderCell: (params) => (
-      <Tooltip title={params.value}>
-        <div className="max-w-[200px] h-full text-left overflow-hidden">
-          {params.value}
-        </div>
-      </Tooltip>
-    ),
-    renderHeader: () => <p className="font-bold">Product Name</p>,
-  },
-  {
-    field: "category",
-    headerName: "Category",
-    flex: 0.2,
-    renderCell: (params) => <div>{params.value["name"]}</div>,
-    renderHeader: () => <p className="font-bold">Category</p>,
-  },
-  {
-    field: "price",
-    headerName: "Price",
-    flex: 0.1,
-    renderCell: (params) => <p>{`$${params.value}`}</p>,
-    renderHeader: () => <p className="font-bold">Price</p>,
-  },
-  {
-    field: "piece",
-    headerName: "Piece",
-    flex: 0.07,
-    renderHeader: () => <p className="font-bold">Piece</p>,
-    renderCell: () => <p>{Math.floor(Math.random() * 200 + 1)}</p>,
-  },
-  {
-    field: "color",
-    headerName: "Available Color",
-    flex: 0.15,
-    renderHeader: () => <p className="font-bold">Available Color</p>,
-  },
-  {
-    field: "action",
-    headerName: "Action",
-    flex: 0.13,
-    renderHeader: () => (
-      <p className="font-bold w-[160px] text-center">Action</p>
-    ),
-    renderCell: () => (
-      <div className="w-full h-full flex justify-center items-center">
-        <div className="h-[32px] w-[96px] flex justify-between rounded-lg border-[#D5D5D5] border-[1px] bg-[#F5F6FA]">
-          <Tooltip title="edit">
-            <button className="w-[48px] h-[32px] flex items-center justify-center border-r-[#D5D5D5] border-r-[1px]">
-              <Image
-                alt=""
-                src="/stock/pencil-write.png"
-                width={16}
-                height={16}
-              ></Image>
-            </button>
-          </Tooltip>
-          <Tooltip title="delete">
-            <button className="w-[48px] h-[32px] flex items-center justify-center">
-              <Image alt="" src="/stock/bin.png" width={16} height={16}></Image>
-            </button>
-          </Tooltip>
-        </div>
-      </div>
-    ),
-  },
-];
 
 export default function StocksList({ size }: { size?: number }) {
+  const t = useTranslations("Product Stock");
+  const columns: GridColDef[] = [
+    {
+      field: "id",
+      headerName: "ID",
+      flex: 0.05,
+      renderHeader: () => <p className="font-bold">ID</p>,
+    },
+    {
+      field: "images",
+      headerName: "Image",
+      flex: 0.1,
+      renderCell: (params) => (
+        <div className="flex h-full items-center justify-start">
+          <CardMedia
+            component="img"
+            image={params.value[0]}
+            sx={{ width: "60px", height: "60px", borderRadius: "8px" }}
+          />
+        </div>
+      ),
+      renderHeader: () => <p className="font-bold">{t("image")}</p>,
+    },
+    {
+      field: "title",
+      headerName: "Product Name",
+      flex: 0.2,
+      renderCell: (params) => (
+        <Tooltip title={params.value}>
+          <div className="max-w-[200px] h-full text-left overflow-hidden">
+            {params.value}
+          </div>
+        </Tooltip>
+      ),
+      renderHeader: () => <p className="font-bold">{t("name")}</p>,
+    },
+    {
+      field: "category",
+      headerName: "Category",
+      flex: 0.2,
+      renderCell: (params) => <div>{params.value["name"]}</div>,
+      renderHeader: () => <p className="font-bold">{t("category")}</p>,
+    },
+    {
+      field: "price",
+      headerName: "Price",
+      flex: 0.1,
+      renderCell: (params) => <p>{`$${params.value}`}</p>,
+      renderHeader: () => <p className="font-bold">{t("price")}</p>,
+    },
+    {
+      field: "piece",
+      headerName: "Piece",
+      flex: 0.07,
+      renderHeader: () => <p className="font-bold">{t("piece")}</p>,
+      renderCell: () => <p>{Math.floor(Math.random() * 200 + 1)}</p>,
+    },
+    {
+      field: "color",
+      headerName: "Available Color",
+      flex: 0.15,
+      renderHeader: () => <p className="font-bold">{t("color")}</p>,
+    },
+    {
+      field: "action",
+      headerName: "Action",
+      flex: 0.13,
+      renderHeader: () => (
+        <p className="font-bold w-[160px] text-center">{t("action")}</p>
+      ),
+      renderCell: () => (
+        <div className="w-full h-full flex justify-center items-center">
+          <div className="h-[32px] w-[96px] flex justify-between rounded-lg border-[#D5D5D5] border-[1px] bg-[#F5F6FA]">
+            <Tooltip title="edit">
+              <button className="w-[48px] h-[32px] flex items-center justify-center border-r-[#D5D5D5] border-r-[1px]">
+                <Image
+                  alt=""
+                  src="/stock/pencil-write.png"
+                  width={16}
+                  height={16}
+                ></Image>
+              </button>
+            </Tooltip>
+            <Tooltip title="delete">
+              <button className="w-[48px] h-[32px] flex items-center justify-center">
+                <Image alt="" src="/stock/bin.png" width={16} height={16}></Image>
+              </button>
+            </Tooltip>
+          </div>
+        </div>
+      ),
+    },
+  ];
   const { data: products, isLoading } = useFetchProductsApi();
   const dataVal = size ? products?.slice(0, size) : products;
   if (isLoading) {

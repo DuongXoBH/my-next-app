@@ -11,6 +11,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Image from "next/image";
 import { Tooltip } from "@mui/material";
+import { useTranslations } from "next-intl";
 
 const StyledTableCell = styled(TableCell)(({}) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -40,21 +41,23 @@ function createData(
   return { id, description, quantity, cost, total };
 }
 
-const rows = [
-  createData("1", "Children Toy", 2, 20, 80),
-  createData("2", "Makeup", 2, 50, 100),
-  createData("3", "Asus Laptop", 5, 100, 500),
-  createData("4", "Iphone X", 4, 1000, 4000),
-];
-let total = 0;
-rows.forEach((row) => (total += row.total));
 export default function InvoiceComponent() {
+  const t = useTranslations("Invoice");
+  const rows = [
+    createData("1", "Children Toy", 2, 20, 80),
+    createData("2", "Makeup", 2, 50, 100),
+    createData("3", "Asus Laptop", 5, 100, 500),
+    createData("4", "Iphone X", 4, 1000, 4000),
+  ];
+  let total = 0;
+  rows.forEach((row) => (total += row.total));
+  
   return (
-    <div className="w-full min-h-[870px] bg-white rounded-[14px] overflow-hidden">
+    <div className="w-full min-h-[870px] bg-white rounded-[14px] overflow-hidden capitalize">
       <div className="w-[75%] mx-[auto] mt-10 mb-14 flex flex-row justify-between items-center">
         <div className="flex flex-col ">
           <p className="text-base font-semibold text-[#404040] mb-3">
-            Invoice From :
+            {t("from")}
           </p>
           <p className="text-base font-bold text-black mb-2">Virginia Walker</p>
           <p className="text-sm font-semibold text-[#565656]">
@@ -63,17 +66,17 @@ export default function InvoiceComponent() {
         </div>
         <div className="flex flex-col ">
           <p className="text-base font-semibold text-[#404040] mb-3">
-            Invoice To :
+          {t("to")}
           </p>
           <p className="text-base font-bold text-black mb-2">Austin Miller</p>
           <p className="text-sm font-semibold text-[#565656]">Brookview</p>
         </div>
         <div className="flex flex-col ">
           <p className="text-base font-semibold text-[#404040] mb-3">
-            Invoice Date : 12 Nov 2019
+          {t("date")} : 12 Nov 2019
           </p>
           <p className="text-base font-semibold text-[#404040]">
-            Due Date : 25 Dec 2019
+          {t("due")} : 25 Dec 2019
           </p>
         </div>
       </div>
@@ -113,7 +116,7 @@ export default function InvoiceComponent() {
       </TableContainer>
       <div className="w-[80%] mx-[auto] flex justify-end">
         <p className="text-base font-extrabold text-black mt-6">
-          Total = ${total}
+          {t("total")} = ${total}
         </p>
       </div>
       <div className="w-[95%] h-14 flex flex-row justify-end items-center gap-4 mt-[60px]">
@@ -123,8 +126,8 @@ export default function InvoiceComponent() {
           </button>
         </Tooltip>
         <Tooltip title="Send">
-          <button className="w-[174px] h-[54px] rounded-xl bg-[#4880FF] flex flex-row items-center justify-end gap-10 pr-2 text-white font-medium">
-            Send
+          <button className="w-[174px] h-[54px] rounded-xl bg-[#4880FF] flex flex-row items-center justify-end gap-10 pr-2 text-white font-medium capitalize">
+            {t("send")}
             <Image alt="" src="/send-button.png" width={46} height={38}></Image>
           </button>
         </Tooltip>

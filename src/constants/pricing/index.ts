@@ -11,7 +11,7 @@ export interface IPricingList {
 export const PRICINGLIST: IPricingList[] = [
   {
     id:1,
-    title: "Basic",
+    title: "basic",
     price: "14.99",
     report: false,
     access: false,
@@ -20,7 +20,7 @@ export const PRICINGLIST: IPricingList[] = [
   },
   {
     id:2,
-    title: "Standart",
+    title: "standard",
     price: "49.99",
     report: true,
     access: true,
@@ -29,7 +29,7 @@ export const PRICINGLIST: IPricingList[] = [
   },
   {
     id:3,
-    title: "Premium",
+    title: "premium",
     price: "89.99",
     report: true,
     access: true,
