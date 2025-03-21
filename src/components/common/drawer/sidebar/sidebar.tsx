@@ -43,14 +43,22 @@ export default function Sidebar() {
       <Toolbar sx={{ pl: 2, py: 1, height: "74px" }}>
         <Link
           href="/"
-          className="w-full h-full flex justify-center items-center pl-5"
+          className={`w-full h-full flex justify-center items-center overflow-hidden ${open? "pl-5" :""}`}
         >
-          {open && (
+          {open ? (
             <Image
               src="/Logo.svg"
               alt="Logo"
               width={128}
               height={28}
+              priority
+            ></Image>
+          ):(
+            <Image
+              src="/logo47.png"
+              alt="Logo"
+              width={39}
+              height={39}
               priority
             ></Image>
           )}

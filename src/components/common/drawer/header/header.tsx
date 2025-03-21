@@ -41,13 +41,10 @@ export default function Header() {
 
   const open2 = Boolean(anchorEl2);
 
-
-  // Open menu 2
   const handleClickMenu2 = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl2(event.currentTarget);
   };
 
-  // Đóng menu
   const handleClose = () => {
     setAnchorEl2(null);
   };
@@ -103,14 +100,14 @@ export default function Header() {
           </Toolbar>
         </Box>
 
-        {/* Sign in button */}
+        {/* Sign in button
         {!token && (
           <Box sx={{ display: "flex", alignItems: "center" }}>
             <Button component={Link} href="/login">
               Sign In
             </Button>
           </Box>
-        )}
+        )} */}
         <div className="flex gap-7">
           {/* Language */}
           <LanguageSwitcher/>

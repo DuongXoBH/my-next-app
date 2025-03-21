@@ -15,13 +15,14 @@ import {
   Typography,
   Checkbox,
   FormControlLabel,
-  Link,
   CircularProgress,
   InputAdornment,
   IconButton,
 } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { toast } from "react-toastify";
+import LinkTag from "@/components/common/link-tag";
 
 const schema = registerSchema;
 
@@ -64,6 +65,7 @@ export default function Register() {
       {
         onSuccess(data) {
           console.log(data);
+          toast(t("toast"));
           router.push("/login");
         },
       }
@@ -239,13 +241,10 @@ export default function Register() {
             <Typography variant="body2" component="span">
               {t("note")}
             </Typography>
-            <Link
-              href="/login"
-              underline="hover"
-              sx={{ color: "primary.main", fontSize: "0.875rem", ml: 1 }}
-            >
+            
+            <LinkTag href="/login" className="text-sky-600 hover:underline text-[0.875rem] ml-2">
               {t("redirect")}
-            </Link>
+            </LinkTag>
           </Box>
         </form>
       </Card>

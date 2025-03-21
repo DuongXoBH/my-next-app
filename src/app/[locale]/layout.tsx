@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 // import { Geist, Geist_Mono } from "next/font/google";
 import { Nunito_Sans } from "next/font/google";
-import "@/app/globals.css"
+import "@/app/globals.css";
 import { Providers } from "../../provider/jotai-providers";
 import { QueryClientProviders } from "../../provider/query-providers";
 import { ToastContainer } from "react-toastify";
@@ -11,6 +11,7 @@ import ThemeProviders from "@/provider/theme-provider";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+// import PageLoader from "@/provider/page-loader";
 
 const nunitoSans = Nunito_Sans({
   subsets: ["latin"],
@@ -38,19 +39,20 @@ export default async function RootLayout({
   return (
     <html lang={locale} data-toolpad-color-scheme="light">
       <body className={`${nunitoSans.variable} antialiased`}>
-        <NextIntlClientProvider>
-          <CacheProviders>
-            <Suspense fallback={<div>Loading...</div>}>
-              <QueryClientProviders>
-                <Providers>
-                  {/* <PageLoader/> */}
-                  <ThemeProviders>{children}</ThemeProviders>
-                  <ToastContainer />
-                </Providers>
-              </QueryClientProviders>
-            </Suspense>
-          </CacheProviders>
-        </NextIntlClientProvider>{" "}
+        {/* <PageLoader> */}
+          <NextIntlClientProvider>
+            <CacheProviders>
+              <Suspense fallback={<div>Loading...</div>}>
+                <QueryClientProviders>
+                  <Providers>
+                    <ThemeProviders>{children}</ThemeProviders>
+                    <ToastContainer />
+                  </Providers>
+                </QueryClientProviders>
+              </Suspense>
+            </CacheProviders>
+          </NextIntlClientProvider>
+        {/* </PageLoader> */}
       </body>
     </html>
   );

@@ -8,11 +8,10 @@ import {
   Tooltip,
 } from "@mui/material";
 import { useAtom } from "jotai";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import Note from "./sidebar-node";
-import { getPathname } from "@/i18n/navigation";
+import LinkTag from "../../link-tag";
 
 export default function ListNode({
   list,
@@ -56,11 +55,11 @@ export default function ListNode({
           }}
           disablePadding
         >
-          <Tooltip title={open ? "" : `${element.text}`}>
-            <Link
-              className="w-[236px]"
-              href={getPathname({ href: element.href, locale: pathName.split('/')[1] })}
-            >
+          <LinkTag
+            className={open ? "w-[236px]" : "w-[88px]"}
+            href={element.href}
+          >
+            <Tooltip title={open ? "" : element.text}>
               <ListItemButton
                 sx={{
                   overflow: "hidden",
@@ -83,8 +82,8 @@ export default function ListNode({
                 </ListItemIcon>
                 {open && <Note page={element.text} />}
               </ListItemButton>
-            </Link>
-          </Tooltip>
+            </Tooltip>
+          </LinkTag>
         </ListItem>
       ))}
     </List>

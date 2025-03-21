@@ -25,6 +25,7 @@ import {
 } from "@mui/material";
 import { toast } from "react-toastify";
 import { useTranslations } from "next-intl";
+import LinkTag from "@/components/common/link-tag";
 
 const schema = loginSchema;
 
@@ -105,13 +106,13 @@ export default function Login() {
     >
       <Card
         sx={{
-          display:"flex",
-          flexDirection:"column",
-          justifyContent:"center",
-          alignItems:"center",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
           p: 4,
           maxWidth: 600,
-          height:680,
+          height: 680,
           width: "100%",
           boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
           borderRadius: 2,
@@ -126,15 +127,23 @@ export default function Login() {
         </Typography>
         <Typography
           variant="body1"
-          sx={{width:"413px", mb: 3, textAlign: "center", color: "text.secondary" }}
+          sx={{
+            width: "413px",
+            mb: 3,
+            textAlign: "center",
+            color: "text.secondary",
+          }}
         >
           {t("descreption")}
         </Typography>
 
         {/* Form */}
         <form onSubmit={handleSubmit(onSubmit)} className="w-full">
-          <Box sx={{ mb: 3,width:"100%" }}>
-            <Typography variant="body2" sx={{ mb: 1, fontWeight: 600,width:"100%" }}>
+          <Box sx={{ mb: 3, width: "100%" }}>
+            <Typography
+              variant="body2"
+              sx={{ mb: 1, fontWeight: 600, width: "100%" }}
+            >
               {t("email-address")}
             </Typography>
             <TextField
@@ -230,13 +239,13 @@ export default function Login() {
             <Typography variant="body2" component="span">
               {t("note")}
             </Typography>
-            <Link
+
+            <LinkTag
               href="/register"
-              underline="hover"
-              sx={{ color: "primary.main", fontSize: "0.875rem" }}
+              className="text-sky-600 hover:underline text-[0.875rem] ml-2"
             >
               {t("redirect")}
-            </Link>
+            </LinkTag>
           </Box>
         </form>
       </Card>

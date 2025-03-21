@@ -1,10 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { Box, CircularProgress } from "@mui/material";
 
-export default function PageLoader() {
+export default function PageLoader({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const pathname = usePathname();
   const [loading, setLoading] = useState(false);
 
@@ -16,17 +20,19 @@ export default function PageLoader() {
 
     return () => clearTimeout(timer);
   }, [pathname]);
-
-  return loading ? (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
-      }}
-    >
-      <CircularProgress size={60} />
-    </Box>
-  ) : null;
+  if (loading) {
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        <CircularProgress size={60} />
+      </Box>
+    );
+  }
+  return <div className="w-full">{children}</div>;
 }

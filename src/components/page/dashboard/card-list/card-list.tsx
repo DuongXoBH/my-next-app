@@ -1,6 +1,7 @@
 import type { EChartsOption } from "echarts";
 import DashboardCard from "./card";
 import ReactECharts from "echarts-for-react";
+import React from "react";
 
 export default function DashboardCardList() {
   const customersOption: EChartsOption = {

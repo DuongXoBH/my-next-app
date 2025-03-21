@@ -2,9 +2,9 @@
 
 import { useFetchUserApi } from "@/api-hooks/user";
 import CardLoading from "@/components/common/card-loading";
+import LinkTag from "@/components/common/link-tag";
 import { CardMedia, Skeleton } from "@mui/material";
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 
 export default function ContactList() {
@@ -29,7 +29,7 @@ export default function ContactList() {
             index: number
           ) => {
             return (
-              <Link
+              <LinkTag
                 key={`user-${index}`}
                 href={`/contact/${user.id}/update`}
                 className="w-[31%]  max-h-[415px] rounded-[16px] border-[2px] border-gray-300 mb-[30px] overflow-hidden"
@@ -71,7 +71,7 @@ export default function ContactList() {
                     Message
                   </button>
                 </div>
-              </Link>
+              </LinkTag>
             );
           }
         )}

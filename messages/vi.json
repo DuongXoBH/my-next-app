@@ -1,4 +1,5 @@
 {
+  "title": "123",
   "Login": {
     "title": "Đăng nhập vào tài khoản",
     "descreption": "Hãy nhập mail và mật khẩu của bạn để tiếp tục",
@@ -20,7 +21,8 @@
     "check-box": "Tôi đồng ý với mọi điều khoản",
     "button": "Đăng ký",
     "note": "Đã có tài khoản?",
-    "redirect": "Đăng nhập"
+    "redirect": "Đăng nhập",
+    "toast": "Đăng ký thành công !"
   },
   "Dashboard": {
     "title": "Bảng Tin",

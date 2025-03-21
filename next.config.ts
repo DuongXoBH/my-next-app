@@ -1,19 +1,21 @@
-import type { NextConfig } from "next";
-import createNextIntlPlugin from "next-intl/plugin";
+import {NextConfig} from 'next';
+import createNextIntlPlugin from 'next-intl/plugin';
 
-const nextConfig: NextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "res.cloudinary.com",
-        port: "",
-        pathname: "/**",
-      },
-    ],
-  },
-};
+const withNextIntl = createNextIntlPlugin({
+  experimental: {
+    createMessagesDeclaration: './messages/en.json'
+  }
+});
 
-const withNextIntl = createNextIntlPlugin();
+const config: NextConfig = {images: {
+  remotePatterns: [
+    {
+      protocol: "https",
+      hostname: "res.cloudinary.com",
+      port: "",
+      pathname: "/**",
+    },
+  ],
+},}
 
-export default withNextIntl(nextConfig);
+export default withNextIntl(config);

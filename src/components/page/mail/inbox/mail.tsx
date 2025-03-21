@@ -11,9 +11,9 @@ import { useAtom } from "jotai";
 import { labelAtom } from "@/store/mail";
 
 export default function InboxList(props: { title: string }) {
-  const [label,] = useAtom(labelAtom);
-  console.log("🚀 ~ InboxList ~ label:", label)
-  const [row,setRow] = React.useState<IMail[]>([]);
+  const [label] = useAtom(labelAtom);
+  console.log("🚀 ~ InboxList ~ label:", label);
+  const [row, setRow] = React.useState<IMail[]>([]);
 
   const handleStarChange = (
     id: number,
@@ -119,11 +119,15 @@ export default function InboxList(props: { title: string }) {
   const paginationModel = { page: 0, pageSize: 12 };
 
   // data = call API(title)
-  
-  React.useEffect(()=>{
-    const newData = label ? INBOXLIST.filter((e : IMail)=>{return e.group.label === label}) : INBOXLIST;
+
+  React.useEffect(() => {
+    const newData = label
+      ? INBOXLIST.filter((e: IMail) => {
+          return e.group.label === label;
+        })
+      : INBOXLIST;
     setRow(newData);
-  },[label,setRow])
+  }, [label, setRow]);
 
   const [selectedRows, setSelectedRows] = React.useState<number[]>([]);
   // Filter selected data
@@ -141,7 +145,6 @@ export default function InboxList(props: { title: string }) {
           initialState={{ pagination: { paginationModel } }}
           pageSizeOptions={[12, 20]}
           checkboxSelection
-          //add selected id to selected array
           onRowSelectionModelChange={(ids) => {
             setSelectedRows(ids as number[]);
           }}
