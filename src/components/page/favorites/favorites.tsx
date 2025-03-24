@@ -3,7 +3,6 @@
 import { useFetchProductsApi } from "@/api-hooks/product";
 import {
   Box,
-  Button,
   Card,
   CardContent,
   CardMedia,
@@ -17,9 +16,10 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import CardLoading from "@/components/common/card-loading";
+import CardLoading from "@/components/common/global/card-loading";
 import { CSSProperties, useState } from "react";
 import { useTranslations } from "next-intl";
+import LinkTag from "@/components/common/global/link-tag";
 
 interface IProduct {
   id: number;
@@ -64,7 +64,7 @@ export default function FavoritesList() {
           gap: "2%",
         }}
       >
-        {Favorites?.slice(0,count).map((element: IProduct, index: number) => {
+        {Favorites?.slice(0, count).map((element: IProduct, index: number) => {
           return (
             <Card
               key={`favorites-${index}`}
@@ -158,24 +158,12 @@ export default function FavoritesList() {
                   >
                     ${element.price}
                   </Typography>
-                  <Button
-                    variant="contained"
-                    sx={{
-                      width: "144px",
-                      height: "48px",
-                      backgroundColor: "#F5F6FA",
-                      color: "black",
-                      borderRadius: 2,
-                      fontWeight: "bold",
-                      textTransform: "none",
-                      mt: 1,
-                      "&:hover": {
-                        backgroundColor: "#E2E4ED",
-                      },
-                    }}
+                  <LinkTag
+                    href={`/products/${element.id}`}
+                    className="w-36 h-12 bg-gray-200 text-black rounded-md font-bold text-sm flex items-center justify-center hover:bg-gray-300"
                   >
-                    Edit Product
-                  </Button>
+                    {t("edit")}
+                  </LinkTag>
                 </CardContent>
                 <Box
                   sx={{

@@ -1,9 +1,11 @@
 "use client"
 
 import { Typography } from "@mui/material";
-import { useTranslations } from "next-intl";
+import {  useTranslations } from "next-intl";
+import translationData from "@/messages/en.json";
+type Page = keyof typeof translationData;
 
 export default function Note({ page }: { page: string }) {
-  const t = useTranslations(page);
+  const t = useTranslations(page as Page);
   return <Typography sx={{ fontWeight: "600", fontSize: "14px" }}>{t("title")}</Typography>;
 }

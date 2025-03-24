@@ -53,9 +53,9 @@ export default function PricingCard(props: { arr: IPricingList }) {
       <button
         type="button"
         onClick={() => handleClick(props.arr.id)}
-        className="w-[180px] h-[60px] text-base text-[#4581FF] rounded-[30px] flex justify-center items-center hover:text-white hover:bg-[#4581FF] border-[3px] border-[#4581FF]"
+        className="w-[180px] h-[60px] text-base text-[#4581FF] rounded-[30px] flex justify-center items-center hover:text-white hover:bg-[#4581FF] border-[3px] border-[#4581FF] capitalize"
       >
-        Get Started
+        {t("start")}
       </button>
       <Link href="#" className="text-sm font-bold decoration-solid underline ">
         {t("note")}

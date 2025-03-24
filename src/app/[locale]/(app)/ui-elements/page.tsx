@@ -1,4 +1,4 @@
-import PageHeader from "@/components/common/page-header";
+import PageHeader from "@/components/common/global/page-header";
 import BarChart from "@/components/page/ui-elements/bar-chart";
 import DonutChart from "@/components/page/ui-elements/donut-chart";
 import PieChart from "@/components/page/ui-elements/pie-chart";

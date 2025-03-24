@@ -1,13 +1,15 @@
 "use client";
 
 import { useFetchUserApi } from "@/api-hooks/user";
-import CardLoading from "@/components/common/card-loading";
-import LinkTag from "@/components/common/link-tag";
+import CardLoading from "@/components/common/global/card-loading";
+import LinkTag from "@/components/common/global/link-tag";
 import { CardMedia, Skeleton } from "@mui/material";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useState } from "react";
 
 export default function ContactList() {
+  const t = useTranslations("Contact");
   const { data: users, isLoading } = useFetchUserApi();
   const [isLoaded, setIsLoaded] = useState(false);
   const [visibleCount, setVisibleCount] = useState<number>(6);
@@ -81,7 +83,7 @@ export default function ContactList() {
           className="w-[100px] h-[50px] border-[1px] border-gray-300 rounded-[8px] hover:bg-gray-300"
           onClick={() => setVisibleCount((count) => count + 3)}
         >
-          See More
+        {t("more")}
         </button>
       )}
     </div>

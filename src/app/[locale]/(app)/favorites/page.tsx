@@ -1,4 +1,4 @@
-import PageHeader from "@/components/common/page-header";
+import PageHeader from "@/components/common/global/page-header";
 import FavoritesList from "@/components/page/favorites/favorites";
 
 export default function Favorites(){

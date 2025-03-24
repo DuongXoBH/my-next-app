@@ -11,7 +11,8 @@ import { useAtom } from "jotai";
 import { usePathname } from "next/navigation";
 import React from "react";
 import Note from "./sidebar-node";
-import LinkTag from "../../link-tag";
+import LinkTag from "../../global/link-tag";
+
 
 export default function ListNode({
   list,
@@ -80,7 +81,7 @@ export default function ListNode({
                     },
                   })}
                 </ListItemIcon>
-                {open && <Note page={element.text} />}
+                {open && <Note page={element.text}  />}
               </ListItemButton>
             </Tooltip>
           </LinkTag>

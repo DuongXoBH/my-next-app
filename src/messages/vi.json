@@ -1,5 +1,4 @@
 {
-  "title": "123",
   "Login": {
     "title": "Đăng nhập vào tài khoản",
     "descreption": "Hãy nhập mail và mật khẩu của bạn để tiếp tục",
@@ -38,15 +37,20 @@
     "pending": "Số lượng đang chờ"
   },
   "Products": {
-    "title": "Sản Phẩm"
+    "title": "Sản Phẩm",
+    "edit": "Chi tiết",
+    "start": "Bắt đầu",
+    "prev": "Trang trước",
+    "next": "Tiếp theo"
   },
   "Favorites": {
     "title": "Yêu Thích",
-    "see-more": "Xem thêm"
+    "see-more": "Xem thêm",
+    "edit": "Chi tiết"
   },
   "Inbox": {
     "title": "Hòm Thư",
-    "my-email": "My Email",
+    "email": "My Email",
     "inbox": "Hòm thư đến",
     "starred": "Có gắn dấu sao",
     "sent": "Đã gửi",
@@ -64,7 +68,8 @@
     "date": "Ngày",
     "type": "Kiểu",
     "status": "Trạng thái",
-    "reset": "Làm Mới"
+    "reset": "Làm Mới",
+    "apply": "Áp Dụng"
   },
   "Product Stock": {
     "title": "Kho Hàng",
@@ -84,16 +89,20 @@
     "premium": "Cao cấp",
     "price": "Phí hàng tháng",
     "setup": "Thiết lập miễn phí",
-    "brandwidth": "Giới hạn băng thông 10 GB",
+    "brandwidth": "Giới hạn 10 GB băng thông",
     "user": "Kết nối 20 người dùng",
     "analytics": "Phân tích báo cáo",
     "access": "Truy cập API công khai",
     "intregation": "Tích hợp Plugin",
     "content": "Tùy chỉnh quản lý nội dung",
+    "start": "Bắt đầu",
     "note": "Bắt đầu dùng thử  30 ngày miễn phí"
   },
   "Calender": {
-    "title": "Lịch"
+    "title": "Lịch",
+    "more": "Xem thêm",
+    "add": "Thêm sự kiện mới",
+    "text": "Lịch của bạn :"
   },
   "To-do": {
     "title": "Kế hoạch",
@@ -101,7 +110,8 @@
   },
   "Contact": {
     "title": "Liên Hệ",
-    "button": "Tạo liên hệ mới"
+    "button": "Tạo liên hệ mới",
+    "more": "Xem Thêm"
   },
   "AddNewContact": {
     "title": "Tạo Liên Hệ Mới"
@@ -119,13 +129,28 @@
     "title": "Biểu Đồ"
   },
   "Team": {
-    "title": "Nhóm"
+    "title": "Nhóm",
+    "more": "Xem thêm"
   },
   "Table": {
     "title": "Bảng Biểu"
   },
   "Global": {
     "settings": "Cài đặt",
-    "logout": "Đăng xuất"
-  }
+    "logout": "Đăng xuất",
+    "page": "Trang"
+  },
+  "ProductDetail": {
+    "title": "Chi tiết sản phẩm",
+    "description": "Mô tả",
+    "price": "Giá",
+    "color": "Màu sắc",
+    "size": "Kích thước",
+    "quantity": "Số lượng",
+    "add": "Thêm vào giỏ hàng",
+    "buy": "Mua ngay",
+    "taxes": "bao gồm thuế VAT",
+    "ship": "Chính sách vận chuyển miễn phí",
+    "refund": "Chính sách hoàn trả"
+}
 }

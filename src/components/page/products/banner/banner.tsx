@@ -6,9 +6,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import { useRef } from "react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 export default function CustomComponent() {
   const swiperRef = useRef<SwiperType | null>(null);
+  const t = useTranslations("Products");
 
   return (
     <div className="container mt-5 max-h-[350px] px-5 flex justify-center items-center relative bg-banner-layer rounded-2xl">
@@ -91,7 +93,7 @@ export default function CustomComponent() {
                 textTransform: "capitalize",
               }}
             >
-              Get started
+              {t("start")}
             </Button>
           </Box>
         </SwiperSlide>

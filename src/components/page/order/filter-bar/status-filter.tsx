@@ -22,7 +22,11 @@ export default function StatusFilter() {
   const t = useTranslations("Order Lists");
   //event handler for selecting status
   const handleStatusSelect = (status: string) => {
-    setOrderSearch((prev)=> prev.status.includes(status) ? {...prev,status: prev.status.filter((i)=> i!== status)} : {...prev, status: [...prev.status, status]});
+    setOrderSearch((prev) =>
+      prev.status.includes(status)
+        ? { ...prev, status: prev.status.filter((i) => i !== status) }
+        : { ...prev, status: [...prev.status, status] }
+    );
   };
 
   const handleClickOutSideStatus = useCallback(() => {
@@ -35,21 +39,24 @@ export default function StatusFilter() {
   const handleFilter = () => {
     setIsStatusOpen(false);
 
-    let dataVal= ORDERLIST;
-    if(orderSearch.type.length > 0){ 
-      dataVal=  dataVal.filter((order: IOrder) =>
-        orderSearch.type.includes(order.type))
+    let dataVal = ORDERLIST;
+    if (orderSearch.type.length > 0) {
+      dataVal = dataVal.filter((order: IOrder) =>
+        orderSearch.type.includes(order.type)
+      );
     }
-    if(orderSearch.status.length > 0){ 
-      dataVal=  dataVal.filter((order: IOrder) =>
-        orderSearch.status.includes(order.status))
+    if (orderSearch.status.length > 0) {
+      dataVal = dataVal.filter((order: IOrder) =>
+        orderSearch.status.includes(order.status)
+      );
     }
     if (orderSearch.date && orderSearch.date.length > 0) {
       dataVal = dataVal.filter((order: IOrder) =>
-        orderSearch.date?.includes(order.date))
+        orderSearch.date?.includes(order.date)
+      );
     }
     setData(dataVal);
-  } 
+  };
   return (
     <div
       ref={statusRef}
@@ -91,7 +98,7 @@ export default function StatusFilter() {
               onClick={() => handleFilter()}
               className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600"
             >
-              Apply Now
+              {t("apply")}
             </button>
           </div>
         </div>

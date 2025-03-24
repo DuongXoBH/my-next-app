@@ -19,6 +19,8 @@ import { useAtom } from "jotai";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import React from "react";
+import translationData from "@/messages/en.json";
+type IMailSidebar = keyof typeof translationData.Inbox;
 
 export default function EmailSidebar({
   children,
@@ -76,7 +78,7 @@ export default function EmailSidebar({
             <Typography
               sx={{ fontWeight: "600", fontSize: "1rem", color: "black" }}
             >
-              {t("my-email")}
+              {t("email")}
             </Typography>
           </ListItem>
           {EMAILPAGES.map((element, index) => (
@@ -122,7 +124,7 @@ export default function EmailSidebar({
                           : "black",
                     }}
                   >
-                    {t(element.text)}
+                    {t(element.text as IMailSidebar)}
                   </Typography>
                 </ListItemButton>
               </Button>

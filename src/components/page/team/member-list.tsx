@@ -2,8 +2,9 @@
 
 import { useFetchUserApi } from "@/api-hooks/user";
 import MemberCard from "./member-card";
-import CardLoading from "@/components/common/card-loading";
+import CardLoading from "@/components/common/global/card-loading";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 export interface IUser {
   id: number;
@@ -14,6 +15,7 @@ export interface IUser {
 }
 
 export default function MemberList() {
+  const t = useTranslations("Team");
   const [count, setCount] = useState<number>(12);
   const { data: users, isLoading } = useFetchUserApi();
   if (isLoading) {
@@ -21,7 +23,7 @@ export default function MemberList() {
   }
   return (
     <div className="w-full flex flex-col gap-7 items-center">
-      <div className="w-full flex flex-row  flex-wrap justify-start gap-[2.6%]">    
+      <div className="w-full flex flex-row  flex-wrap justify-start gap-[2.6%]">
         {users?.slice(0, count).map((user: IUser) => {
           return <MemberCard key={user.id} member={user} />;
         })}
@@ -31,7 +33,7 @@ export default function MemberList() {
           className="w-[25%] h-[50px] border-[1px] border-gray-300 rounded-[8px] hover:bg-gray-300"
           onClick={() => setCount((count) => count + 4)}
         >
-          See More
+          {t("more")}
         </button>
       )}
     </div>

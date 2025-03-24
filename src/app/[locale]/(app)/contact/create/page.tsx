@@ -1,6 +1,6 @@
 "use client";
 
-import PageHeader from "@/components/common/page-header";
+import PageHeader from "@/components/common/global/page-header";
 import CreateContactForm from "@/components/page/contact/create-contact";
 
 export default function CreateContact() {

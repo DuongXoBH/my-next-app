@@ -1,7 +1,7 @@
 "use client"
 
-import LinkTag from "@/components/common/link-tag";
-import PageHeader from "@/components/common/page-header";
+import LinkTag from "@/components/common/global/link-tag";
+import PageHeader from "@/components/common/global/page-header";
 import { useTranslations } from "next-intl";
 
 export default function ContactHeader() {

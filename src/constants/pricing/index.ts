@@ -1,6 +1,24 @@
+export type TTranslations = {
+  Pricing: {
+    title: string;
+    basic: string,
+    standard: string,
+    premium: string,
+    price: string,
+    setup: string,
+    brandwidth: string,
+    user: string,
+    analytics: string,
+    access: string,
+    intregation: string,
+    content: string,
+    start:string,
+    note: string
+  },
+};
 export interface IPricingList {
     id: number;
-  title: string;
+  title: keyof TTranslations["Pricing"];
   price: string;
   report: boolean;
   access: boolean;

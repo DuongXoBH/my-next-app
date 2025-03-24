@@ -31,3 +31,14 @@ return useQuery({
     }
 });
 }
+
+export function useFetchProductByIdApi(productId: string) {
+  return useQuery({
+    queryKey: ["product", productId],
+    queryFn: async () => {
+      const response = await fetch(`${apiUrl}/products/${productId}`);
+      const result = await response.json();
+      return result;
+    },
+  });
+}

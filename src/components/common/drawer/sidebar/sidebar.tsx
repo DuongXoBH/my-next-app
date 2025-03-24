@@ -76,9 +76,10 @@ export default function Sidebar() {
             color: "gray",
             paddingLeft: "16px",
             mt: "16px",
+            textTransform: "uppercase",
           }}
         >
-          PAGES
+        {t("page")}
         </Typography>
       )}
 

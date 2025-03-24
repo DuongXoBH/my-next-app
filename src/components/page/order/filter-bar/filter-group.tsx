@@ -19,7 +19,7 @@ export default function FilterGroup() {
     <Box
       sx={{
         display: "flex",
-        width: "852px",
+        width: "780px",
         height: "70px",
         flexDirection: "row",
         borderRadius: "12px",

@@ -88,7 +88,7 @@ export default function DateFilter() {
               onClick={() => handleFilter()}
               className="w-[25%] bg-blue-500 text-xs text-white py-2 rounded-lg hover:bg-blue-600"
             >
-              Apply Now
+              {t("apply")}
             </button>
           </div>
         </div>

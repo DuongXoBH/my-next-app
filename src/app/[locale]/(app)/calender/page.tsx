@@ -1,6 +1,6 @@
 import LeftSide from "@/components/page/calender/left-side";
 import CalendarComponent from "@/components/page/calender/calender-event";
-import PageHeader from "@/components/common/page-header";
+import PageHeader from "@/components/common/global/page-header";
 
 export default function Calendar() {
   return (

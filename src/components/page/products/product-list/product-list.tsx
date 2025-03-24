@@ -15,6 +15,7 @@ import {
   CardMedia,
   IconButton,
   Skeleton,
+  Tooltip,
 } from "@mui/material";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -24,10 +25,13 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import CardLoading from "@/components/common/card-loading";
+import CardLoading from "@/components/common/global/card-loading";
 import { CSSProperties } from "react";
+import { useTranslations } from "next-intl";
+import LinkTag from "@/components/common/global/link-tag";
 
 export default function ProductList() {
+  const t = useTranslations("Products");
   const [offset, setOffset] = useState<number>(0);
   const { data: list } = useFetchProductsApi();
   const page = Math.ceil(offset / 3) + 1;
@@ -166,7 +170,7 @@ export default function ProductList() {
                     display: "flex",
                     justifyContent: "space-between",
                     height: "100%",
-                    minHeight:"180px",
+                    minHeight: "180px",
                   }}
                 >
                   <CardContent
@@ -197,24 +201,12 @@ export default function ProductList() {
                     >
                       ${element.price}
                     </Typography>
-                    <Button
-                      variant="contained"
-                      sx={{
-                        width: "144px",
-                        height: "48px",
-                        backgroundColor: "#F5F6FA",
-                        color: "black",
-                        borderRadius: 2,
-                        fontWeight: "bold",
-                        textTransform: "none",
-                        mt: 1,
-                        "&:hover": {
-                          backgroundColor: "#E2E4ED",
-                        },
-                      }}
+                    <LinkTag
+                      href={`/products/${element.id}`}
+                      className="w-36 h-12 bg-gray-200 text-black rounded-md font-bold text-sm flex items-center justify-center hover:bg-gray-300"
                     >
-                      Edit Product
-                    </Button>
+                      {t("edit")}
+                    </LinkTag>
                   </CardContent>
                   <Box
                     sx={{
@@ -254,20 +246,24 @@ export default function ProductList() {
         }}
       >
         {/* Previous Button*/}
-        <Button
-          onClick={() => handlePageChange(offset - 3)}
-          sx={{ width: "150px", display: "flex", justifyContent: "center" }}
-        >
-          <Image src="/prev-1.svg" alt="" width={50} height={50} />
-        </Button>
+        <Tooltip title={t("prev")}>
+          <Button
+            onClick={() => handlePageChange(offset - 3)}
+            sx={{ width: "150px", display: "flex", justifyContent: "center" }}
+          >
+            <Image src="/prev-1.svg" alt="" width={50} height={50} />
+          </Button>
+        </Tooltip>
         <p>{page}</p>
         {/* Next  Button*/}
-        <Button
-          onClick={() => handlePageChange(offset + 3)}
-          sx={{ width: "150px", display: "flex", justifyContent: "center" }}
-        >
-          <Image src="/next-1.svg" alt="" width={50} height={50} />
-        </Button>
+        <Tooltip title={t("next")}>
+          <Button
+            onClick={() => handlePageChange(offset + 3)}
+            sx={{ width: "150px", display: "flex", justifyContent: "center" }}
+          >
+            <Image src="/next-1.svg" alt="" width={50} height={50} />
+          </Button>
+        </Tooltip>
       </Box>
     </Box>
   );

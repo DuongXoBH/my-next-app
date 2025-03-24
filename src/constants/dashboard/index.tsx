@@ -12,6 +12,8 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 import PersonIcon from "@mui/icons-material/Person";
 import BorderAllIcon from "@mui/icons-material/BorderAll";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import translationData from "@/messages/en.json";
+type dashboardKeys = keyof typeof translationData.Dashboard;
 
 export const DASHBOARD = [
   {
@@ -90,14 +92,14 @@ export const PAGE_DASHBOARD = [
 ];
 
 export interface IDashboardModal {
-  title: string;
+  title: dashboardKeys;
   value: string;
   img: string;
   compare: string;
   upStatus: boolean;
 }
 
-export const DASHBOARDMODAL = [
+export const DASHBOARDMODAL : IDashboardModal[] = [
   {
     title: "user",
     value: "40,689",

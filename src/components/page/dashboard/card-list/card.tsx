@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
-
-export default function DashboardCard({title, children} :{ title: string,children:React.ReactNode} ){
+import translationData from "@/messages/en.json";
+type dashboardKeys = keyof typeof translationData.Dashboard;
+export default function DashboardCard({title, children} :{ title: dashboardKeys,children:React.ReactNode} ){
     const t = useTranslations("Dashboard");
     return (
         <div className="w-[360px] h-[365px] p-[24px] bg-white rounded-[14px] ">

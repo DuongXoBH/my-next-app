@@ -22,7 +22,8 @@ import {
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { toast } from "react-toastify";
-import LinkTag from "@/components/common/link-tag";
+import LinkTag from "@/components/common/global/link-tag";
+import LanguageSwitcher from "@/components/common/drawer/header/locale-button";
 
 const schema = registerSchema;
 
@@ -67,6 +68,11 @@ export default function Register() {
           console.log(data);
           toast(t("toast"));
           router.push("/login");
+        },
+        onError(error: unknown) {
+          if (error instanceof Error) {
+            toast.error(error.message);
+          }
         },
       }
     );
@@ -237,14 +243,29 @@ export default function Register() {
             {t("button")}
           </Button>
 
-          <Box sx={{ textAlign: "center" }}>
-            <Typography variant="body2" component="span">
-              {t("note")}
-            </Typography>
-            
-            <LinkTag href="/login" className="text-sky-600 hover:underline text-[0.875rem] ml-2">
-              {t("redirect")}
-            </LinkTag>
+          <Box
+            sx={{
+              textAlign: "center",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 2,
+              flexDirection: "column",
+            }}
+          >
+            <div className="w-full flex flex-row justify-center">
+              <Typography variant="body2" component="span">
+                {t("note")}
+              </Typography>
+
+              <LinkTag
+                href="/login"
+                className="text-sky-600 hover:underline text-[0.875rem] ml-2"
+              >
+                {t("redirect")}
+              </LinkTag>
+            </div>
+            <LanguageSwitcher />
           </Box>
         </form>
       </Card>

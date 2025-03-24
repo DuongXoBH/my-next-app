@@ -2,7 +2,6 @@
 // See: https://next-intl.dev/docs/workflows/typescript#messages-arguments
 
 declare const messages: {
-  "title": "123",
   "Login": {
     "title": "Login to Account",
     "descreption": "Please enter your email and password to continue",
@@ -41,15 +40,20 @@ declare const messages: {
     "pending": "Total Pending"
   },
   "Products": {
-    "title": "Products"
+    "title": "Products",
+    "edit": "Edit Product",
+    "start": "Get starred",
+    "prev" : "Previous",
+    "next" : "Next"
   },
   "Favorites": {
     "title": "Favorites",
-    "see-more": "See More"
+    "see-more": "See More",
+    "edit": "Edit Product"
   },
   "Inbox": {
     "title": "Inbox",
-    "my-email": "My Email",
+    "email": "My Email",
     "inbox": "Inbox",
     "starred": "Starred",
     "sent": "Sent",
@@ -67,7 +71,8 @@ declare const messages: {
     "date": "date",
     "type": "type",
     "status": "status",
-    "reset": "Reset Filter"
+    "reset": "Reset Filter",
+    "apply": "Apply Now"
   },
   "Product Stock": {
     "title": "Product Stock",
@@ -93,10 +98,14 @@ declare const messages: {
     "access": "Public API Access",
     "intregation": "Plugins Intregation",
     "content": "Custom Content Management",
+    "start":"Get starred",
     "note": "Start Your 30 Day Free Trial"
   },
   "Calender": {
-    "title": "Calender"
+    "title": "Calender",
+    "more": "See More",
+    "add": "Add New Event",
+    "text": "You are going to :"
   },
   "To-do": {
     "title": "To-do",
@@ -104,7 +113,8 @@ declare const messages: {
   },
   "Contact": {
     "title": "Contact",
-    "button": "Add New Contact"
+    "button": "Add New Contact",
+    "more": "See More"
   },
   "AddNewContact": {
     "title": "Add New Contact"
@@ -122,14 +132,29 @@ declare const messages: {
     "title": "UI Elements"
   },
   "Team": {
-    "title": "Team"
+    "title": "Team",
+    "more": "See More"
   },
   "Table": {
     "title": "Table"
   },
   "Global": {
     "settings": "Settings",
-    "logout": "Logout"
+    "logout": "Logout",
+    "page": "Page"
+  },
+  "ProductDetail": {
+    "title": "Product Details",
+    "description": "Description",
+    "price": "Price",
+    "color": "Color",
+    "size": "Size",
+    "quantity": "Quantity",
+    "add": "Add to Cart",
+    "buy": "Buy Now",
+    "taxes": "inclusive of all taxes",
+    "ship": "free shipping policy",
+    "refund": "refund policy"
   }
 };
 export default messages;

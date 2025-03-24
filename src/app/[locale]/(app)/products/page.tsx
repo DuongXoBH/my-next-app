@@ -1,4 +1,4 @@
-import PageHeader from "@/components/common/page-header";
+import PageHeader from "@/components/common/global/page-header";
 import Banner from "@/components/page/products/banner/banner";
 import ProductList from "@/components/page/products/product-list/product-list";
 

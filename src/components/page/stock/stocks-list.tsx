@@ -4,7 +4,7 @@ import { useFetchProductsApi } from "@/api-hooks/product";
 import { CardMedia, Paper, Tooltip } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 // import DeleteIcon from "@mui/icons-material/Delete";
-import ListLoading from "@/components/common/list-loading";
+import ListLoading from "@/components/common/global/list-loading";
 import Image from "next/image";
 import { CustomTableFooter } from "@/components/common/table/table-footer";
 import { useTranslations } from "next-intl";

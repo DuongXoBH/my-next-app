@@ -1,4 +1,4 @@
-import PageHeader from "@/components/common/page-header";
+import PageHeader from "@/components/common/global/page-header";
 import OrderList from "@/components/page/order/order-list/order-list";
 import StocksList from "@/components/page/stock/stocks-list";
 import { Divider } from "@mui/material";

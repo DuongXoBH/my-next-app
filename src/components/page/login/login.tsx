@@ -25,7 +25,8 @@ import {
 } from "@mui/material";
 import { toast } from "react-toastify";
 import { useTranslations } from "next-intl";
-import LinkTag from "@/components/common/link-tag";
+import LinkTag from "@/components/common/global/link-tag";
+import LanguageSwitcher from "@/components/common/drawer/header/locale-button";
 
 const schema = loginSchema;
 
@@ -235,17 +236,29 @@ export default function Login() {
             {t("button")}
           </Button>
 
-          <Box sx={{ textAlign: "center" }}>
-            <Typography variant="body2" component="span">
-              {t("note")}
-            </Typography>
-
-            <LinkTag
-              href="/register"
-              className="text-sky-600 hover:underline text-[0.875rem] ml-2"
-            >
-              {t("redirect")}
-            </LinkTag>
+          <Box
+            sx={{
+              textAlign: "center",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 2,
+            }}
+          >
+            <div className=" w-full flex flex-row justify-center">
+              {" "}
+              <Typography variant="body2" component="span">
+                {t("note")}
+              </Typography>
+              <LinkTag
+                href="/register"
+                className="text-sky-600 hover:underline text-[0.875rem] ml-2"
+              >
+                {t("redirect")}
+              </LinkTag>
+            </div>
+            <LanguageSwitcher />
           </Box>
         </form>
       </Card>

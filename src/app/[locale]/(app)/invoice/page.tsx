@@ -1,6 +1,6 @@
 "use client";
 
-import PageHeader from "@/components/common/page-header";
+import PageHeader from "@/components/common/global/page-header";
 import InvoiceComponent from "@/components/page/invoice/invoice";
 
 export default function Invoice() {
