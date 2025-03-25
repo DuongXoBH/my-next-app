@@ -19,11 +19,12 @@ import {
   InputAdornment,
   IconButton,
 } from "@mui/material";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { toast } from "react-toastify";
 import LinkTag from "@/components/common/global/link-tag";
 import LanguageSwitcher from "@/components/common/drawer/header/locale-button";
+import { getPathname } from "@/i18n/navigation";
 
 const schema = registerSchema;
 
@@ -42,6 +43,8 @@ export default function Register() {
   const registerMutation = useFetchRegister();
   const [loading, setLoading] = useState(true);
   const router = useRouter();
+  const locale = usePathname().split("/")[1];
+
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1000);
@@ -67,7 +70,7 @@ export default function Register() {
         onSuccess(data) {
           console.log(data);
           toast(t("toast"));
-          router.push("/login");
+          router.push(getPathname({href: "/login", locale : locale as "vi"|"en"}));
         },
         onError(error: unknown) {
           if (error instanceof Error) {

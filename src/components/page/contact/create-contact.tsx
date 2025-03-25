@@ -3,11 +3,12 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { createNewContactSchema } from "@/hook-form-schema/contact";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { CardMedia } from "@mui/material";
 import { CldUploadWidget } from "next-cloudinary";
 import { useFetchRegister } from "@/api-hooks/user";
+import { getPathname } from "@/i18n/navigation";
 
 export interface CreateContactForm {
   image: FileList;
@@ -22,6 +23,7 @@ const schema = createNewContactSchema;
 export default function CreateContactForm() {
   const [imageUrl, setImageUrl] = useState<string>("");
   const router = useRouter();
+  const locale = usePathname().split("/")[1];
   const registerMutation = useFetchRegister();
   const {
     register,
@@ -41,7 +43,7 @@ export default function CreateContactForm() {
       {
         onSuccess(data) {
           console.log(data);
-          router.push("/contact");
+          router.push(getPathname({href: "/contact", locale : locale as "vi"|"en"}));
         },
       }
     );

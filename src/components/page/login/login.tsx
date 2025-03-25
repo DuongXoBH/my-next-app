@@ -3,7 +3,7 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "@/hook-form-schema/login";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useFetchLogin } from "@/api-hooks/user";
 import { userToken } from "@/store/user";
@@ -27,6 +27,7 @@ import { toast } from "react-toastify";
 import { useTranslations } from "next-intl";
 import LinkTag from "@/components/common/global/link-tag";
 import LanguageSwitcher from "@/components/common/drawer/header/locale-button";
+import { getPathname } from "@/i18n/navigation";
 
 const schema = loginSchema;
 
@@ -42,6 +43,7 @@ export default function Login() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
+  const locale = usePathname().split("/")[1];
   const loginMutation = useFetchLogin();
 
   useEffect(() => {
@@ -75,7 +77,7 @@ export default function Login() {
   useEffect(() => {
     if (token) {
       toast("You have logged in");
-      router.push("/");
+      router.push(getPathname({href: "/", locale : locale as "vi"|"en"}));
     }
   }, [token, router]);
 
