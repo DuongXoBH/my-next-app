@@ -43,8 +43,8 @@ declare const messages: {
     "title": "Products",
     "edit": "Edit Product",
     "start": "Get starred",
-    "prev" : "Previous",
-    "next" : "Next"
+    "prev": "Previous",
+    "next": "Next"
   },
   "Favorites": {
     "title": "Favorites",
@@ -61,7 +61,14 @@ declare const messages: {
     "spam": "Spam",
     "important": "Important",
     "bin": "Bin",
-    "reset": "Reset"
+    "reset": "Reset",
+    "label": "label",
+    "compose": "Compose",
+    "new messase": "New Message",
+    "to": "To",
+    "subject": "Subject",
+    "send": "Send",
+    "message": "Type something here"
   },
   "Order Lists": {
     "title": "Order Lists",
@@ -72,7 +79,8 @@ declare const messages: {
     "type": "type",
     "status": "status",
     "reset": "Reset Filter",
-    "apply": "Apply Now"
+    "apply": "Apply Now",
+    "not found": "No Order Found"
   },
   "Product Stock": {
     "title": "Product Stock",
@@ -98,7 +106,7 @@ declare const messages: {
     "access": "Public API Access",
     "intregation": "Plugins Intregation",
     "content": "Custom Content Management",
-    "start":"Get starred",
+    "start": "Get starred",
     "note": "Start Your 30 Day Free Trial"
   },
   "Calender": {
@@ -155,6 +163,29 @@ declare const messages: {
     "taxes": "inclusive of all taxes",
     "ship": "free shipping policy",
     "refund": "refund policy"
+  },
+  "Settings": {
+    "title": "General Settings",
+    "site name": "Site name",
+    "copy right": "copy right",
+    "seo title": "SEO title",
+    "seo keywords": "SEO keywords",
+    "seo description": "SEO decription",
+    "save": "Save"
+  },
+  "Errors": {
+    "to-required": "To is required",
+    "mail-required": "Email is required",
+    "mail-format": "Email is not valid",
+    "password-required": "Password is required",
+    "content-required": "Content is required",
+    "subject-required": "Subject is required",
+    "name-required": "Name is required",
+    "address-required": "Address is required",
+    "date-required": "Date is required",
+    "type-required": "Type is required",  
+    "status-required": "Status is required",
+    "username-required": "Username is required"
   }
 };
 export default messages;

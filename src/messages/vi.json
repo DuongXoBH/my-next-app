@@ -58,7 +58,15 @@
     "spam": "Quảng cáo",
     "important": "Quan trọng",
     "bin": "Thư rác",
-    "reset": "Làm mới"
+    "reset": "Làm mới",
+    "label": "Nhãn",
+    "compose": "Soạn thư",
+    "new messase": "Soạn thư mới",
+    "to": "Gửi đến",
+    "subject": "Chủ đề",
+    "send": "Gửi",
+    "message": "Nhập nội dung"
+
   },
   "Order Lists": {
     "title": "Đơn Hàng",
@@ -69,7 +77,8 @@
     "type": "Kiểu",
     "status": "Trạng thái",
     "reset": "Làm Mới",
-    "apply": "Áp Dụng"
+    "apply": "Áp Dụng",
+    "not found": "Không tìm thấy đơn hàng phù hợp"
   },
   "Product Stock": {
     "title": "Kho Hàng",
@@ -152,5 +161,29 @@
     "taxes": "bao gồm thuế VAT",
     "ship": "Chính sách vận chuyển miễn phí",
     "refund": "Chính sách hoàn trả"
+  },
+  "Settings": {
+    "title": "Cài đặt chung",
+    "site name": "Tên trang web",
+    "copy right": "Bản quyền",
+    "seo title": "Tiêu đề SEO",
+    "seo keywords": "Từ khóa SEO",
+    "seo description": "Mô tả SEO",
+    "save": "Lưu"
+  },
+  "Errors": {
+    "to-required": "Gửi đến là bắt buộc",
+    "mail-required": "Email là bắt buộc",
+    "mail-format": "Email không hợp lệ",
+    "password-required": "Mật khẩu là bắt buộc",
+    "content-required": "Nội dung là bắt buộc",
+    "subject-required": "Chủ đề là bắt buộc",
+    "name-required": "Tên là bắt buộc",
+    "address-required": "Địa chỉ là bắt buộc",
+    "date-required": "Ngày là bắt buộc",
+    "type-required": "Loại là bắt buộc",
+    "status-required": "Trạng thái là bắt buộc",
+    "username-required": "Tên người dùng là bắt buộc"
 }
+
 }

@@ -12,7 +12,6 @@ import { labelAtom } from "@/store/mail";
 
 export default function InboxList(props: { title: string }) {
   const [label] = useAtom(labelAtom);
-  console.log("🚀 ~ InboxList ~ label:", label);
   const [row, setRow] = React.useState<IMail[]>([]);
 
   const handleStarChange = (
@@ -119,15 +118,15 @@ export default function InboxList(props: { title: string }) {
   const paginationModel = { page: 0, pageSize: 12 };
 
   // data = call API(title)
-
+  const data = INBOXLIST;
   React.useEffect(() => {
     const newData = label
-      ? INBOXLIST.filter((e: IMail) => {
+      ? data.filter((e: IMail) => {
           return e.group.label === label;
         })
-      : INBOXLIST;
+      : data;
     setRow(newData);
-  }, [label, setRow]);
+  }, [label, setRow, data]);
 
   const [selectedRows, setSelectedRows] = React.useState<number[]>([]);
   // Filter selected data

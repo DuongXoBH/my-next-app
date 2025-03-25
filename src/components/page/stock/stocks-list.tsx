@@ -8,6 +8,7 @@ import ListLoading from "@/components/common/global/list-loading";
 import Image from "next/image";
 import { CustomTableFooter } from "@/components/common/table/table-footer";
 import { useTranslations } from "next-intl";
+import NotFound from "@/components/common/table/not-found-data";
 
 
 export default function StocksList({ size }: { size?: number }) {
@@ -118,17 +119,16 @@ export default function StocksList({ size }: { size?: number }) {
         pageSizeOptions={[5, 10, 20]}
         disableColumnSorting
         slots={{
-          noRowsOverlay: () => (
-            <div className="flex items-center justify-center h-full w-full">
-              <p>No data</p>
-            </div>
-          ),
+          noRowsOverlay: NotFound,
           footer: CustomTableFooter,
         }}
         sx={{
           border: 0,
           "& .MuiTablePagination-selectLabel ": {
             display: "none",
+          },
+          "& .MuiDataGrid-cell": {
+            outline: "none",
           },
           "& .MuiDataGrid-cell:focus": {
             outline: "none",

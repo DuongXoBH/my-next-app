@@ -6,7 +6,8 @@ import { Status } from "./status";
 import { useAtom } from "jotai";
 import { orderListAtom } from "@/store/order-filter";
 import { useTranslations } from "next-intl";
-
+import { CustomTableFooter } from "@/components/common/table/table-footer";
+import NotFound from "@/components/common/table/not-found-data";
 
 export default function OrderList({ size }: { size?: number }) {
   const t = useTranslations("Order Lists");
@@ -22,28 +23,36 @@ export default function OrderList({ size }: { size?: number }) {
       headerName: "NAME",
       type: "string",
       flex: 0.15,
-      renderHeader: () => <p className="font-extrabold w-full uppercase">{t("name")}</p>,
+      renderHeader: () => (
+        <p className="font-extrabold w-full uppercase">{t("name")}</p>
+      ),
     },
     {
       field: "address",
       headerName: "ADDRESS",
       type: "string",
       flex: 0.25,
-      renderHeader: () => <p className="font-extrabold w-full uppercase">{t("address")}</p>,
+      renderHeader: () => (
+        <p className="font-extrabold w-full uppercase">{t("address")}</p>
+      ),
     },
     {
       field: "date",
       headerName: "DATE",
       type: "string",
       flex: 0.2,
-      renderHeader: () => <p className="font-extrabold w-full uppercase">{t("date")}</p>,
+      renderHeader: () => (
+        <p className="font-extrabold w-full uppercase">{t("date")}</p>
+      ),
     },
     {
       field: "type",
       headerName: "TYPE",
       type: "string",
       flex: 0.15,
-      renderHeader: () => <p className="font-extrabold w-full uppercase">{t("type")}</p>,
+      renderHeader: () => (
+        <p className="font-extrabold w-full uppercase">{t("type")}</p>
+      ),
     },
     {
       field: "status",
@@ -55,10 +64,12 @@ export default function OrderList({ size }: { size?: number }) {
           <Status title={params.value} />
         </div>
       ),
-      renderHeader: () => <p className="font-extrabold w-full uppercase">{t("status")}</p>,
+      renderHeader: () => (
+        <p className="font-extrabold w-full uppercase">{t("status")}</p>
+      ),
     },
   ];
-  const [data, ] = useAtom(orderListAtom);
+  const [data] = useAtom(orderListAtom);
   const dataVal = size ? data.slice(0, size) : data;
   return (
     <Paper sx={{ width: "100%", overflow: "hidden", borderRadius: "20px" }}>
@@ -70,6 +81,10 @@ export default function OrderList({ size }: { size?: number }) {
         disableRowSelectionOnClick
         disableColumnSorting
         disableColumnFilter
+        slots={{
+          noRowsOverlay: NotFound,
+          footer: CustomTableFooter,
+        }}
         sx={{
           border: 0,
           "& .MuiTablePagination-selectLabel ": {

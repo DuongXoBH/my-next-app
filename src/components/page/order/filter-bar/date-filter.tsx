@@ -1,9 +1,7 @@
 "use client";
 
-import { ORDERLIST } from "@/constants/order";
 import { useOutsideClick } from "@/hooks/use-outside-click";
 import { orderListAtom, searchAtom } from "@/store/order-filter";
-import { IOrder } from "@/store/order-filter";
 import { Divider } from "@mui/material";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
@@ -13,6 +11,7 @@ import { useAtom } from "jotai";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useCallback, useState } from "react";
+import { filterFunction } from "../../../../api-hooks/order/filter-function";
 
 export default function DateFilter() {
   const [, setData] = useAtom(orderListAtom);
@@ -32,24 +31,9 @@ export default function DateFilter() {
   };
   const handleFilter = () => {
     setIsDateOpen(false);
-
-    let dataVal = ORDERLIST;
-    if (orderSearch.type.length > 0) {
-      dataVal = dataVal.filter((order: IOrder) =>
-        orderSearch.type?.includes(order.type)
-      );
-    }
-    if (orderSearch.status.length > 0) {
-      dataVal = dataVal.filter((order: IOrder) =>
-        orderSearch.status?.includes(order.status)
-      );
-    }
-    if (orderSearch.date && orderSearch.date.length > 0) {
-      dataVal = dataVal.filter((order: IOrder) =>
-        orderSearch.date?.includes(order.date)
-      );
-    }
-    setData(dataVal);
+    const newData = filterFunction(orderSearch);
+    console.log("🚀 ~ handleFilter ~ newData:", newData)
+    setData(newData);
   };
 
   // click outside hooks

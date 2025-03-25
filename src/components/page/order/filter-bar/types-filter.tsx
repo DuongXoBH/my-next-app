@@ -1,8 +1,8 @@
 "use client";
 
-import { ORDERLIST } from "@/constants/order";
+import { filterFunction } from "@/api-hooks/order/filter-function";
 import { useOutsideClick } from "@/hooks/use-outside-click";
-import { IOrder, orderListAtom, searchAtom } from "@/store/order-filter";
+import { orderListAtom, searchAtom } from "@/store/order-filter";
 import { Divider } from "@mui/material";
 import { useAtom } from "jotai";
 import { useTranslations } from "next-intl";
@@ -38,24 +38,8 @@ export default function TypesFilter() {
   //event handler for filtering
   const handleFilter = () => {
     setIsTypesOpen(false);
-
-    let dataVal = ORDERLIST;
-    if (orderSearch.type.length > 0) {
-      dataVal = dataVal.filter((order: IOrder) =>
-        orderSearch.type.includes(order.type)
-      );
-    }
-    if (orderSearch.status.length > 0) {
-      dataVal = dataVal.filter((order: IOrder) =>
-        orderSearch.status.includes(order.status)
-      );
-    }
-    if (orderSearch.date && orderSearch.date.length > 0) {
-      dataVal = dataVal.filter((order: IOrder) =>
-        orderSearch.date?.includes(order.date)
-      );
-    }
-    setData(dataVal);
+    const newData = filterFunction(orderSearch);
+    setData(newData);
   };
   const handleClickOutSideTypes = useCallback(() => {
     if (isTypesOpen) {

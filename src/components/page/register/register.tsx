@@ -2,7 +2,7 @@
 
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { registerSchema } from "@/hook-form-schema/login";
+import { registerSchema } from "@/hook-form-schema/register";
 import { useEffect, useState } from "react";
 import { useFetchRegister } from "@/api-hooks/user";
 import Visibility from "@mui/icons-material/Visibility";

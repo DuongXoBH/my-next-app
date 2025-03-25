@@ -20,6 +20,7 @@ import Link from "next/link";
 import { Tooltip } from "@mui/material";
 import ListNode from "./sidebar-list";
 import { useTranslations } from "next-intl";
+import LinkTag from "../../global/link-tag";
 
 export default function Sidebar() {
   const t = useTranslations("Global");
@@ -43,7 +44,7 @@ export default function Sidebar() {
       <Toolbar sx={{ pl: 2, py: 1, height: "74px" }}>
         <Link
           href="/"
-          className={`w-full h-full flex justify-center items-center overflow-hidden ${open? "pl-5" :""}`}
+          className={`w-full h-full flex justify-center items-center overflow-hidden ${open ? "pl-5" : ""}`}
         >
           {open ? (
             <Image
@@ -53,7 +54,7 @@ export default function Sidebar() {
               height={28}
               priority
             ></Image>
-          ):(
+          ) : (
             <Image
               src="/logo47.png"
               alt="Logo"
@@ -79,7 +80,7 @@ export default function Sidebar() {
             textTransform: "uppercase",
           }}
         >
-        {t("page")}
+          {t("page")}
         </Typography>
       )}
 
@@ -106,24 +107,28 @@ export default function Sidebar() {
             },
           }}
         >
-          <Tooltip title={open ? "" : "Settings"}>
-            <ListItemButton
-              sx={{
-                overflow: "hidden",
-                padding: open ? "30px" : "0 16px",
-                height: "50px",
-              }}
-            >
-              <ListItemIcon sx={{ display: "flex", justifyContent: "center" }}>
-                <SettingsIcon sx={{ color: "black" }} />
-              </ListItemIcon>
-              {open && (
-                <Typography sx={{ fontWeight: "600", fontSize: "14px" }}>
-                  {t("settings")}
-                </Typography>
-              )}
-            </ListItemButton>
-          </Tooltip>
+          <LinkTag href="/settings" className={open ? "w-[236px]" : "w-[88px]"}>
+            <Tooltip title={open ? "" : "Settings"}>
+              <ListItemButton
+                sx={{
+                  overflow: "hidden",
+                  padding: open ? "30px" : "0 16px",
+                  height: "50px",
+                }}
+              >
+                <ListItemIcon
+                  sx={{ display: "flex", justifyContent: "center" }}
+                >
+                  <SettingsIcon sx={{ color: "black" }} />
+                </ListItemIcon>
+                {open && (
+                  <Typography sx={{ fontWeight: "600", fontSize: "14px" }}>
+                    {t("settings")}
+                  </Typography>
+                )}
+              </ListItemButton>
+            </Tooltip>
+          </LinkTag>
         </ListItem>
 
         {/* Logout Items */}
@@ -167,7 +172,6 @@ export default function Sidebar() {
         </ListItem>
       </List>
       <Divider />
-
     </Drawer>
   );
 }
