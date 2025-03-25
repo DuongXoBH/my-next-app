@@ -49,7 +49,7 @@ export default function Dashboard({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <div className="flex overflow-auto !p-0 w-full">
+    <div className="flex overflow-hidden scrollbar-hide !p-0 w-full">
       {/* Sidebar */}
       <Sidebar />
 

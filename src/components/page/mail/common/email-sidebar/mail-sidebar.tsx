@@ -147,7 +147,7 @@ export default function EmailSidebar({
                 disablePadding
               >
                 <Button
-                  className={`w-full h-12 flex flex-row justify-start mx-2 rounded-lg ${check ? `bg-blue-400` : ""}`}
+                  className={`w-full h-12 flex flex-row justify-start mx-2 px-4 rounded-lg ${check ? `bg-blue-400` : ""}`}
                   onClick={() => {
                     setLabel(element.name);
                   }}
@@ -173,7 +173,7 @@ export default function EmailSidebar({
             disablePadding
           >
             <Button
-              className="w-full h-12 flex flex-row justify-start mx-2"
+              className="w-full h-12 flex flex-row justify-start mx-2 px-4"
               onClick={() => {
                 setLabel(null);
               }}

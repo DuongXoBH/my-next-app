@@ -26,10 +26,9 @@ export default {
         }
       },
       fontFamily: {
-        sans: ["var(--font-nunito-sans)"], // Đặt làm font mặc định
+        sans: ["var(--font-nunito-sans)"],
       },
-      
     },
   },
-  plugins: [],
+  plugins: [require('tailwind-scrollbar-hide')],
 } satisfies Config;

@@ -48,6 +48,7 @@
     "socket.io": "^4.8.1",
     "socket.io-client": "^4.8.1",
     "swiper": "^11.2.4",
+    "tailwind-scrollbar-hide": "^2.0.0",
     "yup": "^1.6.1"
   },
   "devDependencies": {

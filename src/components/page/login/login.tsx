@@ -79,7 +79,7 @@ export default function Login() {
       toast("You have logged in");
       router.push(getPathname({href: "/", locale : locale as "vi"|"en"}));
     }
-  }, [token, router]);
+  }, [token, router, locale]);
 
   if (loading) {
     return (

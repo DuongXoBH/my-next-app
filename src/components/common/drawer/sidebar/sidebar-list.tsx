@@ -40,10 +40,9 @@ export default function ListNode({
               : "inherit",
             overflow: "hidden",
             height: "50px",
-            width: open ? "236px" : "88px",
+            width: open ? "236px" : "86px",
             borderRadius: open ? "8px" : "0",
             ":hover": {
-              width: open ? "236px" : "88px",
               backgroundColor: "rgba(72, 128, 255, 1)",
               color: "white",
               "& .MuiListItemButton-root": {
@@ -57,7 +56,7 @@ export default function ListNode({
           disablePadding
         >
           <LinkTag
-            className={open ? "w-[236px]" : "w-[88px]"}
+            className={open ? "w-[236px]" : "w-[86px]"}
             href={element.href}
           >
             <Tooltip title={open ? "" : element.text}>
@@ -66,7 +65,7 @@ export default function ListNode({
                   overflow: "hidden",
                   padding: open ? "30px" : "0 16px",
                   height: "50px",
-                  width: open ? "230px" : "88px",
+                  width: open ? "230px" : "86px",
                 }}
               >
                 <ListItemIcon

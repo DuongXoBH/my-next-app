@@ -95,10 +95,9 @@ export default function Sidebar() {
           disablePadding
           sx={{
             height: "50px",
-            width: open ? "240px" : "88px",
+            width: open ? "236px" : "86px",
+            borderRadius: "8px",
             ":hover": {
-              width: open ? "238px" : "88px",
-              borderRadius: "8px",
               backgroundColor: "rgba(72, 128, 255, 1)",
               color: "white",
               "& .MuiSvgIcon-root": {
@@ -107,7 +106,7 @@ export default function Sidebar() {
             },
           }}
         >
-          <LinkTag href="/settings" className={open ? "w-[236px]" : "w-[88px]"}>
+          <LinkTag href="/settings" className={open ? "w-[236px]" : "w-[86px]"}>
             <Tooltip title={open ? "" : "Settings"}>
               <ListItemButton
                 sx={{
@@ -136,10 +135,9 @@ export default function Sidebar() {
           disablePadding
           sx={{
             height: "50px",
-            width: open ? "240px" : "88px",
+            width: open ? "236px" : "86px",
+            borderRadius: "8px",
             ":hover": {
-              width: open ? "238px" : "88px",
-              borderRadius: "8px",
               backgroundColor: "rgba(72, 128, 255, 1)",
               color: "white",
               "& .MuiSvgIcon-root": {
