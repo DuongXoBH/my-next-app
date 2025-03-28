@@ -76,7 +76,6 @@ export default function FavoritesList() {
                 borderRadius: 2,
                 overflow: "hidden",
                 marginBottom: "30px",
-                cursor: "pointer",
               }}
             >
               {/* Image */}

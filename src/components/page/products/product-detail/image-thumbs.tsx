@@ -52,7 +52,7 @@ export default function ImageThumbs({ images }: { images: string[] }) {
           return (
             <SwiperSlide
               key={`image-${index}`}
-              className="cursor-pointer transition-all duration-300 hover:scale-125"
+              className="cursor-pointer transition-all duration-300 hover:scale-x-125"
             >
               <CardMedia
                 component="img"

@@ -38,6 +38,8 @@ export default function MyCalendar() {
   });
   const [hoveredEvent, setHoveredEvent] = useState<EventClickArg | null>(null);
 
+  // const colors = ["#516FE9", "#F87171", "#34D399", "#FBBF24", "#818CF8"];
+
   const handleSelect = (info: DateSelectArg) => {
     setSelectedDate({ start: info.startStr, end: info.endStr });
     setOpenAddModal(true);
@@ -129,16 +131,16 @@ export default function MyCalendar() {
             value={newNote.title}
             onChange={(e) => setNewNote({ ...newNote, title: e.target.value })}
           />
-          <label htmlFor="event-member">Number of members</label>
 
+          <label htmlFor="event-member" className="mt-5">Number of members</label>
           <TextField
             id="event-member"
-            sx={{ marginTop: "20px" }}
             fullWidth
             placeholder="Number of members who will participate in the event"
             value={newNote.member}
             onChange={(e) => setNewNote({ ...newNote, member: e.target.value })}
           />
+
           <Button variant="contained" sx={{ mt: 2 }} onClick={addEvent}>
             Add event
           </Button>

@@ -1,0 +1,99 @@
+"use client";
+
+import React, {
+  useEffect,
+  useState,
+  useRef,
+  FormEvent,
+  KeyboardEvent,
+} from "react";
+import { useChannel } from "ably/react";
+import { Message } from "ably";
+
+export default function ChatBox() {
+  const user = {
+    id: "user-1",
+    name: "User 1",
+  };
+  const inputBox = useRef<HTMLTextAreaElement | null>(null);
+  const messageEnd = useRef<HTMLDivElement | null>(null);
+  const [messageText, setMessageText] = useState<string>("");
+  const [receivedMessages, setMessages] = useState<Message[]>([]);
+  const messageTextIsEmpty = messageText.trim().length === 0;
+
+  const { channel, ably } = useChannel(
+    `chat-room-${user.id}`,
+    (message: Message) => {
+      setMessages((prevMessages) => [...prevMessages.slice(-199), message]);
+    }
+  );
+
+  const sendChatMessage = (messageText: string) => {
+    if (!messageText.trim()) return;
+    channel.publish({ name: "chat-message", data: messageText });
+    setMessageText("");
+
+    if (inputBox.current) {
+      inputBox.current.focus();
+    }
+  };
+
+  const handleFormSubmission = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    sendChatMessage(messageText);
+  };
+
+  const handleKeyPress = (event: KeyboardEvent<HTMLTextAreaElement>) => {
+    if (event.key === "Enter" && !event.shiftKey && !messageTextIsEmpty) {
+      event.preventDefault();
+      sendChatMessage(messageText);
+    }
+  };
+
+  useEffect(() => {
+    if (messageEnd.current) {
+      messageEnd.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [receivedMessages]);
+
+  return (
+    <div className="w-full h-[400px] flex flex-col border-[2px] rounded-lg border-gray-300 bg-white shadow-md p-4">
+      <div className="flex flex-col flex-grow overflow-y-auto mb-4">
+        {receivedMessages.map((message, index) => {
+          const author = message.connectionId === ably.connection.id;
+          console.log(author);
+          return (
+            <span
+              key={index}
+              className={`py-2 px-3 rounded-[18px] break-words text-[14px] ${
+                author
+                  ? "bg-blue-500 text-white self-end"
+                  : "bg-gray-300 text-black self-start"
+              }`}
+            >
+              {message.data}
+            </span>
+          );
+        })}
+        <div ref={messageEnd}></div>
+      </div>
+      <form onSubmit={handleFormSubmission} className="flex p-[10px] bg-white border-t-2 border-gray-300 rounded-b-lg">
+        <textarea
+          ref={inputBox}
+          value={messageText}
+          placeholder="Type a message..."
+          onChange={(e) => setMessageText(e.target.value)}
+          onKeyDown={handleKeyPress}
+          className="flex-grow p-2 border-2 border-gray-300 rounded-lg resize-none focus:outline-none focus:border-blue-500"
+        ></textarea>
+        <button
+          type="submit"
+          className="ml-2 px-4 py-2 bg-blue-500 text-white rounded-lg cursor-pointer hover:bg-blue-600 disabled:opacity-50"
+          disabled={messageTextIsEmpty}
+        >
+          Send
+        </button>
+      </form>
+    </div>
+  );
+}

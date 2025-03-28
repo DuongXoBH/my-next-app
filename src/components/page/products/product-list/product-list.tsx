@@ -112,7 +112,6 @@ export default function ProductList() {
                   backgroundColor: "white",
                   borderRadius: 2,
                   overflow: "hidden",
-                  cursor: "pointer",
                 }}
               >
                 {/* Images */}

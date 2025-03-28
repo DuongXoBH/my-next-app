@@ -72,7 +72,7 @@ export default function OrderList({ size }: { size?: number }) {
   const [data] = useAtom(orderListAtom);
   const dataVal = size ? data.slice(0, size) : data;
   return (
-    <Paper sx={{ width: "100%", overflow: "hidden", borderRadius: "20px" }}>
+    <Paper sx={{ width: "100%",maxHeight:"850px", overflow: "auto", borderRadius: "20px" }}>
       <DataGrid
         rows={dataVal}
         columns={columns}

@@ -10,7 +10,6 @@ import { CustomTableFooter } from "@/components/common/table/table-footer";
 import { useTranslations } from "next-intl";
 import NotFound from "@/components/common/table/not-found-data";
 
-
 export default function StocksList({ size }: { size?: number }) {
   const t = useTranslations("Product Stock");
   const columns: GridColDef[] = [
@@ -97,7 +96,12 @@ export default function StocksList({ size }: { size?: number }) {
             </Tooltip>
             <Tooltip title="delete">
               <button className="w-[48px] h-[32px] flex items-center justify-center">
-                <Image alt="" src="/stock/bin.png" width={16} height={16}></Image>
+                <Image
+                  alt=""
+                  src="/stock/bin.png"
+                  width={16}
+                  height={16}
+                ></Image>
               </button>
             </Tooltip>
           </div>
@@ -111,7 +115,14 @@ export default function StocksList({ size }: { size?: number }) {
     return <ListLoading />;
   }
   return (
-    <Paper sx={{ width: "100%", overflow: "hidden", borderRadius: "20px" }}>
+    <Paper
+      sx={{
+        width: "100%",
+        maxHeight: "850px",
+        overflow: "auto",
+        borderRadius: "20px",
+      }}
+    >
       <DataGrid
         rows={dataVal}
         columns={columns}

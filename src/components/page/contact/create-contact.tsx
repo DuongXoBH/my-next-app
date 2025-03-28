@@ -32,6 +32,7 @@ export default function CreateContactForm() {
   } = useForm<CreateContactForm>({ resolver: yupResolver(schema) });
 
   const onSubmit: SubmitHandler<CreateContactForm> = async (data) => {
+    console.log("🚀 ~ constonSubmit:SubmitHandler<CreateContactForm>= ~ data:", data)
     const uploadData = {
       name: `${data.firstName} ${data.lastName}`,
       email: data.email,
