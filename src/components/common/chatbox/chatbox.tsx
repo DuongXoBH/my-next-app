@@ -1,7 +1,6 @@
 "use client";
 
 import React, {
-  useEffect,
   useState,
   useRef,
   FormEvent,
@@ -9,12 +8,11 @@ import React, {
 } from "react";
 import { useChannel } from "ably/react";
 import { Message } from "ably";
+import { useTranslations } from "next-intl";
 
-export default function ChatBox() {
-  const user = {
-    id: "user-1",
-    name: "User 1",
-  };
+
+export default function ChatBox({userId}:{userId:number}) {
+  const t = useTranslations("Inbox");
   const inputBox = useRef<HTMLTextAreaElement | null>(null);
   const messageEnd = useRef<HTMLDivElement | null>(null);
   const [messageText, setMessageText] = useState<string>("");
@@ -22,7 +20,7 @@ export default function ChatBox() {
   const messageTextIsEmpty = messageText.trim().length === 0;
 
   const { channel, ably } = useChannel(
-    `chat-room-${user.id}`,
+    `chat-room-${userId}`,
     (message: Message) => {
       setMessages((prevMessages) => [...prevMessages.slice(-199), message]);
     }
@@ -50,22 +48,15 @@ export default function ChatBox() {
     }
   };
 
-  useEffect(() => {
-    if (messageEnd.current) {
-      messageEnd.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [receivedMessages]);
-
   return (
     <div className="w-full h-[400px] flex flex-col border-[2px] rounded-lg border-gray-300 bg-white shadow-md p-4">
       <div className="flex flex-col flex-grow overflow-y-auto mb-4">
         {receivedMessages.map((message, index) => {
           const author = message.connectionId === ably.connection.id;
-          console.log(author);
           return (
             <span
               key={index}
-              className={`py-2 px-3 rounded-[18px] break-words text-[14px] ${
+              className={`py-2 px-3 mt-1 rounded-[18px] break-words text-[14px] ${
                 author
                   ? "bg-blue-500 text-white self-end"
                   : "bg-gray-300 text-black self-start"
@@ -81,7 +72,7 @@ export default function ChatBox() {
         <textarea
           ref={inputBox}
           value={messageText}
-          placeholder="Type a message..."
+          placeholder={t("message")}
           onChange={(e) => setMessageText(e.target.value)}
           onKeyDown={handleKeyPress}
           className="flex-grow p-2 border-2 border-gray-300 rounded-lg resize-none focus:outline-none focus:border-blue-500"
@@ -91,7 +82,7 @@ export default function ChatBox() {
           className="ml-2 px-4 py-2 bg-blue-500 text-white rounded-lg cursor-pointer hover:bg-blue-600 disabled:opacity-50"
           disabled={messageTextIsEmpty}
         >
-          Send
+          {t("send")}
         </button>
       </form>
     </div>

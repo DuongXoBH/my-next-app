@@ -4,7 +4,6 @@ import { EMAILPAGES } from "@/constants/mail";
 import useHash from "@/hooks/use-hash";
 import { labelAtom, labelColor } from "@/store/mail";
 import {
-  Box,
   Button,
   Divider,
   Drawer,
@@ -23,17 +22,12 @@ import translationData from "@/messages/en.json";
 import CreateMail from "../../inbox/create-mail";
 type IMailSidebar = keyof typeof translationData.Inbox;
 
-export default function EmailSidebar({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function EmailSidebar() {
   const [label, setLabel] = useAtom(labelAtom);
   const hash = useHash();
   const t = useTranslations("Inbox");
   const [labels] = useAtom(labelColor);
   return (
-    <Box sx={{ display: "flex", flexDirection: "row" }}>
       <Drawer
         sx={{
           width: 286,
@@ -192,19 +186,5 @@ export default function EmailSidebar({
         </List>
         {/* <Divider /> */}
       </Drawer>
-      {/* Mail Main */}
-      <Box
-        sx={{
-          width: "100%",
-          minHeight: "screen",
-          marginLeft: "21px",
-          backgroundColor: "white",
-          borderRadius: "8px",
-          padding: "24px",
-        }}
-      >
-        {children}
-      </Box>
-    </Box>
   );
 }

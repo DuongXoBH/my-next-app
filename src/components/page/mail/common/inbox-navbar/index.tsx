@@ -1,48 +1,16 @@
 "use client";
-import { styled, alpha } from "@mui/material/styles";
-import { Box, Button, InputBase, Tooltip } from "@mui/material";
+import {
+  Box,
+  Button,
+  InputAdornment,
+  TextField,
+  Toolbar,
+  Tooltip,
+} from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import SyncProblemIcon from "@mui/icons-material/SyncProblem";
 import DeleteIcon from "@mui/icons-material/Delete";
-
-const Search = styled("div")(({ theme }) => ({
-  position: "relative",
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.black, 0.15),
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.black, 0.25),
-  },
-  marginRight: theme.spacing(2),
-  marginLeft: theme.spacing(2),
-  width: "100%",
-  [theme.breakpoints.up("sm")]: {
-    width: "auto",
-  },
-}));
-
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: "100%",
-  position: "absolute",
-  pointerEvents: "none",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "black",
-  "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 0),
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: "20ch",
-    },
-  },
-}));
 
 export default function InboxNavbar() {
   return (
@@ -51,19 +19,33 @@ export default function InboxNavbar() {
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
-        height: "40px",
-        marginBottom: "32px",
+        alignItems: "center",
+        paddingTop: "24px",
+        paddingX:"24px"
       }}
     >
-      <Search sx={{ padding: "0 !important", margin: "0 !important" }}>
-        <SearchIconWrapper>
-          <SearchIcon sx={{ color: "gray" }} />
-        </SearchIconWrapper>
-        <StyledInputBase
-          placeholder="Search mail"
-          inputProps={{ "aria-label": "search" }}
+      {/* Search area */}
+      <Toolbar sx={{ padding: "0px !important" }}>
+        <TextField
+          placeholder="Search mail "
+          variant="outlined"
+          size="small"
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon color="disabled" />
+              </InputAdornment>
+            ),
+            sx: {
+              fontSize: "14px",
+              width: "25%",
+              minWidth: "288px",
+              borderRadius: "50px",
+              backgroundColor: "#F5F6FA",
+            },
+          }}
         />
-      </Search>
+      </Toolbar>
       <Box
         sx={{
           display: "flex",
@@ -71,6 +53,8 @@ export default function InboxNavbar() {
           borderRadius: "12px",
           borderColor: "rgba(213, 213, 213, 1)",
           borderWidth: "0.6px",
+          height:"40px",
+          backgroundColor: "#F5F6FA",
           borderStyle: "solid",
           overflow: "hidden",
         }}
@@ -84,7 +68,7 @@ export default function InboxNavbar() {
               borderRadius: "0 !important",
             }}
           >
-            <ArrowDownwardIcon sx={{ color: "black" }} />
+            <ArrowDownwardIcon sx={{ color: "black", width: "16px" }} />
           </Button>
         </Tooltip>
         <Tooltip title="Warning">
@@ -96,12 +80,12 @@ export default function InboxNavbar() {
               borderRadius: "0 !important",
             }}
           >
-            <SyncProblemIcon sx={{ color: "black" }} />
+            <SyncProblemIcon sx={{ color: "black", width: "16px" }} />
           </Button>
         </Tooltip>
         <Tooltip title="Delete">
           <Button>
-            <DeleteIcon sx={{ color: "black" }} />
+            <DeleteIcon sx={{ color: "black", width: "16px" }} />
           </Button>
         </Tooltip>
       </Box>

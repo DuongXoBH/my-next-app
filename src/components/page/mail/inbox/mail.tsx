@@ -3,7 +3,7 @@
 import * as React from "react";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import Paper from "@mui/material/Paper";
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { Label } from "./mail-label";
 import { IMail, INBOXLIST } from "@/constants/mail";
 import { CustomTableFooter } from "@/components/common/table/table-footer";
@@ -135,9 +135,9 @@ export default function InboxList(props: { title: string }) {
   );
   console.log("🚀 ~ InboxList ~ selectedData:", selectedData);
   return (
-    <Box>
-      <Typography>{props.title}</Typography>
-      <Paper sx={{ width: "100%", height: "750px" }}>
+    <div>
+      <p className="px-5 font-bold">{props.title}</p>
+      <Paper sx={{ width: "100%", height: "750px", marginX: "auto" }}>
         <DataGrid
           rows={row}
           columns={columns}
@@ -168,6 +168,6 @@ export default function InboxList(props: { title: string }) {
           }}
         />
       </Paper>
-    </Box>
+    </div>
   );
 }

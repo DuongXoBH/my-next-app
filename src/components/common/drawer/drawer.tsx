@@ -60,16 +60,8 @@ export default function Dashboard({ children }: { children: React.ReactNode }) {
 
         {/* Main */}
         <div className="bg-[#F5F6FA] w-full">
-          <div className="container">
-            <Box
-              sx={{
-                width: "100%",
-                paddingTop: 2,
-                paddingBottom: 4,
-              }}
-            >
+          <div className="container w-full pt-2 pb-4 overflow-auto">
               {children}
-            </Box>
           </div>
         </div>
       </Box>
