@@ -116,15 +116,30 @@ export default function StocksList({ size }: { size?: number }) {
   }
   return (
     <Paper
-      sx={{
-        width: "100%",
-        maxHeight: "850px",
-        overflow: "hidden",
-        borderRadius: "20px",
-        "&:hover" : {
-          overflowY: "auto"
-        }
-      }}
+    sx={{
+      width: "100%",
+      maxHeight: "850px",
+      overflowY: "auto",
+      borderRadius: "20px",
+      "&::-webkit-scrollbar": {
+        width: "4px",
+        opacity: 0,
+        transition: "opacity 0.3s ease",
+      },
+      "&::-webkit-scrollbar-thumb": {
+        borderRadius: "3px",
+        opacity: 0, 
+        transition: "opacity 0.3s ease",
+      },
+      "&:hover": {
+        "&::-webkit-scrollbar": {
+          opacity: 1, 
+        },
+        "&::-webkit-scrollbar-thumb": {
+          opacity: 1,
+        },
+      },
+    }}
     >
       <DataGrid
         rows={dataVal}

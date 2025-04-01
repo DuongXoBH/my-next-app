@@ -36,6 +36,24 @@ export default function Sidebar() {
         position: "fixed",
         left: 0,
         top: 0,
+        "&::-webkit-scrollbar": {
+          width: "4px",
+          opacity: 0,
+          transition: "opacity 0.3s ease",
+        },
+        "&::-webkit-scrollbar-thumb": {
+          borderRadius: "3px",
+          opacity: 0, 
+          transition: "opacity 0.3s ease",
+        },
+        "&:hover": {
+          "&::-webkit-scrollbar": {
+            opacity: 1, 
+          },
+          "&::-webkit-scrollbar-thumb": {
+            opacity: 1,
+          },
+        },
         "& .MuiDrawer-paper": {
           width: open ? 240 : 80,
           boxSizing: "border-box",
@@ -45,7 +63,7 @@ export default function Sidebar() {
             width: "4px",
             opacity: 0,
             transition: "opacity 0.3s ease",
-          },
+          },       
         },
       }}
       variant="permanent"

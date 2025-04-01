@@ -76,10 +76,25 @@ export default function OrderList({ size }: { size?: number }) {
       sx={{
         width: "100%",
         maxHeight: "850px",
-        overflow: "hidden",
+        overflowY: "auto",
         borderRadius: "20px",
+        "&::-webkit-scrollbar": {
+          width: "4px",
+          opacity: 0,
+          transition: "opacity 0.3s ease",
+        },
+        "&::-webkit-scrollbar-thumb": {
+          borderRadius: "3px",
+          opacity: 0, 
+          transition: "opacity 0.3s ease",
+        },
         "&:hover": {
-          overflowY: "auto",
+          "&::-webkit-scrollbar": {
+            opacity: 1, 
+          },
+          "&::-webkit-scrollbar-thumb": {
+            opacity: 1,
+          },
         },
       }}
     >
