@@ -30,13 +30,22 @@ export default function Sidebar() {
   return (
     <Drawer
       sx={{
-        width: open ? 240 : 88,
+        width: open ? 240 : 80,
         flexShrink: 0,
-        overflow: "hidden",
+        maxHeight: "100vh",
+        position: "fixed",
+        left: 0,
+        top: 0,
         "& .MuiDrawer-paper": {
-          width: open ? 240 : 88,
+          width: open ? 240 : 80,
           boxSizing: "border-box",
-          position: "relative",
+          position: "fixed",
+          overflowY: "auto",
+          "&::-webkit-scrollbar": {
+            width: "4px",
+            opacity: 0,
+            transition: "opacity 0.3s ease",
+          },
         },
       }}
       variant="permanent"
@@ -44,7 +53,7 @@ export default function Sidebar() {
       <Toolbar sx={{ pl: 2, py: 1, height: "74px" }}>
         <Link
           href="/"
-          className={`w-full h-full flex justify-center items-center overflow-hidden ${open ? "pl-5" : ""}`}
+          className={`w-[224px] h-full flex justify-center items-center overflow-hidden ${open ? "pl-5" : ""}`}
         >
           {open ? (
             <Image
@@ -94,9 +103,10 @@ export default function Sidebar() {
         <ListItem
           disablePadding
           sx={{
-            height: "50px",
-            width: open ? "236px" : "86px",
+            height: "60px",
+            width: open ? "224px" : "78px",
             borderRadius: "8px",
+            overflowY: "auto",
             ":hover": {
               backgroundColor: "rgba(72, 128, 255, 1)",
               color: "white",
@@ -106,13 +116,13 @@ export default function Sidebar() {
             },
           }}
         >
-          <LinkTag href="/settings" className={open ? "w-[236px]" : "w-[86px]"}>
+          <LinkTag href="/settings" className={open ? "w-[224px]" : "w-[78px]"}>
             <Tooltip title={open ? "" : "Settings"}>
               <ListItemButton
                 sx={{
                   overflow: "hidden",
-                  padding: open ? "30px" : "0 16px",
-                  height: "50px",
+                  padding: open ? "30px" : "0 12px",
+                  height: "60px",
                 }}
               >
                 <ListItemIcon
@@ -134,8 +144,8 @@ export default function Sidebar() {
         <ListItem
           disablePadding
           sx={{
-            height: "50px",
-            width: open ? "236px" : "86px",
+            height: "60px",
+            width: open ? "224px" : "78px",
             borderRadius: "8px",
             ":hover": {
               backgroundColor: "rgba(72, 128, 255, 1)",
@@ -150,8 +160,8 @@ export default function Sidebar() {
             <ListItemButton
               sx={{
                 overflow: "hidden",
-                padding: open ? "30px" : "0 16px",
-                height: "50px",
+                padding: open ? "30px" : "0 12px",
+                height: "60px",
               }}
               onClick={() => {
                 setUser("");

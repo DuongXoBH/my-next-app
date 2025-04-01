@@ -237,7 +237,7 @@ export default function UpdateContactComponent({ userId }: { userId: string }) {
           type="submit"
           className="w-[274px] h-14 bg-[#4880FF] disabled:bg-gray-600 rounded-xl text-white"
         >
-          Update Now
+          {t("update")}
         </button>
       </form>
     </div>

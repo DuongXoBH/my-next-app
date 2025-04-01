@@ -5,14 +5,15 @@ import ChatBox from "./chatbox";
 import { useAtom } from "jotai";
 import { userToken } from "@/store/user";
 import { useFetchUserApiBySession } from "@/api-hooks/user";
+import BoxLoading from "../global/box-loading";
 
 export default function Chat() {
   const [token, ] = useAtom(userToken);
-  const { data: user, isLoading } = useFetchUserApiBySession(token);
-  if(isLoading) return <h1>Loading chat...</h1>
+  const { data: auth, isLoading } = useFetchUserApiBySession(token);
+  if(isLoading) return <BoxLoading/>
   return (
-      <ChannelProvider channelName={`chat-room-${user.id}`}>
-        <ChatBox userId={user.id}/>
+      <ChannelProvider channelName={`chat-room-${auth.id}`}>
+        <ChatBox userId={auth.id}/>
       </ChannelProvider>
   );
 }

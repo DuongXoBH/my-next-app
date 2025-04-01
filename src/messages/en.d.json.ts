@@ -152,7 +152,8 @@ declare const messages: {
     "to": "invoice to",
     "date": "invoice date",
     "due": "due date",
-    "send": "send",
+    "print": "Print",
+    "send": "Send",
     "total": "total"
   },
   "UI Elements": {

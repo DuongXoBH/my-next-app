@@ -1,19 +1,20 @@
 "use client";
 
-import React, { useState, useRef, FormEvent, KeyboardEvent } from "react";
+import React, { useState, useRef, FormEvent, KeyboardEvent, useEffect } from "react";
 import { useChannel } from "ably/react";
 import { Message } from "ably";
 import { useTranslations } from "next-intl";
 import { useAtom } from "jotai";
 import { AblyAtom } from "@/store/contact";
+import BoxLoading from "../global/box-loading";
 
 export default function ChatBox({ userId }: { userId?: number }) {
   const t = useTranslations("Inbox");
-  const [ably,] = useAtom(AblyAtom);
+  const [ably] = useAtom(AblyAtom);
   const inputBox = useRef<HTMLTextAreaElement | null>(null);
   const messageEnd = useRef<HTMLDivElement | null>(null);
   const [messageText, setMessageText] = useState<string>("");
-  const [receivedMessages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const messageTextIsEmpty = messageText.trim().length === 0;
 
   const { channel } = useChannel(`chat-room-${userId}`, (message: Message) => {
@@ -42,14 +43,18 @@ export default function ChatBox({ userId }: { userId?: number }) {
     }
   };
 
+  useEffect(() => {
+    messageEnd.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
   if (!ably) {
-    return <div>Loading chat...</div>;
+    return <BoxLoading />;
   }
 
   return (
     <div className="w-full h-[70vh] flex flex-col border-[2px] rounded-lg border-gray-300 bg-white shadow-md p-4">
       <div className="flex flex-col flex-grow overflow-y-auto mb-4">
-        {receivedMessages.map((message, index) => {
+        {messages.map((message, index) => {
           const author = message.connectionId === ably?.connection.id;
           return (
             <span

@@ -40,7 +40,7 @@ export default function ListNode({
               : "inherit",
             overflow: "hidden",
             height: "50px",
-            width: open ? "236px" : "86px",
+            width: open ? "224px" : "78px",
             borderRadius: open ? "8px" : "0",
             ":hover": {
               backgroundColor: "rgba(72, 128, 255, 1)",
@@ -56,16 +56,16 @@ export default function ListNode({
           disablePadding
         >
           <LinkTag
-            className={open ? "w-[236px]" : "w-[86px]"}
+            className={open ? "w-[224px]" : "w-[78px]"}
             href={element.href}
           >
             <Tooltip title={open ? "" : element.text}>
               <ListItemButton
                 sx={{
                   overflow: "hidden",
-                  padding: open ? "30px" : "0 16px",
+                  padding: open ? "30px" : "0 12px",
                   height: "50px",
-                  width: open ? "230px" : "86px",
+                  width: open ? "224px" : "78px",
                 }}
               >
                 <ListItemIcon

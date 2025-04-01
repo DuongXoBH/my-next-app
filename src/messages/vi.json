@@ -149,7 +149,8 @@
     "to": "Hóa đơn đến",
     "date": "Ngày lập hóa đơn",
     "due": "Hạn thanh toán",
-    "send": "gửi",
+    "print": "In",
+    "send": "Gửi",
     "total": "tổng"
   },
   "UI Elements": {

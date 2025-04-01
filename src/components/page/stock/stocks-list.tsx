@@ -119,8 +119,11 @@ export default function StocksList({ size }: { size?: number }) {
       sx={{
         width: "100%",
         maxHeight: "850px",
-        overflow: "auto",
+        overflow: "hidden",
         borderRadius: "20px",
+        "&:hover" : {
+          overflowY: "auto"
+        }
       }}
     >
       <DataGrid
