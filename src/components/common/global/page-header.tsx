@@ -14,6 +14,7 @@ export default function PageHeader({ page }: { page: string }) {
         lineHeight: "43.5px",
         textAlign: "start",
         fontWeight: 700,
+        textTransform: "capitalize"
       }}
     >
       {t("title")}

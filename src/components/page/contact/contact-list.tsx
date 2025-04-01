@@ -31,11 +31,7 @@ export default function ContactList() {
             index: number
           ) => {
             return (
-              <LinkTag
-                key={`user-${index}`}
-                href={`/contact/${user.id}/update`}
-                className="w-[31%]  max-h-[415px] rounded-[16px] border-[2px] border-gray-300 mb-[30px] overflow-hidden"
-              >
+              <div key={`user-${index}`} className="w-[31%]  max-h-[415px] rounded-[16px] border-[2px] border-gray-300 mb-[30px] overflow-hidden">
                 <div className="w-full max-h-[276px] bg-gray-200 overflow-hidden">
                   {!isLoaded && (
                     <Skeleton
@@ -63,17 +59,34 @@ export default function ContactList() {
                   <p className="text-sm text-gray-400 font-normal">
                     {user.email}
                   </p>
-                  <button className="w-[137px] h-[40px] border-[1px] border-gray-300 rounded-[8px] mt-5 flex flex-row gap-2 items-center justify-center text-gray-500 hover:bg-gray-300">
+                  <div className="w-full flex flex-row gap-5 justify-center">
+                  <LinkTag
+                    href={`/contact/${user.id}/update`}
+                    className="w-[137px] h-[40px] border-[1px] border-gray-300 rounded-[8px] mt-5 flex flex-row gap-2 items-center justify-center text-gray-500 capitalize hover:bg-gray-300"
+                  >
                     <Image
                       alt=""
                       src="/message-icon.svg"
                       width={14}
                       height={16}
                     ></Image>
-                    Message
-                  </button>
+                    {t("profile")}
+                  </LinkTag>
+                  <LinkTag
+                    href={`/contact/${user.id}/chat`}
+                    className="w-[137px] h-[40px] border-[1px] border-gray-300 rounded-[8px] mt-5 flex flex-row gap-2 items-center justify-center text-gray-500 capitalize hover:bg-gray-300"
+                  >
+                    <Image
+                      alt=""
+                      src="/message-icon.svg"
+                      width={14}
+                      height={16}
+                    ></Image>
+                    {t("message")}
+                  </LinkTag>
+                  </div>
                 </div>
-              </LinkTag>
+              </div>
             );
           }
         )}
@@ -83,7 +96,7 @@ export default function ContactList() {
           className="w-[100px] h-[50px] border-[1px] border-gray-300 rounded-[8px] hover:bg-gray-300"
           onClick={() => setVisibleCount((count) => count + 3)}
         >
-        {t("more")}
+          {t("more")}
         </button>
       )}
     </div>

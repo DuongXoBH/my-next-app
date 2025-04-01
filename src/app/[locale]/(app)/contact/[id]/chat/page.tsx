@@ -1,10 +1,10 @@
 "use client";
 
 import PageHeader from "@/components/common/global/page-header";
-import UpdateContactComponent from "@/components/page/contact/update-contact";
+import ChatboxComponent from "@/components/page/contact/chatbox";
 import { use } from "react";
 
-export default function UpdateContact({
+export default function ChatPage({
   params,
 }: {
   params: Promise<{ id: string }>;
@@ -12,8 +12,8 @@ export default function UpdateContact({
   const {id} = use(params);
   return (
     <div>
-      <PageHeader page="UpdateContact"/>
-      <UpdateContactComponent userId={id}/>
+        <PageHeader page="Chatbox"/>
+        <ChatboxComponent id={id}/>
     </div>
   )
 }

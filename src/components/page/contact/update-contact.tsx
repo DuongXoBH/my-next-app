@@ -6,6 +6,7 @@ import { createNewContactSchema } from "@/hook-form-schema/contact";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { CardMedia } from "@mui/material";
 import { CldUploadWidget } from "next-cloudinary";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
@@ -14,6 +15,7 @@ const schema = createNewContactSchema;
 
 export default function UpdateContactComponent({ userId }: { userId: string }) {
   const id = userId;
+  const t = useTranslations("UpdateContact");
   const [isSummiting, setIsSubmitting] = useState(false);
   const [imageUrl, setImageUrl] = useState<string>("");
   const { data: user } = useFetchUserApiById(id);
@@ -107,17 +109,17 @@ export default function UpdateContactComponent({ userId }: { userId: string }) {
           <div className="w-[360px] h-full flex flex-col justify-between items-start">
             <div className="w-full h-[82px] flex flex-col justify-between items-start">
               <label
-                className="text-sm font-semibold mb-3 text-[#ADADAD]"
+                className="text-sm font-semibold capitalize mb-3 text-[#ADADAD]"
                 htmlFor="firstName "
               >
-                First Name
+                {t("first name")}
               </label>
               <input
                 type="text"
                 id="firstName"
-                placeholder="Enter your first name"
+                placeholder={t("enter your first name")}
                 {...register("firstName")}
-                className="w-full border p-2 rounded h-[52px]"
+                className="w-full border p-2 rounded h-[52px] capitalize"
               />
             </div>
             {errors.firstName && (
@@ -127,17 +129,17 @@ export default function UpdateContactComponent({ userId }: { userId: string }) {
           <div className="w-[360px] h-full flex flex-col justify-between items-start">
             <div className="w-full h-[82px] flex flex-col justify-between items-start">
               <label
-                className="text-sm font-semibold mb-3 text-[#ADADAD]"
+                className="text-sm font-semibold capitalize mb-3 text-[#ADADAD]"
                 htmlFor="lastName"
               >
-                Last Name
+                {t("last name")}
               </label>
               <input
                 type="text"
                 id="lastName"
-                placeholder="Enter your last name"
+                placeholder={t("enter your last name")}
                 {...register("lastName")}
-                className="w-full border p-2 rounded h-[52px]"
+                className="w-full border p-2 rounded h-[52px] capitalize"
               />
             </div>
             {errors.lastName && (
@@ -149,15 +151,15 @@ export default function UpdateContactComponent({ userId }: { userId: string }) {
           <div className="w-[360px] h-full flex flex-col justify-between items-start">
             <div className="w-full h-[82px] flex flex-col justify-between items-start">
               <label
-                className="text-sm font-semibold mb-3 text-[#ADADAD]"
-                htmlFor="email "
+                className="text-sm font-semibold capitalize mb-3 text-[#ADADAD]"
+                htmlFor="email"
               >
-                Your Email
+                {t("email")}
               </label>
               <input
                 type="text"
                 id="email"
-                placeholder="Enter your email"
+                placeholder={t("enter your email")}
                 {...register("email")}
                 className="w-full border p-2 rounded h-[52px]"
               />
@@ -169,17 +171,17 @@ export default function UpdateContactComponent({ userId }: { userId: string }) {
           <div className="w-[360px] h-full flex flex-col justify-between items-start">
             <div className="w-full h-[82px] flex flex-col justify-between items-start">
               <label
-                className="text-sm font-semibold mb-3 text-[#ADADAD]"
+                className="text-sm font-semibold mb-3 capitalize text-[#ADADAD]"
                 htmlFor="phone"
               >
-                Phone Number
+                {t("phone")}
               </label>
               <input
                 type="text"
                 id="phone"
-                placeholder="Enter your phone number"
+                placeholder={t("enter your phone number")}
                 {...register("phone")}
-                className="w-full border p-2 rounded h-[52px]"
+                className="w-full border p-2 rounded h-[52px] capitalize"
               />
             </div>
             {errors.phone && (
@@ -191,15 +193,14 @@ export default function UpdateContactComponent({ userId }: { userId: string }) {
           <div className="w-[360px] h-full flex flex-col justify-between items-start">
             <div className="w-full h-[82px] flex flex-col justify-between items-start">
               <label
-                className="text-sm font-semibold mb-3 text-[#ADADAD]"
+                className="text-sm font-semibold mb-3 text-[#ADADAD] capitalize"
                 htmlFor="birth "
               >
-                Date of birth
+                {t("birth")}
               </label>
               <input
                 type="date"
                 id="birth"
-                placeholder="Enter your birthdate"
                 {...register("birth")}
                 className="w-full border p-2 rounded h-[52px]"
               />
@@ -214,7 +215,7 @@ export default function UpdateContactComponent({ userId }: { userId: string }) {
                 className="text-sm font-semibold mb-3 text-[#ADADAD]"
                 htmlFor="gender"
               >
-                Gender
+                {t("gender")}
               </label>
               <select
                 id="gender"

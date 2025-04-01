@@ -1,30 +1,24 @@
 "use client";
 
-import React, {
-  useState,
-  useRef,
-  FormEvent,
-  KeyboardEvent,
-} from "react";
+import React, { useState, useRef, FormEvent, KeyboardEvent } from "react";
 import { useChannel } from "ably/react";
 import { Message } from "ably";
 import { useTranslations } from "next-intl";
+import { useAtom } from "jotai";
+import { AblyAtom } from "@/store/contact";
 
-
-export default function ChatBox({userId}:{userId:number}) {
+export default function ChatBox({ userId }: { userId?: number }) {
   const t = useTranslations("Inbox");
+  const [ably,] = useAtom(AblyAtom);
   const inputBox = useRef<HTMLTextAreaElement | null>(null);
   const messageEnd = useRef<HTMLDivElement | null>(null);
   const [messageText, setMessageText] = useState<string>("");
   const [receivedMessages, setMessages] = useState<Message[]>([]);
   const messageTextIsEmpty = messageText.trim().length === 0;
 
-  const { channel, ably } = useChannel(
-    `chat-room-${userId}`,
-    (message: Message) => {
-      setMessages((prevMessages) => [...prevMessages.slice(-199), message]);
-    }
-  );
+  const { channel } = useChannel(`chat-room-${userId}`, (message: Message) => {
+    setMessages((prevMessages) => [...prevMessages.slice(-199), message]);
+  });
 
   const sendChatMessage = (messageText: string) => {
     if (!messageText.trim()) return;
@@ -48,11 +42,15 @@ export default function ChatBox({userId}:{userId:number}) {
     }
   };
 
+  if (!ably) {
+    return <div>Loading chat...</div>;
+  }
+
   return (
-    <div className="w-full h-[400px] flex flex-col border-[2px] rounded-lg border-gray-300 bg-white shadow-md p-4">
+    <div className="w-full h-[70vh] flex flex-col border-[2px] rounded-lg border-gray-300 bg-white shadow-md p-4">
       <div className="flex flex-col flex-grow overflow-y-auto mb-4">
         {receivedMessages.map((message, index) => {
-          const author = message.connectionId === ably.connection.id;
+          const author = message.connectionId === ably?.connection.id;
           return (
             <span
               key={index}
@@ -68,7 +66,10 @@ export default function ChatBox({userId}:{userId:number}) {
         })}
         <div ref={messageEnd}></div>
       </div>
-      <form onSubmit={handleFormSubmission} className="flex p-[10px] bg-white border-t-2 border-gray-300 rounded-b-lg">
+      <form
+        onSubmit={handleFormSubmission}
+        className="flex p-[10px] bg-white border-t-2 border-gray-300 rounded-b-lg"
+      >
         <textarea
           ref={inputBox}
           value={messageText}

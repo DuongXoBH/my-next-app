@@ -66,7 +66,6 @@
     "subject": "Chủ đề",
     "send": "Gửi",
     "message": "Nhập nội dung"
-
   },
   "Order Lists": {
     "title": "Đơn Hàng",
@@ -120,10 +119,29 @@
   "Contact": {
     "title": "Liên Hệ",
     "button": "Tạo liên hệ mới",
-    "more": "Xem Thêm"
+    "more": "Xem Thêm",
+    "message": "Nhắn tin",
+    "profile": "hồ sơ"
   },
   "AddNewContact": {
     "title": "Tạo Liên Hệ Mới"
+  },
+  "UpdateContact": {
+    "title": "Cập nhật liên hệ",
+    "update": "Cập nhật ngay",
+    "first name": "Họ",
+    "last name": "Tên",
+    "email": "Email của bạn",
+    "phone": "Số điện thoại",
+    "birth": "Ngày sinh",
+    "gender": "Giới tính",
+    "enter your first name": "Nhập họ của bạn",
+    "enter your last name": "Nhập tên của bạn",
+    "enter your email": "Nhập email của bạn",
+    "enter your phone number": "Nhập số điện thoại của bạn"
+  },
+  "Chatbox": {
+    "title": "Tin nhắn"
   },
   "Invoice": {
     "title": "Hóa đơn",
@@ -184,6 +202,5 @@
     "type-required": "Loại là bắt buộc",
     "status-required": "Trạng thái là bắt buộc",
     "username-required": "Tên người dùng là bắt buộc"
-}
-
+  }
 }

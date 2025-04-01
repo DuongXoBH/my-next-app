@@ -119,10 +119,29 @@
   "Contact": {
     "title": "Contact",
     "button": "Add New Contact",
-    "more": "See More"
+    "more": "See More",
+    "message": "message",
+    "profile": "profile"
   },
   "AddNewContact": {
     "title": "Add New Contact"
+  },
+  "UpdateContact": {
+    "title": "update contact",
+    "update": "update now",
+    "first name": "first name",
+    "last name": "last name",
+    "email": "your email",
+    "phone": "phone number",
+    "birth": "date of birth",
+    "gender": "gender",
+    "enter your first name": "enter your first name",
+    "enter your last name": "enter your last name",
+    "enter your email": "enter your email",
+    "enter your phone number": "enter your phone number"
+  },
+  "Chatbox": {
+    "title": "Message"
   },
   "Invoice": {
     "title": "Invoice",

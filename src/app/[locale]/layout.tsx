@@ -10,6 +10,7 @@ import ThemeProviders from "@/provider/theme-provider";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import { CustomAblyProvider } from "@/provider/ably-providers";
 
 const nunitoSans = Nunito_Sans({
   subsets: ["latin"],
@@ -42,7 +43,9 @@ export default async function RootLayout({
             <Suspense fallback={<div>Loading...</div>}>
               <QueryClientProviders>
                 <Providers>
+                  <CustomAblyProvider>
                   <ThemeProviders>{children}</ThemeProviders>
+                  </CustomAblyProvider>
                   <ToastContainer />
                 </Providers>
               </QueryClientProviders>
