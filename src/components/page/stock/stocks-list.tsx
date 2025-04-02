@@ -3,12 +3,12 @@
 import { useFetchProductsApi } from "@/api-hooks/product";
 import { CardMedia, Paper, Tooltip } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-// import DeleteIcon from "@mui/icons-material/Delete";
 import ListLoading from "@/components/common/global/list-loading";
-import Image from "next/image";
 import { CustomTableFooter } from "@/components/common/table/table-footer";
 import { useTranslations } from "next-intl";
 import NotFound from "@/components/common/table/not-found-data";
+import DeteleDialog from "./delete-dialog";
+import UpdateDialog from "./update-dialog";
 
 export default function StocksList({ size }: { size?: number }) {
   const t = useTranslations("Product Stock");
@@ -81,29 +81,11 @@ export default function StocksList({ size }: { size?: number }) {
       renderHeader: () => (
         <p className="font-bold w-[160px] text-center">{t("action")}</p>
       ),
-      renderCell: () => (
+      renderCell: (params) => (
         <div className="w-full h-full flex justify-center items-center">
           <div className="h-[32px] w-[96px] flex justify-between rounded-lg border-[#D5D5D5] border-[1px] bg-[#F5F6FA]">
-            <Tooltip title="edit">
-              <button className="w-[48px] h-[32px] flex items-center justify-center border-r-[#D5D5D5] border-r-[1px]">
-                <Image
-                  alt=""
-                  src="/stock/pencil-write.png"
-                  width={16}
-                  height={16}
-                ></Image>
-              </button>
-            </Tooltip>
-            <Tooltip title="delete">
-              <button className="w-[48px] h-[32px] flex items-center justify-center">
-                <Image
-                  alt=""
-                  src="/stock/bin.png"
-                  width={16}
-                  height={16}
-                ></Image>
-              </button>
-            </Tooltip>
+            <UpdateDialog id={params.id as number}/>
+            <DeteleDialog id={params.id as number}/>
           </div>
         </div>
       ),
@@ -116,30 +98,26 @@ export default function StocksList({ size }: { size?: number }) {
   }
   return (
     <Paper
-    sx={{
-      width: "100%",
-      maxHeight: "850px",
-      overflowY: "auto",
-      borderRadius: "20px",
-      "&::-webkit-scrollbar": {
-        width: "4px",
-        opacity: 0,
-        transition: "opacity 0.3s ease",
-      },
-      "&::-webkit-scrollbar-thumb": {
-        borderRadius: "3px",
-        opacity: 0, 
-        transition: "opacity 0.3s ease",
-      },
-      "&:hover": {
+      sx={{
+        width: "100%",
+        maxHeight: "850px",
+        overflowY: "auto",
+        borderRadius: "20px",
         "&::-webkit-scrollbar": {
-          opacity: 1, 
+          width: "4px",
         },
         "&::-webkit-scrollbar-thumb": {
-          opacity: 1,
+          backgroundColor: "white",
         },
-      },
-    }}
+        "&:hover": {
+          "&::-webkit-scrollbar": {
+            width: "4px",
+          },
+          "&::-webkit-scrollbar-thumb": {
+            backgroundColor: "#9F9F9F",
+          },
+        },
+      }}
     >
       <DataGrid
         rows={dataVal}

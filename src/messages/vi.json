@@ -88,7 +88,11 @@
     "price": "Giá thành",
     "piece": "Số lượng",
     "color": "Màu sắc khả dụng",
-    "action": "Thao tác"
+    "action": "Thao tác",
+    "update": "Cập nhật",
+    "delete": "xóa",
+    "note": "Bạn chắc chắn muốn xóa sản phẩm này chứ ?",
+    "toast": "Đã xóa thành công"
   },
   "Pricing": {
     "title": "Thanh Toán",

@@ -36,34 +36,28 @@ export default function Sidebar() {
         position: "fixed",
         left: 0,
         top: 0,
-        "&::-webkit-scrollbar": {
-          width: "4px",
-          opacity: 0,
-          transition: "opacity 0.3s ease",
-        },
-        "&::-webkit-scrollbar-thumb": {
-          borderRadius: "3px",
-          opacity: 0, 
-          transition: "opacity 0.3s ease",
-        },
-        "&:hover": {
-          "&::-webkit-scrollbar": {
-            opacity: 1, 
-          },
-          "&::-webkit-scrollbar-thumb": {
-            opacity: 1,
-          },
-        },
         "& .MuiDrawer-paper": {
           width: open ? 240 : 80,
           boxSizing: "border-box",
           position: "fixed",
+          overflowX: "hidden",
           overflowY: "auto",
+          borderRight: "none",
           "&::-webkit-scrollbar": {
-            width: "4px",
-            opacity: 0,
-            transition: "opacity 0.3s ease",
-          },       
+            width:"8px",
+          },
+          "&::-webkit-scrollbar-thumb": {
+            backgroundColor:"#D5D5D5"
+          },
+          "&:hover": {
+            "&::-webkit-scrollbar": {
+              width:"8px",
+            },
+            "&::-webkit-scrollbar-thumb": {
+              backgroundColor: "#9F9F9F",
+              borderRadius: "2px",
+            },
+          },
         },
       }}
       variant="permanent"

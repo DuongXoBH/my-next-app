@@ -100,14 +100,6 @@ export default function Header() {
           </Toolbar>
         </Box>
 
-        {/* Sign in button
-        {!token && (
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            <Button component={Link} href="/login">
-              Sign In
-            </Button>
-          </Box>
-        )} */}
         <div className="flex gap-7">
           {/* Language */}
           <LanguageSwitcher/>

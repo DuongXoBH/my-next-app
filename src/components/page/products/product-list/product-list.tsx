@@ -126,10 +126,11 @@ export default function ProductList() {
                   <Swiper
                     style={
                       {
-                        "--swiper-navigation-color": "#fff",
-                        "--swiper-navigation-size": "24px",
+                        "--swiper-navigation-color": "#202224",
+                        "--swiper-navigation-size": "18px",
                       } as CSSProperties
                     }
+                    loop
                     modules={[Navigation, Pagination, Scrollbar, A11y]}
                     spaceBetween={50}
                     slidesPerView={1}
@@ -201,7 +202,7 @@ export default function ProductList() {
                       ${element.price}
                     </Typography>
                     <LinkTag
-                      href={`/products/${element.id}`}
+                      href={`/products/${element.id}/detail`}
                       className="w-36 h-12 bg-gray-200 text-black rounded-md font-bold text-sm flex items-center justify-center hover:bg-gray-300"
                     >
                       {t("edit")}

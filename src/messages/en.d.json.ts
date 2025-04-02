@@ -91,7 +91,11 @@ declare const messages: {
     "price": "Price",
     "piece": "Piece",
     "color": "Available Color",
-    "action": "Action"
+    "action": "Action",
+    "update": "update",
+    "delete": "delete",
+    "note": "You want to delete this product, don't you?",
+    "toast": "Success"
   },
   "Pricing": {
     "title": "Pricing",

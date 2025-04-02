@@ -79,21 +79,17 @@ export default function OrderList({ size }: { size?: number }) {
         overflowY: "auto",
         borderRadius: "20px",
         "&::-webkit-scrollbar": {
-          width: "4px",
-          opacity: 0,
-          transition: "opacity 0.3s ease",
+          width: "6px",
         },
         "&::-webkit-scrollbar-thumb": {
-          borderRadius: "3px",
-          opacity: 0, 
-          transition: "opacity 0.3s ease",
+          backgroundColor: "white",
         },
         "&:hover": {
           "&::-webkit-scrollbar": {
-            opacity: 1, 
+            width: "6px",
           },
           "&::-webkit-scrollbar-thumb": {
-            opacity: 1,
+            backgroundColor: "#9F9F9F",
           },
         },
       }}

@@ -92,15 +92,16 @@ export default function FavoritesList() {
                 <Swiper
                   style={
                     {
-                      "--swiper-navigation-color": "#fff",
-                      "--swiper-navigation-size": "24px",
+                      "--swiper-navigation-image": "/prev-1.svg",
+                      "--swiper-navigation-color": "#202224",
+                      "--swiper-navigation-size": "18px",
                     } as CSSProperties
                   }
+                  loop
                   modules={[Navigation, Pagination, Scrollbar, A11y]}
                   spaceBetween={50}
                   slidesPerView={1}
                   navigation
-                  // pagination={{ clickable: true }}
                 >
                   {element.images.map((image: string, index: number) => {
                     return (
@@ -115,6 +116,7 @@ export default function FavoritesList() {
                             maxHeight: "320px",
                           }}
                         />
+                        <div className=""></div>
                       </SwiperSlide>
                     );
                   })}
@@ -158,7 +160,7 @@ export default function FavoritesList() {
                     ${element.price}
                   </Typography>
                   <LinkTag
-                    href={`/products/${element.id}`}
+                    href={`/products/${element.id}/detail`}
                     className="w-36 h-12 bg-gray-200 text-black rounded-md font-bold text-sm flex items-center justify-center hover:bg-gray-300"
                   >
                     {t("edit")}
