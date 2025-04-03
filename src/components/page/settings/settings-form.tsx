@@ -98,7 +98,7 @@ export default function SettingsFormComponent() {
         <div className="w-full grid grid-cols-2 gap-[60px]">
           {/* Name */}
           <div className="flex flex-col">
-            <label className="text-sm font-semibold mb-3 text-[#ADADAD] capitalize" htmlFor="name">
+            <label className="text-sm font-semibold mb-3 text-black capitalize" htmlFor="name">
               {t("site name")}
             </label>
             <input
@@ -113,7 +113,7 @@ export default function SettingsFormComponent() {
 
           {/* Copyright */}
           <div className="flex flex-col">
-            <label className="text-sm font-semibold mb-3 text-[#ADADAD] capitalize" htmlFor="copyRight">
+            <label className="text-sm font-semibold mb-3 text-black capitalize" htmlFor="copyRight">
               {t("copy right")}
             </label>
             <input
@@ -130,7 +130,7 @@ export default function SettingsFormComponent() {
         <div className="w-full grid grid-cols-2 gap-[60px]">
           {/* Title */}
           <div className="flex flex-col">
-            <label className="text-sm font-semibold mb-3 text-[#ADADAD] capitalize" htmlFor="title">
+            <label className="text-sm font-semibold mb-3 text-black capitalize" htmlFor="title">
               {t("seo title")}
             </label>
             <input
@@ -145,7 +145,7 @@ export default function SettingsFormComponent() {
 
           {/* Keywords */}
           <div className="flex flex-col">
-            <label className="text-sm font-semibold mb-3 text-[#ADADAD] capitalize" htmlFor="keywords">
+            <label className="text-sm font-semibold mb-3 text-black capitalize" htmlFor="keywords">
               {t("seo keywords")}
             </label>
             <input
@@ -161,7 +161,7 @@ export default function SettingsFormComponent() {
 
         <div className="w-full flex flex-col">
           {/* Description */}
-          <label className="text-sm font-semibold mb-3 text-[#ADADAD] capitalize" htmlFor="description">
+          <label className="text-sm font-semibold mb-3 text-black capitalize" htmlFor="description">
             {t("seo description")}
           </label>
           <textarea

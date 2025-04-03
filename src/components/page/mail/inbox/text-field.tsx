@@ -2,6 +2,25 @@ import { ICreateMailForm } from "@/components/page/mail/inbox/create-mail";
 import { Editor } from "@tinymce/tinymce-react";
 import { UseFormSetValue } from "react-hook-form";
 
+import "tinymce/tinymce"; 
+import "tinymce/themes/silver/theme"; 
+import "tinymce/icons/default/icons"; 
+
+import "tinymce/plugins/advlist";
+import "tinymce/plugins/autolink";
+import "tinymce/plugins/lists";
+import "tinymce/plugins/link";
+import "tinymce/plugins/image";
+import "tinymce/plugins/charmap";
+import "tinymce/plugins/preview";
+import "tinymce/plugins/anchor";
+import "tinymce/plugins/code";
+import "tinymce/plugins/insertdatetime";
+import "tinymce/plugins/media";
+import "tinymce/plugins/table";
+import "tinymce/plugins/help";
+import "tinymce/plugins/wordcount";
+
 export default function TinyEditorComponent({
   setContent,
   placeholder,
@@ -11,12 +30,11 @@ export default function TinyEditorComponent({
 }) {
   return (
     <Editor
-      apiKey="8bt36y85i70z9dj45k7uax4q5rq7rcwdcyjgz3ztxcfct0es"
-      scriptLoading={{ async: true, defer: true }}
       init={{
         height: 300,
         menubar: false,
-        placeholder: placeholder ? placeholder : "Write something...",
+        placeholder: placeholder || "Write something...",
+        base_url: "/tinymce",
         plugins: [
           "advlist",
           "autolink",
@@ -34,7 +52,9 @@ export default function TinyEditorComponent({
           "wordcount",
         ],
         toolbar:
-          "undo redo | formatselect | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat| help ",
+          "undo redo | formatselect | bold italic forecolor backcolor | " +
+          "alignleft aligncenter alignright alignjustify | " +
+          "bullist numlist outdent indent | removeformat | help",
       }}
       onEditorChange={(content: string) => setContent("content", content)}
     />

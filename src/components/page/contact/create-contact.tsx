@@ -9,6 +9,7 @@ import { CardMedia } from "@mui/material";
 import { CldUploadWidget } from "next-cloudinary";
 import { useFetchRegister } from "@/api-hooks/user";
 import { getPathname } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 
 export interface CreateContactForm {
   image: FileList;
@@ -20,7 +21,8 @@ export interface CreateContactForm {
   gender: string;
 }
 const schema = createNewContactSchema;
-export default function CreateContactForm() {
+export default function CreateContactForm(){
+  const t = useTranslations("AddNewContact");
   const [imageUrl, setImageUrl] = useState<string>("");
   const router = useRouter();
   const locale = usePathname().split("/")[1];
@@ -115,10 +117,10 @@ export default function CreateContactForm() {
           <div className="w-[360px] h-full flex flex-col justify-between items-start">
             <div className="w-full h-[82px] flex flex-col justify-between items-start">
               <label
-                className="text-sm font-semibold mb-3 text-[#ADADAD]"
+                className="text-sm font-semibold mb-3 text-black capitalize"
                 htmlFor="firstName "
               >
-                First Name
+                {t("first name")}
               </label>
               <input
                 type="text"
@@ -135,10 +137,10 @@ export default function CreateContactForm() {
           <div className="w-[360px] h-full flex flex-col justify-between items-start">
             <div className="w-full h-[82px] flex flex-col justify-between items-start">
               <label
-                className="text-sm font-semibold mb-3 text-[#ADADAD]"
+                className="text-sm font-semibold mb-3 text-black capitalize"
                 htmlFor="lastName"
               >
-                Last Name
+                {t("last name")}
               </label>
               <input
                 type="text"
@@ -157,10 +159,10 @@ export default function CreateContactForm() {
           <div className="w-[360px] h-full flex flex-col justify-between items-start">
             <div className="w-full h-[82px] flex flex-col justify-between items-start">
               <label
-                className="text-sm font-semibold mb-3 text-[#ADADAD]"
+                className="text-sm font-semibold mb-3 text-black capitalize"
                 htmlFor="email "
               >
-                Your Email
+                {t("email")}
               </label>
               <input
                 type="text"
@@ -177,10 +179,10 @@ export default function CreateContactForm() {
           <div className="w-[360px] h-full flex flex-col justify-between items-start">
             <div className="w-full h-[82px] flex flex-col justify-between items-start">
               <label
-                className="text-sm font-semibold mb-3 text-[#ADADAD]"
+                className="text-sm font-semibold mb-3 text-black capitalize"
                 htmlFor="phone"
               >
-                Phone Number
+                {t("phone")}
               </label>
               <input
                 type="text"
@@ -199,10 +201,10 @@ export default function CreateContactForm() {
           <div className="w-[360px] h-full flex flex-col justify-between items-start">
             <div className="w-full h-[82px] flex flex-col justify-between items-start">
               <label
-                className="text-sm font-semibold mb-3 text-[#ADADAD]"
+                className="text-sm font-semibold mb-3 text-black capitalize"
                 htmlFor="birth "
               >
-                Date of birth
+                {t("birth")}
               </label>
               <input
                 type="date"
@@ -219,10 +221,10 @@ export default function CreateContactForm() {
           <div className="w-[360px] h-full flex flex-col justify-between items-start">
             <div className="w-full h-[82px] flex flex-col justify-between items-start">
               <label
-                className="text-sm font-semibold mb-3 text-[#ADADAD]"
+                className="text-sm font-semibold mb-3 text-black capitalize"
                 htmlFor="gender"
               >
-                Gender
+                {t("gender")}
               </label>
               <select
                 id="gender"
@@ -241,9 +243,9 @@ export default function CreateContactForm() {
         </div>
         <button
           type="submit"
-          className="w-[274px] h-14 bg-[#4880FF] rounded-xl text-white"
+          className="w-[274px] h-14 bg-[#4880FF] rounded-xl text-white capitalize"
         >
-          Add Now
+          {t("add")}
         </button>
       </form>
     </div>

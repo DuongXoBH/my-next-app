@@ -1,10 +1,12 @@
 import { Tooltip } from "@mui/material";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 export default function DonutChart() {
+      const t = useTranslations("UI Elements")
   return (
     <div className="w-full h-[318px] bg-white shadow-md rounded-[8px] p-6 mt-[44px]">
-      <p className="text-2xl font-bold">Donut Chart</p>
+      <p className="text-2xl font-bold capitalize">{t("donut chart")}</p>
       <div className="w-[1040px] flex justify-between items-center mt-14 mx-[auto]">
         <Tooltip title="Donut 1">
           <Image

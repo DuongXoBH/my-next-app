@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { CardMedia } from "@mui/material";
 import { createNewMemberSchema } from "@/hook-form-schema/team";
 import { CldUploadWidget } from "next-cloudinary";
+import { useTranslations } from "next-intl";
 
 export interface ICreatememberForm {
   image: FileList;
@@ -18,6 +19,7 @@ export interface ICreatememberForm {
 }
 const schema = createNewMemberSchema;
 export default function CreateMemberForm() {
+  const t = useTranslations("Team");
   const [imageUrl, setImageUrl] = useState<string>("");
   const {
     register,
@@ -95,10 +97,10 @@ export default function CreateMemberForm() {
           <div className="w-[360px] h-full flex flex-col justify-between items-start">
             <div className="w-full h-[82px] flex flex-col justify-between items-start">
               <label
-                className="text-sm font-semibold mb-3 text-[#ADADAD]"
+                className="text-sm font-semibold mb-3 capitalize text-black"
                 htmlFor="firstName "
               >
-                First Name
+                {t("first name")}
               </label>
               <input
                 type="text"
@@ -115,10 +117,10 @@ export default function CreateMemberForm() {
           <div className="w-[360px] h-full flex flex-col justify-between items-start">
             <div className="w-full h-[82px] flex flex-col justify-between items-start">
               <label
-                className="text-sm font-semibold mb-3 text-[#ADADAD]"
+                className="text-sm font-semibold mb-3 capitalize text-black"
                 htmlFor="lastName"
               >
-                Last Name
+                {t("last name")}
               </label>
               <input
                 type="text"
@@ -137,10 +139,10 @@ export default function CreateMemberForm() {
           <div className="w-[360px] h-full flex flex-col justify-between items-start">
             <div className="w-full h-[82px] flex flex-col justify-between items-start">
               <label
-                className="text-sm font-semibold mb-3 text-[#ADADAD]"
+                className="text-sm font-semibold mb-3 capitalize text-black"
                 htmlFor="email "
               >
-                Your Email
+                {t("email")}
               </label>
               <input
                 type="text"
@@ -157,10 +159,10 @@ export default function CreateMemberForm() {
           <div className="w-[360px] h-full flex flex-col justify-between items-start">
             <div className="w-full h-[82px] flex flex-col justify-between items-start">
               <label
-                className="text-sm font-semibold mb-3 text-[#ADADAD]"
+                className="text-sm font-semibold mb-3 capitalize text-black"
                 htmlFor="phone"
               >
-                Phone Number
+                {t("phone")}
               </label>
               <input
                 type="text"
@@ -179,10 +181,10 @@ export default function CreateMemberForm() {
           <div className="w-[360px] h-full flex flex-col justify-between items-start">
             <div className="w-full h-[82px] flex flex-col justify-between items-start">
               <label
-                className="text-sm font-semibold mb-3 text-[#ADADAD]"
+                className="text-sm font-semibold mb-3 capitalize text-black"
                 htmlFor="role "
               >
-                Role
+                {t("role")}
               </label>
               <input
                 type="text"
@@ -199,10 +201,10 @@ export default function CreateMemberForm() {
           <div className="w-[360px] h-full flex flex-col justify-between items-start">
             <div className="w-full h-[82px] flex flex-col justify-between items-start">
               <label
-                className="text-sm font-semibold mb-3 text-[#ADADAD]"
+                className="text-sm font-semibold mb-3 capitalize text-black"
                 htmlFor="gender"
               >
-                Gender
+                {t("gender")}
               </label>
               <select
                 id="gender"
@@ -221,9 +223,9 @@ export default function CreateMemberForm() {
         </div>
         <button
           type="submit"
-          className="w-[274px] h-14 bg-[#4880FF] rounded-xl text-white"
+          className="w-[274px] h-14 bg-[#4880FF] rounded-xl text-white capitalize"
         >
-          Add Now
+          {t("add")}
         </button>
       </form>
     </div>

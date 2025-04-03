@@ -109,7 +109,7 @@ export default function UpdateContactComponent({ userId }: { userId: string }) {
           <div className="w-[360px] h-full flex flex-col justify-between items-start">
             <div className="w-full h-[82px] flex flex-col justify-between items-start">
               <label
-                className="text-sm font-semibold capitalize mb-3 text-[#ADADAD]"
+                className="text-sm font-semibold capitalize mb-3 text-black"
                 htmlFor="firstName "
               >
                 {t("first name")}
@@ -129,7 +129,7 @@ export default function UpdateContactComponent({ userId }: { userId: string }) {
           <div className="w-[360px] h-full flex flex-col justify-between items-start">
             <div className="w-full h-[82px] flex flex-col justify-between items-start">
               <label
-                className="text-sm font-semibold capitalize mb-3 text-[#ADADAD]"
+                className="text-sm font-semibold capitalize mb-3 text-black"
                 htmlFor="lastName"
               >
                 {t("last name")}
@@ -151,7 +151,7 @@ export default function UpdateContactComponent({ userId }: { userId: string }) {
           <div className="w-[360px] h-full flex flex-col justify-between items-start">
             <div className="w-full h-[82px] flex flex-col justify-between items-start">
               <label
-                className="text-sm font-semibold capitalize mb-3 text-[#ADADAD]"
+                className="text-sm font-semibold capitalize mb-3 text-black"
                 htmlFor="email"
               >
                 {t("email")}
@@ -171,7 +171,7 @@ export default function UpdateContactComponent({ userId }: { userId: string }) {
           <div className="w-[360px] h-full flex flex-col justify-between items-start">
             <div className="w-full h-[82px] flex flex-col justify-between items-start">
               <label
-                className="text-sm font-semibold mb-3 capitalize text-[#ADADAD]"
+                className="text-sm font-semibold mb-3 capitalize text-black"
                 htmlFor="phone"
               >
                 {t("phone")}
@@ -193,7 +193,7 @@ export default function UpdateContactComponent({ userId }: { userId: string }) {
           <div className="w-[360px] h-full flex flex-col justify-between items-start">
             <div className="w-full h-[82px] flex flex-col justify-between items-start">
               <label
-                className="text-sm font-semibold mb-3 text-[#ADADAD] capitalize"
+                className="text-sm font-semibold mb-3 text-black capitalize"
                 htmlFor="birth "
               >
                 {t("birth")}
@@ -212,7 +212,7 @@ export default function UpdateContactComponent({ userId }: { userId: string }) {
           <div className="w-[360px] h-full flex flex-col justify-between items-start">
             <div className="w-full h-[82px] flex flex-col justify-between items-start">
               <label
-                className="text-sm font-semibold mb-3 text-[#ADADAD]"
+                className="text-sm font-semibold mb-3 text-black"
                 htmlFor="gender"
               >
                 {t("gender")}

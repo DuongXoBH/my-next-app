@@ -128,7 +128,14 @@
     "profile": "profile"
   },
   "AddNewContact": {
-    "title": "Add New Contact"
+    "title": "Add New Contact",
+    "first name": "first name",
+    "last name": "last name",
+    "email": "your email",
+    "phone": "phone number",
+    "birth": "date of birth",
+    "gender": "gender",
+    "add":"add now"
   },
   "UpdateContact": {
     "title": "update contact",
@@ -158,11 +165,21 @@
     "total": "total"
   },
   "UI Elements": {
-    "title": "UI Elements"
+    "title": "UI Elements",
+    "bar chart": "bar chart",
+    "pie chart": "pie chart",
+    "donut chart": "donut chart"
   },
   "Team": {
     "title": "Team",
-    "more": "See More"
+    "more": "See More",
+    "first name": "first name",
+    "last name": "last name",
+    "email": "your email",
+    "phone": "phone number",
+    "role": "role",
+    "gender": "gender",
+    "add": "add now"
   },
   "Table": {
     "title": "Table"

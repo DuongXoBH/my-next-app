@@ -137,7 +137,28 @@ export default function InboxList(props: { title: string }) {
   return (
     <div>
       <p className="px-5 font-bold">{props.title}</p>
-      <Paper sx={{ width: "100%", height: "750px", marginX: "auto" }}>
+      <Paper
+        sx={{
+          width: "100%",
+          maxHeight: "750px",
+          marginX: "auto",
+          overflowY: "auto",
+          "&::-webkit-scrollbar": {
+            width: "6px",
+          },
+          "&::-webkit-scrollbar-thumb": {
+            backgroundColor: "white",
+          },
+          "&:hover": {
+            "&::-webkit-scrollbar": {
+              width: "6px",
+            },
+            "&::-webkit-scrollbar-thumb": {
+              backgroundColor: "#9F9F9F",
+            },
+          },
+        }}
+      >
         <DataGrid
           rows={row}
           columns={columns}
@@ -152,6 +173,7 @@ export default function InboxList(props: { title: string }) {
           slots={{ footer: CustomTableFooter }}
           sx={{
             border: 0,
+            "& .MuiDataGrid-scrollbar": { display: "none" },
             "& .MuiDataGrid-columnHeaders": { display: "none" },
             "& .MuiTablePagination-selectLabel ": {
               display: "none",

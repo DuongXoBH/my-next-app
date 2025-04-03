@@ -128,7 +128,14 @@
     "profile": "hồ sơ"
   },
   "AddNewContact": {
-    "title": "Tạo Liên Hệ Mới"
+    "title": "Tạo Liên Hệ Mới",
+    "first name": "Họ",
+    "last name": "Tên",
+    "email": "Email của bạn",
+    "phone": "Số điện thoại",
+    "birth": "Ngày sinh",
+    "gender": "Giới tính",
+    "add": "thêm ngay"
   },
   "UpdateContact": {
     "title": "Cập nhật liên hệ",
@@ -158,11 +165,21 @@
     "total": "tổng"
   },
   "UI Elements": {
-    "title": "Biểu Đồ"
+    "title": "Biểu Đồ",
+    "bar chart": "biểu đồ thanh",
+    "pie chart": "biểu đồ tròn",
+    "donut chart": "biểu đồ donut"
   },
   "Team": {
     "title": "Nhóm",
-    "more": "Xem thêm"
+    "more": "Xem thêm",
+    "first name": "Họ",
+    "last name": "Tên",
+    "email": "Email của bạn",
+    "phone": "Số điện thoại",
+    "role": "Vai trò",
+    "gender": "Giới tính",
+    "add": "thêm ngay"
   },
   "Table": {
     "title": "Bảng Biểu"

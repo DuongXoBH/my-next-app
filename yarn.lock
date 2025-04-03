@@ -6077,6 +6077,11 @@ tinyglobby@^0.2.12:
     fdir "^6.4.3"
     picomatch "^4.0.2"
 
+tinymce@^7.7.2:
+  version "7.7.2"
+  resolved "https://registry.yarnpkg.com/tinymce/-/tinymce-7.7.2.tgz#7d8f70be804474c8d4249dad21356ce5d42b17fe"
+  integrity sha512-GX7Jd0ac9ph3QM2yei4uOoxytKX096CyG6VkkgQNikY39T6cDldoNgaqzHHlcm62WtdBMCd7Ch+PYaRnQo+NLA==
+
 tinypool@^1.0.0:
   version "1.0.2"
   resolved "https://registry.npmjs.org/tinypool/-/tinypool-1.0.2.tgz"

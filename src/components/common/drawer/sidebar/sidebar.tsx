@@ -30,24 +30,25 @@ export default function Sidebar() {
   return (
     <Drawer
       sx={{
-        width: open ? 240 : 80,
+        width: open ? 240 : 76,
         flexShrink: 0,
         maxHeight: "100vh",
         position: "fixed",
         left: 0,
         top: 0,
         "& .MuiDrawer-paper": {
-          width: open ? 240 : 80,
+          width: open ? 240 : 76,
           boxSizing: "border-box",
           position: "fixed",
           overflowX: "hidden",
           overflowY: "auto",
+          marginLeft : "8px",
           borderRight: "none",
           "&::-webkit-scrollbar": {
             width:"8px",
           },
           "&::-webkit-scrollbar-thumb": {
-            backgroundColor:"#D5D5D5"
+            backgroundColor:"white"
           },
           "&:hover": {
             "&::-webkit-scrollbar": {
