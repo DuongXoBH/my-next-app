@@ -43,6 +43,7 @@ export default function UpdateDialog({ id }: { id: number }) {
     );
     console.log(data);
     setIsSubmitting(false);
+    setOpen(false)
   };
 
   return (
@@ -82,7 +83,7 @@ export default function UpdateDialog({ id }: { id: number }) {
                 type="text"
                 className="h-10 px-2"
                 {...register("title")}
-                placeholder={t("title")
+                placeholder={t("name")
                 
                 }
               />

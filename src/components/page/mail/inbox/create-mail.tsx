@@ -21,16 +21,22 @@ export default function CreateMail() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
-    setValue
+    setValue,
   } = useForm<ICreateMailForm>({
     resolver: yupResolver(schema),
   });
-  
+
   const onSubmit = (data: ICreateMailForm) => {
     setIsSubmitting(true);
-    console.log(data);
+    console.log("🚀 ~ onSubmit ~ data:", data);
     setIsSubmitting(false);
+    reset({
+      to: "",
+      subject: "",
+      content: "",
+    });
   };
 
   return (
@@ -48,26 +54,59 @@ export default function CreateMail() {
         onClose={() => {
           setOpen(false);
         }}
-      maxWidth="xl"
-      PaperComponent={({ children }) => <div className="min-w-[1140px] min-h-[480px]">{children}</div>}
+        maxWidth="xl"
+        PaperComponent={({ children }) => (
+          <div className="min-w-[1140px] min-h-[480px]">{children}</div>
+        )}
       >
-        <div className="w-full h-auto bg-white p-5 flex flex-col gap-5">
+        <div className="w-full h-auto bg-white p-5 flex flex-col gap-5 rounded">
           <p className="text-black text-xl font-semibold">{t("new messase")}</p>
-          <Divider/>
-          <form onSubmit={handleSubmit(onSubmit)} className="w-full flex flex-col gap-5"> 
-            <input type="text" {...register("to")} placeholder={`${t("to")} : example@mail.com`} className="p-5 "/>
+          <Divider />
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="w-full flex flex-col gap-5"
+          >
+            <input
+              type="text"
+              {...register("to")}
+              placeholder={`${t("to")} : example@mail.com`}
+              className="p-5 border-[2px] rounded border-gray-300 focus:border-blue-500 focus:outline-none"
+            />
             {errors.to && <p className="text-red-500">{errors.to.message}</p>}
-            <Divider/>
-            <input type="text" {...register("subject")} placeholder={`${t("subject")} : Example`} className="p-5 "/>
-            {errors.subject && <p className="text-red-500">{errors.subject.message}</p>}
-            <Divider/>
-            <textarea id="content" {...register("content")} placeholder={`${t("message")}`} className="hidden"/>
+            <Divider />
+            <input
+              type="text"
+              {...register("subject")}
+              placeholder={`${t("subject")} : Example`}
+              className="p-5 border-[2px] rounded border-gray-300 focus:border-blue-500 focus:outline-none"
+            />
+            {errors.subject && (
+              <p className="text-red-500">{errors.subject.message}</p>
+            )}
+            <Divider />
+            <textarea
+              id="content"
+              {...register("content")}
+              placeholder={`${t("message")}`}
+              className="hidden"
+            />
             <label htmlFor="content">
-              <TinyEditorComponent setContent={setValue} placeholder={t("message")}/>
+              <TinyEditorComponent
+                setContent={setValue}
+                placeholder={t("message")}
+              />
             </label>
-            {errors.content && <p className="text-red-500">{errors.content.message}</p>}
-            <Divider/>
-            <button type="submit" disabled = {isSubmitting} className="w-32 h-12 rounded-md bg-[#4880FF] hover:bg-[#3864cc] text-white">{t("send")}</button>
+            {errors.content && (
+              <p className="text-red-500">{errors.content.message}</p>
+            )}
+            <Divider />
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-32 h-12 rounded-md bg-[#5071c0] hover:bg-[#3a62be] active:bg-red-500 text-white"
+            >
+              {t("send")}
+            </button>
           </form>
         </div>
       </Dialog>

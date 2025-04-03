@@ -141,7 +141,6 @@ export default function InboxList(props: { title: string }) {
         sx={{
           width: "100%",
           maxHeight: "750px",
-          marginX: "auto",
           overflowY: "auto",
           "&::-webkit-scrollbar": {
             width: "6px",
@@ -160,6 +159,7 @@ export default function InboxList(props: { title: string }) {
         }}
       >
         <DataGrid
+          autoHeight
           rows={row}
           columns={columns}
           initialState={{ pagination: { paginationModel } }}
@@ -172,6 +172,7 @@ export default function InboxList(props: { title: string }) {
           disableRowSelectionOnClick
           slots={{ footer: CustomTableFooter }}
           sx={{
+            overflowY: "auto",
             border: 0,
             "& .MuiDataGrid-scrollbar": { display: "none" },
             "& .MuiDataGrid-columnHeaders": { display: "none" },

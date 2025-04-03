@@ -33,6 +33,7 @@ export default function TinyEditorComponent({
       init={{
         height: 300,
         menubar: false,
+        statusbar: false,
         placeholder: placeholder || "Write something...",
         base_url: "/tinymce",
         plugins: [
