@@ -184,7 +184,9 @@ declare const messages: {
     "phone": "phone number",
     "role": "role",
     "gender": "gender",
-    "add": "add now"
+    "add": "add now",
+    "note": "Do you want to delete this team member?",
+    "delete": "delete"
   },
   "Table": {
     "title": "Table"
@@ -195,7 +197,8 @@ declare const messages: {
     "page": "Page",
     "copy": "Copy",
     "copied": "Copied",
-    "copied to clipboard": "Copied to clipboard"
+    "copied to clipboard": "Copied to clipboard",
+    "documenet is not focused": "Document is not focused"
   },
   "ProductDetail": {
     "title": "Product Details",

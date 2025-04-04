@@ -45,7 +45,7 @@ export default function CustomComponent() {
               alignItems: "flex-start",
               color: "white",
               px: "60px",
-              pt: "50px",
+              py: "50px",
             }}
           >
             <Typography variant="body1" sx={{ lineHeight: "1.75rem" }}>
@@ -104,7 +104,7 @@ export default function CustomComponent() {
               width: "100%",
               display: "flex",
               flexDirection: "column",
-              height: "350px",
+              height: "100%",
               justifyContent: "space-between",
               alignItems: "flex-start",
               color: "white",
@@ -113,16 +113,18 @@ export default function CustomComponent() {
             }}
           >
             <Typography variant="body1" sx={{ lineHeight: "1.75rem" }}>
-              September 12-22
+              2 September 12-22
             </Typography>
 
             <Typography
               variant="h4"
               sx={{
-                fontWeight: "bold",
-                lineHeight: "3rem",
-                maxWidth: "413px",
+                fontWeight: "900",
+                fontSize: "37px",
+                lineHeight: "48px",
+                maxWidth: "420px",
                 width: "100%",
+                mt: "8px",
               }}
             >
               Enjoy free home delivery in this summer
@@ -131,9 +133,12 @@ export default function CustomComponent() {
             <Typography
               variant="body1"
               sx={{
-                lineHeight: "1.75rem",
+                lineHeight: "30px",
+                fontSize: "16px",
+                fontWeight: "600",
                 maxWidth: "420px",
                 width: "100%",
+                mt: "8px",
               }}
             >
               Designer Dresses - Pick from trendy Designer Dress.
@@ -143,14 +148,16 @@ export default function CustomComponent() {
               sx={{
                 width: "10rem",
                 height: "2.75rem",
+                mt: "38px",
                 backgroundColor: "orange",
                 borderRadius: "11px",
                 "&:hover": {
                   backgroundColor: "darkorange",
                 },
+                textTransform: "capitalize",
               }}
             >
-              Get started
+              {t("start")}
             </Button>
           </Box>
         </SwiperSlide>

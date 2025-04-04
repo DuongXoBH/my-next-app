@@ -50,7 +50,7 @@ export default function Sidebar() {
           "&::-webkit-scrollbar-thumb": {
             backgroundColor:"white"
           },
-          "&:hover": {
+          "&:hover": open ? {
             "&::-webkit-scrollbar": {
               width:"8px",
             },
@@ -58,7 +58,7 @@ export default function Sidebar() {
               backgroundColor: "#9F9F9F",
               borderRadius: "2px",
             },
-          },
+          } : {},
         },
       }}
       variant="permanent"

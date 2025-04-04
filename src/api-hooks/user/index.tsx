@@ -106,3 +106,30 @@ export function useFetchRegister() {
   });
   return mutation;
 }
+
+async function fetchUsersProducts(id:number) {
+  const response = await fetch(`${apiUrl}/users/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const result = await response.json();
+  if (!response.ok) {
+    throw new Error(result);
+  }
+  return result;
+}
+
+export default function useFetchUsersProducts(){
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (id:number)=>fetchUsersProducts(id),
+    onSuccess() {
+      queryClient.invalidateQueries({ queryKey: ["users"] });
+    },
+    onError() {
+      throw new Error("Error");
+    },
+  })
+}

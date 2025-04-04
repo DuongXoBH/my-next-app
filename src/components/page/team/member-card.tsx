@@ -3,7 +3,7 @@ import { CardMedia } from "@mui/material";
 
 export default function MemberCard({ member }: { member: IUser }) {
   return (
-    <div className="w-[23%] h-[289px] flex flex-col items-center bg-white bg-member-card rounded-[18px] mb-8">
+    <div className="w-full h-[289px] flex flex-col items-center bg-white bg-member-card rounded-[18px] mb-8">
       <CardMedia
         component="img"
         image={member.avatar}

@@ -92,7 +92,7 @@
     "update": "Cập nhật",
     "delete": "xóa",
     "note": "Bạn chắc chắn muốn xóa sản phẩm này chứ ?",
-    "toast": "Đã xóa thành công"
+    "toast": "Thành công"
   },
   "Pricing": {
     "title": "Thanh Toán",
@@ -181,7 +181,9 @@
     "phone": "Số điện thoại",
     "role": "Vai trò",
     "gender": "Giới tính",
-    "add": "thêm ngay"
+    "add": "thêm ngay",
+    "note": "Bạn có chắc chắn muốn xóa thành viên này không ?",
+    "delete": "Xóa ngay"
   },
   "Table": {
     "title": "Bảng Biểu"
@@ -192,7 +194,8 @@
     "page": "Trang",
     "copy": "Sao chép",
     "copied": "Đã sao chép",
-    "copied to clipboard": "Đã sao chép vào bộ nhớ tạm"
+    "copied to clipboard": "Đã sao chép vào bộ nhớ tạm",
+    "documenet is not focused": "Tài liệu không được chọn"
   },
   "ProductDetail": {
     "title": "Chi tiết sản phẩm",
@@ -232,5 +235,5 @@
   },
   "Profile": {
     "title": "Hồ sơ"
-  } 
+  }
 }

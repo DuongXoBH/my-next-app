@@ -43,7 +43,7 @@ export default function ShareInvoice({ shareUrl }: { shareUrl?: string }) {
         }}
         maxWidth="xl"
         PaperComponent={({ children }) => (
-          <div className="min-w-[480px] min-h-[240px] rounded-lg bg-white p-3 flex flex-col gap-8">
+          <div className="min-w-[540px] min-h-[240px] rounded-lg bg-white p-3 flex flex-col gap-8">
             {children}
           </div>
         )}
@@ -76,7 +76,7 @@ export default function ShareInvoice({ shareUrl }: { shareUrl?: string }) {
         <Divider />
         <div className="w-full flex flex-row justify-between items-center rounded-lg p-4 border border-gray-300 text-black">
           <p>https://{shareUrl}</p>
-          <CopyButton copyUrl={shareUrl}/>
+          <CopyButton copyText={shareUrl}/>
         </div>
       </Dialog>
     </div>

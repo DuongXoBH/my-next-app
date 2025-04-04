@@ -62,7 +62,6 @@ async function fetchUpdateProducts(
   ]
   };
   console.log("🚀 ~ updateData:", updateData)
-  console.log(typeof(JSON.stringify(updateData)));
   const response = await fetch(`${apiUrl}/products/${id}`, {
     method: "PUT",
     headers: {
