@@ -14,7 +14,6 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import Link from "next/link";
 import { useAtom } from "jotai";
 import { userToken } from "@/store/user";
 import { sidebarAtom } from "@/store";
@@ -22,6 +21,7 @@ import { useFetchUserApiBySession } from "@/api-hooks/user";
 import Image from "next/image";
 import { HEADINGMENU, IHeadingMenu } from "@/constants/common/header";
 import LanguageSwitcher from "./locale-button";
+import LinkTag from "../../global/link-tag";
 
 export default function Header() {
   const [token] = useAtom(userToken);
@@ -147,12 +147,12 @@ export default function Header() {
                 onClose={handleClose}
               >
                 {settings.map((setting: IHeadingMenu, index: number) => (
-                  <MenuItem key={`setting-${index}`} onClick={handleClickMenu2}>
-                    <Link
+                  <MenuItem key={`locale-${index}`} onClick={handleClose}>
+                    <LinkTag
                       href={setting.href}
-                      className="flex flex-row gap-3 py-auto h-full items-center"
+                      className="flex flex-row gap-3 py-auto h-full justify-center items-center"
                     >
-                      <div className="w-4 h-4">
+                      <div className="w-7 h-7 flex items-center">
                         <Image
                           alt=""
                           src={setting.img}
@@ -163,7 +163,7 @@ export default function Header() {
                       <Typography sx={{ textAlign: "center" }}>
                         {setting.text}
                       </Typography>
-                    </Link>
+                    </LinkTag>
                   </MenuItem>
                 ))}
               </Menu>

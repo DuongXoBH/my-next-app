@@ -1,6 +1,6 @@
 "use client"
 
-import InvoicePrintComponent from "@/components/page/invoice/invoice-print";
+import InvoiceMainComponent from "@/components/page/invoice/invoice-main";
 import { useEffect } from "react";
 
 export default function InvoicePrintPage(){
@@ -11,6 +11,6 @@ export default function InvoicePrintPage(){
         }
     },[])
     return (
-        <InvoicePrintComponent/>
+        <InvoiceMainComponent/>
     )
 }

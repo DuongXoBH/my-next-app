@@ -165,7 +165,9 @@ declare const messages: {
     "due": "due date",
     "print": "Print",
     "send": "Send",
-    "total": "total"
+    "total": "total",
+    "share invoice title": "Share Invoice",
+    "copy": "Copy"
   },
   "UI Elements": {
     "title": "UI Elements",
@@ -190,7 +192,10 @@ declare const messages: {
   "Global": {
     "settings": "Settings",
     "logout": "Logout",
-    "page": "Page"
+    "page": "Page",
+    "copy": "Copy",
+    "copied": "Copied",
+    "copied to clipboard": "Copied to clipboard"
   },
   "ProductDetail": {
     "title": "Product Details",
@@ -227,6 +232,9 @@ declare const messages: {
     "type-required": "Type is required",  
     "status-required": "Status is required",
     "username-required": "Username is required"
-  }
+  },
+  "Profile": {
+    "title": "Profile"
+  } 
 };
 export default messages;

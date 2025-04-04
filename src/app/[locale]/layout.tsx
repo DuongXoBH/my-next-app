@@ -44,9 +44,11 @@ export default async function RootLayout({
               <QueryClientProviders>
                 <Providers>
                   <CustomAblyProvider>
-                  <ThemeProviders>{children}</ThemeProviders>
+                    <ThemeProviders>
+                      {children}
+                      <ToastContainer autoClose={3000} limit={1} />
+                    </ThemeProviders>
                   </CustomAblyProvider>
-                  <ToastContainer />
                 </Providers>
               </QueryClientProviders>
             </Suspense>

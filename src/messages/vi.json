@@ -162,7 +162,9 @@
     "due": "Hạn thanh toán",
     "print": "In",
     "send": "Gửi",
-    "total": "tổng"
+    "total": "tổng",
+    "share invoice title": "Chia sẻ hóa đơn",
+    "copy": "Sao chép"
   },
   "UI Elements": {
     "title": "Biểu Đồ",
@@ -187,7 +189,10 @@
   "Global": {
     "settings": "Cài đặt",
     "logout": "Đăng xuất",
-    "page": "Trang"
+    "page": "Trang",
+    "copy": "Sao chép",
+    "copied": "Đã sao chép",
+    "copied to clipboard": "Đã sao chép vào bộ nhớ tạm"
   },
   "ProductDetail": {
     "title": "Chi tiết sản phẩm",
@@ -224,5 +229,8 @@
     "type-required": "Loại là bắt buộc",
     "status-required": "Trạng thái là bắt buộc",
     "username-required": "Tên người dùng là bắt buộc"
-  }
+  },
+  "Profile": {
+    "title": "Hồ sơ"
+  } 
 }

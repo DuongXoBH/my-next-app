@@ -40,7 +40,7 @@ function createData(
   return { id, description, quantity, cost, total };
 }
 
-export default function InvoicePrintComponent() {
+export default function InvoiceMainComponent() {
   const t = useTranslations("Invoice");
   const rows = [
     createData("1", "Children Toy", 2, 20, 80),
