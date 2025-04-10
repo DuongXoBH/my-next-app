@@ -113,6 +113,33 @@ declare const messages: {
     "start": "Get starred",
     "note": "Start Your 30 Day Free Trial"
   },
+  "PricingDetail": {
+    "title": "Pricing Details",
+    "basic": "Basic",
+    "standard": "Standard",
+    "premium": "Premium",
+    "price": "Monthly Charge",
+    "setup": "Free Setup",
+    "bandwidth": "Bandwidth Limit 10 GB",
+    "user": "20 User Connection",
+    "analytics": "Analytics Report",
+    "access": "Public API Access",
+    "integration": "Plugins Integration",
+    "content": "Custom Content Management",
+    "start": "Get Started",
+    "success": "Success",
+    "processing": "Processing",
+    "confirm payment": "Confirm Payment",
+    "card number": "Card Number",
+    "expiration": "Expiration Date",
+    "hoder name": "Card Holder Name",
+    "note": "You will pay ",
+    "for": "for",
+    "pay with": "Pay with",
+    "Visa": "Visa Card",
+    "Paypal": "Paypal",
+    "App store": "App Store"
+  },
   "Calender": {
     "title": "Calender",
     "more": "See More",
@@ -138,7 +165,7 @@ declare const messages: {
     "phone": "phone number",
     "birth": "date of birth",
     "gender": "gender",
-    "add":"add now"
+    "add": "add now"
   },
   "UpdateContact": {
     "title": "update contact",
@@ -232,12 +259,12 @@ declare const messages: {
     "name-required": "Name is required",
     "address-required": "Address is required",
     "date-required": "Date is required",
-    "type-required": "Type is required",  
+    "type-required": "Type is required",
     "status-required": "Status is required",
     "username-required": "Username is required"
   },
   "Profile": {
     "title": "Profile"
-  } 
+  }
 };
 export default messages;

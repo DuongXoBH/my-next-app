@@ -32,7 +32,6 @@ export default function DateFilter() {
   const handleFilter = () => {
     setIsDateOpen(false);
     const newData = filterFunction(orderSearch);
-    console.log("🚀 ~ handleFilter ~ newData:", newData)
     setData(newData);
   };
 

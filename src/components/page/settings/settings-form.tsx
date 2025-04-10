@@ -31,7 +31,7 @@ export default function SettingsFormComponent() {
   const onSubmit: SubmitHandler<SettingsForm> = (data) => {
     const uploadData = { ...data, image: imageUrl };
 
-    console.log("🚀 ~ SettingsForm ~ uploadData:", uploadData)
+    console.log("🚀 ~ SettingsFormComponent ~ uploadData:", uploadData)
     toast.success("Save settings");
   };
 

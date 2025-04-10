@@ -29,7 +29,7 @@ export default function CreateEvent() {
       ...data,
       image: imageUrl,
     };
-    console.log("🚀 ~ CreateEvent ~ uploadDate:", uploadData);
+    console.log("🚀 ~ CreateEvent ~ uploadData:", uploadData)
   };
   return (
     <div className="w-full h-[744px] bg-white rounded-2xl flex justify-center items-center">

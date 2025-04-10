@@ -1,46 +1,39 @@
-import MailIcon from "@mui/icons-material/Mail";
-import StarIcon from "@mui/icons-material/Star";
-import SendIcon from "@mui/icons-material/Send";
-import ModeIcon from "@mui/icons-material/Mode";
-import WarningAmberIcon from "@mui/icons-material/WarningAmber";
-import TryIcon from "@mui/icons-material/Try";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
 export const EMAILPAGES = [
   {
     text: "inbox",
     href: "#inbox",
-    icon: MailIcon,
+    icon: "/mail/inbox.png",
   },
   {
     text: "starred",
     href: "#starred",
-    icon: StarIcon,
+    icon: "/mail/starred.png",
   },
   {
     text: "sent",
     href: "#sent",
-    icon: SendIcon,
+    icon: "/mail/sent.png",
   },
   {
     text: "draft",
     href: "#draft",
-    icon: ModeIcon,
+    icon: "/mail/draft.png",
   },
   {
     text: "spam",
     href: "#spam",
-    icon: WarningAmberIcon,
+    icon: "/mail/spam.png",
   },
   {
     text: "important",
     href: "#important",
-    icon: TryIcon,
+    icon: "/mail/important.png",
   },
   {
     text: "bin",
     href: "#bin",
-    icon: DeleteForeverIcon,
+    icon: "/mail/bin.png",
   },
 ];
 

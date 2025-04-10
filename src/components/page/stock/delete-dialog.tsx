@@ -15,8 +15,7 @@ export default function DeteleDialog({ id }: { id: number }) {
     if(isSubmitting) return null;
     setIsSubmitting(true);
     await deleteMutation.mutate(id, {
-      onSuccess(data) {
-        console.log(data);
+      onSuccess() {
         toast(t("toast"));
       },
       onError(error: unknown) {

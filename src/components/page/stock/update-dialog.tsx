@@ -30,8 +30,7 @@ export default function UpdateDialog({ id }: { id: number }) {
     await updateMutation.mutate(
       { id, data },
       {
-        onSuccess(data) {
-          console.log(data);
+        onSuccess() {
           toast(t("toast"));
         },
         onError(error: unknown) {
@@ -41,7 +40,6 @@ export default function UpdateDialog({ id }: { id: number }) {
         },
       }
     );
-    console.log(data);
     setIsSubmitting(false);
     setOpen(false)
   };

@@ -35,7 +35,7 @@ export const LOCALE = [
         href:"en"
     },
     {
-        img:"/locale-3.jpg",
+        img:"/locale-3.webp",
         text:"Việt Nam",
         href:"vi"
     },

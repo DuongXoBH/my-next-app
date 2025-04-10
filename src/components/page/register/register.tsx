@@ -67,8 +67,7 @@ export default function Register() {
     await registerMutation.mutate(
       { data },
       {
-        onSuccess(data) {
-          console.log(data);
+        onSuccess() {
           toast(t("toast"));
           router.push(getPathname({href: "/login", locale : locale as "vi"|"en"}));
         },

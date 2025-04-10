@@ -4,7 +4,6 @@ import {
   ListItem,
   ListItemButton,
   ListItemIcon,
-  SvgIconProps,
   Tooltip,
 } from "@mui/material";
 import { useAtom } from "jotai";
@@ -12,14 +11,14 @@ import { usePathname } from "next/navigation";
 import React from "react";
 import Note from "./sidebar-node";
 import LinkTag from "../../global/link-tag";
-
+import Image from "next/image";
 
 export default function ListNode({
   list,
 }: {
   list: {
     text: string;
-    icon: React.FC<SvgIconProps>;
+    icon: string;
     href: string;
   }[];
 }) {
@@ -44,7 +43,6 @@ export default function ListNode({
             borderRadius: open ? "8px" : "0",
             ":hover": {
               backgroundColor: "rgba(72, 128, 255, 1)",
-              color: "white",
               "& .MuiListItemButton-root": {
                 backgroundColor: "inherit",
               },
@@ -56,7 +54,7 @@ export default function ListNode({
           disablePadding
         >
           <LinkTag
-            className={open ? "w-[224px]" : "w-[78px]"}
+            className={`hover:invert ${open ? "w-[224px]" : "w-[78px]"}`}
             href={element.href}
           >
             <Tooltip title={open ? "" : element.text}>
@@ -71,16 +69,17 @@ export default function ListNode({
                 <ListItemIcon
                   sx={{ display: "flex", justifyContent: "center" }}
                 >
-                  {React.createElement(element.icon, {
-                    sx: {
-                      color: pathName.includes(element.href.trim())
-                        ? "white"
-                        : "black",
-                      width: "24px",
-                    },
-                  })}
+                  <Image
+                    alt={element.text}
+                    src={element.icon}
+                    width={18}
+                    height={18}
+                    className={`filter grayscale brightness-0 ${
+                      pathName.includes(element.href.trim()) ? "invert" : ""
+                    }`}
+                  ></Image>
                 </ListItemIcon>
-                {open && <Note page={element.text}  />}
+                {open && <Note page={element.text} />}
               </ListItemButton>
             </Tooltip>
           </LinkTag>

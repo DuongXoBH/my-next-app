@@ -38,7 +38,6 @@ export default function MyCalendar() {
   });
   const [hoveredEvent, setHoveredEvent] = useState<EventClickArg | null>(null);
 
-  // const colors = ["#516FE9", "#F87171", "#34D399", "#FBBF24", "#818CF8"];
 
   const handleSelect = (info: DateSelectArg) => {
     setSelectedDate({ start: info.startStr, end: info.endStr });

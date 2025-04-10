@@ -1,4 +1,3 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -22,11 +21,12 @@ import Image from "next/image";
 import { HEADINGMENU, IHeadingMenu } from "@/constants/common/header";
 import LanguageSwitcher from "./locale-button";
 import LinkTag from "../../global/link-tag";
+import { useState } from "react";
 
 export default function Header() {
   const [token] = useAtom(userToken);
   const [dashboardOpen, setDashboardOpen] = useAtom(sidebarAtom);
-  const [searchValue, setSearchValue] = React.useState("");
+  const [searchValue, setSearchValue] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
@@ -37,7 +37,7 @@ export default function Header() {
 
   const settings = HEADINGMENU;
 
-  const [anchorEl2, setAnchorEl2] = React.useState<null | HTMLElement>(null);
+  const [anchorEl2, setAnchorEl2] = useState<null | HTMLElement>(null);
 
   const open2 = Boolean(anchorEl2);
 

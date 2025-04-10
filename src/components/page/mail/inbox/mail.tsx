@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import Paper from "@mui/material/Paper";
 import { Typography } from "@mui/material";
@@ -9,10 +8,11 @@ import { IMail, INBOXLIST } from "@/constants/mail";
 import { CustomTableFooter } from "@/components/common/table/table-footer";
 import { useAtom } from "jotai";
 import { labelAtom } from "@/store/mail";
+import { useEffect, useState } from "react";
 
 export default function InboxList(props: { title: string }) {
   const [label] = useAtom(labelAtom);
-  const [row, setRow] = React.useState<IMail[]>([]);
+  const [row, setRow] = useState<IMail[]>([]);
 
   const handleStarChange = (
     id: number,
@@ -119,7 +119,7 @@ export default function InboxList(props: { title: string }) {
 
   // data = call API(title)
   const data = INBOXLIST;
-  React.useEffect(() => {
+  useEffect(() => {
     const newData = label
       ? data.filter((e: IMail) => {
           return e.group.label === label;
@@ -128,18 +128,18 @@ export default function InboxList(props: { title: string }) {
     setRow(newData);
   }, [label, setRow, data]);
 
-  const [selectedRows, setSelectedRows] = React.useState<number[]>([]);
+  const [selectedRows, setSelectedRows] = useState<number[]>([]);
   // Filter selected data
   const selectedData = row?.filter((row: IMail) =>
     selectedRows.includes(row.id)
   );
-  console.log("🚀 ~ InboxList ~ selectedData:", selectedData);
+  console.log("🚀 ~ InboxList ~ selectedData:", selectedData)
   return (
     <div>
       <p className="px-5 font-bold">{props.title}</p>
       <Paper
         sx={{
-          width: "100%",
+          width: "full",
           maxHeight: "750px",
           overflowY: "auto",
           "&::-webkit-scrollbar": {

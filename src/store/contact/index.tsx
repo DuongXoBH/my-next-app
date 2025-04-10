@@ -1,4 +1,4 @@
-import * as Ably from "ably";
+import {Realtime} from "ably";
 import { atom } from "jotai";
 
-export const AblyAtom = atom<Ably.Realtime | null>(null);
+export const AblyAtom = atom<Realtime | null>(null);

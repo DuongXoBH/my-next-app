@@ -1,17 +1,3 @@
-import HistoryToggleOffIcon from "@mui/icons-material/HistoryToggleOff";
-import GridViewIcon from "@mui/icons-material/GridView";
-import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
-import ChecklistIcon from "@mui/icons-material/Checklist";
-import Inventory2Icon from "@mui/icons-material/Inventory2";
-import CardGiftcardIcon from "@mui/icons-material/CardGiftcard";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import BookIcon from "@mui/icons-material/Book";
-import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
-import LocalAtmIcon from "@mui/icons-material/LocalAtm";
-import BarChartIcon from "@mui/icons-material/BarChart";
-import PersonIcon from "@mui/icons-material/Person";
-import BorderAllIcon from "@mui/icons-material/BorderAll";
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import translationData from "@/messages/en.json";
 type dashboardKeys = keyof typeof translationData.Dashboard;
 
@@ -19,32 +5,32 @@ export const DASHBOARD = [
   {
     text: "Dashboard",
     href: "/dashboard",
-    icon: HistoryToggleOffIcon,
+    icon: "/sidebar/dashboard-icon.png",
   },
   {
     text: "Products",
     href: "/products",
-    icon: GridViewIcon,
+    icon: "/sidebar/products-icon.png",
   },
   {
     text: "Favorites",
     href: "/favorites",
-    icon: FavoriteBorderIcon,
+    icon: "/sidebar/favorites-icon.png",
   },
   {
     text: "Inbox",
     href: "/mail",
-    icon: QuestionAnswerIcon,
+    icon: "/sidebar/inbox-icon.png",
   },
   {
     text: "Order Lists",
     href: "/order",
-    icon: ChecklistIcon,
+    icon: "/sidebar/order-icon.png",
   },
   {
     text: "Product Stock",
     href: "/stock",
-    icon: Inventory2Icon,
+    icon: "/sidebar/stock-icon.png",
   },
 ];
 
@@ -52,42 +38,42 @@ export const PAGE_DASHBOARD = [
   {
     text: "Pricing",
     href: "/pricing",
-    icon: CardGiftcardIcon,
+    icon: "/sidebar/pricing-icon.png",
   },
   {
     text: "Calender",
     href: "/calender",
-    icon: CalendarMonthIcon,
+    icon: "/sidebar/calender-icon.png",
   },
   {
     text: "To-do",
     href: "/todo",
-    icon: BookIcon,
+    icon: "/sidebar/todo-icon.png",
   },
   {
     text: "Contact",
     href: "/contact",
-    icon: PeopleAltIcon,
+    icon: "/sidebar/contact-icon.png",
   },
   {
     text: "Invoice",
     href: "/invoice",
-    icon: LocalAtmIcon,
+    icon: "/sidebar/invoice-icon.png",
   },
   {
     text: "UI Elements",
     href: "/ui-elements",
-    icon: BarChartIcon,
+    icon: "/sidebar/ui-element-icon.png",
   },
   {
     text: "Team",
     href: "/team",
-    icon: PersonIcon,
+    icon: "/sidebar/team-icon.png",
   },
   {
     text: "Table",
     href: "/table",
-    icon: BorderAllIcon,
+    icon: "/sidebar/table-icon.png",
   },
 ];
 

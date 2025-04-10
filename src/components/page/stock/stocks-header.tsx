@@ -9,11 +9,11 @@ import { useTranslations } from "next-intl";
 
 export default function StocksHeader() {
     const [searchValue, setSearchValue] = useState("");
+    console.log("🚀 ~ StocksHeader ~ searchValue:", searchValue)
     const t = useTranslations("Product Stock"); 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
       setSearchValue(e.target.value);
     };
-    console.log("🚀 ~ ProductStocks ~ searchValue:", searchValue);
   return (
     <div className="flex justify-between items-center mt-4 mb-10">
       <PageHeader page="Product Stock"/>

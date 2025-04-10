@@ -34,7 +34,6 @@ export default function CreateContactForm(){
   } = useForm<CreateContactForm>({ resolver: yupResolver(schema) });
 
   const onSubmit: SubmitHandler<CreateContactForm> = async (data) => {
-    console.log("🚀 ~ constonSubmit:SubmitHandler<CreateContactForm>= ~ data:", data)
     const uploadData = {
       name: `${data.firstName} ${data.lastName}`,
       email: data.email,
@@ -44,13 +43,11 @@ export default function CreateContactForm(){
     await registerMutation.mutate(
       { data: uploadData },
       {
-        onSuccess(data) {
-          console.log(data);
+        onSuccess() {
           router.push(getPathname({href: "/contact", locale : locale as "vi"|"en"}));
         },
       }
     );
-    console.log("🚀 ~ CreateContactForm ~ uploadData:", uploadData);
     toast.success("Success");
   };
 

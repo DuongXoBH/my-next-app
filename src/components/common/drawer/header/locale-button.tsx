@@ -56,7 +56,11 @@ export default function LanguageSwitcher() {
         }}
       >
         <IconButton onClick={handleClickMenu1} sx={{ p: 0, gap: "5px" }}>
-          <Avatar alt="Remy Sharp" src={language?.img} />
+          <Avatar
+            alt="Remy Sharp"
+            src={language?.img}
+            sx={{ width: 32, height: 32 }}
+          />
           <Box sx={{ marginRight: "5px" }}>
             <Typography sx={{ color: "gray", fontWeight: "600" }}>
               {language?.text}
@@ -90,7 +94,7 @@ export default function LanguageSwitcher() {
               className="flex flex-row gap-3 py-auto h-full items-center"
             >
               <div className="w-10 h-7 flex items-center">
-                <Image alt="" src={setting.img} width={44} height={30}></Image>
+                <Image alt="" src={setting.img} width={32} height={32}></Image>
               </div>
               <Typography sx={{ textAlign: "center" }}>
                 {setting.text}

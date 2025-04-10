@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import Image from "next/image";
 import Drawer from "@mui/material/Drawer";
 import Toolbar from "@mui/material/Toolbar";
@@ -11,7 +10,6 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import { DASHBOARD, PAGE_DASHBOARD } from "@/constants/dashboard";
-import SettingsIcon from "@mui/icons-material/Settings";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import { useAtom } from "jotai";
 import { userToken } from "@/store/user";
@@ -21,9 +19,11 @@ import { Tooltip } from "@mui/material";
 import ListNode from "./sidebar-list";
 import { useTranslations } from "next-intl";
 import LinkTag from "../../global/link-tag";
+import { usePathname } from "next/navigation";
 
 export default function Sidebar() {
   const t = useTranslations("Global");
+  const pathName = usePathname();
   const [, setUser] = useAtom(userToken);
   const [open] = useAtom(sidebarAtom);
 
@@ -42,23 +42,25 @@ export default function Sidebar() {
           position: "fixed",
           overflowX: "hidden",
           overflowY: "auto",
-          marginLeft : "8px",
+          marginLeft: "8px",
           borderRight: "none",
           "&::-webkit-scrollbar": {
-            width:"8px",
+            width: "8px",
           },
           "&::-webkit-scrollbar-thumb": {
-            backgroundColor:"white"
+            backgroundColor: "white",
           },
-          "&:hover": open ? {
-            "&::-webkit-scrollbar": {
-              width:"8px",
-            },
-            "&::-webkit-scrollbar-thumb": {
-              backgroundColor: "#9F9F9F",
-              borderRadius: "2px",
-            },
-          } : {},
+          "&:hover": open
+            ? {
+                "&::-webkit-scrollbar": {
+                  width: "8px",
+                },
+                "&::-webkit-scrollbar-thumb": {
+                  backgroundColor: "#9F9F9F",
+                  borderRadius: "2px",
+                },
+              }
+            : {},
         },
       }}
       variant="permanent"
@@ -114,22 +116,29 @@ export default function Sidebar() {
       >
         {/* Settings Items */}
         <ListItem
-          disablePadding
           sx={{
-            height: "60px",
+            marginY: "5px",
+            color: pathName.includes("/settings") ? "white" : "black",
+            backgroundColor: pathName.includes("/settings")
+              ? "rgba(72, 128, 255, 1)"
+              : "inherit",
+            overflow: "hidden",
+            height: "50px",
             width: open ? "224px" : "78px",
-            borderRadius: "8px",
-            overflowY: "auto",
+            borderRadius: open ? "8px" : "0",
             ":hover": {
               backgroundColor: "rgba(72, 128, 255, 1)",
-              color: "white",
+              "& .MuiListItemButton-root": {
+                backgroundColor: "inherit",
+              },
               "& .MuiSvgIcon-root": {
                 color: "white",
               },
             },
           }}
+          disablePadding
         >
-          <LinkTag href="/settings" className={open ? "w-[224px]" : "w-[78px]"}>
+          <LinkTag href="/settings" className={`hover:invert ${open ? "w-[224px]" : "w-[78px]"}`}> 
             <Tooltip title={open ? "" : "Settings"}>
               <ListItemButton
                 sx={{
@@ -141,7 +150,15 @@ export default function Sidebar() {
                 <ListItemIcon
                   sx={{ display: "flex", justifyContent: "center" }}
                 >
-                  <SettingsIcon sx={{ color: "black" }} />
+                  <Image
+                    alt="settings"
+                    src="/sidebar/settings-icon.png"
+                    width={20}
+                    height={20}
+                    className={`filter grayscale brightness-0 ${
+                      pathName.includes('/settings') ? "invert" : ""
+                    }`}
+                  ></Image>
                 </ListItemIcon>
                 {open && (
                   <Typography sx={{ fontWeight: "600", fontSize: "14px" }}>
@@ -155,19 +172,24 @@ export default function Sidebar() {
 
         {/* Logout Items */}
         <ListItem
-          disablePadding
           sx={{
-            height: "60px",
+            marginY: "5px",
+            overflow: "hidden",
+            height: "50px",
             width: open ? "224px" : "78px",
-            borderRadius: "8px",
+            borderRadius: open ? "8px" : "0",
             ":hover": {
               backgroundColor: "rgba(72, 128, 255, 1)",
-              color: "white",
+              "& .MuiListItemButton-root": {
+                backgroundColor: "inherit",
+                color: "white",
+              },
               "& .MuiSvgIcon-root": {
                 color: "white",
               },
             },
           }}
+          disablePadding
         >
           <Tooltip title={open ? "" : "Logout"}>
             <ListItemButton
@@ -184,7 +206,7 @@ export default function Sidebar() {
                 <PowerSettingsNewIcon sx={{ color: "black" }} />
               </ListItemIcon>
               {open && (
-                <Typography sx={{ fontWeight: "600", fontSize: "14px" }}>
+                <Typography sx={{ fontWeight: "600", fontSize: "14px"}}>
                   {t("logout")}
                 </Typography>
               )}

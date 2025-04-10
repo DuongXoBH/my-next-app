@@ -61,7 +61,6 @@ async function fetchUpdateProducts(
       "https://res.cloudinary.com/dtg8bciwm/image/upload/v1742973717/storiesig.website_InstagramPost_min8657_3532073818284298836_vxddft.jpg"
   ]
   };
-  console.log("🚀 ~ updateData:", updateData)
   const response = await fetch(`${apiUrl}/products/${id}`, {
     method: "PUT",
     headers: {

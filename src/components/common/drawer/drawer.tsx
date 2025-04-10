@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import Box from "@mui/material/Box";
 import { useAtom } from "jotai";
 import { userToken } from "@/store/user";
@@ -11,20 +10,21 @@ import Sidebar from "./sidebar/sidebar";
 import { CircularProgress } from "@mui/material";
 import { getPathname } from "@/i18n/navigation";
 import { sidebarAtom } from "@/store";
+import { useEffect, useState } from "react";
 
 export default function Dashboard({ children }: { children: React.ReactNode }) {
   const [open] = useAtom(sidebarAtom);
   const [user] = useAtom(userToken);
   const route = useRouter();
-  const [loading, setLoading] = React.useState(true);
+  const [loading, setLoading] = useState(true);
   const pathName = usePathname();
 
-  React.useEffect(() => {
+  useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1000);
     return () => clearTimeout(timer);
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const timer = setTimeout(() => {
       if (!user) {
         toast.error("You are not signed in");

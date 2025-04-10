@@ -42,8 +42,8 @@ export default function UpdateContactComponent({ userId }: { userId: string }) {
     if (isSummiting) return null;
     setIsSubmitting(true);
     const uploadData = { ...data, image: imageUrl };
-    console.log(uploadData);
     toast("Update Success");
+    console.log("🚀 ~ UpdateContactComponent ~ uploadData:", uploadData)
     setIsSubmitting(false);
   };
   return (

@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import Image from "next/image";
 import { Tooltip } from "@mui/material";
 import { useTranslations } from "next-intl";
@@ -11,7 +10,6 @@ import { usePathname } from "next/navigation";
 export default function InvoiceComponent() {
   const locale = usePathname().split("/")[1];
   const invoiceContentUrl = `${process.env.NEXT_PUBLIC_DOMAIN}/${locale}/invoice-main`;
-  console.log("🚀 ~ InvoiceComponent ~ invoiceContentUrl:", invoiceContentUrl)
   const t = useTranslations("Invoice");
   const handlePrint = () => {
     const printWindow = window.open("/print/invoice", "_blank");
