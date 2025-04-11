@@ -80,7 +80,7 @@ declare const messages: {
     "status": "status",
     "reset": "Reset Filter",
     "apply": "Apply Now",
-    "not found": "No Order Found"
+    "not found": "No Data Found"
   },
   "Product Stock": {
     "title": "Product Stock",
@@ -238,7 +238,9 @@ declare const messages: {
     "buy": "Buy Now",
     "taxes": "inclusive of all taxes",
     "ship": "free shipping policy",
-    "refund": "refund policy"
+    "refund": "refund policy",
+    "add error toast": "Product already in cart",
+    "add success toast": "Product added to cart"
   },
   "Settings": {
     "title": "General Settings",
@@ -265,6 +267,18 @@ declare const messages: {
   },
   "Profile": {
     "title": "Profile"
+  },
+  "ShoppingCart": {
+    "images": "Images",
+    "title": "Shopping Cart",
+    "products": "Products",
+    "price": "Price",
+    "quantity": "Quantity",
+    "amount": "amount",
+    "remove": "Remove",
+    "checkout": "Checkout",
+    "empty cart": "Your cart is empty",
+    "action": "Action"
   }
 };
 export default messages;

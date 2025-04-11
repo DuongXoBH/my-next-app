@@ -235,7 +235,7 @@ export default function UpdateContactComponent({ userId }: { userId: string }) {
         <button
           disabled={isSummiting}
           type="submit"
-          className="w-[274px] h-14 bg-[#4880FF] disabled:bg-gray-600 rounded-xl text-white"
+          className="w-[274px] h-14 bg-[#4880FF] disabled:bg-gray-600 rounded-xl text-white capitalize"
         >
           {t("update")}
         </button>

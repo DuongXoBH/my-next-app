@@ -22,6 +22,7 @@ import { HEADINGMENU, IHeadingMenu } from "@/constants/common/header";
 import LanguageSwitcher from "./locale-button";
 import LinkTag from "../../global/link-tag";
 import { useState } from "react";
+import CartIcon from "./shopping-cart";
 
 export default function Header() {
   const [token] = useAtom(userToken);
@@ -33,7 +34,7 @@ export default function Header() {
   };
   console.log("🚀 ~ Header ~ searchValue:", searchValue);
 
-  const { data: user } = useFetchUserApiBySession(token);
+  const { data: auth } = useFetchUserApiBySession(token);
 
   const settings = HEADINGMENU;
 
@@ -90,8 +91,8 @@ export default function Header() {
                 ),
                 sx: {
                   fontSize: "14px",
-                  width:"35%",
-                  minWidth:"388px",
+                  width: "35%",
+                  minWidth: "388px",
                   borderRadius: "50px",
                   backgroundColor: "white",
                 },
@@ -100,12 +101,16 @@ export default function Header() {
           </Toolbar>
         </Box>
 
-        <div className="flex gap-7">
+        <div className="flex flex-row gap-10">
+          {/* Shopping Cart Button*/}
+          <LinkTag href="/shopping-cart" className="flex items-center">
+            <CartIcon />
+          </LinkTag>
           {/* Language */}
-          <LanguageSwitcher/>
+          <LanguageSwitcher />
 
           {/* Setting button */}
-          {user && (
+          {auth && (
             <Box
               sx={{
                 flexGrow: 0,
@@ -116,15 +121,21 @@ export default function Header() {
               <Tooltip title="Open settings">
                 <IconButton
                   onClick={handleClickMenu2}
-                  sx={{ p: 0, gap: "5px" }}
+                  sx={{
+                    p: 0,
+                    gap: "5px",
+                    ":hover": {
+                      backgroundColor: "transparent",
+                    },
+                  }}
                 >
-                  <Avatar alt="Remy Sharp" src={user?.avatar} />
+                  <Avatar alt="Remy Sharp" src={auth?.avatar} />
                   <Box sx={{ marginRight: "10px" }}>
                     <Typography sx={{ color: "black", fontWeight: "600" }}>
-                      {user?.name}
+                      {auth?.name}
                     </Typography>
                     <Typography sx={{ color: "gray", fontWeight: "500" }}>
-                      {user?.role}
+                      {auth?.role}
                     </Typography>
                   </Box>
                   <Image alt="" src="/More.svg" width={25} height={25}></Image>

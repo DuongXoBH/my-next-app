@@ -74,7 +74,7 @@ export default function Dashboard({ children }: { children: React.ReactNode }) {
         <Header />
 
         {/* Main */}
-        <div className="bg-[#F5F6FA] w-full">
+        <div className="bg-[#F5F6FA] w-full min-h-[92vh] flex flex-col">
           <div className="container w-full pt-2 pb-4 overflow-auto">
             {children}
           </div>

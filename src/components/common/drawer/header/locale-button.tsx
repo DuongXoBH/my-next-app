@@ -55,7 +55,16 @@ export default function LanguageSwitcher() {
           width: "full",
         }}
       >
-        <IconButton onClick={handleClickMenu1} sx={{ p: 0, gap: "5px" }}>
+        <IconButton
+          onClick={handleClickMenu1}
+          sx={{
+            p: 0,
+            gap: "5px",
+            ":hover": {
+              backgroundColor: "transparent",
+            },
+          }}
+        >
           <Avatar
             alt="Remy Sharp"
             src={language?.img}

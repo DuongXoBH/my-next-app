@@ -1,6 +1,8 @@
 "use client";
 
 import { useFetchProductByIdApi } from "@/api-hooks/product";
+import { useFetchUserApiBySession } from "@/api-hooks/user";
+import { authShoppingCart, userToken } from "@/store/user";
 import {
   Accordion,
   AccordionDetails,
@@ -8,13 +10,36 @@ import {
   Divider,
 } from "@mui/material";
 import { ArrowDropDownIcon } from "@mui/x-date-pickers/icons";
+import { useAtom } from "jotai";
 import { useTranslations } from "next-intl";
+import { toast } from "react-toastify";
 
 export default function ProductInformation({ id }: { id: string }) {
   const t = useTranslations("ProductDetail");
   const { data: product } = useFetchProductByIdApi(id);
+  const [authToken] = useAtom(userToken);
+  const { data: auth } = useFetchUserApiBySession(authToken);
+  const [cart, setCart] = useAtom(authShoppingCart);
+  const handleAddToCart = () => {
+    const isAlradyAdded = cart[auth?.id]?.some(
+      (item) => item.id === product?.id
+    );
+    if (isAlradyAdded) {
+      toast(t("add error toast"));
+    } else {
+      const currentCart = cart[auth.id] || [];
+      setCart((prev) => {
+        return {
+          ...prev,
+          [auth.id]: [...currentCart, { ...product, quantity: 1 }],
+        };
+      });
+      toast(t("add success toast"));
+    }
+  };
+
   return (
-    <div className="w-[49%] flex flex-col gap-2">
+    <div className="w-[49%] max-h-[75vh] overflow-auto flex flex-col gap-2 pb-2">
       <p className="w-full text-3xl text-black font-bold capitalize">
         {product?.title}
       </p>
@@ -44,16 +69,23 @@ export default function ProductInformation({ id }: { id: string }) {
           </div>
         </div>
       </div>
+
+      {/* Button Group */}
       <div className="w-full flex flex-row justify-between">
-        <button className="w-[48%] h-10 flex justify-center items-center capitalize rounded-md bg-red-500 text-white hover:bg-red-700">
+        <button
+          onClick={() => handleAddToCart()}
+          className="w-[48%] h-10 flex justify-center items-center capitalize rounded-md bg-red-500 text-white hover:bg-red-700"
+        >
           {t("add")}
         </button>
         <button className="w-[48%] h-10 flex justify-center items-center capitalize rounded-md bg-white text-gray-500 hover:bg-gray-400 hover:text-white">
           {t("buy")}
         </button>
       </div>
+
       <Divider />
-      {/* detail */}
+      {/* Product information */}
+      {/* Petail */}
       <Accordion>
         <AccordionSummary
           expandIcon={<ArrowDropDownIcon />}
@@ -68,7 +100,7 @@ export default function ProductInformation({ id }: { id: string }) {
           <p>{product?.description}</p>
         </AccordionDetails>
       </Accordion>
-      {/* delivery */}
+      {/* Delivery */}
       <Accordion>
         <AccordionSummary
           expandIcon={<ArrowDropDownIcon />}
@@ -87,7 +119,7 @@ export default function ProductInformation({ id }: { id: string }) {
           </p>
         </AccordionDetails>
       </Accordion>
-      {/* refund */}
+      {/* Refund Policy*/}
       <Accordion>
         <AccordionSummary
           expandIcon={<ArrowDropDownIcon />}

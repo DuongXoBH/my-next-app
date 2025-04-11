@@ -77,7 +77,7 @@
     "status": "Trạng thái",
     "reset": "Làm Mới",
     "apply": "Áp Dụng",
-    "not found": "Không tìm thấy đơn hàng phù hợp"
+    "not found": "Không có dữ liệu nào"
   },
   "Product Stock": {
     "title": "Kho Hàng",
@@ -236,7 +236,9 @@
     "buy": "Mua ngay",
     "taxes": "bao gồm thuế VAT",
     "ship": "Chính sách vận chuyển miễn phí",
-    "refund": "Chính sách hoàn trả"
+    "refund": "Chính sách hoàn trả",
+    "add error toast": "Sản phẩm đã có trong giỏ hàng",
+    "add success toast": "Sản phẩm đã được thêm vào giỏ hàng"
   },
   "Settings": {
     "title": "Cài đặt chung",
@@ -263,5 +265,17 @@
   },
   "Profile": {
     "title": "Hồ sơ"
+  },
+  "ShoppingCart": {
+    "images": "Ảnh",
+    "title": "Giỏ hàng",
+    "products": "Sản phẩm",
+    "price": "Giá",
+    "quantity": "Số lượng",
+    "amount": "Tổng",
+    "remove": "Xóa",
+    "checkout": "Xác nhận",
+    "empty cart": "Giỏ hàng rỗng",
+    "action": "Thao tác"
   }
 }
