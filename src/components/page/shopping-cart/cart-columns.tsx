@@ -4,20 +4,61 @@ import { CardMedia, Tooltip } from "@mui/material";
 import { GridColDef } from "@mui/x-data-grid";
 import DeteleCardDialog from "./delete-cart-dialog";
 import { useTranslations } from "next-intl";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
+import { useAtom } from "jotai";
+import { authShoppingCart, userToken } from "@/store/user";
+import { useFetchUserApiBySession } from "@/api-hooks/user";
+import { totalCartAmountAtom } from "@/store/product";
 
 export default function CartColumns() {
-  const [, setQuantity] = useState<{ [key: string]: number }>({});
+  const [cart] = useAtom(authShoppingCart);
+  const [token] = useAtom(userToken);
+  const { data: auth } = useFetchUserApiBySession(token);
+  const cartList = auth ? cart[auth.id] : [];
+  const [quantityList, setQuantityList] = useState(new Map<number, number>());
+  const [, setTotalCartAmount] = useAtom(totalCartAmountAtom);
+
+  const calculateTotalAmount = (): number => {
+    return cartList.reduce((total, item) => {
+      const quantity = quantityList.get(item.id) ?? 1;
+      return total + quantity * item.price;
+    }, 0);
+  };
+
+  useEffect(() => {
+    const newMap = new Map<number, number>();
+    cartList?.forEach((item) => {
+      newMap.set(item.id, item.quantity);
+    });
+    setQuantityList(newMap);
+
+    calculateTotalAmount();
+  }, [auth, cartList, calculateTotalAmount()]);
+
+  useEffect(() => {
+    setTotalCartAmount(calculateTotalAmount());
+  }, [calculateTotalAmount(), setTotalCartAmount]);
+
   const handleChangeQuantity = (
     e: ChangeEvent<HTMLInputElement>,
-    key: string
+    key: number
   ) => {
-    setQuantity((prev) => {
-      return {
-        ...prev,
-        [key]: Number(e.target.value),
-      };
+    const value = parseInt(e.target.value);
+    const newMap = new Map(quantityList);
+    newMap.set(key, isNaN(value) ? 0 : value);
+    setQuantityList(newMap);
+    calculateTotalAmount();
+  };
+
+  const handleChangeQuantityByStep = (id: number, step: number) => {
+    setQuantityList((prev) => {
+      const current = prev.get(id) ?? 1;
+      const updated = Math.max(1, current + step);
+      const newMap = new Map(prev);
+      newMap.set(id, updated);
+      return newMap;
     });
+    calculateTotalAmount();
   };
 
   const t = useTranslations("ShoppingCart");
@@ -68,16 +109,36 @@ export default function CartColumns() {
     {
       field: "quantity",
       headerName: "Quantity",
-      flex: 0.07,
-      renderHeader: () => <p className="font-bold">{t("quantity")}</p>,
+      flex: 0.12,
+      renderHeader: () => (
+        <p className="font-bold text-center w-full">{t("quantity")}</p>
+      ),
       renderCell: (params) => (
-        <input
-          type="number"
-          onChange={(e) => handleChangeQuantity(e, params.id as string)}
-          defaultValue={params.value}
-          min={1}
-          className="w-full flex justify-center p-6 h-20 no-spinner bg-inherit"
-        />
+        <div className="flex items-center gap-2 w-full h-20">
+          <button
+            type="button"
+            onClick={() => handleChangeQuantityByStep(params.id as number, -1)}
+            className="w-12 h-[50%] text-2xl hover:bg-gray-300 rounded"
+          >
+            −
+          </button>
+
+          <input
+            type="number"
+            onChange={(e) => handleChangeQuantity(e, params.id as number)}
+            value={quantityList.get(params.id as number) ?? 1}
+            min={1}
+            className="w-full text-center p-2 h-[50%] no-spinner bg-inherit border border-gray-300 rounded"
+          />
+
+          <button
+            type="button"
+            onClick={() => handleChangeQuantityByStep(params.id as number, 1)}
+            className="w-12 h-[50%] text-2xl hover:bg-gray-300 rounded"
+          >
+            +
+          </button>
+        </div>
       ),
     },
     {
@@ -85,13 +146,19 @@ export default function CartColumns() {
       headerName: "Amount",
       flex: 0.07,
       renderHeader: () => <p className="font-bold capitalize">{t("amount")}</p>,
-      renderCell: (params) => <p className="px-4"> {[params.id]}</p>,
+      renderCell: (params) => {
+        const id = parseInt(params.id.toString());
+        const quantity = quantityList?.get(id) ?? 0;
+        const price = cartList?.find((item) => item.id === id)?.price ?? 0;
+
+        return <p className="px-4">${price * quantity}</p>;
+      },
     },
 
     {
       field: "action",
       headerName: "Action",
-      flex: 0.13,
+      flex: 0.08,
       renderHeader: () => (
         <p className="font-bold w-[160px] text-center">{t("action")}</p>
       ),

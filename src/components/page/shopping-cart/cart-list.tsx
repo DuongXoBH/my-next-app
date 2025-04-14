@@ -1,7 +1,7 @@
 "use client";
 import { authShoppingCart, userToken } from "@/store/user";
 import { Paper } from "@mui/material";
-import { DataGrid  } from "@mui/x-data-grid";
+import { DataGrid } from "@mui/x-data-grid";
 import { useAtom } from "jotai";
 import NotFound from "@/components/common/table/not-found-data";
 import { useFetchUserApiBySession } from "@/api-hooks/user";
@@ -19,7 +19,7 @@ export default function CartList() {
   return (
     <Paper
       sx={{
-        width: "75%",
+        width: "70%",
         height: "auto",
         maxHeight: "850px",
         overflowY: "auto",
