@@ -267,15 +267,22 @@
     "title": "Hồ sơ"
   },
   "ShoppingCart": {
-    "images": "Ảnh",
+    "images": "Hình ảnh",
     "title": "Giỏ hàng",
     "products": "Sản phẩm",
     "price": "Giá",
     "quantity": "Số lượng",
-    "amount": "Tổng",
+    "amount": "Thành tiền",
     "remove": "Xóa",
-    "checkout": "Xác nhận",
-    "empty cart": "Giỏ hàng rỗng",
-    "action": "Thao tác"
+    "checkout": "Thanh toán",
+    "empty cart": "Giỏ hàng của bạn đang trống",
+    "action": "Thao tác",
+    "Coupon Code": "Mã giảm giá",
+    "apply": "Áp Dụng",
+    "sub total": "Tạm tính",
+    "discount": "Giảm giá",
+    "shipping charge": "Phí vận chuyển",
+    "tax vat": "Thuế VAT",
+    "order total": "Tổng đơn hàng"
   }
 }

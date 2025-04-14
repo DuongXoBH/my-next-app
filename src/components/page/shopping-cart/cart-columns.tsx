@@ -4,26 +4,26 @@ import { CardMedia, Tooltip } from "@mui/material";
 import { GridColDef } from "@mui/x-data-grid";
 import DeteleCardDialog from "./delete-cart-dialog";
 import { useTranslations } from "next-intl";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useMemo, useState } from "react";
 import { useAtom } from "jotai";
 import { authShoppingCart, userToken } from "@/store/user";
 import { useFetchUserApiBySession } from "@/api-hooks/user";
 import { totalCartAmountAtom } from "@/store/product";
 
 export default function CartColumns() {
-  const [cart] = useAtom(authShoppingCart);
+  const [cart, setCart] = useAtom(authShoppingCart);
   const [token] = useAtom(userToken);
   const { data: auth } = useFetchUserApiBySession(token);
-  const cartList = auth ? cart[auth.id] : [];
+  const cartList = useMemo(() => (auth ? cart[auth.id] : []), [auth, cart]);
   const [quantityList, setQuantityList] = useState(new Map<number, number>());
   const [, setTotalCartAmount] = useAtom(totalCartAmountAtom);
 
-  const calculateTotalAmount = (): number => {
+  const calculateTotalAmount = useMemo((): number => {
     return cartList.reduce((total, item) => {
       const quantity = quantityList.get(item.id) ?? 1;
-      return total + quantity * item.price;
+      return total + item.price * quantity;
     }, 0);
-  };
+  }, [cartList, quantityList]);
 
   useEffect(() => {
     const newMap = new Map<number, number>();
@@ -31,34 +31,33 @@ export default function CartColumns() {
       newMap.set(item.id, item.quantity);
     });
     setQuantityList(newMap);
-
-    calculateTotalAmount();
-  }, [auth, cartList, calculateTotalAmount()]);
+  }, [cartList]);
 
   useEffect(() => {
-    setTotalCartAmount(calculateTotalAmount());
-  }, [calculateTotalAmount(), setTotalCartAmount]);
+    setTotalCartAmount(calculateTotalAmount);
+  }, [quantityList, cartList, setTotalCartAmount, calculateTotalAmount]);
+
+  const updateCart = (id: number, quantity: number) => {
+    const updatedCart = cartList.map((item) =>
+      item.id === id ? { ...item, quantity } : item
+    );
+    const newCart = { ...cart, [auth?.id]: updatedCart };
+    setCart(newCart);
+  };
 
   const handleChangeQuantity = (
     e: ChangeEvent<HTMLInputElement>,
     key: number
   ) => {
     const value = parseInt(e.target.value);
-    const newMap = new Map(quantityList);
-    newMap.set(key, isNaN(value) ? 0 : value);
-    setQuantityList(newMap);
-    calculateTotalAmount();
+    const quantity = isNaN(value) ? 0 : Math.max(1, value);
+    updateCart(key, quantity);
   };
 
   const handleChangeQuantityByStep = (id: number, step: number) => {
-    setQuantityList((prev) => {
-      const current = prev.get(id) ?? 1;
-      const updated = Math.max(1, current + step);
-      const newMap = new Map(prev);
-      newMap.set(id, updated);
-      return newMap;
-    });
-    calculateTotalAmount();
+    const current = quantityList.get(id) ?? 1;
+    const updated = Math.max(1, current + step);
+    updateCart(id, updated);
   };
 
   const t = useTranslations("ShoppingCart");

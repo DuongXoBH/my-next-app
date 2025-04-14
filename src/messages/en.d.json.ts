@@ -278,7 +278,14 @@ declare const messages: {
     "remove": "Remove",
     "checkout": "Checkout",
     "empty cart": "Your cart is empty",
-    "action": "Action"
+    "action": "Action",
+    "Coupon Code": "Coupon Code",
+    "apply": "apply",
+    "sub total": "sub total",
+    "discount": "discount",
+    "shipping charge": "shipping charge",
+    "tax vat": "tax vat",
+    "order total": "order total"
   }
 };
 export default messages;
