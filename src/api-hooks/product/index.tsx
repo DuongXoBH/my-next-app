@@ -48,6 +48,17 @@ export function useFetchProductByIdApi(productId: string) {
   });
 }
 
+export function useFetchRelatedProductByIdApi(productId: string) {
+  return useQuery({
+    queryKey: ["product", productId],
+    queryFn: async () => {
+      const response = await fetch(`${apiUrl}/products/${productId}/related`);
+      const result = await response.json();
+      return result;
+    },
+  });
+}
+
 async function fetchUpdateProducts(
   id: number,
   data: { title: string; price: number }
@@ -58,8 +69,8 @@ async function fetchUpdateProducts(
     slug: data.title,
     description: "update description",
     images: [
-      "https://res.cloudinary.com/dtg8bciwm/image/upload/v1742973717/storiesig.website_InstagramPost_min8657_3532073818284298836_vxddft.jpg"
-  ]
+      "https://res.cloudinary.com/dtg8bciwm/image/upload/v1742973717/storiesig.website_InstagramPost_min8657_3532073818284298836_vxddft.jpg",
+    ],
   };
   const response = await fetch(`${apiUrl}/products/${id}`, {
     method: "PUT",
@@ -75,20 +86,26 @@ async function fetchUpdateProducts(
   return result;
 }
 
-export function useFetchUpdateProducts(){
+export function useFetchUpdateProducts() {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: ({id,data}: {id:number;data:{ title: string; price: number }}) => fetchUpdateProducts(id,data),
+    mutationFn: ({
+      id,
+      data,
+    }: {
+      id: number;
+      data: { title: string; price: number };
+    }) => fetchUpdateProducts(id, data),
     onSuccess() {
       queryClient.invalidateQueries({ queryKey: ["products"] });
     },
     onError() {
       throw new Error("Error");
     },
-  })
+  });
 }
 
-async function fetchDeleteProducts(id:number) {
+async function fetchDeleteProducts(id: number) {
   const response = await fetch(`${apiUrl}/products/${id}`, {
     method: "DELETE",
     headers: {
@@ -102,15 +119,15 @@ async function fetchDeleteProducts(id:number) {
   return result;
 }
 
-export default function useFetchDeleteProducts(){
+export default function useFetchDeleteProducts() {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (id:number)=>fetchDeleteProducts(id),
+    mutationFn: (id: number) => fetchDeleteProducts(id),
     onSuccess() {
       queryClient.invalidateQueries({ queryKey: ["products"] });
     },
     onError() {
       throw new Error("Error");
     },
-  })
+  });
 }

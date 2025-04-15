@@ -36,12 +36,12 @@ export default function OrderSummary() {
         <p className="text-green-500 text-base">Free</p>
       </div>
       <div className="w-full flex flex-row justify-between p-4">
-        <p className="text-base capitalize">{t("tax vat")} 19% (included) :</p>
+        <p className="text-base capitalize">{t("tax vat")} (19%) :</p>
         <p className="text-green-500 text-base">${tax}</p>
       </div>
       <Divider />
       <div className="w-full flex flex-row justify-between p-4">
-        <p>{t("order total")} :</p>
+        <p className="capitalize">{t("order total")} :</p>
         <p className="text-purple-500">
           ${(totalCartAmount - discount + tax).toFixed(2)}
         </p>

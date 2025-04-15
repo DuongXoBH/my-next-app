@@ -2,7 +2,8 @@
 
 import { useFetchProductByIdApi } from "@/api-hooks/product";
 import { useFetchUserApiBySession } from "@/api-hooks/user";
-import { authShoppingCart, userToken } from "@/store/user";
+import { authShoppingCart } from "@/store/product";
+import { userToken } from "@/store/user";
 import {
   Accordion,
   AccordionDetails,

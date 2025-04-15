@@ -1,7 +1,8 @@
 "use client";
 
 import { useFetchUserApiBySession } from "@/api-hooks/user";
-import { authShoppingCart, userToken } from "@/store/user";
+import { authShoppingCart } from "@/store/product";
+import { userToken } from "@/store/user";
 import { useAtom } from "jotai";
 import { ShoppingCart } from "lucide-react";
 

@@ -240,7 +240,8 @@ declare const messages: {
     "ship": "free shipping policy",
     "refund": "refund policy",
     "add error toast": "Product already in cart",
-    "add success toast": "Product added to cart"
+    "add success toast": "Product added to cart",
+    "related products": "Related Products"
   },
   "Settings": {
     "title": "General Settings",

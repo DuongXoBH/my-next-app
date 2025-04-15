@@ -238,7 +238,8 @@
     "ship": "Chính sách vận chuyển miễn phí",
     "refund": "Chính sách hoàn trả",
     "add error toast": "Sản phẩm đã có trong giỏ hàng",
-    "add success toast": "Sản phẩm đã được thêm vào giỏ hàng"
+    "add success toast": "Sản phẩm đã được thêm vào giỏ hàng",
+    "related products": "Sản phẩm liên quan"
   },
   "Settings": {
     "title": "Cài đặt chung",

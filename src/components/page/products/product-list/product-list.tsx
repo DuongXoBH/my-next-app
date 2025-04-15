@@ -5,33 +5,29 @@ import {
   useFetchProductsApi,
 } from "@/api-hooks/product";
 import Image from "next/image";
-import { useState } from "react";
-import {
-  Box,
-  Button,
-  Typography,
-  Card,
-  CardContent,
-  CardMedia,
-  IconButton,
-  Skeleton,
-  Tooltip,
-} from "@mui/material";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { useMemo, useState } from "react";
+import { Box, Button, Tooltip } from "@mui/material";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import CardLoading from "@/components/common/global/card-loading";
-import { CSSProperties } from "react";
 import { useTranslations } from "next-intl";
-import LinkTag from "@/components/common/global/link-tag";
+import { IProduct } from "../../favorites/favorites";
+import ProductCard from "./product-card";
+import { useAtom } from "jotai";
+import { useFetchUserApiBySession } from "@/api-hooks/user";
+import { userToken } from "@/store/user";
+import { favoritesAtom } from "@/store/product";
 
 export default function ProductList() {
   const t = useTranslations("Products");
+  const [token] = useAtom(userToken);
+  const { data: auth } = useFetchUserApiBySession(token);
+  const [favorites] = useAtom(favoritesAtom);
+  const favoriesList = useMemo(() => {
+    return auth ? favorites[auth.id] : [];
+  }, [auth, favorites]);
   const [offset, setOffset] = useState<number>(0);
   const { data: list } = useFetchProductsApi();
   const page = Math.ceil(offset / 3) + 1;
@@ -45,22 +41,20 @@ export default function ProductList() {
     limit: 3,
   });
 
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  const newProducts = products?.map(
-    (product: {
-      id: number;
-      title: string;
-      images: string[];
-      price: number;
-    }) => {
-      return {
+  const newProducts = useMemo(() => {
+    return products?.map(
+      (product: {
+        id: number;
+        title: string;
+        images: string[];
+        price: number;
+      }) => ({
         ...product,
-        totalFavorites: Math.floor(Math.random() * 200 + 1),
-        favorites: true,
-      };
-    }
-  );
+        totalFavorites: 250,
+        favorites: favoriesList?.includes(product.id),
+      })
+    );
+  }, [products, favoriesList]);
 
   if (isLoading) {
     return <CardLoading />;
@@ -89,154 +83,12 @@ export default function ProductList() {
           gap: "2%",
         }}
       >
-        {newProducts?.map(
-          (
-            element: {
-              id: number;
-              title: string;
-              images: string[];
-              price: number;
-              totalFavorites: number;
-              favorites: boolean;
-            },
-            index: number
-          ) => {
-            return (
-              <Card
-                key={`product-${offset}-${index}`}
-                sx={{
-                  width: "32%",
-                  maxHeight: "500px",
-                  display: "flex",
-                  flexDirection: "column",
-                  backgroundColor: "white",
-                  borderRadius: 2,
-                  overflow: "hidden",
-                }}
-              >
-                {/* Images */}
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    width: "100%",
-                  }}
-                >
-                  <Swiper
-                    style={
-                      {
-                        "--swiper-navigation-color": "#202224",
-                        "--swiper-navigation-size": "18px",
-                      } as CSSProperties
-                    }
-                    loop
-                    modules={[Navigation, Pagination, Scrollbar, A11y]}
-                    spaceBetween={50}
-                    slidesPerView={1}
-                    navigation
-                  >
-                    {element.images.map((image: string, index: number) => {
-                      return (
-                        <SwiperSlide key={`image-${element.id}-${index}`}>
-                          {!isLoaded && (
-                            <Skeleton
-                              sx={{ bgcolor: "grey.600" }}
-                              variant="rectangular"
-                              width="100%"
-                              height={500}
-                              animation="wave"
-                            />
-                          )}
-                          <CardMedia
-                            component="img"
-                            image={image}
-                            alt={element.title}
-                            sx={{
-                              width: "100%",
-                              height: "100%",
-                              maxHeight: "320px",
-                            }}
-                            onLoad={() => setIsLoaded(true)}
-                          />
-                        </SwiperSlide>
-                      );
-                    })}
-                  </Swiper>
-                </Box>
-                {/* Card text */}
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    height: "100%",
-                    minHeight: "180px",
-                  }}
-                >
-                  <CardContent
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "space-between",
-                      paddingX: 4,
-                      maxWidth: "80%",
-                    }}
-                  >
-                    <Typography
-                      variant="subtitle1"
-                      sx={{
-                        fontWeight: "bold",
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
-                        whiteSpace: "nowrap",
-                        height: "24px",
-                      }}
-                    >
-                      {element.title}
-                    </Typography>
-                    <Typography
-                      variant="h6"
-                      color="primary"
-                      sx={{ fontWeight: "bold" }}
-                    >
-                      ${element.price}
-                    </Typography>
-                    <LinkTag
-                      href={`/products/${element.id}/detail`}
-                      className="w-36 h-12 bg-gray-200 text-black rounded-md font-bold text-sm flex items-center justify-center hover:bg-gray-300"
-                    >
-                      {t("edit")}
-                    </LinkTag>
-                  </CardContent>
-                  <Box
-                    sx={{
-                      width: "70px",
-                      display: "flex",
-                      alignItems: "start",
-                      paddingTop: "35px",
-                    }}
-                  >
-                    <Typography sx={{ paddingTop: "8px" }}>
-                      {element.totalFavorites}
-                    </Typography>
-                    <IconButton
-                      sx={{ paddingRight: 2, paddingLeft: "0px !important" }}
-                      onClick={() => {}}
-                    >
-                      {element.favorites ? (
-                        <FavoriteIcon sx={{ color: "red" }} />
-                      ) : (
-                        <FavoriteBorderIcon />
-                      )}
-                    </IconButton>
-                  </Box>
-                </Box>
-              </Card>
-            );
-          }
-        )}
+        {newProducts?.map((element: IProduct, index: number) => {
+          return <ProductCard product={element} key={`product-${index}`} />;
+        })}
       </Box>
 
+      {/* Navigation */}
       <Box
         sx={{
           width: "100%",

@@ -1,5 +1,6 @@
 import { useFetchUserApiBySession } from "@/api-hooks/user";
-import { authShoppingCart, userToken } from "@/store/user";
+import { authShoppingCart } from "@/store/product";
+import { userToken } from "@/store/user";
 import { Dialog, Tooltip } from "@mui/material";
 import { useAtom } from "jotai";
 import { useTranslations } from "next-intl";
@@ -19,12 +20,12 @@ export default function DeteleCardDialog({ id }: { id: number }) {
     setIsSubmitting(true);
 
     const updateList = carts[auth?.id]?.filter((item) => item.id !== id);
-    setCarts((prev)=>{
-        return {
-            ...prev,
-            [auth.id]: updateList,
-        };
-    })
+    setCarts((prev) => {
+      return {
+        ...prev,
+        [auth.id]: updateList,
+      };
+    });
 
     setIsSubmitting(false);
     setOpen(false);

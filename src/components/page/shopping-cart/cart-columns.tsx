@@ -6,9 +6,9 @@ import DeteleCardDialog from "./delete-cart-dialog";
 import { useTranslations } from "next-intl";
 import { ChangeEvent, useEffect, useMemo, useState } from "react";
 import { useAtom } from "jotai";
-import { authShoppingCart, userToken } from "@/store/user";
+import { userToken } from "@/store/user";
 import { useFetchUserApiBySession } from "@/api-hooks/user";
-import { totalCartAmountAtom } from "@/store/product";
+import { authShoppingCart, totalCartAmountAtom } from "@/store/product";
 
 export default function CartColumns() {
   const [cart, setCart] = useAtom(authShoppingCart);
@@ -113,11 +113,11 @@ export default function CartColumns() {
         <p className="font-bold text-center w-full">{t("quantity")}</p>
       ),
       renderCell: (params) => (
-        <div className="flex items-center gap-2 w-full h-20">
+        <div className="flex items-center w-full h-20">
           <button
             type="button"
             onClick={() => handleChangeQuantityByStep(params.id as number, -1)}
-            className="w-12 h-[50%] text-2xl hover:bg-gray-300 rounded"
+            className="w-6 h-[30%] text-2xl hover:bg-gray-300 flex justify-center items-center border border-gray-300"
           >
             −
           </button>
@@ -127,13 +127,13 @@ export default function CartColumns() {
             onChange={(e) => handleChangeQuantity(e, params.id as number)}
             value={quantityList.get(params.id as number) ?? 1}
             min={1}
-            className="w-full text-center p-2 h-[50%] no-spinner bg-inherit border border-gray-300 rounded"
+            className="w-[50%] text-center p-2 h-[30%] no-spinner bg-inherit border border-gray-300"
           />
 
           <button
             type="button"
             onClick={() => handleChangeQuantityByStep(params.id as number, 1)}
-            className="w-12 h-[50%] text-2xl hover:bg-gray-300 rounded"
+            className="w-6 h-[30%] text-2xl hover:bg-gray-300 flex justify-center items-center border border-gray-300"
           >
             +
           </button>
