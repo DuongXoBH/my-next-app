@@ -2,14 +2,14 @@
 
 import Box from "@mui/material/Box";
 import { useAtom } from "jotai";
-import { userToken } from "@/store/user";
+import { userToken } from "@/stores/users";
 import { toast } from "react-toastify";
 import { usePathname, useRouter } from "next/navigation";
 import Header from "./header/header";
 import Sidebar from "./sidebar/sidebar";
 import { CircularProgress } from "@mui/material";
 import { getPathname } from "@/i18n/navigation";
-import { sidebarAtom } from "@/store";
+import { sidebarAtom } from "@/stores";
 import { useEffect, useState } from "react";
 
 export default function Dashboard({ children }: { children: React.ReactNode }) {

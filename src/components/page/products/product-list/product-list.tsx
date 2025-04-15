@@ -17,8 +17,8 @@ import { IProduct } from "../../favorites/favorites";
 import ProductCard from "./product-card";
 import { useAtom } from "jotai";
 import { useFetchUserApiBySession } from "@/api-hooks/user";
-import { userToken } from "@/store/user";
-import { favoritesAtom } from "@/store/product";
+import { userToken } from "@/stores/users";
+import { favoritesAtom } from "@/stores/products";
 
 export default function ProductList() {
   const t = useTranslations("Products");

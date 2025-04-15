@@ -1,7 +1,7 @@
 "use client";
 
 import { useOutsideClick } from "@/hooks/use-outside-click";
-import { orderListAtom, searchAtom } from "@/store/order-filter";
+import { orderListAtom, searchAtom } from "@/stores/order-filter";
 import { Divider } from "@mui/material";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
@@ -42,7 +42,7 @@ export default function DateFilter() {
     }
   }, [isDateOpen]);
   const dateRef = useOutsideClick(handleClickOutSideDate);
-  
+
   return (
     <div
       ref={dateRef}

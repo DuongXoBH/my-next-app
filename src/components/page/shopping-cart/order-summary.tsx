@@ -1,6 +1,6 @@
 "use client";
 
-import { totalCartAmountAtom } from "@/store/product";
+import { totalCartAmountAtom } from "@/stores/products";
 import { Divider } from "@mui/material";
 import { useAtom } from "jotai";
 import { useTranslations } from "next-intl";

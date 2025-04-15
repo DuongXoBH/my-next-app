@@ -21,9 +21,9 @@ import LinkTag from "@/components/common/global/link-tag";
 
 import { IProduct } from "../../favorites/favorites";
 import { useAtom } from "jotai";
-import { userToken } from "@/store/user";
+import { userToken } from "@/stores/users";
 import { useFetchUserApiBySession } from "@/api-hooks/user";
-import { favoritesAtom } from "@/store/product";
+import { favoritesAtom } from "@/stores/products";
 export default function ProductCard({ product }: { product: IProduct }) {
   const t = useTranslations("Favorites");
   const [token] = useAtom(userToken);
@@ -151,12 +151,15 @@ export default function ProductCard({ product }: { product: IProduct }) {
             {product.totalFavorites}
           </Typography>
           <IconButton
-            sx={{ paddingRight: 2, paddingLeft: "0px !important" }}
             onClick={() => {
               updateList(product.id);
             }}
           >
-            <FavoriteIcon sx={{ color: product.favorites ? "red" : "black" }} />
+            <FavoriteIcon
+              sx={{
+                color: product.favorites ? "red" : "black",
+              }}
+            />
           </IconButton>
         </Box>
       </Box>

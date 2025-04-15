@@ -1,6 +1,6 @@
 import { filterFunction } from "@/api-hooks/order/filter-function";
 import { useOutsideClick } from "@/hooks/use-outside-click";
-import { orderListAtom, searchAtom } from "@/store/order-filter";
+import { orderListAtom, searchAtom } from "@/stores/order-filter";
 import { Divider } from "@mui/material";
 import { useAtom } from "jotai";
 import { useTranslations } from "next-intl";

@@ -4,7 +4,7 @@ import { Paper } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { Status } from "./status";
 import { useAtom } from "jotai";
-import { orderListAtom } from "@/store/order-filter";
+import { orderListAtom } from "@/stores/order-filter";
 import { useTranslations } from "next-intl";
 import { CustomTableFooter } from "@/components/common/table/table-footer";
 import NotFound from "@/components/common/table/not-found-data";

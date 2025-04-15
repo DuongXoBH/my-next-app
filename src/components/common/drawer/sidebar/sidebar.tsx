@@ -12,8 +12,8 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import { DASHBOARD, PAGE_DASHBOARD } from "@/constants/dashboard";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import { useAtom } from "jotai";
-import { userToken } from "@/store/user";
-import { sidebarAtom } from "@/store";
+import { userToken } from "@/stores/users";
+import { sidebarAtom } from "@/stores";
 import Link from "next/link";
 import { Tooltip } from "@mui/material";
 import ListNode from "./sidebar-list";
@@ -138,7 +138,10 @@ export default function Sidebar() {
           }}
           disablePadding
         >
-          <LinkTag href="/settings" className={`hover:invert ${open ? "w-[224px]" : "w-[78px]"}`}> 
+          <LinkTag
+            href="/settings"
+            className={`hover:invert ${open ? "w-[224px]" : "w-[78px]"}`}
+          >
             <Tooltip title={open ? "" : "Settings"}>
               <ListItemButton
                 sx={{
@@ -156,7 +159,7 @@ export default function Sidebar() {
                     width={20}
                     height={20}
                     className={`filter grayscale brightness-0 ${
-                      pathName.includes('/settings') ? "invert" : ""
+                      pathName.includes("/settings") ? "invert" : ""
                     }`}
                   ></Image>
                 </ListItemIcon>
@@ -206,7 +209,7 @@ export default function Sidebar() {
                 <PowerSettingsNewIcon sx={{ color: "black" }} />
               </ListItemIcon>
               {open && (
-                <Typography sx={{ fontWeight: "600", fontSize: "14px"}}>
+                <Typography sx={{ fontWeight: "600", fontSize: "14px" }}>
                   {t("logout")}
                 </Typography>
               )}

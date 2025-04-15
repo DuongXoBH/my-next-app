@@ -9,6 +9,9 @@ import { useTranslations } from "next-intl";
 import NotFound from "@/components/common/table/not-found-data";
 import DeteleDialog from "./delete-dialog";
 import UpdateDialog from "./update-dialog";
+import { useAtom } from "jotai";
+import { stockAtom } from "@/stores/products";
+import { useEffect } from "react";
 
 export default function StocksList({ size }: { size?: number }) {
   const t = useTranslations("Product Stock");
@@ -84,15 +87,19 @@ export default function StocksList({ size }: { size?: number }) {
       renderCell: (params) => (
         <div className="w-full h-full flex justify-center items-center">
           <div className="h-[32px] w-[96px] flex justify-between rounded-lg border-[#D5D5D5] border-[1px] bg-[#F5F6FA]">
-            <UpdateDialog id={params.id as number}/>
-            <DeteleDialog id={params.id as number}/>
+            <UpdateDialog id={params.id as number} />
+            <DeteleDialog id={params.id as number} />
           </div>
         </div>
       ),
     },
   ];
   const { data: products, isLoading } = useFetchProductsApi();
-  const dataVal = size ? products?.slice(0, size) : products;
+  const [stockList, setStockList] = useAtom(stockAtom);
+  useEffect(() => {
+    const dataVal = size ? products?.slice(0, size) : products;
+    setStockList(dataVal);
+  }, [products, setStockList, size]);
   if (isLoading) {
     return <ListLoading />;
   }
@@ -120,7 +127,7 @@ export default function StocksList({ size }: { size?: number }) {
       }}
     >
       <DataGrid
-        rows={dataVal}
+        rows={stockList}
         columns={columns}
         initialState={{ pagination: { paginationModel: { pageSize: 10 } } }}
         pageSizeOptions={[5, 10, 20]}

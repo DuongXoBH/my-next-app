@@ -7,7 +7,7 @@ import { Label } from "./mail-label";
 import { IMail, INBOXLIST } from "@/constants/mail";
 import { CustomTableFooter } from "@/components/common/table/table-footer";
 import { useAtom } from "jotai";
-import { labelAtom } from "@/store/mail";
+import { labelAtom } from "@/stores/mail";
 import { useEffect, useState } from "react";
 
 export default function InboxList(props: { title: string }) {
@@ -133,7 +133,7 @@ export default function InboxList(props: { title: string }) {
   const selectedData = row?.filter((row: IMail) =>
     selectedRows.includes(row.id)
   );
-  console.log("🚀 ~ InboxList ~ selectedData:", selectedData)
+  console.log("🚀 ~ InboxList ~ selectedData:", selectedData);
   return (
     <div>
       <p className="px-5 font-bold">{props.title}</p>

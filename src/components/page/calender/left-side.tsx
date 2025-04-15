@@ -2,7 +2,7 @@
 
 import LinkTag from "@/components/common/global/link-tag";
 import { IEventItem } from "@/constants/event";
-import { eventAtom } from "@/store/event";
+import { eventAtom } from "@/stores/event";
 import { Divider } from "@mui/material";
 import { useAtom } from "jotai";
 import { useTranslations } from "next-intl";

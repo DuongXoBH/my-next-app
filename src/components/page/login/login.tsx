@@ -6,7 +6,7 @@ import { loginSchema } from "@/hook-form-schema/login";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useFetchLogin } from "@/api-hooks/user";
-import { userToken } from "@/store/user";
+import { userToken } from "@/stores/users";
 import { useAtom } from "jotai";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
@@ -77,7 +77,7 @@ export default function Login() {
   useEffect(() => {
     if (token) {
       toast("You have logged in");
-      router.push(getPathname({href: "/", locale : locale as "vi"|"en"}));
+      router.push(getPathname({ href: "/", locale: locale as "vi" | "en" }));
     }
   }, [token, router, locale]);
 

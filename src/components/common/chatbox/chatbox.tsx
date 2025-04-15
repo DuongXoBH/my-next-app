@@ -1,11 +1,17 @@
 "use client";
 
-import React, { useState, useRef, FormEvent, KeyboardEvent, useEffect } from "react";
+import React, {
+  useState,
+  useRef,
+  FormEvent,
+  KeyboardEvent,
+  useEffect,
+} from "react";
 import { useChannel } from "ably/react";
 import { Message } from "ably";
 import { useTranslations } from "next-intl";
 import { useAtom } from "jotai";
-import { AblyAtom } from "@/store/contact";
+import { AblyAtom } from "@/stores/contact";
 import BoxLoading from "../global/box-loading";
 
 export default function ChatBox({ userId }: { userId?: number }) {

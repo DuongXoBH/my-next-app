@@ -19,3 +19,5 @@ export const favoritesAtom = atomWithStorage<FavoritesStorageType>(
   "favorites",
   {}
 );
+
+export const stockAtom = atom<IProduct[]>([]);

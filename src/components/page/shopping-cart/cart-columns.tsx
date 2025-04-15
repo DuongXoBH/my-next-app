@@ -6,9 +6,9 @@ import DeteleCardDialog from "./delete-cart-dialog";
 import { useTranslations } from "next-intl";
 import { ChangeEvent, useEffect, useMemo, useState } from "react";
 import { useAtom } from "jotai";
-import { userToken } from "@/store/user";
+import { userToken } from "@/stores/users";
 import { useFetchUserApiBySession } from "@/api-hooks/user";
-import { authShoppingCart, totalCartAmountAtom } from "@/store/product";
+import { authShoppingCart, totalCartAmountAtom } from "@/stores/products";
 
 export default function CartColumns() {
   const [cart, setCart] = useAtom(authShoppingCart);

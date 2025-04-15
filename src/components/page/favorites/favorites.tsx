@@ -10,9 +10,9 @@ import CardLoading from "@/components/common/global/card-loading";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useAtom } from "jotai";
-import { favoritesAtom } from "@/store/product";
+import { favoritesAtom } from "@/stores/products";
 import { useFetchUserApiBySession } from "@/api-hooks/user";
-import { userToken } from "@/store/user";
+import { userToken } from "@/stores/users";
 import ProductCard from "../products/product-list/product-card";
 
 export interface IProduct {

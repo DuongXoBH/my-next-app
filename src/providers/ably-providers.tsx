@@ -1,20 +1,24 @@
-"use client"
-
+"use client";
 
 import { useEffect } from "react";
 import Ably from "ably";
 import { AblyProvider } from "ably/react";
 import { useAtom } from "jotai";
-import { AblyAtom } from "@/store/contact";
+import { AblyAtom } from "@/stores/contact";
 
-
-export function CustomAblyProvider({ children }: { children: React.ReactNode }) {
+export function CustomAblyProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [ably, setAbly] = useAtom(AblyAtom);
 
   useEffect(() => {
     const client = new Ably.Realtime({ authUrl: "/api/ably-route" });
     client.connection.on("connected", () => console.log("✅ Ably Connected"));
-    client.connection.on("failed", (err) => console.error("❌ Ably Failed:", err));
+    client.connection.on("failed", (err) =>
+      console.error("❌ Ably Failed:", err)
+    );
 
     setAbly(client);
     return () => client.close();
@@ -22,4 +26,3 @@ export function CustomAblyProvider({ children }: { children: React.ReactNode }) 
 
   return ably ? <AblyProvider client={ably}>{children}</AblyProvider> : null;
 }
-

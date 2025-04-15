@@ -1,5 +1,5 @@
 "use client";
-import { userToken } from "@/store/user";
+import { userToken } from "@/stores/users";
 import { Paper } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { useAtom } from "jotai";
@@ -7,7 +7,7 @@ import NotFound from "@/components/common/table/not-found-data";
 import { useFetchUserApiBySession } from "@/api-hooks/user";
 import { CustomCartTableFooter } from "./cart-table-footer";
 import CartColumns from "./cart-columns";
-import { authShoppingCart } from "@/store/product";
+import { authShoppingCart } from "@/stores/products";
 
 export default function CartList() {
   const [authToken] = useAtom(userToken);

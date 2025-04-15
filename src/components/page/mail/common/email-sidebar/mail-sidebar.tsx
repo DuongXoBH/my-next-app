@@ -2,7 +2,7 @@
 
 import { EMAILPAGES } from "@/constants/mail";
 import useHash from "@/hooks/use-hash";
-import { labelAtom, labelColor } from "@/store/mail";
+import { labelAtom, labelColor } from "@/stores/mail";
 import {
   Button,
   Divider,

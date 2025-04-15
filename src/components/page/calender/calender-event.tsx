@@ -19,7 +19,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useAtom } from "jotai";
-import { eventAtom } from "@/store/event";
+import { eventAtom } from "@/stores/event";
 import Image from "next/image";
 
 export default function MyCalendar() {
@@ -37,7 +37,6 @@ export default function MyCalendar() {
     member: "",
   });
   const [hoveredEvent, setHoveredEvent] = useState<EventClickArg | null>(null);
-
 
   const handleSelect = (info: DateSelectArg) => {
     setSelectedDate({ start: info.startStr, end: info.endStr });
@@ -131,7 +130,9 @@ export default function MyCalendar() {
             onChange={(e) => setNewNote({ ...newNote, title: e.target.value })}
           />
 
-          <label htmlFor="event-member" className="mt-5">Number of members</label>
+          <label htmlFor="event-member" className="mt-5">
+            Number of members
+          </label>
           <TextField
             id="event-member"
             fullWidth

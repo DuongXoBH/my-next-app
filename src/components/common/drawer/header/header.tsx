@@ -14,8 +14,8 @@ import {
   Typography,
 } from "@mui/material";
 import { useAtom } from "jotai";
-import { userToken } from "@/store/user";
-import { sidebarAtom } from "@/store";
+import { userToken } from "@/stores/users";
+import { sidebarAtom } from "@/stores";
 import { useFetchUserApiBySession } from "@/api-hooks/user";
 import Image from "next/image";
 import { HEADINGMENU, IHeadingMenu } from "@/constants/common/header";

@@ -7,13 +7,13 @@ import DateFilter from "./date-filter";
 import TypesFilter from "./types-filter";
 import StatusFilter from "./status-filter";
 import { useAtom } from "jotai";
-import { orderListAtom, searchAtom } from "@/store/order-filter";
+import { orderListAtom, searchAtom } from "@/stores/order-filter";
 import { ORDERLIST } from "@/constants/order";
 import { useTranslations } from "next-intl";
 
 export default function FilterGroup() {
   const t = useTranslations("Order Lists");
-  const [,setOrderSearch ] = useAtom(searchAtom);
+  const [, setOrderSearch] = useAtom(searchAtom);
   const [, setData] = useAtom(orderListAtom);
   return (
     <Box
@@ -59,7 +59,7 @@ export default function FilterGroup() {
       <div className="relative flex justify-center items-center">
         <button
           onClick={() => {
-            setOrderSearch({ date: [], type: [], status: [] }); 
+            setOrderSearch({ date: [], type: [], status: [] });
             setData(ORDERLIST);
           }}
           className="flex flex-row justify-between px-6 items-center gap-6 rounded-lg text-red-700 font-bold"
