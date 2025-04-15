@@ -32,7 +32,7 @@ export default function ProductCard({ product }: { product: IProduct }) {
 
   const updateList = (id: number) => {
     const current = auth ? favorites[auth.id] : [];
-    const update = current.includes(id)
+    const update = current?.includes(id)
       ? current.filter((item) => {
           return item != id;
         })
