@@ -31,13 +31,12 @@ export default function ProductCard({ product }: { product: IProduct }) {
   const [favorites, setFavorites] = useAtom(favoritesAtom);
 
   const updateList = (id: number) => {
-    const current = auth ? favorites[auth.id] : [];
+    const current = (auth ? favorites[auth.id] : []) ?? [];
     const update = current?.includes(id)
       ? current.filter((item) => {
           return item != id;
         })
       : [...current, id];
-    console.log("🚀 ~ updateList ~ update:", update);
 
     setFavorites((prev) => {
       return { ...prev, [auth.id]: update };
