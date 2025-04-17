@@ -2,43 +2,20 @@
 
 import Box from "@mui/material/Box";
 import { useAtom } from "jotai";
-import { userToken } from "@/stores/users";
-import { toast } from "react-toastify";
-import { usePathname, useRouter } from "next/navigation";
 import Header from "./header/header";
 import Sidebar from "./sidebar/sidebar";
 import { CircularProgress } from "@mui/material";
-import { getPathname } from "@/i18n/navigation";
 import { sidebarAtom } from "@/stores";
 import { useEffect, useState } from "react";
 
 export default function Dashboard({ children }: { children: React.ReactNode }) {
   const [open] = useAtom(sidebarAtom);
-  const [user] = useAtom(userToken);
-  const route = useRouter();
   const [loading, setLoading] = useState(true);
-  const pathName = usePathname();
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1000);
     return () => clearTimeout(timer);
   }, []);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (!user) {
-        toast.error("You are not signed in");
-        route.push(
-          getPathname({
-            href: "/login",
-            locale: pathName.split("/")[1] as "vi" | "en",
-          })
-        );
-      }
-    }, 300);
-
-    return () => clearTimeout(timer);
-  }, [user, route, pathName]);
 
   if (loading) {
     return (

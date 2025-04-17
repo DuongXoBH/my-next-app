@@ -13,22 +13,22 @@ export default {
         foreground: "var(--foreground)",
         "main-background": "#5186FF",
       },
-      backgroundImage:{
-        "pricing": "url('/pricing/background.png')",
+      backgroundImage: {
         "banner-layer": "url('/layer.png')",
+        "pricing": "url('/pricing/background.png')",
         "member-card": "url('/member-card.png')",
       },
       container: {
         center: true,
         screens: {
           "1140px": "1140px",
-          "1600px": "1600px"
-        }
+          "1600px": "1600px",
+        },
       },
       fontFamily: {
         sans: ["var(--font-nunito-sans)"],
       },
     },
   },
-  plugins: [require('tailwind-scrollbar-hide')],
+  plugins: [require("tailwind-scrollbar-hide")],
 } satisfies Config;

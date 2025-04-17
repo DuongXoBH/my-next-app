@@ -4,7 +4,6 @@ import { userToken } from "@/stores/users";
 import { useAtom } from "jotai";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { toast } from "react-toastify";
 
 export default function LogOut() {
   const [user, setUser] = useAtom(userToken);
@@ -14,7 +13,6 @@ export default function LogOut() {
   useEffect(() => {
     if (user) {
       setUser("");
-      toast("Logout");
       route.push(
         getPathname({ href: "/login", locale: locale as "vi" | "en" })
       );

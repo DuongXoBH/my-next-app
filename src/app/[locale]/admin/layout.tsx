@@ -1,4 +1,5 @@
 import Dashboard from "@/components/common/drawer/drawer";
+import AuthenticateMiddlewareProvider from "@/providers/authenticated";
 
 export default function AdminLayout({
   children,
@@ -6,8 +7,8 @@ export default function AdminLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div>
+    <AuthenticateMiddlewareProvider>
       <Dashboard>{children}</Dashboard>
-    </div>
+    </AuthenticateMiddlewareProvider>
   );
 }

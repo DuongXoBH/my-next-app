@@ -1,7 +1,6 @@
-@import 'swiper/css';
-@import 'swiper/css/navigation';
-@import 'swiper/css/pagination';
-
+@import "swiper/css";
+@import "swiper/css/navigation";
+@import "swiper/css/pagination";
 
 @tailwind base;
 @tailwind components;
@@ -24,7 +23,6 @@ body {
   color: var(--foreground);
   background: var(--background);
   /* font-family: 'font-nunito-sans'; */
-  
 }
 
 button {
