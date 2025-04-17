@@ -6,7 +6,7 @@ export function CustomCartTableFooter() {
     <GridFooterContainer>
       <div className="w-full h-[85px] flex flex-row items-center justify-between px-10">
         <LinkTag
-          href="/products"
+          href="/admin/products"
           className="h-[45px] px-2 flex items-center text-sm font-bold text-purple-500 border-[2px] border-purple-500 rounded hover:bg-purple-500 hover:text-white"
         >
           Continue Shopping

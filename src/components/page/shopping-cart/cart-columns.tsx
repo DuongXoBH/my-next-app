@@ -31,7 +31,7 @@ export default function CartColumns() {
       newMap.set(item.id, item.quantity);
     });
     setQuantityList(newMap);
-  }, [cartList]);
+  }, [cartList, setQuantityList]);
 
   useEffect(() => {
     setTotalCartAmount(calculateTotalAmount);

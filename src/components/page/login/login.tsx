@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "@/hook-form-schema/login";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useFetchLogin } from "@/api-hooks/user";
+import { useFetchLogin, useFetchUserApiBySession } from "@/api-hooks/user";
 import { userToken } from "@/stores/users";
 import { useAtom } from "jotai";
 import Visibility from "@mui/icons-material/Visibility";
@@ -40,6 +40,7 @@ export default function Login() {
   const t = useTranslations("Login");
   const [loading, setLoading] = useState(true);
   const [token, setToken] = useAtom(userToken);
+  const { data: auth } = useFetchUserApiBySession(token);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
@@ -77,9 +78,17 @@ export default function Login() {
   useEffect(() => {
     if (token) {
       toast("You have logged in");
+    }
+  }, [token]);
+  useEffect(() => {
+    if (auth?.role === "admin") {
+      router.push(
+        getPathname({ href: "/admin", locale: locale as "vi" | "en" })
+      );
+    } else if (auth?.role === "customer") {
       router.push(getPathname({ href: "/", locale: locale as "vi" | "en" }));
     }
-  }, [token, router, locale]);
+  }, [router, locale, auth]);
 
   if (loading) {
     return (

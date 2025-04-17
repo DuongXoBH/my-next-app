@@ -139,7 +139,7 @@ export default function Sidebar() {
           disablePadding
         >
           <LinkTag
-            href="/settings"
+            href="/admin/settings"
             className={`hover:invert ${open ? "w-[224px]" : "w-[78px]"}`}
           >
             <Tooltip title={open ? "" : "Settings"}>

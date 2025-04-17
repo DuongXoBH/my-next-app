@@ -4,32 +4,32 @@ type dashboardKeys = keyof typeof translationData.Dashboard;
 export const DASHBOARD = [
   {
     text: "Dashboard",
-    href: "/dashboard",
+    href: "/admin/dashboard",
     icon: "/sidebar/dashboard-icon.png",
   },
   {
     text: "Products",
-    href: "/products",
+    href: "/admin/products",
     icon: "/sidebar/products-icon.png",
   },
   {
     text: "Favorites",
-    href: "/favorites",
+    href: "/admin/favorites",
     icon: "/sidebar/favorites-icon.png",
   },
   {
     text: "Inbox",
-    href: "/mail",
+    href: "/admin/mail",
     icon: "/sidebar/inbox-icon.png",
   },
   {
     text: "Order Lists",
-    href: "/order",
+    href: "/admin/order",
     icon: "/sidebar/order-icon.png",
   },
   {
     text: "Product Stock",
-    href: "/stock",
+    href: "/admin/stock",
     icon: "/sidebar/stock-icon.png",
   },
 ];
@@ -37,42 +37,42 @@ export const DASHBOARD = [
 export const PAGE_DASHBOARD = [
   {
     text: "Pricing",
-    href: "/pricing",
+    href: "/admin/pricing",
     icon: "/sidebar/pricing-icon.png",
   },
   {
     text: "Calender",
-    href: "/calender",
+    href: "/admin/calender",
     icon: "/sidebar/calender-icon.png",
   },
   {
     text: "To-do",
-    href: "/todo",
+    href: "/admin/todo",
     icon: "/sidebar/todo-icon.png",
   },
   {
     text: "Contact",
-    href: "/contact",
+    href: "/admin/contact",
     icon: "/sidebar/contact-icon.png",
   },
   {
     text: "Invoice",
-    href: "/invoice",
+    href: "/admin/invoice",
     icon: "/sidebar/invoice-icon.png",
   },
   {
     text: "UI Elements",
-    href: "/ui-elements",
+    href: "/admin/ui-elements",
     icon: "/sidebar/ui-element-icon.png",
   },
   {
     text: "Team",
-    href: "/team",
+    href: "/admin/team",
     icon: "/sidebar/team-icon.png",
   },
   {
     text: "Table",
-    href: "/table",
+    href: "/admin/table",
     icon: "/sidebar/table-icon.png",
   },
 ];
@@ -85,7 +85,7 @@ export interface IDashboardModal {
   upStatus: boolean;
 }
 
-export const DASHBOARDMODAL : IDashboardModal[] = [
+export const DASHBOARDMODAL: IDashboardModal[] = [
   {
     title: "user",
     value: "40,689",
@@ -94,27 +94,24 @@ export const DASHBOARDMODAL : IDashboardModal[] = [
     upStatus: true,
   },
   {
-    title:"order",
+    title: "order",
     value: "10293",
     img: "/dashboard/order.svg",
-    compare:"1.3% Up from past week",
+    compare: "1.3% Up from past week",
     upStatus: true,
-
-},
-{
-    title:"sales",
+  },
+  {
+    title: "sales",
     value: "$89,000",
     img: "/dashboard/sales.svg",
-    compare:"4.3% Down from yesterday",
+    compare: "4.3% Down from yesterday",
     upStatus: false,
-
-},
-{
-    title:"pending",
+  },
+  {
+    title: "pending",
     value: "2040",
     img: "/dashboard/pending.svg",
-    compare:"1.8% Up from yesterday",
+    compare: "1.8% Up from yesterday",
     upStatus: true,
-
-},
+  },
 ];
