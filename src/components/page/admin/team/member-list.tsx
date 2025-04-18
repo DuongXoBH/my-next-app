@@ -16,9 +16,11 @@ export interface IUser {
 }
 
 export default function MemberList() {
-  const t = useTranslations("Team");
+  const t = useTranslations("admin.Team");
   const [count, setCount] = useState<number>(12);
-  const [deleteDialogOpen, setDeleteDialogOpen] = useState<{ [key: string]: boolean }>({});
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState<{
+    [key: string]: boolean;
+  }>({});
   // Fetch users from the API
   const { data: users, isLoading } = useFetchUserApi();
   if (isLoading) {
@@ -42,7 +44,10 @@ export default function MemberList() {
               <DeleteMember
                 open={deleteDialogOpen[user.id] || false}
                 setOpen={(status) =>
-                  setDeleteDialogOpen((prev) => ({ ...prev, [user.id]: status }))
+                  setDeleteDialogOpen((prev) => ({
+                    ...prev,
+                    [user.id]: status,
+                  }))
                 }
                 id={user.id}
               />

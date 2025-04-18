@@ -36,7 +36,7 @@ export interface RegisterForm {
 }
 
 export default function Register() {
-  const t = useTranslations("Register");
+  const t = useTranslations("admin.Register");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [checked, setChecked] = useState(false);
@@ -44,7 +44,6 @@ export default function Register() {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const locale = usePathname().split("/")[1];
-
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1000);
@@ -69,7 +68,9 @@ export default function Register() {
       {
         onSuccess() {
           toast(t("toast"));
-          router.push(getPathname({href: "/login", locale : locale as "vi"|"en"}));
+          router.push(
+            getPathname({ href: "/login", locale: locale as "vi" | "en" })
+          );
         },
         onError(error: unknown) {
           if (error instanceof Error) {

@@ -1,4 +1,4 @@
-import { ORDERLIST } from "@/constants/order";
+import { ORDERLIST } from "@/constants/admin/order";
 import { atom } from "jotai";
 
 export interface IOrder {
@@ -9,8 +9,8 @@ export interface IOrder {
   date: string;
   address: string;
 }
-export interface IOrderSearch{
-  date: string[] ;
+export interface IOrderSearch {
+  date: string[];
   type: string[];
   status: string[];
 }

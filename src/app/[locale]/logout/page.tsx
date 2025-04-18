@@ -1,6 +1,6 @@
 "use client";
 import { getPathname } from "@/i18n/navigation";
-import { userToken } from "@/stores/users";
+import { userToken } from "@/stores/auth";
 import { useAtom } from "jotai";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";

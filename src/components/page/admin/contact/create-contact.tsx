@@ -1,7 +1,7 @@
 "use client";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { createNewContactSchema } from "@/hook-form-schema/contact";
+import { createNewContactSchema } from "@/hook-form-schema/admin/contact";
 import { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { toast } from "react-toastify";
@@ -22,7 +22,7 @@ export interface CreateContactForm {
 }
 const schema = createNewContactSchema;
 export default function CreateContactForm() {
-  const t = useTranslations("AddNewContact");
+  const t = useTranslations("admin.AddNewContact");
   const [imageUrl, setImageUrl] = useState<string>("");
   const router = useRouter();
   const locale = usePathname().split("/")[1];

@@ -1,6 +1,6 @@
 "use client";
 
-import { CALENDAREVENT } from "@/constants/event";
+import { CALENDAREVENT } from "@/constants/admin/event";
 import Image from "next/image";
 import { useState } from "react";
 

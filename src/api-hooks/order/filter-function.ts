@@ -1,7 +1,7 @@
 "use client";
 
-import { ORDERLIST } from "@/constants/order";
-import { IOrder, IOrderSearch } from "@/stores/order-filter";
+import { ORDERLIST } from "@/constants/admin/order";
+import { IOrder, IOrderSearch } from "@/stores/admin/order-filter";
 
 export function filterFunction(orderSearch: IOrderSearch) {
   let dataVal = ORDERLIST;

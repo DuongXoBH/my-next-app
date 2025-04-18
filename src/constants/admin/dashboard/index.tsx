@@ -1,5 +1,5 @@
 import translationData from "@/messages/en.json";
-type dashboardKeys = keyof typeof translationData.Dashboard;
+type dashboardKeys = keyof (typeof translationData)["admin"]["Dashboard"];
 
 export const DASHBOARD = [
   {

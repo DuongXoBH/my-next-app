@@ -1,6 +1,6 @@
 import { useFetchUserApiBySession } from "@/api-hooks/user";
-import { authShoppingCart } from "@/stores/products";
-import { userToken } from "@/stores/users";
+import { authShoppingCart } from "@/stores/admin/products";
+import { userToken } from "@/stores/auth";
 import { Dialog, Tooltip } from "@mui/material";
 import { useAtom } from "jotai";
 import { useTranslations } from "next-intl";
@@ -13,7 +13,7 @@ export default function DeteleCardDialog({ id }: { id: number }) {
   const { data: auth } = useFetchUserApiBySession(authToken);
   const [carts, setCarts] = useAtom(authShoppingCart);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const t = useTranslations("Product Stock");
+  const t = useTranslations("admin.Product Stock");
 
   async function handleDetele() {
     if (isSubmitting) return null;

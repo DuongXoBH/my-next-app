@@ -5,7 +5,7 @@ import { useAtom } from "jotai";
 import Header from "./header/header";
 import Sidebar from "./sidebar/sidebar";
 import { CircularProgress } from "@mui/material";
-import { sidebarAtom } from "@/stores";
+import { sidebarAtom } from "@/stores/admin";
 import { useEffect, useState } from "react";
 
 export default function Dashboard({ children }: { children: React.ReactNode }) {

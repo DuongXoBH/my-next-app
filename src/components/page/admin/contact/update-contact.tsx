@@ -2,7 +2,7 @@
 
 import { useFetchUserApiById } from "@/api-hooks/user";
 import { CreateContactForm } from "@/components/page/admin/contact/create-contact";
-import { createNewContactSchema } from "@/hook-form-schema/contact";
+import { createNewContactSchema } from "@/hook-form-schema/admin/contact";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { CardMedia } from "@mui/material";
 import { CldUploadWidget } from "next-cloudinary";
@@ -15,7 +15,7 @@ const schema = createNewContactSchema;
 
 export default function UpdateContactComponent({ userId }: { userId: string }) {
   const id = userId;
-  const t = useTranslations("UpdateContact");
+  const t = useTranslations("admin.UpdateContact");
   const [isSummiting, setIsSubmitting] = useState(false);
   const [imageUrl, setImageUrl] = useState<string>("");
   const { data: user } = useFetchUserApiById(id);

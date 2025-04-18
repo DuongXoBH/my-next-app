@@ -4,13 +4,13 @@ import { Paper } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { Status } from "./status";
 import { useAtom } from "jotai";
-import { orderListAtom } from "@/stores/order-filter";
+import { orderListAtom } from "@/stores/admin/order-filter";
 import { useTranslations } from "next-intl";
 import { CustomTableFooter } from "@/components/common/table/table-footer";
 import NotFound from "@/components/common/table/not-found-data";
 
 export default function OrderList({ size }: { size?: number }) {
-  const t = useTranslations("Order Lists");
+  const t = useTranslations("admin.Order Lists");
   const columns: GridColDef[] = [
     {
       field: "id",

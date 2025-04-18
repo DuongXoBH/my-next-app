@@ -2,8 +2,8 @@
 
 import { useFetchProductByIdApi } from "@/api-hooks/product";
 import { useFetchUserApiBySession } from "@/api-hooks/user";
-import { authShoppingCart } from "@/stores/products";
-import { userToken } from "@/stores/users";
+import { authShoppingCart } from "@/stores/admin/products";
+import { userToken } from "@/stores/auth";
 import {
   Accordion,
   AccordionDetails,
@@ -16,7 +16,7 @@ import { useTranslations } from "next-intl";
 import { toast } from "react-toastify";
 
 export default function ProductInformation({ id }: { id: string }) {
-  const t = useTranslations("ProductDetail");
+  const t = useTranslations("admin.ProductDetail");
   const { data: product } = useFetchProductByIdApi(id);
   const [authToken] = useAtom(userToken);
   const { data: auth } = useFetchUserApiBySession(authToken);

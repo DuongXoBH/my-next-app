@@ -3,7 +3,7 @@
 import { ChannelProvider } from "ably/react";
 import ChatBox from "./chatbox";
 import { useAtom } from "jotai";
-import { userToken } from "@/stores/users";
+import { userToken } from "@/stores/auth";
 import { useFetchUserApiBySession } from "@/api-hooks/user";
 import BoxLoading from "../global/box-loading";
 

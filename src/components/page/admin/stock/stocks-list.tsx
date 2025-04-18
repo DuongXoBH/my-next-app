@@ -10,11 +10,11 @@ import NotFound from "@/components/common/table/not-found-data";
 import DeteleDialog from "./delete-dialog";
 import UpdateDialog from "./update-dialog";
 import { useAtom } from "jotai";
-import { stockAtom } from "@/stores/products";
+import { stockAtom } from "@/stores/admin/products";
 import { useEffect } from "react";
 
 export default function StocksList({ size }: { size?: number }) {
-  const t = useTranslations("Product Stock");
+  const t = useTranslations("admin.Product Stock");
   const columns: GridColDef[] = [
     {
       field: "id",

@@ -19,7 +19,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useAtom } from "jotai";
-import { eventAtom } from "@/stores/event";
+import { eventAtom } from "@/stores/admin/event";
 import Image from "next/image";
 
 export default function MyCalendar() {

@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import Ably from "ably";
 import { AblyProvider } from "ably/react";
 import { useAtom } from "jotai";
-import { AblyAtom } from "@/stores/contact";
+import { AblyAtom } from "@/stores/admin/contact";
 
 export function CustomAblyProvider({
   children,

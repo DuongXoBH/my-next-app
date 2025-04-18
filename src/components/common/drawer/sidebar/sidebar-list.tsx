@@ -1,4 +1,4 @@
-import { sidebarAtom } from "@/stores";
+import { sidebarAtom } from "@/stores/admin";
 import {
   List,
   ListItem,

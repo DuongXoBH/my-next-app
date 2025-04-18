@@ -1,9 +1,9 @@
-import { IDashboardModal } from "@/constants/dashboard";
+import { IDashboardModal } from "@/constants/admin/dashboard";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 export default function DashboardModal(props: { modal: IDashboardModal }) {
-  const t = useTranslations("Dashboard");
+  const t = useTranslations("admin.Dashboard");
   return (
     <button className="w-[23%] min-h-[162px] p-4 flex flex-col justify-between rounded-2xl bg-white">
       <div className="w-full flex flex-row justify-between">

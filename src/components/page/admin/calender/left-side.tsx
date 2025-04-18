@@ -1,8 +1,8 @@
 "use client";
 
 import LinkTag from "@/components/common/global/link-tag";
-import { IEventItem } from "@/constants/event";
-import { eventAtom } from "@/stores/event";
+import { IEventItem } from "@/constants/admin/event";
+import { eventAtom } from "@/stores/admin/event";
 import { Divider } from "@mui/material";
 import { useAtom } from "jotai";
 import { useTranslations } from "next-intl";
@@ -10,7 +10,7 @@ import { useState } from "react";
 
 export default function LeftSide() {
   const [events] = useAtom(eventAtom);
-  const t = useTranslations("Calender");
+  const t = useTranslations("admin.Calender");
   const [visibleCount, setVisibleCount] = useState<number>(4);
   return (
     <div className="w-full flex flex-col items-center py-6 gap-4 ">

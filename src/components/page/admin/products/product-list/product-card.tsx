@@ -21,11 +21,11 @@ import LinkTag from "@/components/common/global/link-tag";
 
 import { IProduct } from "../../favorites/favorites";
 import { useAtom } from "jotai";
-import { userToken } from "@/stores/users";
+import { userToken } from "@/stores/auth";
 import { useFetchUserApiBySession } from "@/api-hooks/user";
-import { favoritesAtom } from "@/stores/products";
+import { favoritesAtom } from "@/stores/admin/products";
 export default function ProductCard({ product }: { product: IProduct }) {
-  const t = useTranslations("Favorites");
+  const t = useTranslations("admin.Favorites");
   const [token] = useAtom(userToken);
   const { data: auth } = useFetchUserApiBySession(token);
   const [favorites, setFavorites] = useAtom(favoritesAtom);

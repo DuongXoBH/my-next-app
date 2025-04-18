@@ -1,7 +1,7 @@
 "use client";
 
 import PageHeader from "@/components/common/global/page-header";
-import { PRICINGLIST } from "@/constants/pricing";
+import { PRICINGLIST } from "@/constants/admin/pricing";
 import { use, useState } from "react";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
@@ -10,7 +10,7 @@ import Image from "next/image";
 import { Tooltip } from "@mui/material";
 import { useTranslations } from "next-intl";
 import translationData from "@/messages/en.json";
-type IPricingKey = keyof (typeof translationData)["PricingDetail"];
+type IPricingKey = keyof (typeof translationData)["admin"]["PricingDetail"];
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
@@ -29,7 +29,7 @@ export default function DetailPricing({
 }) {
   const { id } = use(params);
   const data = PRICINGLIST;
-  const t = useTranslations("PricingDetail");
+  const t = useTranslations("admin.PricingDetail");
   const [selectedMethod, setSelectedMethod] = useState("Visa");
 
   return (

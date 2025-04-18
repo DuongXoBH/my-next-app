@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import { settingsSchema } from "@/hook-form-schema/settings";
+import { settingsSchema } from "@/hook-form-schema/admin/settings";
 
 export interface SettingsForm {
   image: FileList;
@@ -20,7 +20,7 @@ export interface SettingsForm {
 const schema = settingsSchema;
 
 export default function SettingsFormComponent() {
-  const t = useTranslations("Settings");
+  const t = useTranslations("admin.Settings");
   const [imageUrl, setImageUrl] = useState<string>("");
   const {
     register,
@@ -31,7 +31,7 @@ export default function SettingsFormComponent() {
   const onSubmit: SubmitHandler<SettingsForm> = (data) => {
     const uploadData = { ...data, image: imageUrl };
 
-    console.log("🚀 ~ SettingsFormComponent ~ uploadData:", uploadData)
+    console.log("🚀 ~ SettingsFormComponent ~ uploadData:", uploadData);
     toast.success("Save settings");
   };
 
@@ -91,14 +91,17 @@ export default function SettingsFormComponent() {
 
             {errors.image && (
               <p className="text-red-500">{errors.image.message}</p>
-            )} 
+            )}
           </label>
         </div>
 
         <div className="w-full grid grid-cols-2 gap-[60px]">
           {/* Name */}
           <div className="flex flex-col">
-            <label className="text-sm font-semibold mb-3 text-black capitalize" htmlFor="name">
+            <label
+              className="text-sm font-semibold mb-3 text-black capitalize"
+              htmlFor="name"
+            >
               {t("site name")}
             </label>
             <input
@@ -108,12 +111,17 @@ export default function SettingsFormComponent() {
               {...register("name")}
               className="w-full border p-2 rounded h-[52px]"
             />
-            {errors.name && <p className="text-red-500">{errors.name.message}</p>}
+            {errors.name && (
+              <p className="text-red-500">{errors.name.message}</p>
+            )}
           </div>
 
           {/* Copyright */}
           <div className="flex flex-col">
-            <label className="text-sm font-semibold mb-3 text-black capitalize" htmlFor="copyRight">
+            <label
+              className="text-sm font-semibold mb-3 text-black capitalize"
+              htmlFor="copyRight"
+            >
               {t("copy right")}
             </label>
             <input
@@ -123,14 +131,19 @@ export default function SettingsFormComponent() {
               {...register("copyRight")}
               className="w-full border p-2 rounded h-[52px]"
             />
-            {errors.copyRight && <p className="text-red-500">{errors.copyRight.message}</p>}
+            {errors.copyRight && (
+              <p className="text-red-500">{errors.copyRight.message}</p>
+            )}
           </div>
         </div>
 
         <div className="w-full grid grid-cols-2 gap-[60px]">
           {/* Title */}
           <div className="flex flex-col">
-            <label className="text-sm font-semibold mb-3 text-black capitalize" htmlFor="title">
+            <label
+              className="text-sm font-semibold mb-3 text-black capitalize"
+              htmlFor="title"
+            >
               {t("seo title")}
             </label>
             <input
@@ -140,12 +153,17 @@ export default function SettingsFormComponent() {
               {...register("title")}
               className="w-full border p-2 rounded h-[52px]"
             />
-            {errors.title && <p className="text-red-500">{errors.title.message}</p>}
+            {errors.title && (
+              <p className="text-red-500">{errors.title.message}</p>
+            )}
           </div>
 
           {/* Keywords */}
           <div className="flex flex-col">
-            <label className="text-sm font-semibold mb-3 text-black capitalize" htmlFor="keywords">
+            <label
+              className="text-sm font-semibold mb-3 text-black capitalize"
+              htmlFor="keywords"
+            >
               {t("seo keywords")}
             </label>
             <input
@@ -155,13 +173,18 @@ export default function SettingsFormComponent() {
               {...register("keywords")}
               className="w-full border p-2 rounded h-[52px]"
             />
-            {errors.keywords && <p className="text-red-500">{errors.keywords.message}</p>}
+            {errors.keywords && (
+              <p className="text-red-500">{errors.keywords.message}</p>
+            )}
           </div>
         </div>
 
         <div className="w-full flex flex-col">
           {/* Description */}
-          <label className="text-sm font-semibold mb-3 text-black capitalize" htmlFor="description">
+          <label
+            className="text-sm font-semibold mb-3 text-black capitalize"
+            htmlFor="description"
+          >
             {t("seo description")}
           </label>
           <textarea
@@ -170,11 +193,16 @@ export default function SettingsFormComponent() {
             {...register("description")}
             className="w-full border p-2 rounded min-h-32"
           />
-          {errors.description && <p className="text-red-500">{errors.description.message}</p>}
+          {errors.description && (
+            <p className="text-red-500">{errors.description.message}</p>
+          )}
         </div>
 
         {/* Submit Button */}
-        <button type="submit" className="w-[274px] h-14 bg-[#4880FF] rounded-xl text-white">
+        <button
+          type="submit"
+          className="w-[274px] h-14 bg-[#4880FF] rounded-xl text-white"
+        >
           {t("save")}
         </button>
       </form>

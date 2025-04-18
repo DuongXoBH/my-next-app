@@ -6,9 +6,9 @@ import DeteleCardDialog from "./delete-cart-dialog";
 import { useTranslations } from "next-intl";
 import { ChangeEvent, useEffect, useMemo, useState } from "react";
 import { useAtom } from "jotai";
-import { userToken } from "@/stores/users";
+import { userToken } from "@/stores/auth";
 import { useFetchUserApiBySession } from "@/api-hooks/user";
-import { authShoppingCart, totalCartAmountAtom } from "@/stores/products";
+import { authShoppingCart, totalCartAmountAtom } from "@/stores/admin/products";
 
 export default function CartColumns() {
   const [cart, setCart] = useAtom(authShoppingCart);
@@ -60,7 +60,7 @@ export default function CartColumns() {
     updateCart(id, updated);
   };
 
-  const t = useTranslations("ShoppingCart");
+  const t = useTranslations("admin.ShoppingCart");
   const cartColumns: GridColDef[] = [
     {
       field: "id",

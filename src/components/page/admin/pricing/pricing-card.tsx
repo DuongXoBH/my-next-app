@@ -1,13 +1,13 @@
 "use client";
 
 import LinkTag from "@/components/common/global/link-tag";
-import { IPricingList } from "@/constants/pricing";
+import { IPricingList } from "@/constants/admin/pricing";
 import { useTranslations } from "next-intl";
 
 export default function PricingCard({ arr }: { arr: IPricingList }) {
-  const t = useTranslations("Pricing");
+  const t = useTranslations("admin.Pricing");
   return (
-    <div className="w-[30%] min-h-[780px] bg-pricing bg-center bg-no-repeat bg-cover flex flex-col justify-between items-center pt-10 pb-[55px] rounded-[30px] capitalize">
+    <div className="w-[30%] min-h-[780px] bg-admin-pricing bg-center bg-no-repeat bg-cover flex flex-col justify-between items-center pt-10 pb-[55px] rounded-[30px] capitalize">
       <p className="text-2xl font-bold">{t(arr.title)}</p>
       <p className="text-lg ">{t("price")}</p>
       <p className="text-[36px] text-[#4581FF] font-extrabold ">

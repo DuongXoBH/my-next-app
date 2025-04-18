@@ -11,11 +11,11 @@ import { useChannel } from "ably/react";
 import { Message } from "ably";
 import { useTranslations } from "next-intl";
 import { useAtom } from "jotai";
-import { AblyAtom } from "@/stores/contact";
+import { AblyAtom } from "@/stores/admin/contact";
 import BoxLoading from "../global/box-loading";
 
 export default function ChatBox({ userId }: { userId?: number }) {
-  const t = useTranslations("Inbox");
+  const t = useTranslations("admin.Inbox");
   const [ably] = useAtom(AblyAtom);
   const inputBox = useRef<HTMLTextAreaElement | null>(null);
   const messageEnd = useRef<HTMLDivElement | null>(null);

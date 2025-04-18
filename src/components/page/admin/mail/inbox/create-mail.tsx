@@ -1,5 +1,5 @@
 import TinyEditorComponent from "@/components/page/admin/mail/inbox/text-field";
-import { createMailSchema } from "@/hook-form-schema/mail";
+import { createMailSchema } from "@/hook-form-schema/admin/mail";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Dialog, Divider } from "@mui/material";
 import { useTranslations } from "next-intl";
@@ -14,10 +14,10 @@ export interface ICreateMailForm {
 
 export default function CreateMail() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const errorText = useTranslations("Errors");
+  const errorText = useTranslations("admin.Errors");
   const schema = createMailSchema(errorText as (key: string) => string);
   const [open, setOpen] = useState(false);
-  const t = useTranslations("Inbox");
+  const t = useTranslations("admin.Inbox");
   const {
     register,
     handleSubmit,

@@ -10,7 +10,6 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useTranslations } from "next-intl";
 
-
 const StyledTableCell = styled(TableCell)(({}) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: "#F5F6FA",
@@ -40,7 +39,7 @@ function createData(
 }
 
 export default function InvoiceMainComponent() {
-  const t = useTranslations("Invoice");
+  const t = useTranslations("admin.Invoice");
   const rows = [
     createData("1", "Children Toy", 2, 20, 80),
     createData("2", "Makeup", 2, 50, 100),

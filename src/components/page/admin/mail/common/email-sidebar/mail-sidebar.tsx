@@ -1,8 +1,8 @@
 "use client";
 
-import { EMAILPAGES } from "@/constants/mail";
+import { EMAILPAGES } from "@/constants/admin/mail";
 import useHash from "@/hooks/use-hash";
-import { labelAtom, labelColor } from "@/stores/mail";
+import { labelAtom, labelColor } from "@/stores/admin/mail";
 import {
   Button,
   Divider,
@@ -19,12 +19,12 @@ import Image from "next/image";
 import React from "react";
 import translationData from "@/messages/en.json";
 import CreateMail from "../../inbox/create-mail";
-type IMailSidebar = keyof typeof translationData.Inbox;
+type IMailSidebar = keyof (typeof translationData)["admin"]["Inbox"];
 
 export default function EmailSidebar() {
   const [label, setLabel] = useAtom(labelAtom);
   const hash = useHash();
-  const t = useTranslations("Inbox");
+  const t = useTranslations("admin.Inbox");
   const [labels] = useAtom(labelColor);
   return (
     <Drawer

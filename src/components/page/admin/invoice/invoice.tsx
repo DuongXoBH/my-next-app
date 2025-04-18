@@ -10,7 +10,7 @@ import { usePathname } from "next/navigation";
 export default function InvoiceComponent() {
   const locale = usePathname().split("/")[1];
   const invoiceContentUrl = `${process.env.NEXT_PUBLIC_DOMAIN}/${locale}/invoice-main`;
-  const t = useTranslations("Invoice");
+  const t = useTranslations("admin.Invoice");
   const handlePrint = () => {
     const printWindow = window.open("/print/invoice", "_blank");
     if (printWindow) {
@@ -31,7 +31,7 @@ export default function InvoiceComponent() {
             <Image alt="" src="/shape.png" width={18} height={16}></Image>
           </button>
         </Tooltip>
-        <ShareInvoice shareUrl={invoiceContentUrl}/>
+        <ShareInvoice shareUrl={invoiceContentUrl} />
       </div>
     </div>
   );

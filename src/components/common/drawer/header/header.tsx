@@ -16,8 +16,8 @@ import {
   Typography,
 } from "@mui/material";
 import { useAtom } from "jotai";
-import { userToken } from "@/stores/users";
-import { sidebarAtom } from "@/stores";
+import { userToken } from "@/stores/auth";
+import { sidebarAtom } from "@/stores/admin";
 import { useFetchUserApiBySession } from "@/api-hooks/user";
 import Image from "next/image";
 import { HEADINGMENU, IHeadingMenu } from "@/constants/common/header";
@@ -159,6 +159,26 @@ export default function Header() {
                 open={open2}
                 onClose={handleClose}
               >
+                {auth?.role && (
+                  <MenuItem onClick={handleClose}>
+                    <LinkTag
+                      href="/admin"
+                      className="flex flex-row gap-3 py-auto h-full justify-center items-center"
+                    >
+                      <div className="w-7 h-7 flex items-center">
+                        <Image
+                          alt="admin"
+                          src="/image-3.png"
+                          width={16}
+                          height={16}
+                        ></Image>
+                      </div>
+                      <Typography sx={{ textAlign: "center" }}>
+                        Admin
+                      </Typography>
+                    </LinkTag>
+                  </MenuItem>
+                )}
                 {settings.map((setting: IHeadingMenu, index: number) => (
                   <MenuItem key={`locale-${index}`} onClick={handleClose}>
                     <LinkTag

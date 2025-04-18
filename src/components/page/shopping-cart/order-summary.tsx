@@ -1,12 +1,12 @@
 "use client";
 
-import { totalCartAmountAtom } from "@/stores/products";
+import { totalCartAmountAtom } from "@/stores/admin/products";
 import { Divider } from "@mui/material";
 import { useAtom } from "jotai";
 import { useTranslations } from "next-intl";
 
 export default function OrderSummary() {
-  const t = useTranslations("ShoppingCart");
+  const t = useTranslations("admin.ShoppingCart");
   const [totalCartAmount] = useAtom(totalCartAmountAtom);
   const discount = parseFloat((totalCartAmount * 0.15).toFixed(2));
   const tax = parseFloat((totalCartAmount * 0.19).toFixed(2));

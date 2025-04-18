@@ -2,14 +2,14 @@
 
 import { useFetchProductsApi } from "@/api-hooks/product";
 import useDebounce from "@/hooks/use-debounce";
-import { IProduct, stockAtom } from "@/stores/products";
+import { IProduct, stockAtom } from "@/stores/admin/products";
 import SearchIcon from "@mui/icons-material/Search";
 import { useAtom } from "jotai";
 import { useTranslations } from "next-intl";
 import { ChangeEvent, useEffect, useState } from "react";
 
 export default function StockSearch() {
-  const t = useTranslations("Product Stock");
+  const t = useTranslations("admin.Product Stock");
   const [searchValue, setSearchValue] = useState<string>("");
   const debounceValue = useDebounce(searchValue, 300);
   const [, setStockAtom] = useAtom(stockAtom);

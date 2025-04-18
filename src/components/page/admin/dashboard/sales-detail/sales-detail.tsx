@@ -3,7 +3,7 @@ import SalesChart from "./sales-chart";
 import { useTranslations } from "next-intl";
 
 export default function SalesDetail() {
-  const t = useTranslations("Dashboard");
+  const t = useTranslations("admin.Dashboard");
   return (
     <div id="#sales-detail" className="w-full bg-white p-8 mt-8">
       <Typography

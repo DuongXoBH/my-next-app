@@ -5,7 +5,7 @@ import PageHeader from "@/components/common/global/page-header";
 import { useTranslations } from "next-intl";
 
 export default function ContactHeader() {
-  const t = useTranslations("Contact");
+  const t = useTranslations("admin.Contact");
   return (
     <div className="flex justify-between items-center mt-4 mb-10">
       <PageHeader page="Contact" />

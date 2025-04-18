@@ -17,11 +17,11 @@ import { IProduct } from "../../favorites/favorites";
 import ProductCard from "./product-card";
 import { useAtom } from "jotai";
 import { useFetchUserApiBySession } from "@/api-hooks/user";
-import { userToken } from "@/stores/users";
-import { favoritesAtom } from "@/stores/products";
+import { userToken } from "@/stores/auth";
+import { favoritesAtom } from "@/stores/admin/products";
 
 export default function ProductList() {
-  const t = useTranslations("Products");
+  const t = useTranslations("admin.Products");
   const [token] = useAtom(userToken);
   const { data: auth } = useFetchUserApiBySession(token);
   const [favorites] = useAtom(favoritesAtom);

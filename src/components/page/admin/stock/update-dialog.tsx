@@ -1,7 +1,5 @@
-import {
-  useFetchUpdateProducts,
-} from "@/api-hooks/product";
-import { updateProductsSchema } from "@/hook-form-schema/product";
+import { useFetchUpdateProducts } from "@/api-hooks/product";
+import { updateProductsSchema } from "@/hook-form-schema/admin/product";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Dialog, Divider, Tooltip } from "@mui/material";
 import { useTranslations } from "next-intl";
@@ -13,7 +11,7 @@ import { toast } from "react-toastify";
 export default function UpdateDialog({ id }: { id: number }) {
   const [open, setOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const t = useTranslations("Product Stock");
+  const t = useTranslations("admin.Product Stock");
   const schema = updateProductsSchema;
   const updateMutation = useFetchUpdateProducts();
 
@@ -41,7 +39,7 @@ export default function UpdateDialog({ id }: { id: number }) {
       }
     );
     setIsSubmitting(false);
-    setOpen(false)
+    setOpen(false);
   };
 
   return (
@@ -74,19 +72,21 @@ export default function UpdateDialog({ id }: { id: number }) {
             onSubmit={handleSubmit(onSubmit)}
             className="w-full flex flex-col gap-5"
           >
-            <p className="w-full text-xl font-bold text-center capitalize">{t("update")} {id}</p>
+            <p className="w-full text-xl font-bold text-center capitalize">
+              {t("update")} {id}
+            </p>
             <Divider />
             <div className="w-full flex flex-col gap-2">
               <input
                 type="text"
                 className="h-10 px-2"
                 {...register("title")}
-                placeholder={t("name")
-                
-                }
+                placeholder={t("name")}
               />
               {errors.title && (
-                <p className="text-red-500 capitalize">{errors.title.message}</p>
+                <p className="text-red-500 capitalize">
+                  {errors.title.message}
+                </p>
               )}
             </div>
             <Divider />
@@ -98,7 +98,9 @@ export default function UpdateDialog({ id }: { id: number }) {
                 placeholder={t("price")}
               />
               {errors.price && (
-                <p className="text-red-500 capitalize">{errors.price.message}</p>
+                <p className="text-red-500 capitalize">
+                  {errors.price.message}
+                </p>
               )}
             </div>
             <Divider />

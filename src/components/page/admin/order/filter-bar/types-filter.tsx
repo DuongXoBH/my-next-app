@@ -2,7 +2,7 @@
 
 import { filterFunction } from "@/api-hooks/order/filter-function";
 import { useOutsideClick } from "@/hooks/use-outside-click";
-import { orderListAtom, searchAtom } from "@/stores/order-filter";
+import { orderListAtom, searchAtom } from "@/stores/admin/order-filter";
 import { Divider } from "@mui/material";
 import { useAtom } from "jotai";
 import { useTranslations } from "next-intl";
@@ -26,7 +26,7 @@ export default function TypesFilter() {
   const [, setData] = useAtom(orderListAtom);
   const [isTypesOpen, setIsTypesOpen] = useState(false);
   const [orderSearch, setOrderSearch] = useAtom(searchAtom);
-  const t = useTranslations("Order Lists");
+  const t = useTranslations("admin.Order Lists");
   //event handler for selecting type
   const handleTypeSelect = (type: string) => {
     setOrderSearch((prev) =>

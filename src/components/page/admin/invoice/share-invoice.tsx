@@ -20,7 +20,7 @@ import CopyButton from "@/components/common/global/copy-button";
 import LinkTag from "@/components/common/global/link-tag";
 
 export default function ShareInvoice({ shareUrl }: { shareUrl?: string }) {
-  const t = useTranslations("Invoice");
+  const t = useTranslations("admin.Invoice");
   const messengerAppId = process.env.NEXT_PUBLIC_FACEBOOK_APP_ID || "";
   const [open, setOpen] = useState(false);
   if (!shareUrl) return null;
@@ -76,8 +76,13 @@ export default function ShareInvoice({ shareUrl }: { shareUrl?: string }) {
         </div>
         <Divider />
         <div className="w-full flex flex-row justify-between items-center rounded-lg p-4 border border-gray-300 text-black">
-          <LinkTag href={shareUrl} className="hover:underline hover:text-blue-600">{shareUrl}</LinkTag>
-          <CopyButton copyText={shareUrl}/>
+          <LinkTag
+            href={shareUrl}
+            className="hover:underline hover:text-blue-600"
+          >
+            {shareUrl}
+          </LinkTag>
+          <CopyButton copyText={shareUrl} />
         </div>
       </Dialog>
     </div>

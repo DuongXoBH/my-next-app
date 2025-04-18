@@ -6,7 +6,7 @@ import { loginSchema } from "@/hook-form-schema/login";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useFetchLogin, useFetchUserApiBySession } from "@/api-hooks/user";
-import { userToken } from "@/stores/users";
+import { userToken } from "@/stores/auth";
 import { useAtom } from "jotai";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
@@ -37,7 +37,7 @@ export interface LoginForm {
 }
 
 export default function Login() {
-  const t = useTranslations("Login");
+  const t = useTranslations("admin.Login");
   const [loading, setLoading] = useState(true);
   const [token, setToken] = useAtom(userToken);
   const { data: auth } = useFetchUserApiBySession(token);

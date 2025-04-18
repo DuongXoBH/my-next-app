@@ -1,18 +1,48 @@
+// components/HoverDropdown.tsx
+
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
+function HoverDropdown() {
+  const [open, setOpen] = useState(false);
 
-export default function Home() {
   return (
-    <div className="flex h-screen">
-      <motion.div
-        className="w-20 h-20 bg-purple-500 rounded-xl"
-        initial={{ x: -50, y: -50 }}
-        animate={{ x: 100, y: 100, rotate: 360 }}
-        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+    <DropdownMenu open={open} onOpenChange={setOpen}>
+      <DropdownMenuTrigger asChild>
+        <div
+          onMouseEnter={() => setOpen(true)}
+          onMouseLeave={() => setOpen(false)}
+        >
+          <Button variant="outline">Menu</Button>
+        </div>
+      </DropdownMenuTrigger>
+
+      <DropdownMenuContent
+        className="w-56"
+        onMouseEnter={() => setOpen(true)}
+        onMouseLeave={() => setOpen(false)}
       >
-        A
-      </motion.div>
+        <DropdownMenuItem>Profile</DropdownMenuItem>
+        <DropdownMenuItem>Settings</DropdownMenuItem>
+        <DropdownMenuItem>Logout</DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+
+export default function Test() {
+  return (
+    <div className="flex justify-center items-center h-screen">
+      <HoverDropdown />
+      <HoverDropdown />
+      <HoverDropdown />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { IPricingList } from "@/constants/pricing";
+import { IPricingList } from "@/constants/admin/pricing";
 import {
   CardNumberElement,
   CardExpiryElement,
@@ -10,12 +10,18 @@ import {
 } from "@stripe/react-stripe-js";
 import { useTranslations } from "next-intl";
 import translationData from "@/messages/en.json";
-type IPricingKey = keyof (typeof translationData)["PricingDetail"];
+type IPricingKey = keyof (typeof translationData)["admin"]["PricingDetail"];
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-export default function Payment({data, method} :{data: IPricingList, method: string}) {
-  const t = useTranslations("PricingDetail");
+export default function Payment({
+  data,
+  method,
+}: {
+  data: IPricingList;
+  method: string;
+}) {
+  const t = useTranslations("admin.PricingDetail");
   const stripe = useStripe();
   const elements = useElements();
   const [name, setName] = useState("");
@@ -28,7 +34,7 @@ export default function Payment({data, method} :{data: IPricingList, method: str
 
     const res = await fetch("/api/create-payment-intent", {
       method: "POST",
-      body: JSON.stringify({ amount: data.price as unknown as number * 100 }),
+      body: JSON.stringify({ amount: (data.price as unknown as number) * 100 }),
     });
 
     const { clientSecret } = await res.json();
@@ -68,7 +74,9 @@ export default function Payment({data, method} :{data: IPricingList, method: str
       className="max-w-xl w-full bg-white p-6 rounded-2xl shadow-lg space-y-6"
     >
       <div className="space-y-4 mt-12">
-        <p>{t("pay with")} {t(method as IPricingKey)}</p>
+        <p>
+          {t("pay with")} {t(method as IPricingKey)}
+        </p>
         <div>
           <label className="block text-sm mb-1">{t("card number")}</label>
           <div className="border px-3 py-2 rounded-lg">

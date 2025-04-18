@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { CardMedia } from "@mui/material";
-import { createNewMemberSchema } from "@/hook-form-schema/team";
+import { createNewMemberSchema } from "@/hook-form-schema/admin/team";
 import { CldUploadWidget } from "next-cloudinary";
 import { useTranslations } from "next-intl";
 
@@ -19,7 +19,7 @@ export interface ICreatememberForm {
 }
 const schema = createNewMemberSchema;
 export default function CreateMemberForm() {
-  const t = useTranslations("Team");
+  const t = useTranslations("admin.Team");
   const [imageUrl, setImageUrl] = useState<string>("");
   const {
     register,
@@ -30,7 +30,7 @@ export default function CreateMemberForm() {
   const onSubmit: SubmitHandler<ICreatememberForm> = (data) => {
     const uploadData = { ...data, image: imageUrl };
 
-    console.log("🚀 ~ CreateMemberForm ~ uploadData:", uploadData)
+    console.log("🚀 ~ CreateMemberForm ~ uploadData:", uploadData);
     toast.success("Add new contact");
   };
 
@@ -90,7 +90,7 @@ export default function CreateMemberForm() {
 
             {errors.image && (
               <p className="text-red-500">{errors.image.message}</p>
-            )} 
+            )}
           </label>
         </div>
         <div className="w-full min-h-[106px] grid grid-cols-2 gap-[60px]">

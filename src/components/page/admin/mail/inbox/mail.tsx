@@ -4,10 +4,10 @@ import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import Paper from "@mui/material/Paper";
 import { Typography } from "@mui/material";
 import { Label } from "./mail-label";
-import { IMail, INBOXLIST } from "@/constants/mail";
+import { IMail, INBOXLIST } from "@/constants/admin/mail";
 import { CustomTableFooter } from "@/components/common/table/table-footer";
 import { useAtom } from "jotai";
-import { labelAtom } from "@/stores/mail";
+import { labelAtom } from "@/stores/admin/mail";
 import { useEffect, useState } from "react";
 
 export default function InboxList(props: { title: string }) {

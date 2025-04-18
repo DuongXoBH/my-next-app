@@ -14,9 +14,7 @@ export default function AppLayout({
           <div className="w-full bg-white">
             <Header />
           </div>
-          <div className="container w-full pt-2 pb-4 overflow-auto">
-            {children}
-          </div>
+          <div className="container w-full pt-2 pb-4">{children}</div>
         </div>
       </AdvertisementProvider>
     </AuthenticateMiddlewareProvider>

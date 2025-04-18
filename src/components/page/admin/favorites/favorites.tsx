@@ -10,9 +10,9 @@ import CardLoading from "@/components/common/global/card-loading";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useAtom } from "jotai";
-import { favoritesAtom } from "@/stores/products";
+import { favoritesAtom } from "@/stores/admin/products";
 import { useFetchUserApiBySession } from "@/api-hooks/user";
-import { userToken } from "@/stores/users";
+import { userToken } from "@/stores/auth";
 import ProductCard from "../products/product-list/product-card";
 
 export interface IProduct {
@@ -24,7 +24,7 @@ export interface IProduct {
   favorites: boolean;
 }
 export default function FavoritesList() {
-  const t = useTranslations("Favorites");
+  const t = useTranslations("admin.Favorites");
   const [count, setCount] = useState(6);
   const [token] = useAtom(userToken);
   const [favorites] = useAtom(favoritesAtom);

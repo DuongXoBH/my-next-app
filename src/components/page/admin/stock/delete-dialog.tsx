@@ -8,11 +8,11 @@ import { toast } from "react-toastify";
 export default function DeteleDialog({ id }: { id: number }) {
   const [open, setOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const t = useTranslations("Product Stock");
+  const t = useTranslations("admin.Product Stock");
   const deleteMutation = useFetchDeleteProducts();
 
   async function handleDetele() {
-    if(isSubmitting) return null;
+    if (isSubmitting) return null;
     setIsSubmitting(true);
     await deleteMutation.mutate(id, {
       onSuccess() {
@@ -25,7 +25,7 @@ export default function DeteleDialog({ id }: { id: number }) {
       },
     });
     setIsSubmitting(false);
-    setOpen(false)
+    setOpen(false);
   }
   return (
     <div>
@@ -53,7 +53,7 @@ export default function DeteleDialog({ id }: { id: number }) {
           </p>
           <button
             type="button"
-            onClick={()=>handleDetele()}
+            onClick={() => handleDetele()}
             disabled={isSubmitting}
             className="w-32 h-12 rounded-md bg-[#4880FF] hover:bg-[#3864cc] disabled:bg-gray-600 text-white capitalize"
           >

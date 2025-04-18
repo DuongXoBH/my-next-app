@@ -10,7 +10,7 @@ import { useTranslations } from "next-intl";
 
 export default function CustomComponent() {
   const swiperRef = useRef<SwiperType | null>(null);
-  const t = useTranslations("Products");
+  const t = useTranslations("admin.Products");
 
   return (
     <div className="container mt-5 max-h-[350px] px-5 flex justify-center items-center relative bg-banner-layer rounded-2xl">
@@ -32,7 +32,7 @@ export default function CustomComponent() {
           nextEl: ".custom-next",
           prevEl: ".custom-prev",
         }}
-        className="w-full max-h-[350px] overflow-hidden"  
+        className="w-full max-h-[350px] overflow-hidden"
       >
         <SwiperSlide>
           <Box

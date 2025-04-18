@@ -1,6 +1,6 @@
 "use client";
 
-import { createNewEventSchema } from "@/hook-form-schema/calender";
+import { createNewEventSchema } from "@/hook-form-schema/admin/calender";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { CardMedia } from "@mui/material";
 import { CldUploadWidget } from "next-cloudinary";
@@ -29,7 +29,7 @@ export default function CreateEvent() {
       ...data,
       image: imageUrl,
     };
-    console.log("🚀 ~ CreateEvent ~ uploadData:", uploadData)
+    console.log("🚀 ~ CreateEvent ~ uploadData:", uploadData);
   };
   return (
     <div className="w-full h-[744px] bg-white rounded-2xl flex justify-center items-center">

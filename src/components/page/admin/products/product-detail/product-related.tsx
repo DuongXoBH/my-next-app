@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import ProductList from "../product-list/product-list";
 
 export default function RelatedProducts({ id }: { id: number }) {
-  const t = useTranslations("ProductDetail");
+  const t = useTranslations("admin.ProductDetail");
   return (
     <div className="w-full flex flex-col">
       <Typography

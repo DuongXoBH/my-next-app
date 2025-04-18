@@ -1,6 +1,5 @@
-
 import translationData from "@/messages/en.json";
-type IPricingKey = keyof typeof translationData["Pricing"];
+type IPricingKey = keyof (typeof translationData)["admin"]["Pricing"];
 export interface IPricingList {
   id: number;
   title: IPricingKey;

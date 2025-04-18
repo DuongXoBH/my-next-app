@@ -4,7 +4,7 @@ import { useFetchUserApiBySession } from "@/api-hooks/user";
 import BoxLoading from "@/components/common/global/box-loading";
 import PageHeader from "@/components/common/global/page-header";
 import UpdateContactComponent from "@/components/page/admin/contact/update-contact";
-import { userToken } from "@/stores/users";
+import { userToken } from "@/stores/auth";
 import { useAtom } from "jotai";
 
 export default function ProfilePage() {

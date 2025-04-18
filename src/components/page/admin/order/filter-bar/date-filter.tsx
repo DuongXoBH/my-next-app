@@ -1,7 +1,7 @@
 "use client";
 
 import { useOutsideClick } from "@/hooks/use-outside-click";
-import { orderListAtom, searchAtom } from "@/stores/order-filter";
+import { orderListAtom, searchAtom } from "@/stores/admin/order-filter";
 import { Divider } from "@mui/material";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
@@ -18,7 +18,7 @@ export default function DateFilter() {
   const [isDateOpen, setIsDateOpen] = useState(false);
   const [orderSearch, setOrderSearch] = useAtom(searchAtom);
   const [selectedDate, setSelectedDate] = useState<string>("");
-  const t = useTranslations("Order Lists");
+  const t = useTranslations("admin.Order Lists");
 
   const handleDateChange = (newDate: Dayjs) => {
     const newDateStr = newDate.format("DD MMM YYYY");

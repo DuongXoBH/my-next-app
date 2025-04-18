@@ -9,11 +9,11 @@ import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
-import { DASHBOARD, PAGE_DASHBOARD } from "@/constants/dashboard";
+import { DASHBOARD, PAGE_DASHBOARD } from "@/constants/admin/dashboard";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import { useAtom } from "jotai";
-import { userToken } from "@/stores/users";
-import { sidebarAtom } from "@/stores";
+import { userToken } from "@/stores/auth";
+import { sidebarAtom } from "@/stores/admin";
 import Link from "next/link";
 import { Tooltip } from "@mui/material";
 import ListNode from "./sidebar-list";
@@ -22,7 +22,7 @@ import LinkTag from "../../global/link-tag";
 import { usePathname } from "next/navigation";
 
 export default function Sidebar() {
-  const t = useTranslations("Global");
+  const t = useTranslations("admin.Global");
   const pathName = usePathname();
   const [, setUser] = useAtom(userToken);
   const [open] = useAtom(sidebarAtom);
