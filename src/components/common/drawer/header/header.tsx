@@ -25,23 +25,22 @@ import LanguageSwitcher from "./locale-button";
 import LinkTag from "../../globals/link-tag";
 import { useState } from "react";
 import CartIcon from "./shopping-cart";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
-  const [token] = useAtom(userToken);
   const [dashboardOpen, setDashboardOpen] = useAtom(sidebarAtom);
   const [searchValue, setSearchValue] = useState("");
+  const [token] = useAtom(userToken);
+  const { data: auth } = useFetchUserApiBySession(token);
+  const pathName = usePathname();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
   };
   console.log("🚀 ~ Header ~ searchValue:", searchValue);
 
-  const { data: auth } = useFetchUserApiBySession(token);
-
   const settings = HEADINGMENU;
-
   const [anchorEl2, setAnchorEl2] = useState<null | HTMLElement>(null);
-
   const open2 = Boolean(anchorEl2);
 
   const handleClickMenu2 = (event: React.MouseEvent<HTMLElement>) => {
@@ -66,16 +65,29 @@ export default function Header() {
         <Box sx={{ display: "flex", flexDirection: "row" }}>
           {/* Menu Button */}
           <Toolbar sx={{ padding: "0px !important" }}>
-            <Tooltip title={dashboardOpen ? "Close menu" : "Open menu"}>
-              <Button
-                onClick={() => {
-                  setDashboardOpen(!dashboardOpen);
-                }}
-                sx={{ paddingLeft: "0px" }}
-              >
-                <MenuIcon sx={{ color: "black" }} />
-              </Button>
-            </Tooltip>
+            {pathName?.includes("admin") ? (
+              <Tooltip title={dashboardOpen ? "Close menu" : "Open menu"}>
+                <Button
+                  onClick={() => {
+                    setDashboardOpen(!dashboardOpen);
+                  }}
+                  sx={{ paddingLeft: "0px" }}
+                >
+                  <MenuIcon sx={{ color: "black" }} />
+                </Button>
+              </Tooltip>
+            ) : (
+              <Tooltip title="Home">
+                <Image
+                  src="/logo47.png"
+                  alt="Logo"
+                  width={39}
+                  height={39}
+                  className="mr-2"
+                  priority
+                ></Image>
+              </Tooltip>
+            )}
           </Toolbar>
 
           {/* Search area */}
