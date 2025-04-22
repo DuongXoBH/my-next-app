@@ -1,4 +1,4 @@
-import PageHeader from "@/components/common/global/page-header";
+import PageHeader from "@/components/common/globals/page-header";
 import FilterGroup from "@/components/page/admin/order/filter-bar/filter-group";
 import OrderList from "@/components/page/admin/order/order-list/order-list";
 

@@ -18,7 +18,7 @@ import Link from "next/link";
 import { Tooltip } from "@mui/material";
 import ListNode from "./sidebar-list";
 import { useTranslations } from "next-intl";
-import LinkTag from "../../global/link-tag";
+import LinkTag from "../../globals/link-tag";
 import { usePathname } from "next/navigation";
 
 export default function Sidebar() {

@@ -1,6 +1,6 @@
 "use client";
 
-import LinkTag from "@/components/common/global/link-tag";
+import LinkTag from "@/components/common/globals/link-tag";
 import { IEventItem } from "@/constants/admin/event";
 import { eventAtom } from "@/stores/admin/event";
 import { Divider } from "@mui/material";

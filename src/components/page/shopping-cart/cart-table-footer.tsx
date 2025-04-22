@@ -1,4 +1,4 @@
-import LinkTag from "@/components/common/global/link-tag";
+import LinkTag from "@/components/common/globals/link-tag";
 import { GridFooterContainer } from "@mui/x-data-grid";
 
 export function CustomCartTableFooter() {

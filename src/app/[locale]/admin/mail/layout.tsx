@@ -1,5 +1,5 @@
 import EmailSidebar from "@/components/page/admin/mail/common/email-sidebar/mail-sidebar";
-import PageHeader from "@/components/common/global/page-header";
+import PageHeader from "@/components/common/globals/page-header";
 
 export default function MailLayout({
   children,

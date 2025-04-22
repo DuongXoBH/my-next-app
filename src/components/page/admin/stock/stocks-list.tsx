@@ -3,7 +3,7 @@
 import { useFetchProductsApi } from "@/api-hooks/product";
 import { CardMedia, Paper, Tooltip } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import ListLoading from "@/components/common/global/list-loading";
+import ListLoading from "@/components/common/globals/list-loading";
 import { CustomTableFooter } from "@/components/common/table/table-footer";
 import { useTranslations } from "next-intl";
 import NotFound from "@/components/common/table/not-found-data";

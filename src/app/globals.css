@@ -20,6 +20,28 @@ button {
   -moz-appearance: textfield; /* Firefox */
 }
 
+.custom-scrollbar {
+  overflow-y: auto;
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #f5f6fa transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #f5f6fa;
+}
+
+.custom-scrollbar:hover::-webkit-scrollbar-thumb {
+  background-color: #9f9f9f;
+}
+
+.category-item {
+  min-width: -webkit-calc(24.25%);
+  min-width: calc(24.25%);
+}
 @layer base {
   :root {
     --background: 0 0% 100%;

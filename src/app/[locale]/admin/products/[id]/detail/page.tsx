@@ -1,4 +1,4 @@
-import PageHeader from "@/components/common/global/page-header";
+import PageHeader from "@/components/common/globals/page-header";
 import ProductDetail from "@/components/page/admin/products/product-detail";
 import { use } from "react";
 

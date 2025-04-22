@@ -22,7 +22,7 @@ import { useFetchUserApiBySession } from "@/api-hooks/user";
 import Image from "next/image";
 import { HEADINGMENU, IHeadingMenu } from "@/constants/common/header";
 import LanguageSwitcher from "./locale-button";
-import LinkTag from "../../global/link-tag";
+import LinkTag from "../../globals/link-tag";
 import { useState } from "react";
 import CartIcon from "./shopping-cart";
 

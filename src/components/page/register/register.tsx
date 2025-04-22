@@ -22,7 +22,7 @@ import {
 import { usePathname, useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { toast } from "react-toastify";
-import LinkTag from "@/components/common/global/link-tag";
+import LinkTag from "@/components/common/globals/link-tag";
 import LanguageSwitcher from "@/components/common/drawer/header/locale-button";
 import { getPathname } from "@/i18n/navigation";
 

@@ -10,7 +10,7 @@ import { useAtom } from "jotai";
 import { usePathname } from "next/navigation";
 import React from "react";
 import Note from "./sidebar-node";
-import LinkTag from "../../global/link-tag";
+import LinkTag from "../../globals/link-tag";
 import Image from "next/image";
 
 export default function ListNode({

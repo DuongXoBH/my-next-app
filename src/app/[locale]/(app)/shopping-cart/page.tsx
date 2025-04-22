@@ -1,4 +1,4 @@
-import PageHeader from "@/components/common/global/page-header";
+import PageHeader from "@/components/common/globals/page-header";
 import CartList from "@/components/page/shopping-cart/cart-list";
 import OrderSummary from "@/components/page/shopping-cart/order-summary";
 

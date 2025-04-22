@@ -1,6 +1,6 @@
 "use client";
 
-import PageHeader from "@/components/common/global/page-header";
+import PageHeader from "@/components/common/globals/page-header";
 import UpdateContactComponent from "@/components/page/admin/contact/update-contact";
 import { use } from "react";
 

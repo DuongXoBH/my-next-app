@@ -17,7 +17,7 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { CSSProperties } from "react";
 import { useTranslations } from "next-intl";
-import LinkTag from "@/components/common/global/link-tag";
+import LinkTag from "@/components/common/globals/link-tag";
 
 import { IProduct } from "../../favorites/favorites";
 import { useAtom } from "jotai";
@@ -46,7 +46,7 @@ export default function ProductCard({ product }: { product: IProduct }) {
   return (
     <Card
       sx={{
-        width: "32%",
+        width: "100%",
         display: "flex",
         flexDirection: "column",
         backgroundColor: "white",
@@ -82,7 +82,10 @@ export default function ProductCard({ product }: { product: IProduct }) {
         >
           {product.images.map((image: string, index: number) => {
             return (
-              <SwiperSlide key={`image-${product.id}-${index}`}>
+              <SwiperSlide
+                key={`image-${product.id}-${index}`}
+                className="bg-gray-200"
+              >
                 <CardMedia
                   component="img"
                   image={image}
@@ -91,6 +94,7 @@ export default function ProductCard({ product }: { product: IProduct }) {
                     width: "100%",
                     height: "100%",
                     maxHeight: "320px",
+                    objectFit: "contain",
                   }}
                 />
                 <div className=""></div>

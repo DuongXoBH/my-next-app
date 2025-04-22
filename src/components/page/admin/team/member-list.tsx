@@ -2,7 +2,7 @@
 
 import { useFetchUserApi } from "@/api-hooks/user";
 import MemberCard from "./member-card";
-import CardLoading from "@/components/common/global/card-loading";
+import CardLoading from "@/components/common/globals/card-loading";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import DeleteMember from "./delete-member";

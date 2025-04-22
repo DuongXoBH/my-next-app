@@ -1,4 +1,4 @@
-import PageHeader from "@/components/common/global/page-header";
+import PageHeader from "@/components/common/globals/page-header";
 import { Button } from "@mui/material";
 import { useTranslations } from "next-intl";
 

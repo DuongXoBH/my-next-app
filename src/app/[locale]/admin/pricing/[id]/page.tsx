@@ -1,6 +1,6 @@
 "use client";
 
-import PageHeader from "@/components/common/global/page-header";
+import PageHeader from "@/components/common/globals/page-header";
 import { PRICINGLIST } from "@/constants/admin/pricing";
 import { use, useState } from "react";
 import { Elements } from "@stripe/react-stripe-js";

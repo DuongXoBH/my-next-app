@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import CardLoading from "@/components/common/global/card-loading";
+import CardLoading from "@/components/common/globals/card-loading";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useAtom } from "jotai";
@@ -20,6 +20,11 @@ export interface IProduct {
   title: string;
   images: string[];
   price: number;
+  category: {
+    name: string;
+    slug: string;
+    image: string;
+  };
   totalFavorites: number;
   favorites: boolean;
 }
@@ -78,7 +83,11 @@ export default function FavoritesList() {
         {favoritesList
           ?.slice(0, count)
           .map((element: IProduct, index: number) => {
-            return <ProductCard product={element} key={`favorites-${index}`} />;
+            return (
+              <div key={`favorites-${index}`} className="w-[calc(32%)]">
+                <ProductCard product={element} />
+              </div>
+            );
           })}
       </Box>
       {count < favoritesList?.length && (

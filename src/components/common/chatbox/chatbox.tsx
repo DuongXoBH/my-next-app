@@ -12,7 +12,7 @@ import { Message } from "ably";
 import { useTranslations } from "next-intl";
 import { useAtom } from "jotai";
 import { AblyAtom } from "@/stores/admin/contact";
-import BoxLoading from "../global/box-loading";
+import BoxLoading from "../globals/box-loading";
 
 export default function ChatBox({ userId }: { userId?: number }) {
   const t = useTranslations("admin.Inbox");

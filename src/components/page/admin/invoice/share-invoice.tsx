@@ -16,8 +16,8 @@ import {
 } from "react-share";
 import Image from "next/image";
 import { useState } from "react";
-import CopyButton from "@/components/common/global/copy-button";
-import LinkTag from "@/components/common/global/link-tag";
+import CopyButton from "@/components/common/globals/copy-button";
+import LinkTag from "@/components/common/globals/link-tag";
 
 export default function ShareInvoice({ shareUrl }: { shareUrl?: string }) {
   const t = useTranslations("admin.Invoice");

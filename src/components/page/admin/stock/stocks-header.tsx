@@ -1,5 +1,5 @@
 "use client";
-import PageHeader from "@/components/common/global/page-header";
+import PageHeader from "@/components/common/globals/page-header";
 import StockSearch from "./stock-search";
 
 export default function StocksHeader() {

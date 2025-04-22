@@ -1,8 +1,8 @@
 "use client";
 
 import { useFetchUserApiBySession } from "@/api-hooks/user";
-import BoxLoading from "@/components/common/global/box-loading";
-import PageHeader from "@/components/common/global/page-header";
+import BoxLoading from "@/components/common/globals/box-loading";
+import PageHeader from "@/components/common/globals/page-header";
 import UpdateContactComponent from "@/components/page/admin/contact/update-contact";
 import { userToken } from "@/stores/auth";
 import { useAtom } from "jotai";

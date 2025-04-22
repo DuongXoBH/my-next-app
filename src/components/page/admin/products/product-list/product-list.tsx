@@ -11,7 +11,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import CardLoading from "@/components/common/global/card-loading";
+import CardLoading from "@/components/common/globals/card-loading";
 import { useTranslations } from "next-intl";
 import { IProduct } from "../../favorites/favorites";
 import ProductCard from "./product-card";
@@ -73,20 +73,15 @@ export default function ProductList() {
       }}
     >
       {/* Product List */}
-      <Box
-        sx={{
-          width: "100%",
-          maxHeight: "500px",
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "start",
-          gap: "2%",
-        }}
-      >
+      <div className="w-full flex flex-row justify-start gap-[calc(2%)]">
         {newProducts?.map((element: IProduct, index: number) => {
-          return <ProductCard product={element} key={`product-${index}`} />;
+          return (
+            <div className="w-[calc(32%)]" key={`product-${index}`}>
+              <ProductCard product={element} />
+            </div>
+          );
         })}
-      </Box>
+      </div>
 
       {/* Navigation */}
       <Box

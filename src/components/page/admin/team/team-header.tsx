@@ -1,7 +1,7 @@
 "use client";
 
-import LinkTag from "@/components/common/global/link-tag";
-import PageHeader from "@/components/common/global/page-header";
+import LinkTag from "@/components/common/globals/link-tag";
+import PageHeader from "@/components/common/globals/page-header";
 import React from "react";
 
 const TeamHeader: React.FC = () => {

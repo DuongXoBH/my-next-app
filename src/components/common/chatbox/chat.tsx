@@ -5,7 +5,7 @@ import ChatBox from "./chatbox";
 import { useAtom } from "jotai";
 import { userToken } from "@/stores/auth";
 import { useFetchUserApiBySession } from "@/api-hooks/user";
-import BoxLoading from "../global/box-loading";
+import BoxLoading from "../globals/box-loading";
 
 export default function Chat() {
   const [token] = useAtom(userToken);

@@ -1,6 +1,6 @@
 "use client";
 
-import LinkTag from "@/components/common/global/link-tag";
+import LinkTag from "@/components/common/globals/link-tag";
 import { IPricingList } from "@/constants/admin/pricing";
 import { useTranslations } from "next-intl";
 

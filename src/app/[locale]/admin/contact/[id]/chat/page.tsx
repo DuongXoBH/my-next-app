@@ -1,6 +1,6 @@
 "use client";
 
-import PageHeader from "@/components/common/global/page-header";
+import PageHeader from "@/components/common/globals/page-header";
 import ChatboxComponent from "@/components/page/admin/contact/chatbox";
 import { use } from "react";
 

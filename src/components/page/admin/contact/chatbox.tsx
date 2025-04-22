@@ -1,7 +1,7 @@
 "use client";
 
 import { useFetchUserApiById } from "@/api-hooks/user";
-import BoxLoading from "@/components/common/global/box-loading";
+import BoxLoading from "@/components/common/globals/box-loading";
 import { CardMedia } from "@mui/material";
 import dynamic from "next/dynamic";
 
@@ -19,18 +19,18 @@ export default function ChatboxComponent({ id }: { id: string }) {
       ) : (
         <div className="w-full flex flex-col p-5 gap-5">
           <div className="flex flex-row gap-5 items-center">
-          <CardMedia
-        component="img"
-        image={user.avatar}
-        alt={user.name}
-        sx={{
-          width: "44px",
-          height: "44px",
-          borderRadius: "100%",
-          objectFit: "contain",
-          boxShadow: "6px 6px 54px #00000008",
-        }}
-      />
+            <CardMedia
+              component="img"
+              image={user.avatar}
+              alt={user.name}
+              sx={{
+                width: "44px",
+                height: "44px",
+                borderRadius: "100%",
+                objectFit: "contain",
+                boxShadow: "6px 6px 54px #00000008",
+              }}
+            />
             <p className="text-black font-bold capitalize text-xl">
               {user.name}
             </p>
@@ -38,7 +38,7 @@ export default function ChatboxComponent({ id }: { id: string }) {
               {user.role}
             </p>
           </div>
-          <Chat/>
+          <Chat />
         </div>
       )}
     </div>

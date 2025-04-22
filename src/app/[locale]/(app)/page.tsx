@@ -1,21 +1,19 @@
-"use client";
-
-import PageHeader from "@/components/common/global/page-header";
-import DashboardCardList from "@/components/page/admin/dashboard/card-list/card-list";
-import DealsDetail from "@/components/page/admin/dashboard/deals-detail/deals-detail";
-import ModalList from "@/components/page/admin/dashboard/modal-list/list";
-import Revenue from "@/components/page/admin/dashboard/revenue";
-import SalesDetail from "@/components/page/admin/dashboard/sales-detail/sales-detail";
+import CustomerHomeBanner from "@/components/page/customer/home/banner/banner";
+import BlogsList from "@/components/page/customer/home/blogs/blogs-list";
+import Categories from "@/components/page/customer/home/categories";
+import DesktopMenu from "@/components/page/customer/home/desktop-menu/menu";
+import HomeProducts from "@/components/page/customer/home/products-container/home-products";
+import TestimonialsBox from "@/components/page/customer/home/testimonial/testimonials-box";
 
 export default function HomePage() {
   return (
     <div className="w-full pb-2 relative">
-      <PageHeader page="Dashboard" />
-      <ModalList />
-      <SalesDetail />
-      <DealsDetail />
-      <Revenue />
-      <DashboardCardList />
+      <DesktopMenu />
+      <CustomerHomeBanner />
+      <Categories />
+      <HomeProducts />
+      <TestimonialsBox />
+      <BlogsList />
     </div>
   );
 }

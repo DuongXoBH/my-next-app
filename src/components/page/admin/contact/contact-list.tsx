@@ -1,8 +1,8 @@
 "use client";
 
 import { useFetchUserApi, useFetchUserApiBySession } from "@/api-hooks/user";
-import CardLoading from "@/components/common/global/card-loading";
-import LinkTag from "@/components/common/global/link-tag";
+import CardLoading from "@/components/common/globals/card-loading";
+import LinkTag from "@/components/common/globals/link-tag";
 import { userToken } from "@/stores/auth";
 import { CardMedia, Skeleton } from "@mui/material";
 import { useAtom } from "jotai";
