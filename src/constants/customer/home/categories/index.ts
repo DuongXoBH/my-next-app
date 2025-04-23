@@ -6,39 +6,48 @@ export interface ICategoriesMenu {
 export interface ICategories {
   title: string;
   menu: boolean;
+  href: string;
 }
 export const CATEGORIES: ICategories[] = [
   {
     title: "Home",
     menu: false,
+    href: "/",
   },
   {
     title: "Categories",
     menu: true,
+    href: "#",
   },
   {
     title: "Men's",
     menu: true,
+    href: "#",
   },
   {
     title: "Woman's",
     menu: true,
+    href: "#",
   },
   {
     title: "Jewelry",
     menu: true,
+    href: "#",
   },
   {
     title: "Perfume",
     menu: true,
+    href: "#",
   },
   {
-    title: "Blog",
+    title: "News",
     menu: false,
+    href: "/news",
   },
   {
     title: "Hot offers",
     menu: false,
+    href: "#",
   },
 ];
 

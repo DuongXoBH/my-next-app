@@ -3,10 +3,10 @@
 import ProductsContainerSidebar from "./product-sidebar";
 import Link from "next/link";
 import { Card } from "@/components/ui/card";
-import { StarIcon } from "lucide-react";
 import { useFetchProductsApi } from "@/api-hooks/product";
 import { IProduct } from "@/components/page/admin/favorites/favorites";
 import { CardMedia } from "@mui/material";
+import RenderStarFunction from "@/api-hooks/product/render-star-function";
 export default function BestSeller() {
   const { data: products } = useFetchProductsApi();
   const list = products?.slice(0, 4).map((product: IProduct) => {
@@ -20,40 +20,7 @@ export default function BestSeller() {
     };
   });
 
-  const renderRatingStars = (rating: number) => {
-    const stars = [];
-    const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 !== 0;
-
-    for (let i = 0; i < fullStars; i++) {
-      stars.push(
-        <StarIcon
-          key={`star-${i}`}
-          className="w-4 h-4 fill-amber-400 text-amber-400"
-        />
-      );
-    }
-
-    if (hasHalfStar) {
-      stars.push(
-        <div key="half-star" className="relative w-4 h-4">
-          <StarIcon className="absolute w-4 h-4 text-amber-400" />
-          <div className="absolute w-2 h-4 overflow-hidden">
-            <StarIcon className="w-4 h-4 fill-amber-400 text-amber-400" />
-          </div>
-        </div>
-      );
-    }
-
-    const emptyStars = 5 - stars.length;
-    for (let i = 0; i < emptyStars; i++) {
-      stars.push(
-        <StarIcon key={`empty-star-${i}`} className="w-4 h-4 text-amber-400" />
-      );
-    }
-
-    return stars;
-  };
+  const renderRatingStars = RenderStarFunction;
 
   return (
     <ProductsContainerSidebar title="best seller">

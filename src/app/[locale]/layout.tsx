@@ -20,8 +20,8 @@ const nunitoSans = Nunito_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Admin  Dashboard",
-  description: "Admin dashboard by Xo",
+  title: "Demo Web",
+  description: "Demo E-Commerce Web by Xo",
 };
 
 export default async function RootLayout({

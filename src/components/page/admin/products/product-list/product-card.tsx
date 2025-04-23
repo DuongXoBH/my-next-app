@@ -92,8 +92,7 @@ export default function ProductCard({ product }: { product: IProduct }) {
                   alt={product.title}
                   sx={{
                     width: "100%",
-                    height: "100%",
-                    maxHeight: "320px",
+                    height: "320px",
                     objectFit: "contain",
                   }}
                 />

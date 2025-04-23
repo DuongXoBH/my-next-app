@@ -21,12 +21,16 @@ export default function DesktopMenu() {
       <DropdownMenuTrigger asChild>
         <div className="w-full h-[50px] flex flex-row justify-center gap-10">
           {categories.map(
-            (item: { title: string; menu: boolean }, index: number) => {
+            (
+              item: { title: string; menu: boolean; href: string },
+              index: number
+            ) => {
               return (
                 <MenuItem
                   key={`category-${index}`}
                   title={item.title}
                   menu={item.menu}
+                  href={item.href}
                   setOpen={setOpen}
                 />
               );

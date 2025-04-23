@@ -33,7 +33,7 @@ export default function Header() {
   const [token] = useAtom(userToken);
   const { data: auth } = useFetchUserApiBySession(token);
   const pathName = usePathname();
-
+  const isAdminPage = pathName?.includes("admin") ? true : false;
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
   };
@@ -51,7 +51,10 @@ export default function Header() {
     setAnchorEl2(null);
   };
   return (
-    <div id="#top" className="container">
+    <div
+      id="#top"
+      className={`${isAdminPage ? "admin-container" : "container"}`}
+    >
       <Box
         sx={{
           width: "100%",
@@ -65,7 +68,7 @@ export default function Header() {
         <Box sx={{ display: "flex", flexDirection: "row" }}>
           {/* Menu Button */}
           <Toolbar sx={{ padding: "0px !important" }}>
-            {pathName?.includes("admin") ? (
+            {isAdminPage ? (
               <Tooltip title={dashboardOpen ? "Close menu" : "Open menu"}>
                 <Button
                   onClick={() => {
@@ -78,14 +81,18 @@ export default function Header() {
               </Tooltip>
             ) : (
               <Tooltip title="Home">
-                <Image
-                  src="/logo47.png"
-                  alt="Logo"
-                  width={39}
-                  height={39}
-                  className="mr-2"
-                  priority
-                ></Image>
+                <LinkTag
+                  href="/"
+                  className="w-10 h-10 flex justify-center items-center rounded-full overflow-hidden mr-2"
+                >
+                  <Image
+                    src="/logo47.png"
+                    alt="Logo"
+                    width={40}
+                    height={40}
+                    priority
+                  ></Image>
+                </LinkTag>
               </Tooltip>
             )}
           </Toolbar>
@@ -171,11 +178,11 @@ export default function Header() {
                 open={open2}
                 onClose={handleClose}
               >
-                {auth?.role && (
+                {auth?.role === "admin" && (
                   <MenuItem onClick={handleClose}>
                     <LinkTag
                       href="/admin"
-                      className="flex flex-row gap-3 py-auto h-full justify-center items-center"
+                      className="w-full flex flex-row gap-5 py-auto h-full justify-center items-center"
                     >
                       <div className="w-7 h-7 flex items-center">
                         <Image
@@ -185,8 +192,8 @@ export default function Header() {
                           height={16}
                         ></Image>
                       </div>
-                      <Typography sx={{ textAlign: "center" }}>
-                        Admin
+                      <Typography sx={{ width: "100%" }}>
+                        Admin Dashboard
                       </Typography>
                     </LinkTag>
                   </MenuItem>

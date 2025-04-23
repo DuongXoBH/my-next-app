@@ -13,7 +13,7 @@ export default function CustomComponent() {
   const t = useTranslations("admin.Products");
 
   return (
-    <div className="container mt-5 max-h-[350px] px-5 flex justify-center items-center relative bg-banner-layer rounded-2xl">
+    <div className="admin-container mt-5 max-h-[350px] px-5 flex justify-center items-center relative bg-banner-layer rounded-2xl">
       {/* Custom Previous Button */}
       <button
         onClick={() => swiperRef.current?.slidePrev()}

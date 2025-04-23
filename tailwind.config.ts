@@ -58,10 +58,13 @@ export default {
         "member-card": "url('/member-card.png')",
       },
       container: {
+        padding: {
+          "1440px": "8px",
+        },
         center: true,
         screens: {
           "1140px": "1140px",
-          "1600px": "1600px",
+          "1440px": "1440px",
         },
       },
       fontFamily: {

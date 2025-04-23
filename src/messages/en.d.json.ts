@@ -192,7 +192,7 @@ declare const messages: {
       "date": "invoice date",
       "due": "due date",
       "print": "Print",
-      "send": "Send",
+      "send": "Share",
       "total": "total",
       "share invoice title": "Share Invoice",
       "copy": "Copy"
