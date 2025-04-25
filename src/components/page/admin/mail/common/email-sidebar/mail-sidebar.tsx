@@ -97,18 +97,32 @@ export default function EmailSidebar() {
                     <div className="absolute inset-0 bg-blue-700 mix-blend-screen opacity-70" />
                   )}
                 </div>
-                <Typography
-                  sx={{
-                    fontWeight: "600",
-                    fontSize: "14px",
-                    color:
-                      `${hash}` === element.href.trim()
-                        ? "rgba(72, 128, 255, 1)"
-                        : "black",
-                  }}
-                >
-                  {t(element.text as IMailSidebar)}
-                </Typography>
+                <div className="w-full flex flex-row justify-between items-center">
+                  <Typography
+                    sx={{
+                      fontWeight: "500",
+                      fontSize: "14px",
+                      color:
+                        `${hash}` === element.href.trim()
+                          ? "rgba(72, 128, 255, 1)"
+                          : "black",
+                    }}
+                  >
+                    {t(element.text as IMailSidebar)}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontWeight: "500",
+                      fontSize: "14px",
+                      color:
+                        `${hash}` === element.href.trim()
+                          ? "rgba(72, 128, 255, 1)"
+                          : "black",
+                    }}
+                  >
+                    {index + 5}
+                  </Typography>
+                </div>
               </ListItemButton>
             </Button>
           </ListItem>

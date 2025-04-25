@@ -14,7 +14,7 @@ export default function Categories() {
     );
   }
   return (
-    <div className="w-max min-w-full container overflow-x-auto custom-scrollbar mt-5 flex flex-row gap-[1%] h-24">
+    <div className="w-max min-w-full max-w-[1424px] overflow-x-auto custom-scrollbar mt-5 flex flex-row gap-[1%] h-24">
       {categories?.map((item: { id: number; name: string; image: string }) => (
         <div key={`categories-item-${item.id}`} className="category-item">
           <CategoriesItem id={item.id} name={item.name} image={item.image} />

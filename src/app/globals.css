@@ -23,7 +23,7 @@ button {
 .custom-scrollbar {
   overflow-y: auto;
   scrollbar-width: thin; /* Firefox */
-  scrollbar-color: #f5f6fa transparent;
+  scrollbar-color: #9f9f9f transparent;
 }
 
 .custom-scrollbar::-webkit-scrollbar {
@@ -31,7 +31,7 @@ button {
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #f5f6fa;
+  background-color: #9f9f9f;
 }
 
 .custom-scrollbar:hover::-webkit-scrollbar-thumb {

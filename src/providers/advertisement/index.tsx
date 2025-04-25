@@ -1,6 +1,6 @@
 "use client";
 
-import { Dialog } from "@mui/material";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
@@ -21,23 +21,21 @@ export default function AdvertisementProvider({
   return (
     <div className="w-full">
       {children}
-      <Dialog
-        open={open}
-        onClose={() => {
-          setOpen(false);
-        }}
-        maxWidth="xl"
-        PaperComponent={({ children }) => (
-          <div className="min-w-[750px] min-h-[400px]">{children}</div>
-        )}
-      >
-        <Image
-          alt=""
-          src="/advertisement/advertisement.png"
-          width={750}
-          height={400}
-        ></Image>
-      </Dialog>
+      <div className="w-full">
+        <Dialog open={open} onOpenChange={setOpen}>
+          <DialogContent className="sm:max-w-[800px]">
+            <DialogTitle></DialogTitle>
+            <div className="w-[750px] h-[400px] flex justify-center items-center">
+              <Image
+                alt=""
+                src="/advertisement/advertisement.png"
+                width={750}
+                height={400}
+              ></Image>
+            </div>
+          </DialogContent>
+        </Dialog>
+      </div>
     </div>
   );
 }

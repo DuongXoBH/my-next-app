@@ -3,21 +3,14 @@ import { format } from "date-fns";
 import { INewsDetail } from "../home/blogs/news-list";
 import LinkTag from "@/components/common/globals/link-tag";
 
-export default function ArticleCard({
-  item,
-  index,
-}: {
-  item: INewsDetail;
-  index: number;
-}) {
-  const isEven = index % 2 === 0;
+export default function ArticleRowCard({ item }: { item: INewsDetail }) {
   return (
     <LinkTag
       href={item.url}
       target="_blank"
-      className={`w-full h-[700px] overflow-hidden flex ${isEven ? "flex-col" : "flex-col-reverse"} justify-between px-5 py-[25px] gap-[10px] border-x-[1px] border-[#9f9f9f] `}
+      className={`w-full h-[320px] overflow-hidden flex flex-row justify-between px-5 py-[25px] gap-[10px] border-b-[1px] border-[#9f9f9f] group`}
     >
-      <div className="w-full flex justify-center items-center rounded-xl overflow-hidden">
+      <div className="w-full flex justify-center items-center rounded-xl overflow-hidden group-hover:scale-105 transition-all duration-300 ease-in-out">
         <CardMedia
           component="img"
           image={item.image}

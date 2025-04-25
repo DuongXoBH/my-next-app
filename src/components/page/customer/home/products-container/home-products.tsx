@@ -11,7 +11,7 @@ export default function HomeProducts() {
   return (
     <div className="w-full relative flex flex-row gap-7 mt-10">
       <div
-        className={`min-w-[315px] flex flex-col gap-5 sticky top-7 bg-inherit overflow-y-hidden ${open !== null ? "max-h-[1096px]" : "max-h-[938px]"}`}
+        className={`min-w-[315px] flex flex-col gap-5 sticky top-0 bg-inherit overflow-y-hidden ${open !== null ? "max-h-[1096px]" : "max-h-[938px]"}`}
       >
         <CategoriesSidebar isOpenNumber={open} setOpen={setOpen} />
         <BestSeller />
