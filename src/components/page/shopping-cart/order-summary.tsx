@@ -8,8 +8,12 @@ import { useTranslations } from "next-intl";
 export default function OrderSummary() {
   const t = useTranslations("admin.ShoppingCart");
   const [totalCartAmount] = useAtom(totalCartAmountAtom);
-  const discount = parseFloat((totalCartAmount * 0.15).toFixed(2));
-  const tax = parseFloat((totalCartAmount * 0.19).toFixed(2));
+  const discount = totalCartAmount
+    ? parseFloat((totalCartAmount * 0.15).toFixed(2))
+    : 0;
+  const tax = totalCartAmount
+    ? parseFloat((totalCartAmount * 0.19).toFixed(2))
+    : 0;
   return (
     <div className="w-[25%] max-h-[380px] bg-[white] rounded-2xl flex flex-col">
       <div className="w-full p-4 flex flex-row justify-between">
@@ -25,7 +29,9 @@ export default function OrderSummary() {
       <Divider />
       <div className="w-full flex flex-row justify-between p-4">
         <p className="text-base capitalize">{t("sub total")} :</p>
-        <p className="text-base">${totalCartAmount.toFixed(2)}</p>
+        <p className="text-base">
+          ${totalCartAmount ? totalCartAmount.toFixed(2) : 0}
+        </p>
       </div>
       <div className="w-full flex flex-row justify-between p-4">
         <p className="text-base capitalize">{t("discount")} (15%) :</p>
@@ -43,7 +49,7 @@ export default function OrderSummary() {
       <div className="w-full flex flex-row justify-between p-4">
         <p className="capitalize">{t("order total")} :</p>
         <p className="text-purple-500">
-          ${(totalCartAmount - discount + tax).toFixed(2)}
+          ${totalCartAmount ? (totalCartAmount - discount + tax).toFixed(2) : 0}
         </p>
       </div>
     </div>

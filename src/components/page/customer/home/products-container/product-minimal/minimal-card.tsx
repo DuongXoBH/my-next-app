@@ -31,9 +31,9 @@ export default function MinimalCard({
         </p>
         <p className="w-full text-xs ">{category}</p>
         <p className="w-full text-base text-[#ff8f9c]">
-          ${price.toFixed(2)}{" "}
+          ${price ? price.toFixed(2) : 0.0}{" "}
           <span className="ml-1 line-through text-gray-400 text-sm">
-            ${(price * 1.25).toFixed(2)}
+            ${price ? (price * 1.25).toFixed(2) : 0.0}
           </span>
         </p>
       </div>

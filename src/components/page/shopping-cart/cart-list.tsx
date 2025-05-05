@@ -13,7 +13,7 @@ export default function CartList() {
   const [authToken] = useAtom(userToken);
   const { data: auth } = useFetchUserApiBySession(authToken);
   const [carts] = useAtom(authShoppingCart);
-  const cart = carts[auth?.id] || [];
+  const cart = carts ? carts[auth?.id] || [] : [];
 
   const columns = CartColumns();
 

@@ -19,7 +19,7 @@ export default function CartColumns() {
   const [, setTotalCartAmount] = useAtom(totalCartAmountAtom);
 
   const calculateTotalAmount = useMemo((): number => {
-    return cartList.reduce((total, item) => {
+    return cartList?.reduce((total, item) => {
       const quantity = quantityList.get(item.id) ?? 1;
       return total + item.price * quantity;
     }, 0);
