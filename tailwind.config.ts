@@ -52,11 +52,6 @@ export default {
           "5": "hsl(var(--chart-5))",
         },
       },
-      backgroundImage: {
-        "banner-layer": "url('/layer.png')",
-        "admin-pricing": "url('/pricing/background.png')",
-        "member-card": "url('/member-card.png')",
-      },
       container: {
         padding: {
           "1440px": "8px",

@@ -3,15 +3,12 @@
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import MenuIcon from "@mui/icons-material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
 import {
   Avatar,
   Button,
   IconButton,
-  InputAdornment,
   Menu,
   MenuItem,
-  TextField,
   Tooltip,
   Typography,
 } from "@mui/material";
@@ -26,19 +23,14 @@ import LinkTag from "../../globals/link-tag";
 import { useState } from "react";
 import CartIcon from "./shopping-cart";
 import { usePathname } from "next/navigation";
+import SearchDialog from "./search-dialog";
 
 export default function Header() {
   const [dashboardOpen, setDashboardOpen] = useAtom(sidebarAtom);
-  const [searchValue, setSearchValue] = useState("");
   const [token] = useAtom(userToken);
   const { data: auth } = useFetchUserApiBySession(token);
   const pathName = usePathname();
   const isAdminPage = pathName?.includes("admin") ? true : false;
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(e.target.value);
-  };
-  console.log("🚀 ~ Header ~ searchValue:", searchValue);
-
   const settings = HEADINGMENU;
   const [anchorEl2, setAnchorEl2] = useState<null | HTMLElement>(null);
   const open2 = Boolean(anchorEl2);
@@ -99,26 +91,7 @@ export default function Header() {
 
           {/* Search area */}
           <Toolbar sx={{ padding: "0px !important" }}>
-            <TextField
-              placeholder="Search "
-              variant="outlined"
-              size="small"
-              onChange={handleChange}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <SearchIcon color="disabled" />
-                  </InputAdornment>
-                ),
-                sx: {
-                  fontSize: "14px",
-                  width: "35%",
-                  minWidth: "388px",
-                  borderRadius: "50px",
-                  backgroundColor: "white",
-                },
-              }}
-            />
+            <SearchDialog />
           </Toolbar>
         </Box>
 
